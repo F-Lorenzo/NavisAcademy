@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>
 
           <NavBar />
+          <h1>Prueba push branch eryc</h1>
           <Routes>
             <Route path='/login' element={ <LoginContainer /> } />
             <Route path="*" element={<h1>404</h1>} />
