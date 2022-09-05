@@ -1,0 +1,61 @@
+.NavBar {
+    text-align: center;
+}
+
+.navBarContainer {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    background-color: rgb(131, 131, 131);
+    line-height: 75px;
+
+}
+
+.navBar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    float: left;
+    color: #ffff;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.navBar-options {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.navBar-item {
+    display: block;
+    list-style: none;
+    width: 100%;
+    max-width: 150px;
+}
+
+.navBar-link {   
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(202, 202, 202);
+    text-align: center;
+}
+
+.navBar-link img {
+    width: 20px;
+}
+
+.navBar-link:hover {
+    color:rgb(255, 255, 255);
+    background-color: rgba(66, 66, 66, 0.39)
+}
