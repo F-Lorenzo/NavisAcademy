@@ -6,6 +6,7 @@ import LoginContainer from './components/Login/LoginContainer';
 import LoginInterface from './components/Login/LoginInterface';
 import RegisterInterface from './components/Login/RegisterInterface';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer'
 
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
             <Route path='/login/Registrarse' element={ <RegisterInterface /> } />
             <Route path="*" element={<h1>404</h1>} />
           </Routes>
-
+      
       </BrowserRouter>
+      <Footer />
     </>
 
   )
