@@ -16,7 +16,7 @@ const RegisterInterface = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(`cuenta creada, usuario ${form.nombre}`);
+        swal("Bienvenido", `Se creo la cuenta de ${form.email}`, "success");
     }
 
     return (

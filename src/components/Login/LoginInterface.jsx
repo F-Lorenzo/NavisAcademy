@@ -8,7 +8,7 @@ const LoginInterface = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        alert(`Sesion Iniciada ${email}`);
+        swal("Hola!", `Bienvenido ${email}`, "success");
     }
 
     return (
