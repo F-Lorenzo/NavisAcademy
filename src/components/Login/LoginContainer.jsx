@@ -35,12 +35,16 @@ const LoginContainer = () => {
             <div className="caja__trasera-login">
                 <h3>¿Ya tienes una cuenta?</h3>
                 <p>Inicia sesión para continuar</p>
-                <button onClick={handleLogin} id="btn__iniciar-sesion">Iniciar Sesión</button>
+                <NavLink to='/login/IniciarSesion'>
+                    <button onClick={handleLogin} id="btn__iniciar-sesion">Iniciar Sesión</button>
+                </NavLink>
             </div>
             <div className="caja__trasera-register">
                 <h3>¿Aún no tienes una cuenta?</h3>
                 <p>Registrate para iniciar sesión</p>
-                <button onClick={handleRegister} id="btn__registrarse">Registrarse</button>
+                <NavLink to='/login/Registrarse'>
+                    <button onClick={handleRegister} id="btn__registrarse">Registrarse</button>
+                </NavLink>
             </div>
         </div>
         </>

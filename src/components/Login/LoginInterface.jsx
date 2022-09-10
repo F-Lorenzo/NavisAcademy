@@ -16,6 +16,7 @@ const LoginInterface = () => {
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
                 <form onSubmit={handleSubmit}>
+
                     <label htmlFor="email">
                         Ingrese su email : 
                     </label>
@@ -26,7 +27,9 @@ const LoginInterface = () => {
                         value={email} 
                         onChange={(e) => setEmail(e.target.value)} 
                     />
+
                     <br />
+
                     <label htmlFor="password">
                         Ingrese su contraseña : 
                     </label>
@@ -37,7 +40,9 @@ const LoginInterface = () => {
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
                     />
+
                     <br />
+                    
                     <button type="submit" id="btn__iniciar-sesion">Iniciar Sesión</button>
                 </form>
             </div>
