@@ -2,12 +2,25 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Login.css'
 
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
 const LoginInterface = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        const querydb = getFirestore();
+        const queryCollection = collection (querydb, 'Users');
+        const queryFilter = query(queryCollection, where('email', '==', email));
+        getDocs(queryFilter);
+        if (queryFilter) {
+            swal("Hola!", `Bienvenido ${email}`, "success");
+        } else {
+            swal("UPS", `El usuario no existe`, "fail");
+        }
+
         swal("Hola!", `Bienvenido ${email}`, "success");
     }
 
