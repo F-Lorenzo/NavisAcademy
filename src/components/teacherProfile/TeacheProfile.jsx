@@ -3,7 +3,7 @@ import AlumnCard from './AlumnCard'
 
 
 function TeacheProfile({teacher , alumnsQuantity, classesRemaining}) {
-  const alumnsList = teacher.alumnsList;
+  // const alumnsList = teacher.alumnsList;
   return (
     <div>
         <ul className="teacherPersonalData">
@@ -15,13 +15,13 @@ function TeacheProfile({teacher , alumnsQuantity, classesRemaining}) {
         <ul className="teacherClassesData">
           <li>Clases completadas :{teacher.completedClasses}</li>
           <li>numero de alumnos{alumnsQuantity}</li>
-          <li>
+          {/* <li>
             <ul>
               {
                 alumnsList.map(alumn => <AlumnCard key={alumn.id} alumn={alumn}/>)
               }
             </ul>
-          </li>
+          </li> */}
           <li></li>
           <li></li>         
         </ul>
