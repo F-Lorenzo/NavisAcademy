@@ -2,14 +2,44 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Login.css'
 
+import { getFirestore, collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+
 const LoginInterface = () => {
+    const [ userData, setUserData ] = useState ([]);
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        swal("Hola!", `Bienvenido ${email}`, "success");
+
+    const passVerification = (passLog) => {
+        if (userData.password === passLog) { 
+            return true 
+        } else {
+            return false
+        }
+
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const querydb = getFirestore();
+        const queryCollection = collection(querydb, 'Users');
+        const queryFilter = query(queryCollection, where('email', "==", email));
+        
+        getDocs(queryFilter)
+        .then(res => {
+            setUserData(res.docs.map(user => ({id: user.id, ...user.data()})));
+        })
+        
+        if (passVerification(password)) {
+            swal("Bienvenido", `Inicio de sesion como ${form.email}`, "success");
+        } else {
+            swal("Ups", `La contraseña no es valida`, "error");
+        }
+
+    }
+
+    
 
     return (
         <>
