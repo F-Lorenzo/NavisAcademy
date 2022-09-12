@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCRLN_2xzTrvHfN4EDRtETLysu2QWCd9Fk",
   authDomain: "navisacademy-1c1d2.firebaseapp.com",
@@ -16,9 +12,9 @@ const firebaseConfig = {
   measurementId: "G-VC1HXL8EM6"
 };
 
-// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 
 
-initializeApp(firebaseConfig);
 
 

@@ -1,46 +1,50 @@
 import React, { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Loader from '../Loader'
 import { NavLink } from 'react-router-dom';
 import './Login.css'
 
-import { getFirestore, collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
+
 
 const LoginInterface = () => {
     const [ userData, setUserData ] = useState ([]);
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
-
-
-    const passVerification = (passLog) => {
-        if (userData.password === passLog) { 
-            return true 
-        } else {
-            return false
-        }
-
-    }
+    const [ loginSuccess, setLoginSuccess ] = useState(false);
+    const [ loader, setLoader ] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        const querydb = getFirestore();
-        const queryCollection = collection(querydb, 'Users');
-        const queryFilter = query(queryCollection, where('email', "==", email));
-        
-        getDocs(queryFilter)
-        .then(res => {
-            setUserData(res.docs.map(user => ({id: user.id, ...user.data()})));
-        })
-        
-        if (passVerification(password)) {
-            swal("Bienvenido", `Inicio de sesion como ${form.email}`, "success");
-        } else {
-            swal("Ups", `La contraseña no es valida`, "error");
-        }
-
+        setLoader(true);
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setLoginSuccess(true);
+                setLoader(false);
+                swal("Bienvenido", `sesion iniciada como ${user.email}`, "success");
+            })
+            .catch((error) => {
+                setLoader(false);
+                swal("UPS!", `Invalid Password`, "error");
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    
     }
 
+    if (loader) {
+        return (
+            <Loader />
+        )
+    }
+   
+    if (loginSuccess) {
+        return (
+            <h1>Usuario {email}</h1>
+        )
+    }
     
-
     return (
         <>
         <div className="caja__trasera">             

@@ -1,14 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
+
 import { NavLink } from 'react-router-dom';
-import Loader from '../../../../../CODER/00 React Js/01 Instalacion y configuracion del entorno/shittyViteProyect/src/components/Loader';
+import Loader from '../Loader'
 import './Login.css'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import LoginContainer from './LoginContainer';
 
 const RegisterInterface = () => {
 
-    const [form, setForm] = useState({});
-    const [loader, setLoader] = useState(false);
+    const [ form, setForm ] = useState({});
+    const [ loader, setLoader ] = useState(false);
+    const [ registerDone, setRegisterDone ] = useState(false);
+
+    const auth = getAuth();
 
     const handleChange = (e) => {
         setForm({
@@ -20,18 +26,36 @@ const RegisterInterface = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoader(true);
-        const db = getFirestore();
-        const usersCollection = collection(db, 'Users');
-        addDoc(usersCollection, form)
-            .then(({ id }) => {
-                swal("Bienvenido", `Se creo la cuenta de ${form.email}`, "success");
+
+        createUserWithEmailAndPassword(auth, form.email, form.password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const db = getFirestore();
+                const usersCollection = collection(db, 'Users');
+                addDoc(usersCollection, form)
+                    .then(({ id }) => {
+                        setLoader(false);
+                        setRegisterDone(true);
+                    });
+                swal("Bienvenido", `se creo la cuenta de ${form.email}`, "success");
+            })
+            .catch((error) => {
                 setLoader(false);
+                swal("UPS!", `algo salio mal`, "error");
+                const errorCode = error.code;
+                const errorMessage = error.message;
             });
     }
 
     if (loader) {
         return (
             <Loader />
+        )
+    }
+
+    if (registerDone) {
+        return (
+            <LoginContainer />
         )
     }
 
