@@ -1,33 +1,30 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-import './App.css'
-import LoginContainer from './components/Login/LoginContainer';
-import LoginInterface from './components/Login/LoginInterface';
-import RegisterInterface from './components/Login/RegisterInterface';
-import NavBar from './components/NavBar/NavBar';
-
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import LoginContainer from "./components/Login/LoginContainer";
+import LoginInterface from "./components/Login/LoginInterface";
+import RegisterInterface from "./components/Login/RegisterInterface";
+import NavBar from "./components/NavBar/NavBar";
+import Footer from "./components/Footer/Footer";
+import ItemCards from "./components/PackCards/ItemCards";
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
+        <NavBar />
 
-          <NavBar />
-
-          <Routes>
-            <Route path='/login' element={ <LoginContainer /> } />
-            <Route path='/login/IniciarSesion' element={ <LoginInterface /> } />
-            <Route path='/login/Registrarse' element={ <RegisterInterface /> } />
-            <Route path="*" element={<h1>404</h1>} />
-          </Routes>
-
+        <Routes>
+          <Route path="/login" element={<LoginContainer />} />
+          <Route path="/login/IniciarSesion" element={<LoginInterface />} />
+          <Route path="/login/Registrarse" element={<RegisterInterface />} />
+          <Route path="*" element={<h1>404</h1>} />
+        </Routes>
+        <ItemCards />
+        <Footer />
       </BrowserRouter>
     </>
-
-  )
-
+  );
 }
 
-export default App
+export default App;
