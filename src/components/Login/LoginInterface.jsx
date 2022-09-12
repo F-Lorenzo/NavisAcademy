@@ -2,27 +2,44 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Login.css'
 
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 
 const LoginInterface = () => {
+    const [ userData, setUserData ] = useState ([]);
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
-    const handleSubmit = e => {
+
+    const passVerification = (passLog) => {
+        if (userData.password === passLog) { 
+            return true 
+        } else {
+            return false
+        }
+
+    }
+
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         const querydb = getFirestore();
-        const queryCollection = collection (querydb, 'Users');
-        const queryFilter = query(queryCollection, where('email', '==', email));
-        getDocs(queryFilter);
-        if (queryFilter) {
-            swal("Hola!", `Bienvenido ${email}`, "success");
+        const queryCollection = collection(querydb, 'Users');
+        const queryFilter = query(queryCollection, where('email', "==", email));
+        
+        getDocs(queryFilter)
+        .then(res => {
+            setUserData(res.docs.map(user => ({id: user.id, ...user.data()})));
+        })
+        
+        if (passVerification(password)) {
+            swal("Bienvenido", `Inicio de sesion como ${form.email}`, "success");
         } else {
-            swal("UPS", `El usuario no existe`, "fail");
+            swal("Ups", `La contraseña no es valida`, "error");
         }
 
-        swal("Hola!", `Bienvenido ${email}`, "success");
     }
+
+    
 
     return (
         <>

@@ -1,11 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { NavLink } from 'react-router-dom';
+import Loader from '../../../../../CODER/00 React Js/01 Instalacion y configuracion del entorno/shittyViteProyect/src/components/Loader';
 import './Login.css'
 
 const RegisterInterface = () => {
 
     const [form, setForm] = useState({});
+    const [loader, setLoader] = useState(false);
 
     const handleChange = (e) => {
         setForm({
@@ -16,7 +19,20 @@ const RegisterInterface = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        swal("Bienvenido", `Se creo la cuenta de ${form.email}`, "success");
+        setLoader(true);
+        const db = getFirestore();
+        const usersCollection = collection(db, 'Users');
+        addDoc(usersCollection, form)
+            .then(({ id }) => {
+                swal("Bienvenido", `Se creo la cuenta de ${form.email}`, "success");
+                setLoader(false);
+            });
+    }
+
+    if (loader) {
+        return (
+            <Loader />
+        )
     }
 
     return (
@@ -32,7 +48,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='nombre' 
                         name='nombre' 
-                        value={form.nombre} 
+                        value={form.nombre || ''} 
                         onChange={handleChange} 
                     />
 
@@ -45,7 +61,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='apellido' 
                         name='apellido' 
-                        value={form.apellido} 
+                        value={form.apellido || ''} 
                         onChange={handleChange} 
                     />
                     
@@ -58,7 +74,7 @@ const RegisterInterface = () => {
                         type="password" 
                         id='password' 
                         name='password' 
-                        value={form.password} 
+                        value={form.password || ''} 
                         onChange={handleChange} 
                     />
 
@@ -71,7 +87,7 @@ const RegisterInterface = () => {
                         type="email" 
                         id='email' 
                         name='email' 
-                        value={form.email} 
+                        value={form.email || ''} 
                         onChange={handleChange} 
                     />
 
@@ -84,7 +100,7 @@ const RegisterInterface = () => {
                         type="tel" 
                         id='telefono' 
                         name='telefono' 
-                        value={form.telefono} 
+                        value={form.telefono || ''} 
                         onChange={handleChange} 
                     />
 
@@ -97,7 +113,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='pais' 
                         name='pais' 
-                        value={form.pais} 
+                        value={form.pais || ''} 
                         onChange={handleChange} 
                     />
 
@@ -110,7 +126,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='ciudad' 
                         name='ciudad' 
-                        value={form.ciudad} 
+                        value={form.ciudad || ''} 
                         onChange={handleChange} 
                     />
 
