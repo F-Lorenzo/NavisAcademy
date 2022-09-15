@@ -1,11 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import { AuthContextProvider } from './Context/AuthContext';
 import './App.css'
-import LoginContainer from './components/Login/LoginContainer';
-import LoginInterface from './components/Login/LoginInterface';
-import RegisterInterface from './components/Login/RegisterInterface';
+
+
 import NavBar from './components/NavBar/NavBar';
+
+import Account from './components/Login/Account';
+import Logger from './components/Login/Logger';
+import SignIn from './components/Login/SignIn';
+import Signup from './components/Login/SignUp';
+import ProtectedRoute from './components/Login/ProtectedRoute'
 
 
 function App() {
@@ -13,16 +18,28 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <AuthContextProvider>
 
           <NavBar />
 
           <Routes>
-            <Route path='/login' element={ <LoginContainer /> } />
-            <Route path='/login/IniciarSesion' element={ <LoginInterface /> } />
-            <Route path='/login/Registrarse' element={ <RegisterInterface /> } />
+            <Route path='/logger' element={ <Logger /> } />
+
+            <Route path='/signIn' element={<SignIn />} />
+            <Route path='/signUp' element={<Signup />} />
+            <Route
+              path='/account'
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            />            
+            
             <Route path="*" element={<h1>404</h1>} />
           </Routes>
 
+        </AuthContextProvider>
       </BrowserRouter>
     </>
 

@@ -6,15 +6,15 @@ const NavBar = () => {
     return (
         <>
         <div className="navBarContainer">
-            <NavLink className="navBar-brand" to='/'>NAVIS</NavLink>
+            <NavLink className="navBar-brand" to='/home'>NAVIS</NavLink>
             <ul className="navBar-options">
                 <li className="navBar-item">
-                    <NavLink className="navBar-link" to='/login'>
+                    <NavLink className="navBar-link" to='/account'>
                         <img src="../../../src/Assets/round-account-button-with-user-inside.png" alt="" />
                     </NavLink>
                 </li>
                 <li className="navBar-item">
-                    <NavLink className="navBar-link" to='/'>
+                    <NavLink className="navBar-link" to='/home'>
                         <img src="../../../src/Assets/home-button.png" alt="" /> 
                     </NavLink>
                 </li>
