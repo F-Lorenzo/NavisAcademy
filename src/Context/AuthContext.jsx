@@ -19,10 +19,10 @@ export const AuthContextProvider = ({children}) => {
 
     const Firestore = getFirestore();
 
-    async function getRol(uid) {
+    async function getAllData(uid) {
         const docuRef = doc(Firestore, `Users/${uid}`);
         const docuCifrada = await getDoc(docuRef);
-        const infoFinal = docuCifrada.data().rol;
+        const infoFinal = docuCifrada.data();
         return infoFinal;
     }
     
@@ -47,11 +47,12 @@ export const AuthContextProvider = ({children}) => {
             setUser(currentUser);
             /* ----- ROL SHIT ------ */
             if (currentUser) {
-                getRol(currentUser.uid).then((rol) => {
+                getAllData(currentUser.uid).then((user) => {
                     const userData = {
                         uid: currentUser.uid,
                         email: currentUser.email,
-                        rol: rol,
+                        rol: user.rol,
+                        form: user.form,
                     };
                     setUser(userData);
                 })

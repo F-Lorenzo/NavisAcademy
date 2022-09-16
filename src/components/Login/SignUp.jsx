@@ -55,9 +55,9 @@ const Signup = () => {
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
 
-                <p className='py-2'>
+                <p>
                     ¿Already have an account?{' '}
-                    <Link to='/signIn' className='underline'>
+                    <Link to='/signIn'>
                         Sign in.
                     </Link>
                 </p>

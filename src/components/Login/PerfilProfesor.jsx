@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const PerfilAlumno = (info) => {
+const PerfilProfesor = (info) => {
 
         return (
             <div>
-                Perfil Alumno: 
+                Perfil Profesor: 
                 <br />
                 Nombre: {info.nombre}
                 <br />
@@ -20,4 +20,4 @@ const PerfilAlumno = (info) => {
 
 }
 
-export default PerfilAlumno
+export default PerfilProfesor
