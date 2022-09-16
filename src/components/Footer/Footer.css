@@ -1,8 +1,16 @@
 .footer_Content {
     background-color: rgb(59, 54, 88);
+<<<<<<< HEAD
     position: fixed;
     width: 100%;
     height: 300px;
+=======
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+>>>>>>> Eryc
 }
 
 .footer__Container {

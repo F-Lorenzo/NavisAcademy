@@ -14,7 +14,11 @@ const Footer = () => {
         <div> texto 2 </div>
 
         <div>
+<<<<<<< HEAD
           <h2>4seccion</h2>
+=======
+          <h2>seccion</h2>
+>>>>>>> Eryc
           
           <span>iconos de redes </span>
         </div>

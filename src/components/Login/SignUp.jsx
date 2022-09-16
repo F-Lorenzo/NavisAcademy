@@ -1,20 +1,18 @@
-import React from 'react';
-import { useState } from 'react';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../../Context/AuthContext';
+import { addDoc, setDoc, collection, getFirestore, doc } from 'firebase/firestore';
 import Loader from '../Loader'
-import LoginContainer from './LoginContainer';
-import './Login.css'
 
-import { NavLink } from 'react-router-dom';
-
-const RegisterInterface = () => {
+const Signup = () => {
+    
+    const [ rol, setRol ] = useState ("alumn");
 
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
-    const [ registerDone, setRegisterDone ] = useState(false);
-
-    const auth = getAuth();
+    const [ error, setError ] = useState('')
+    const { createUser } = UserAuth();
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setForm({
@@ -23,29 +21,28 @@ const RegisterInterface = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         setLoader(true);
-
-        createUserWithEmailAndPassword(auth, form.email, form.password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                const db = getFirestore();
-                const usersCollection = collection(db, 'Users');
-                addDoc(usersCollection, form)
-                    .then(({ id }) => {
-                        setLoader(false);
-                        setRegisterDone(true);
-                    });
-                swal("Bienvenido", `se creo la cuenta de ${form.email}`, "success");
-            })
-            .catch((error) => {
-                setLoader(false);
-                swal("UPS!", `algo salio mal`, "error");
-                const errorCode = error.code;
-                const errorMessage = error.message;
+        try {
+            const infoUser = await createUser(form.email, form.password).then((firebaseData) => {
+                return firebaseData;
             });
-    }
+            console.log(infoUser); // BORRAR ESTA SHIT!!
+            setForm({...form, rol});
+            const firestore = getFirestore();
+            const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
+            setDoc(docuRef, {form, rol});
+
+            navigate('/account');
+        } catch (e) {
+            setError(e.message);
+            console.log(e.message); // BORRAR ESTA SHIT!!
+            swal("UPS!", `${e.message}`, "error");
+            setLoader(false);
+        }
+    };
 
     if (loader) {
         return (
@@ -53,16 +50,18 @@ const RegisterInterface = () => {
         )
     }
 
-    if (registerDone) {
-        return (
-            <LoginContainer />
-        )
-    }
-
     return (
         <>
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
+
+                <p className='py-2'>
+                    ¿Already have an account?{' '}
+                    <Link to='/signIn' className='underline'>
+                        Sign in.
+                    </Link>
+                </p>
+
                 <form onSubmit={handleSubmit}>
 
                     <label htmlFor="nombre">
@@ -162,8 +161,7 @@ const RegisterInterface = () => {
             </div>
         </div>
         </>
-    )
+  );
+};
 
-}
-
-export default RegisterInterface;
+export default Signup;
