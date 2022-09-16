@@ -23,12 +23,12 @@ const NavBar = () => {
         <div className="navBarContainer">
             <ul className="navBar-options">
                 <li className="navBar-item">
-                    <NavLink className="navBar-link" to='/category/professor'>
+                    <NavLink className="navBar-link" to='/Teacher'>
                         PROFESSOR
                     </NavLink>
                 </li>
                 <li className="navBar-item">
-                    <NavLink className="navBar-link" to='/category/alumn'>
+                    <NavLink className="navBar-link" to='/Alumn'>
                         ALUMN
                     </NavLink>
                 </li>

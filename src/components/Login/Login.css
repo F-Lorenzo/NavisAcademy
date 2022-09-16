@@ -30,7 +30,7 @@
 }
 
 .caja__trasera {
-    width: 100%;
+    /* width: 100%; */
     padding: 10px 20px;
     display: flex;
     justify-content: center;
