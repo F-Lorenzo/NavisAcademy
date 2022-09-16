@@ -46,15 +46,16 @@ export const AuthContextProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             /* ----- ROL SHIT ------ */
-            getRol(currentUser.uid).then((rol) => {
-                const userData = {
-                    uid: currentUser.uid,
-                    email: currentUser.email,
-                    rol: rol,
-                };
-                setUser(userData);
-            })
-
+            if (currentUser) {
+                getRol(currentUser.uid).then((rol) => {
+                    const userData = {
+                        uid: currentUser.uid,
+                        email: currentUser.email,
+                        rol: rol,
+                    };
+                    setUser(userData);
+                })
+            } 
         });
         return () => {
             unsubscribe();
