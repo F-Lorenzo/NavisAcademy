@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 
-import PerfilAlumno from './PerfilAlumno';
-import PerfilProfesor from './PerfilProfesor';
+import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
+import PerfilProfesor from '../teacherProfile/PerfilProfesor';
 
 const Account = () => {
   const { user, logOut } = UserAuth();

@@ -7,13 +7,13 @@ import './App.css'
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 
-import Account from './components/Login/Account';
+import Account from './components/Account/Account';
 import Logger from './components/Login/Logger';
 import SignIn from './components/Login/SignIn';
 import Signup from './components/Login/SignUp';
-import ProtectedRoute from './components/Login/ProtectedRoute';
-import ProtectedRouteStudent from './components/Login/ProtectedRouteStudent';
-import ProtectedRouteTeacher from './components/Login/ProtectedRouteTeacher';
+import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
+import ProtectedRouteStudent from './components/ProtectedRoutes/ProtectedRouteStudent';
+import ProtectedRouteTeacher from './components/ProtectedRoutes/ProtectedRouteTeacher';
 
 import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
 import PanelAlumno from './components/PanelAlumno/PanelAlumno';
