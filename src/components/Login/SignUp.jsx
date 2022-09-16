@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 import { addDoc, setDoc, collection, getFirestore, doc } from 'firebase/firestore';
-import Loader from '../Loader'
+import Loader from '../Loader/Loader'
 
 const Signup = () => {
     
@@ -55,9 +55,9 @@ const Signup = () => {
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
 
-                <p className='py-2'>
+                <p>
                     ¿Already have an account?{' '}
-                    <Link to='/signIn' className='underline'>
+                    <Link to='/signIn'>
                         Sign in.
                     </Link>
                 </p>

@@ -2,6 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 
+import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
+import PerfilProfesor from '../teacherProfile/PerfilProfesor';
+
 const Account = () => {
   const { user, logOut } = UserAuth();
   const navigate = useNavigate();
@@ -10,18 +13,21 @@ const Account = () => {
     try {
       await logOut();
       navigate('/logger');
-      console.log('You are logged out') // BORRAR ESTA SHIT!!
+      swal("BYE!", `sesion Finalizada!`, "success");
     } catch (e) {
       console.log(e.message);
     }
   };
 
   return (
-    <div className='max-w-[600px] mx-auto my-16 p-4'>
-      <h1 className='text-2xl font-bold py-4'>Account</h1>
+    <div>
+      <h1>Account</h1>
       <p>User Email: {user && user.email}</p>
+      <p>ROL DE USUARIO: {user.rol}</p>
 
-      <button onClick={handleLogout} className='border px-6 py-2 my-4'>
+        {user.rol === "alumn" ? <PerfilAlumno {...user.form} /> : <PerfilProfesor {...user.form} /> }          
+
+      <button onClick={handleLogout}>
         Logout
       </button>
     </div>

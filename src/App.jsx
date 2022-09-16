@@ -18,13 +18,16 @@ import './App.css'
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 
-import Account from './components/Login/Account';
+import Account from './components/Account/Account';
 import Logger from './components/Login/Logger';
 import SignIn from './components/Login/SignIn';
 import Signup from './components/Login/SignUp';
-import ProtectedRoute from './components/Login/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
+import ProtectedRouteStudent from './components/ProtectedRoutes/ProtectedRouteStudent';
+import ProtectedRouteTeacher from './components/ProtectedRoutes/ProtectedRouteTeacher';
 
 import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
+import PanelAlumno from './components/PanelAlumno/PanelAlumno';
 
 import Footer from './components/Footer/Footer';
 
@@ -65,9 +68,25 @@ function App() {
                   <Account />
                 </ProtectedRoute>
               }
-            />      
+            />
 
-            <Route path='/Teacher' element={ <h1>Teacher Profile</h1> } />      
+            <Route
+              path='/Alumn'
+              element={
+                <ProtectedRouteStudent>
+                  <PanelAlumno />
+                </ProtectedRouteStudent>
+              }
+            />
+
+            <Route
+              path='/Teacher'
+              element={
+                <ProtectedRouteTeacher>
+                  <h1>Teacher Profile</h1>
+                </ProtectedRouteTeacher>
+              }
+            />   
             
             <Route path="*" element={ <h1>404</h1> } />
           </Routes>

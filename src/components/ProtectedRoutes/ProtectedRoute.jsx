@@ -9,6 +9,8 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to='/logger' />;
   }
   return children;
+
+
 };
 
 export default ProtectedRoute;
