@@ -44,9 +44,8 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-
+            setUser(currentUser);
             /* ----- ROL SHIT ------ */
-
             getRol(currentUser.uid).then((rol) => {
                 const userData = {
                     uid: currentUser.uid,
@@ -56,8 +55,6 @@ export const AuthContextProvider = ({children}) => {
                 setUser(userData);
             })
 
-            
-            /*setUser(currentUser); OLD*/
         });
         return () => {
             unsubscribe();
