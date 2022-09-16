@@ -9,11 +9,9 @@ const ProtectedRouteTeacher = ({ children }) => {
     return <Navigate to='/logger' />;
   }
 
-  console.log(user);
-
   if (user.rol === "alumn") {
     return (
-        <h1>NOT A TEACHERS ACOUNT</h1>
+        <h1>NOT A TEACHER ACOUNT</h1>
     )
   } else {
       return children;

@@ -12,6 +12,7 @@ import Logger from './components/Login/Logger';
 import SignIn from './components/Login/SignIn';
 import Signup from './components/Login/SignUp';
 import ProtectedRoute from './components/Login/ProtectedRoute';
+import ProtectedRouteStudent from './components/Login/ProtectedRouteStudent';
 import ProtectedRouteTeacher from './components/Login/ProtectedRouteTeacher';
 
 import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
@@ -48,9 +49,9 @@ function App() {
             <Route
               path='/Alumn'
               element={
-                <ProtectedRoute>
+                <ProtectedRouteStudent>
                   <PanelAlumno />
-                </ProtectedRoute>
+                </ProtectedRouteStudent>
               }
             />
 
