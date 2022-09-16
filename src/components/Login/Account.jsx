@@ -10,7 +10,7 @@ const Account = () => {
     try {
       await logOut();
       navigate('/logger');
-      console.log('You are logged out')
+      console.log('You are logged out') // BORRAR ESTA SHIT!!
     } catch (e) {
       console.log(e.message);
     }

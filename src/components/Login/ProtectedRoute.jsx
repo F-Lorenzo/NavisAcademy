@@ -4,7 +4,7 @@ import { UserAuth } from '../../Context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
   const { user } = UserAuth();
-
+  
   if (!user) {
     return <Navigate to='/logger' />;
   }

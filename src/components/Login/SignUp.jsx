@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
+import { addDoc, setDoc, collection, getFirestore, doc } from 'firebase/firestore';
 import Loader from '../Loader'
 
 const Signup = () => {
     
+    const [ rol, setRol ] = useState ("alumn");
+
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
     const [ error, setError ] = useState('')
@@ -23,11 +26,19 @@ const Signup = () => {
         setError('');
         setLoader(true);
         try {
-            await createUser(form.email, form.password);
-            navigate('/account')
+            const infoUser = await createUser(form.email, form.password).then((firebaseData) => {
+                return firebaseData;
+            });
+            console.log(infoUser); // BORRAR ESTA SHIT!!
+            setForm({...form, rol});
+            const firestore = getFirestore();
+            const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
+            setDoc(docuRef, {form, rol});
+
+            navigate('/account');
         } catch (e) {
             setError(e.message);
-            console.log(e.message);
+            console.log(e.message); // BORRAR ESTA SHIT!!
             swal("UPS!", `${e.message}`, "error");
             setLoader(false);
         }
