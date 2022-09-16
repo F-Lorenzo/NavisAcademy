@@ -14,7 +14,6 @@ function TecherProfileContainer() {
     const teacherCollection = collection(db, 'Teachers')
     const teacherFiltered = query(teacherCollection,where(documentId(), '==', `${teacherId}`)
     )
-
     getDoc(teacherId ? teacherFiltered : <span>ese Id no tiene profesor asignado</span>)
       .then((snapshot) => {
         setProductList(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
