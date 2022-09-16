@@ -12,14 +12,15 @@ import Logger from './components/Login/Logger';
 import SignIn from './components/Login/SignIn';
 import Signup from './components/Login/SignUp';
 import ProtectedRoute from './components/Login/ProtectedRoute';
+import ProtectedRouteTeacher from './components/Login/ProtectedRouteTeacher';
 
 import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
+import PanelAlumno from './components/PanelAlumno/PanelAlumno';
 
 import Footer from './components/Footer/Footer';
 
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
@@ -42,9 +43,25 @@ function App() {
                   <Account />
                 </ProtectedRoute>
               }
-            />      
+            />
 
-            <Route path='/Teacher' element={ <h1>Teacher Profile</h1> } />      
+            <Route
+              path='/Alumn'
+              element={
+                <ProtectedRoute>
+                  <PanelAlumno />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path='/Teacher'
+              element={
+                <ProtectedRouteTeacher>
+                  <h1>Teacher Profile</h1>
+                </ProtectedRouteTeacher>
+              }
+            />   
             
             <Route path="*" element={ <h1>404</h1> } />
           </Routes>
@@ -54,9 +71,7 @@ function App() {
         </AuthContextProvider>
       </BrowserRouter>
     </>
-
-  )
-
+  );
 }
 
-export default App
+export default App;
