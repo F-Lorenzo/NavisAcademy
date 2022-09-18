@@ -1,11 +1,18 @@
-import React from 'react';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import './Login.css'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../../Context/AuthContext';
+import { addDoc, setDoc, collection, getFirestore, doc } from 'firebase/firestore';
+import Loader from '../Loader/Loader'
 
-const RegisterInterface = () => {
+const Signup = () => {
+    
+    const [ rol, setRol ] = useState ("alumn");
 
-    const [form, setForm] = useState({});
+    const [ form, setForm ] = useState({});
+    const [ loader, setLoader ] = useState(false);
+    const [ error, setError ] = useState('')
+    const { createUser } = UserAuth();
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setForm({
@@ -14,15 +21,47 @@ const RegisterInterface = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert(`cuenta creada, usuario ${form.nombre}`);
+        setError('');
+        setLoader(true);
+        try {
+            const infoUser = await createUser(form.email, form.password).then((firebaseData) => {
+                return firebaseData;
+            });
+            console.log(infoUser); // BORRAR ESTA SHIT!!
+            setForm({...form, rol});
+            const firestore = getFirestore();
+            const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
+            setDoc(docuRef, {form, rol});
+
+            navigate('/account');
+        } catch (e) {
+            setError(e.message);
+            console.log(e.message); // BORRAR ESTA SHIT!!
+            swal("UPS!", `${e.message}`, "error");
+            setLoader(false);
+        }
+    };
+
+    if (loader) {
+        return (
+            <Loader />
+        )
     }
 
     return (
         <>
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
+
+                <p>
+                    ¿Already have an account?{' '}
+                    <Link to='/signIn'>
+                        Sign in.
+                    </Link>
+                </p>
+
                 <form onSubmit={handleSubmit}>
 
                     <label htmlFor="nombre">
@@ -32,7 +71,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='nombre' 
                         name='nombre' 
-                        value={form.nombre} 
+                        value={form.nombre || ''} 
                         onChange={handleChange} 
                     />
 
@@ -45,7 +84,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='apellido' 
                         name='apellido' 
-                        value={form.apellido} 
+                        value={form.apellido || ''} 
                         onChange={handleChange} 
                     />
                     
@@ -58,7 +97,7 @@ const RegisterInterface = () => {
                         type="password" 
                         id='password' 
                         name='password' 
-                        value={form.password} 
+                        value={form.password || ''} 
                         onChange={handleChange} 
                     />
 
@@ -71,7 +110,7 @@ const RegisterInterface = () => {
                         type="email" 
                         id='email' 
                         name='email' 
-                        value={form.email} 
+                        value={form.email || ''} 
                         onChange={handleChange} 
                     />
 
@@ -84,7 +123,7 @@ const RegisterInterface = () => {
                         type="tel" 
                         id='telefono' 
                         name='telefono' 
-                        value={form.telefono} 
+                        value={form.telefono || ''} 
                         onChange={handleChange} 
                     />
 
@@ -97,7 +136,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='pais' 
                         name='pais' 
-                        value={form.pais} 
+                        value={form.pais || ''} 
                         onChange={handleChange} 
                     />
 
@@ -110,7 +149,7 @@ const RegisterInterface = () => {
                         type="text" 
                         id='ciudad' 
                         name='ciudad' 
-                        value={form.ciudad} 
+                        value={form.ciudad || ''} 
                         onChange={handleChange} 
                     />
 
@@ -122,8 +161,7 @@ const RegisterInterface = () => {
             </div>
         </div>
         </>
-    )
+  );
+};
 
-}
-
-export default RegisterInterface;
+export default Signup;
