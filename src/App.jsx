@@ -1,24 +1,82 @@
-import React ,{useContext} from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthContextProvider } from './Context/AuthContext';
 import './App.css'
 
 
 import NavBar from './components/NavBar/NavBar';
+import Home from './components/Home/Home';
+
+import Account from './components/Account/Account';
+import Logger from './components/Login/Logger';
+import SignIn from './components/Login/SignIn';
+import Signup from './components/Login/SignUp';
+import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
+import ProtectedRouteStudent from './components/ProtectedRoutes/ProtectedRouteStudent';
+import ProtectedRouteTeacher from './components/ProtectedRoutes/ProtectedRouteTeacher';
+
+import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
+import PanelAlumno from './components/PanelAlumno/PanelAlumno';
+
 import Footer from './components/Footer/Footer';
-import TeacherProfileContainer from './components/teacherProfile/TecherProfileContainer';
+
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 
 function App() {
   return (
+    <>
       <BrowserRouter>
-          <NavBar/>
+        <AuthContextProvider>
+
+          <NavBar />
+
           <Routes>
-            <Route path="/login" element={<LoginContainer/>}/>
-            <Route path="/register" element={<RegisterInterface/>}/>
-            <Route path="/Teachers/:techerId" element={<TeacherProfileContainer/>}/>
+
+            <Route path='/home' element={ <Home /> } />
+
+            <Route path='/logger' element={ <Logger /> } />
+            <Route path='/signIn' element={ <SignIn /> } />
+            <Route path='/signUp' element={ <Signup /> } />
+
+            <Route
+              path='/account'
+              element={
+                <ProtectedRoute>
+                  <Account />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path='/Alumn'
+              element={
+                <ProtectedRouteStudent>
+                  <PayPalScriptProvider options={{ "client-id": YOUR_CLIENT_ID }}>
+                  <PanelAlumno />
+                  </PayPalScriptProvider>
+                </ProtectedRouteStudent>
+              }
+            />
+
+            <Route
+              path='/Teacher'
+              element={
+                <ProtectedRouteTeacher>
+                  <TecherProfileContainer/>
+                </ProtectedRouteTeacher>
+              }
+            />   
+            
+            <Route path="*" element={ <h1>404</h1> } />
           </Routes>
-          <Footer/>
+
+          <Footer />
+
+        </AuthContextProvider>
       </BrowserRouter>
-    )
+    </>
+  );
 }
 
 export default App;
