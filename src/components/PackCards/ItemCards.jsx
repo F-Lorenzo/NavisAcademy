@@ -4,7 +4,9 @@ import "./ItemCards.css";
 const ItemCards = () => {
   return (
     <>
+      
       <section className="card_Content">
+      <h2 className='paquetes__title'> Paquetes</h2>
         <div className="card__Container">
           <div className="card__body">
             <h2 className="box-1">card 1</h2>
