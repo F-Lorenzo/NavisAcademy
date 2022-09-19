@@ -1,0 +1,52 @@
+.quality_Content h2 {
+    text-align: center;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+.quality_Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 50px;
+    flex-direction: wrap;
+}
+
+.box__1 {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 25px 25px 25px 25px;
+    text-align: center;
+}
+
+.box__body {
+    margin: 20px;
+}
+
+.box__body span {
+    margin: 10px;
+}
+
+.box__2 {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 25px 25px 25px 25px;
+    text-align: center;
+}
+
+.box__3 {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 25px 25px 25px 25px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .quality_Body {
+        flex-direction: column;
+    }
+}
