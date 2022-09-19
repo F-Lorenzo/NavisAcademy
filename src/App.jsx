@@ -52,9 +52,9 @@ function App() {
               path='/Alumn'
               element={
                 <ProtectedRouteStudent>
-                  <PayPalScriptProvider options={{ "client-id": YOUR_CLIENT_ID }}>
+                  {/* <PayPalScriptProvider options={{ "client-id": YOUR_CLIENT_ID }}> */}
                   <PanelAlumno />
-                  </PayPalScriptProvider>
+                  {/* </PayPalScriptProvider> */}
                 </ProtectedRouteStudent>
               }
             />
