@@ -14,39 +14,20 @@ import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import ProtectedRouteStudent from "./components/ProtectedRoutes/ProtectedRouteStudent";
 import ProtectedRouteTeacher from "./components/ProtectedRoutes/ProtectedRouteTeacher";
 
-import TecherProfileContainer from "./components/teacherProfile/TecherProfileContainer";
+import PanelProfessor from './components/ProfessorPanel/PanelContainer'
 import PanelAlumno from "./components/PanelAlumno/PanelAlumno";
-
-
-<<<<<<< HEAD
-import NavBar from './components/NavBar/NavBar';
-import Home from './components/Home/Home';
-
-import Account from './components/Account/Account';
-import Logger from './components/Login/Logger';
-import SignIn from './components/Login/SignIn';
-import Signup from './components/Login/SignUp';
-import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
-import ProtectedRouteStudent from './components/ProtectedRoutes/ProtectedRouteStudent';
-import ProtectedRouteTeacher from './components/ProtectedRoutes/ProtectedRouteTeacher';
-
-import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
-import PanelAlumno from './components/PanelAlumno/PanelAlumno';
 
 import Footer from './components/Footer/Footer';
 
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-=======
-import Footer from "./components/Footer/Footer";
->>>>>>> origin/master
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <AuthContextProvider>
-          <NavBar />
+          <NavBar/>
 
           <Routes>
             <Route path="/home" element={<Home />} />
@@ -79,7 +60,7 @@ function App() {
               path="/Teacher"
               element={
                 <ProtectedRouteTeacher>
-                  <TecherProfileContainer/>
+                  <PanelProfessor/>
                 </ProtectedRouteTeacher>
               }
             />
