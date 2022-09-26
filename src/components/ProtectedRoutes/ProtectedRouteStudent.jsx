@@ -9,7 +9,7 @@ const ProtectedRouteStudent = ({ children }) => {
     return <Navigate to='/logger' />;
   }
 
-  if (user.rol === "teacher") {
+  if (user.role === "teacher") {
     return (
         <h1>NOT A STUDENT ACOUNT</h1>
     )
