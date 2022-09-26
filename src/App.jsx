@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthContextProvider } from './Context/AuthContext';
 import './App.css'
 
-
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 
