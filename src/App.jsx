@@ -15,10 +15,15 @@ import ProtectedRoute from './components/ProtectedRoutes/ProtectedRoute';
 import ProtectedRouteStudent from './components/ProtectedRoutes/ProtectedRouteStudent';
 import ProtectedRouteTeacher from './components/ProtectedRoutes/ProtectedRouteTeacher';
 
-import TecherProfileContainer from './components/teacherProfile/TecherProfileContainer';
 import PanelAlumno from './components/PanelAlumno/PanelAlumno';
+import ProgramarClases from './components/PanelAlumno/MisClases/ProgramarClases';
+import CalendarioDeClases from './components/PanelAlumno/MisClases/CalendarioDeClases';
 
 import Footer from './components/Footer/Footer';
+import EditarInformacion from './components/Account/EditarInformacion';
+import Admin from './components/Admin/Admin';
+import CreateTeacherAccount from './components/Admin/CreateTeacherAccount';
+import ProgramingClassesAsAdmin from './components/Admin/ProgramingClassesAsAdmin';
 
 
 function App() {
@@ -36,6 +41,9 @@ function App() {
             <Route path='/logger' element={ <Logger /> } />
             <Route path='/signIn' element={ <SignIn /> } />
             <Route path='/signUp' element={ <Signup /> } />
+            
+            <Route path='/Admin' element={ <Admin /> } />
+            <Route path='/Admin/CreateTeacherAccount' element={ <CreateTeacherAccount /> } />
 
             <Route
               path='/account'
@@ -45,6 +53,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route path='/Account/EditarInformacion' element={ < EditarInformacion /> } />
+            <Route path='/Account/ProgramarClases' element={ <ProgramarClases /> } />
+            <Route path='/Account/CalendarioDeClases' element={ <CalendarioDeClases /> } />
+            <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
 
             <Route
               path='/Alumn'

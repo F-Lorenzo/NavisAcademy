@@ -6,15 +6,15 @@ const PerfilAlumno = (info) => {
             <div>
                 Perfil Alumno: 
                 <br />
-                Nombre: {info.nombre}
+                Nombre: {info.name}
                 <br />
-                Apellido: {info.apellido}
+                Apellido: {info.lastName}
                 <br />
-                Pais: {info.pais}
+                Pais: {info.country}
                 <br />
-                Ciudad: {info.ciudad}
+                Ciudad: {info.city}
                 <br />
-                Telefono: {info.telefono}
+                Telefono: {info.phoneNumber}
             </div>
         )
 

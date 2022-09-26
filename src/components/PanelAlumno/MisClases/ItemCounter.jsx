@@ -20,7 +20,6 @@ const ItemCounter = ({comprarClases}) => {
     const { counter, increase, decrease, reset } = useCounter();
 
     const handleCompra = () => {
-        swal("Muy Bien", `Adquiriste ${counter} nuevas clases`, "success");
         comprarClases(counter);
         reset(counter);
     }
