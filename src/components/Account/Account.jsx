@@ -19,17 +19,26 @@ const Account = () => {
     }
   };
 
+  const handleEditarInformacion = () => {
+    navigate('/Account/EditarInformacion');
+  }
+
   return (
     <div>
       <h1>Account</h1>
       <p>User Email: {user && user.email}</p>
-      <p>ROL DE USUARIO: {user.rol}</p>
+      <p>ROL DE USUARIO: {user.role}</p>
 
-        {user.rol === "alumn" ? <PerfilAlumno {...user.form} /> : <PerfilProfesor {...user.form} /> }          
-
+        {user.role === "alumn" ? <PerfilAlumno {...user.form} /> : <TeacherProfile {...user.form} /> }    
+      
+      <button onClick={handleEditarInformacion}>
+        EDITAR INFORMACION
+      </button>
+      
       <button onClick={handleLogout}>
         Logout
       </button>
+      
     </div>
   );
 };

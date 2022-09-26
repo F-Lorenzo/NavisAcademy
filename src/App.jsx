@@ -30,14 +30,18 @@ function App() {
           <NavBar/>
 
           <Routes>
-            <Route path="/home" element={<Home />} />
 
-            <Route path="/logger" element={<Logger />} />
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/signUp" element={<Signup />} />
+            <Route path='/home' element={ <Home /> } />
+
+            <Route path='/logger' element={ <Logger /> } />
+            <Route path='/signIn' element={ <SignIn /> } />
+            <Route path='/signUp' element={ <Signup /> } />
+            
+            <Route path='/Admin' element={ <Admin /> } />
+            <Route path='/Admin/CreateTeacherAccount' element={ <CreateTeacherAccount /> } />
 
             <Route
-              path="/account"
+              path='/account'
               element={
                 <ProtectedRoute>
                   <Account />
@@ -45,8 +49,13 @@ function App() {
               }
             />
 
+            <Route path='/Account/EditarInformacion' element={ < EditarInformacion /> } />
+            <Route path='/Account/ProgramarClases' element={ <ProgramarClases /> } />
+            <Route path='/Account/CalendarioDeClases' element={ <CalendarioDeClases /> } />
+            <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
+
             <Route
-              path="/Alumn"
+              path='/Alumn'
               element={
                 <ProtectedRouteStudent>
                   {/* <PayPalScriptProvider options={{ "client-id": YOUR_CLIENT_ID }}> */}
@@ -57,18 +66,19 @@ function App() {
             />
 
             <Route
-              path="/Teacher"
+              path='/Teacher'
               element={
                 <ProtectedRouteTeacher>
                   <PanelProfessor/>
                 </ProtectedRouteTeacher>
               }
-            />
-
-            <Route path="*" element={<h1>404</h1>} />
+            />   
+            
+            <Route path="*" element={ <h1>404</h1> } />
           </Routes>
 
           <Footer />
+
         </AuthContextProvider>
       </BrowserRouter>
     </>
