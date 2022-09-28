@@ -7,19 +7,28 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 
 import Account from "./components/Account/Account";
+import EditarInformacion from './components/Account/EditarInformacion'
 import Logger from "./components/Login/Logger";
 import SignIn from "./components/Login/SignIn";
 import Signup from "./components/Login/SignUp";
+import Checkout from "./components/checkout/Checkout"
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import ProtectedRouteStudent from "./components/ProtectedRoutes/ProtectedRouteStudent";
 import ProtectedRouteTeacher from "./components/ProtectedRoutes/ProtectedRouteTeacher";
 
-import PanelProfessor from './components/ProfessorPanel/PanelContainer'
+
 import PanelAlumno from "./components/PanelAlumno/PanelAlumno";
+import ProgramarClases from './components/PanelAlumno/MisClases/ProgramarClases'
+import CalendarioDeClases from './components/PanelAlumno/MisClases/CalendarioDeClases'
+
+
+import Admin from './components/Admin/Admin'
+import CreateTeacherAccount from './components/Admin/CreateTeacherAccount'
+import ProgramingClassesAsAdmin from './components/Admin/ProgramingClassesAsAdmin'
 
 import Footer from './components/Footer/Footer';
 
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 
 
 function App() {
@@ -53,14 +62,13 @@ function App() {
             <Route path='/Account/ProgramarClases' element={ <ProgramarClases /> } />
             <Route path='/Account/CalendarioDeClases' element={ <CalendarioDeClases /> } />
             <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
+            <Route path='/Checkout' element={ <Checkout /> } />
 
             <Route
               path='/Alumn'
               element={
                 <ProtectedRouteStudent>
-                  {/* <PayPalScriptProvider options={{ "client-id": YOUR_CLIENT_ID }}> */}
                   <PanelAlumno />
-                  {/* </PayPalScriptProvider> */}
                 </ProtectedRouteStudent>
               }
             />
@@ -69,7 +77,6 @@ function App() {
               path='/Teacher'
               element={
                 <ProtectedRouteTeacher>
-                  <PanelProfessor/>
                 </ProtectedRouteTeacher>
               }
             />   
