@@ -1,8 +1,7 @@
 import { getFirestore, collection, getDocs, query } from 'firebase/firestore';
 import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import Loader from '../../../../../../CODER/00 React Js/01 Instalacion y configuracion del entorno/shittyViteProyect/src/components/Loader';
+import {useState,useEffect} from 'react';
+import Loader from '../../Loader/Loader';
 
 import { UserAuth } from '../../../Context/AuthContext';
 import Class from './Class';
