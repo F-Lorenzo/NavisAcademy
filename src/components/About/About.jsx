@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import about from "../../assets/img/about.jpg";
 
 const About = () => {
   return (
@@ -7,19 +8,22 @@ const About = () => {
       <section className="main__Content">
         <div className="about__1">
           <div className="contenido">
-            <h2>Quienes Somos</h2>
+          <h2 className="about__title">Quienes Somos</h2>
             <span className="parrafo__content">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-              nisi vel quasi iure in temporibus porro, iste laudantium quos
-              consequuntur! Laudantium culpa nobis iusto animi inventore
-              corrupti sit eligendi vitae.
+            Lorem ipsum dolor sit amet, consectetuer
+adipiscing elit, sed diam nonummy nibh
+euismod tincidunt ut laoreet dolore magna
+aliquam erat volutpat. Ut wisi enim ad
+minim veniam, quis nostrud exerci tation
+ullamcorper suscipit lobortis nisl ut aliquip
+ex ea commodo consequat.
             </span>
           </div>
         </div>
 
         <div className="about__2">
           <img
-            src="https://cdn.pixabay.com/photo/2016/03/31/20/04/alphabet-word-images-1295488_960_720.png"
+            src={about}
             alt=""
           />
         </div>

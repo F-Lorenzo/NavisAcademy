@@ -4,6 +4,7 @@ import About from '../About/About'
 import Qualitys from '../Qualitys/Qualitys'
 import Reviews from '../Reviews/Reviews'
 import Questions from '../Questions/Questions'
+import Contact from '../Contact/Contact'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
           <Reviews/>
         <ItemCards />
         <Questions/>
+        <Contact/>
 
     </>
   )
