@@ -51,8 +51,13 @@ export const AuthContextProvider = ({children}) => {
                     const userData = {
                         uid: currentUser.uid,
                         email: currentUser.email,
-                        rol: user.rol,
-                        form: user.form,
+                        role: user.role,
+                        form: user,
+                        misClases: { 
+                                        remainingClases: user.remainingClases,
+                                        completedClases: user.completedClases,
+                                        programedClases: user.programedClases,
+                                   }
                     };
                     setUser(userData);
                 })

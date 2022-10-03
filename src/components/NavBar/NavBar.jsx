@@ -18,7 +18,7 @@ const NavBar = () => {
                     <NavLink className="navBar-link" to='/home'>
                         <img src="../../../src/Assets/home-button.png" alt="" /> 
                     </NavLink>
-                </li>
+                </li>   
             </ul>
         </div>
         <div className="navBarContainer">
@@ -31,6 +31,11 @@ const NavBar = () => {
                 <li className="navBar-item">
                     <NavLink className="navBar-link" to='/Alumn'>
                         ALUMN
+                    </NavLink>
+                </li>
+                <li className="navBar-item">
+                    <NavLink className="navBar-link" to='/Admin'>
+                        ADMIN
                     </NavLink>
                 </li>
             </ul>

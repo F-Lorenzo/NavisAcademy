@@ -4,8 +4,8 @@ import { UserAuth } from '../../Context/AuthContext';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import Loader from '../Loader/Loader'
 
-const Signup = () => {
-    
+const CreateTeacherAccount = () => {
+
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
     const [ error, setError ] = useState('')
@@ -19,11 +19,8 @@ const Signup = () => {
         })
     }
 
-    const student = {
-        role: "alumn",
-        remainingClases: 0,
-        completedClases: 0,
-        programedClases: 0,
+    const teacher = {
+        role: "teacher",
     }
 
     const myClases = { }
@@ -39,7 +36,7 @@ const Signup = () => {
             console.log(infoUser); // BORRAR ESTA SHIT!!
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
-            setDoc(docuRef, {...form, ...student});
+            setDoc(docuRef, {...form, ...teacher});
 
             navigate('/account');
         } catch (e) {
@@ -60,13 +57,6 @@ const Signup = () => {
         <>
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
-
-                <p>
-                    ¿Already have an account?{' '}
-                    <Link to='/signIn'>
-                        Sign in.
-                    </Link>
-                </p>
 
                 <form onSubmit={handleSubmit}>
 
@@ -168,6 +158,7 @@ const Signup = () => {
         </div>
         </>
   );
-};
 
-export default Signup;
+}
+
+export default CreateTeacherAccount

@@ -1,0 +1,7 @@
+
+.info {
+    display: flex;
+    border: solid black 1px;
+    margin: 10px;
+    justify-content: center;
+}
