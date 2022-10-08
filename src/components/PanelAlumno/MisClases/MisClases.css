@@ -1,7 +1,41 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: row;
+}
 
 .info {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 1px;
+    margin: 15px;
+    padding: 5px;
+    width: 200px;
+    justify-content: center;
+}
+
+.buy-card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+}
+
+.buy-card{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
     border: solid black 1px;
     margin: 10px;
-    justify-content: center;
+    width: 400px;
+   
 }
