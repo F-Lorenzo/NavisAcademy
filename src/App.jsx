@@ -80,7 +80,7 @@ function App() {
               path='/Teacher'
               element={
                 <ProtectedRouteTeacher>
-                  <PanelProfessor/>
+                  <PanelProfessor />
                 </ProtectedRouteTeacher>
               }
             />   
