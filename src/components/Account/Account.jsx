@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 
 import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
+import TeacherProfile from '../PanelProfessor/TeacherProfile';
 
 
 const Account = () => {
