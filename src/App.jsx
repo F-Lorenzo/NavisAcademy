@@ -22,6 +22,9 @@ import ProgramarClases from './components/PanelAlumno/MisClases/ProgramarClases'
 import CalendarioDeClases from './components/PanelAlumno/MisClases/CalendarioDeClases'
 
 
+import PanelProfessor from './components/PanelProfessor/PanelProfessor'
+
+
 import Admin from './components/Admin/Admin'
 import CreateTeacherAccount from './components/Admin/CreateTeacherAccount'
 import ProgramingClassesAsAdmin from './components/Admin/ProgramingClassesAsAdmin'
@@ -77,6 +80,7 @@ function App() {
               path='/Teacher'
               element={
                 <ProtectedRouteTeacher>
+                  <PanelProfessor/>
                 </ProtectedRouteTeacher>
               }
             />   
