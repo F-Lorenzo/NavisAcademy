@@ -45,11 +45,12 @@ const SignIn = () => {
                     </Link>
                 </p>
 
-                <form onSubmit={handleSubmit}>
+                <form className='form__Register' onSubmit={handleSubmit}>
 
                     <label htmlFor="email">
-                        Email Address : 
+                    Correo electrónico
                     </label>
+                    <br/>
                     <input 
                         type="email" 
                         id='email' 
@@ -61,8 +62,9 @@ const SignIn = () => {
                     <br />
 
                     <label htmlFor="password">
-                        Password : 
+                    Clave
                     </label>
+                    <br />
                     <input 
                         type="password" 
                         id='password' 
@@ -73,7 +75,9 @@ const SignIn = () => {
 
                     <br />
                 
-                    <button type="submit" id="btn__iniciar-sesion">Sign In</button>
+                <button className='boton__login' type="submit" id="btn__iniciar-sesion">Iniciar Session</button>
+               
+                    
                     
                 </form>
             </div>
