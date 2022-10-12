@@ -1,5 +1,19 @@
 .paquetes__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paquetes__title h2 {
+    width: 220px;
+    height: 40px;
+    background-color: #266f56;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    padding: 15px;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .card_Content {
@@ -12,8 +26,8 @@
     justify-content: center;
     align-items: center;
     gap: 60px;
-    margin-bottom: 30px;
     flex-direction: wrap;
+    margin-top: 10px;
 }
 
 .card__body {
@@ -22,14 +36,22 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    border: 1px solid #000;
     border-radius: 30px 30px 30px 30px;
+    background-color: rgb(70, 172, 30);
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.cohete img {
+    width: 100px;
+    height: 100px;
 }
 
 .box-1 {
     width: 100%;
-    height: 150px;
-    background: url(https://banner2.cleanpng.com/20180411/oqq/kisspng-computer-icons-star-5-star-5acdd9ec67db40.8458493715234401084254.jpg);
+    height: 250px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

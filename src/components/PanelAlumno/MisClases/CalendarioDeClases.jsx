@@ -1,7 +1,7 @@
 import { getFirestore, collection, getDocs, query } from 'firebase/firestore';
 import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import {useState,useEffect} from 'react';
+import Loader from '../../Loader/Loader';
 
 import { UserAuth } from '../../../Context/AuthContext';
 import Class from './Class';

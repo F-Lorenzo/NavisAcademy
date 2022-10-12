@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UserAuth } from '../../Context/AuthContext';
 import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
-import TeacherProfile from '../TeacherProfile/TeacherProfile';
+
 
 
 const EditarInformacion = () => {

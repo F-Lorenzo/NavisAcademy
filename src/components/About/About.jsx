@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import about from "../../assets/img/about.jpg";
 
 const About = () => {
   return (
@@ -7,19 +8,21 @@ const About = () => {
       <section className="main__Content">
         <div className="about__1">
           <div className="contenido">
-            <h2>Quienes Somos</h2>
+          <h2 className="about__title">Quienes Somos</h2>
             <span className="parrafo__content">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-              nisi vel quasi iure in temporibus porro, iste laudantium quos
-              consequuntur! Laudantium culpa nobis iusto animi inventore
-              corrupti sit eligendi vitae.
+            En un mundo donde la globalización está cada vez más presente en nuestro día a día, Navis es tu
+impulso hacia ello, siendo el inglés el principal idioma utilizado para los negocios, estudios y viajes, este
+lenguaje representa una de las herramientas más útiles para la comunicación global. En Navis sabemos
+que tus ambiciones y las de tu familia son grandes, por eso ofrecemos una manera practica y
+personalizada para el aprendizaje del inglés.
+Aprende inglés de manera fácil, rápida y entretenida.
             </span>
           </div>
         </div>
 
         <div className="about__2">
           <img
-            src="https://cdn.pixabay.com/photo/2016/03/31/20/04/alphabet-word-images-1295488_960_720.png"
+            src={about}
             alt=""
           />
         </div>

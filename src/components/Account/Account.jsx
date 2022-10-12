@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
-
+import TeacherProfile from '../PanelProfessor/TeacherProfile'
 import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
-import TeacherProfile from '../TeacherProfile/TeacherProfile';
 
 
 const Account = () => {
