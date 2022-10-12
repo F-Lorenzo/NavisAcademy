@@ -1,9 +1,19 @@
 import React from 'react'
+import Clases from './Clases'
+import { UserAuth } from '../../Context/AuthContext';
 
 function PanelProfessor() {
+  const { user } = UserAuth();
+  let role  = user.role
+   
   return (
     <>
     <div>PanelProfessor</div>
+    <div>
+      {
+        role = 'teacher'? <Clases/> : <p>usted no es profesor</p>
+      } 
+    </div>
     <div>
     Lista de alumnos.
     Próximas clases
