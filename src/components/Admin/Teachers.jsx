@@ -4,6 +4,7 @@ const Teachers = ({info}) => {
 
     const handleSeleccionarProfesor = () => {
         console.log(info);
+        /* Implementar asignar profesor a la clase programada */
     }
 
     return (
