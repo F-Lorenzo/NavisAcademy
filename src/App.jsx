@@ -67,14 +67,15 @@ function App() {
             <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
             <Route path='/Checkout' element={ <Checkout /> } />
 
-            <Route
-              path='/Alumn'
-              element={
-                <ProtectedRouteStudent>
-                  <PanelAlumno />
-                </ProtectedRouteStudent>
-              }
-            />
+            
+              <Route
+                path='/Alumn'
+                element={
+                  <ProtectedRouteStudent>
+                    <PanelAlumno />
+                  </ProtectedRouteStudent>
+                }
+              />
 
             <Route
               path='/Teacher'

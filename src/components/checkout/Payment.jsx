@@ -1,28 +1,28 @@
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import initialOptions from '../paypal/paypal.config'
 
-import React from "react";
-import ReactDOM from "react-dom"
-const PayPalButton = paypal.Buttons.driver("react", { React, ReactDOM });
-function Payment() {
-  const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: "0.01",
-          },
-        },
-      ],
-    });
-  };
-  const onApprove = (data, actions) => {
-    return actions.order.capture();
-  };
-  return (
-    <PayPalButton
-      createOrder={(data, actions) => createOrder(data, actions)}
-      onApprove={(data, actions) => onApprove(data, actions)}
-    />
-  );
+
+export default function Payment() {
+    return (
+        <PayPalScriptProvider options={initialOptions}>
+            <PayPalButtons 
+              createOrder={(data, actions) => {
+                 return actions.order.create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              value: "10",
+                            },
+                          },
+                        ],
+                      });
+                    }}
+              onApprove={async (data, actions) => {
+                const details = await actions.order.capture();
+                const name = details.payer.name.given_name;
+                // alert(`${quantity} clases se han agregado`);
+              }}            
+            />
+        </PayPalScriptProvider>
+    );
 }
-
-export default Payment
