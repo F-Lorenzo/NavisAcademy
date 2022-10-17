@@ -29,7 +29,7 @@ const EditarInformacion = () => {
                 <div className="caja__trasera">             
             <div className="caja__trasera-login">
 
-                 <form onSubmit={handleSubmit}>
+                 <form className='form__Register' onSubmit={handleSubmit}>
 
                  <label htmlFor="name">
                         Name : 
@@ -96,7 +96,7 @@ const EditarInformacion = () => {
 
                     <br />
 
-                    <button type="submit" id="btn__iniciar-sesion">Editar</button>
+                    <button className='boton__Edit' type="submit" id="btn__iniciar-sesion">Editar</button>
 
                 </form>
             </div>
