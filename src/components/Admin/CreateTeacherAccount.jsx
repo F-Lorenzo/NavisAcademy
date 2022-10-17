@@ -58,7 +58,7 @@ const CreateTeacherAccount = () => {
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
 
-                <form onSubmit={handleSubmit}>
+                <form className='form__Register' onSubmit={handleSubmit}>
 
                     <label htmlFor="name">
                         Name : 
@@ -151,7 +151,7 @@ const CreateTeacherAccount = () => {
 
                     <br />
 
-                    <button type="submit" id="btn__iniciar-sesion">Crear Cuenta</button>
+                    <button className='boton__Edit' type="submit" id="btn__iniciar-sesion">Crear Cuenta</button>
 
                 </form>
             </div>

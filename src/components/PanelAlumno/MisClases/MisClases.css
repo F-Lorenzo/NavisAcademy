@@ -1,18 +1,58 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width : 100%;
+    width: 100%;
+    height: 800px;
+    background: rgb(216, 216, 219);
+    background: linear-gradient(90deg, rgba(216, 216, 219, 1) 0%, rgba(162, 170, 173, 1) 35%, rgba(231, 238, 238, 0.17690826330532217) 100%);
 }
 
-.next-class-container{
-    width : 80%;
-    height : 70px;
-    background-color: rgb(179, 179, 179);
+.next-class-container {
+    width: 80%;
+    height: 120px;
+    background-color: #F2F2F2;
 }
 
-.info-container{
+.class__Body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.class__button-start {
+    width: 229px;
+    height: 34px;
+    background-color: #7FEF27;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.class__button-start:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.class__button-end {
+    width: 229px;
+    height: 34px;
+    background-color: #C7C7C7;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.class__button-end:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.class__Body h3 {
+    font-size: 24px;
+}
+
+.info-container {
     display: flex;
     flex-direction: row;
 }
@@ -22,62 +62,148 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
+    background-color: #F2F2F2;
     margin: 15px;
     padding: 5px;
     width: 350px;
-    height: 50px;
+    height: 51px;
     justify-content: center;
+    cursor: pointer;
 }
 
-.info-button-container{
+.info h3 {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.info-button-container {
     display: flex;
     flex-direction: column;
     width: 350px;
     height: 50px;
 }
 
-.info-button-classes-container{
+.info-button-classes-container {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
+    margin: 2px;
 }
 
-.info-button{
-    width:200px;
-    height:20px;
+.info-button {
+    width: 200px;
+    height: 20px;
     padding: 2px;
+    border: 0;
 }
 
-.info-button-perfil{
-    width:400px;
-    height:20px;
-    padding: 2px;
+.info-button button {
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
 }
 
-.buy-container{
+.info-button button:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.info:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.info__Content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.info-button-perfil {
+    width: 338px;
+    height: 45px;
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    margin: 27px;
+    margin-left: 6px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.info-button-perfil:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.buy-container {
     display: flex;
     flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    width:100%
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
 }
 
-.buy-card-container{
+.buy-container h2 {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.buy-card-container {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
     flex-direction: row;
 }
 
-.buy-card{
+.buy-card {
     display: flex;
     flex-direction: column;
-    justify-content:center;
-    align-items:center;
-    border: solid black 1px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F5F5F5;
     margin: 10px;
-    width:20%;
-   
+    width: 245px;
+    height: 376px;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    border-radius: 30px 30px 30px 30px;
 }
 
+.buy-card h3 {
+    font-size: 14px;
+    font-weight: 400;
+}
 
+.buy-card:hover {
+    box-shadow: 0 20px 30px 10px rgba(4, 128, 101, 0.19), 0 6px 6px rgba(8, 141, 26, 0.23);
+}
+
+.button__Card {
+    width: 170px;
+    height: 26px;
+    margin-top: 10px;
+    border: 0;
+}
+
+.reprogra,
+.boton__login {
+    height: 100%;
+}
+
+.boton__programar {
+    width: 192px;
+    height: 48px;
+    background-color: #266f56;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-family: "open sans-serif"
+}
