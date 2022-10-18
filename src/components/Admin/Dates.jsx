@@ -8,9 +8,9 @@ const Dates = ({info, teachersList}) => {
     const [ listTeachers, setListTeachers ] = useState(false);
 
     const handleAsignarProfesor = () => {
+        console.log(teachersList);
         swal("OK", `Selecciona un profesor de la lista`, "success");
         setListTeachers(true);
-        console.log(teachersList);
     }
 
     if (listTeachers) {
@@ -18,7 +18,7 @@ const Dates = ({info, teachersList}) => {
         return (
             <>
             <h1>PROFESORES DISPONIBLES</h1>
-            <TeachersList teachers={teachersList}/>
+            <TeachersList dateId={info.id} teachers={teachersList}/>
             </>            
         )
 
@@ -27,6 +27,7 @@ const Dates = ({info, teachersList}) => {
             return (
                 <div>
                     <ul>
+                        <li> IdDate: {info.id} </li>
                         <li> Date: {info.date} </li>
                         <li> Time: {info.time} </li>
                         <li> Teacher: {info.teacher} </li>

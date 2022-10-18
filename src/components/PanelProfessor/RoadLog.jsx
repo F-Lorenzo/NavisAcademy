@@ -5,6 +5,7 @@ const RoadLog = () => {
         <div>
             <h3>Funcionalidades a implementar :</h3>
                 <ol>
+                    <li> Implementar una coleccion de alumnos para guardar las clases de cada uno y optimzar su listado </li>
                     <li> Lista de alumnos. </li>
                     <li> Próximas clases. </li> 
                     <li> Fecha de las clases impartidas. </li>

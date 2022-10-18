@@ -74,7 +74,7 @@ const MisClases = (clases) => {
                 </div>
 
                 <div className='info'>
-                    <h3>CLASES PROGRAMADAS: { clases.completedClases } </h3>
+                    <h3>CLASES PROGRAMADAS: { clases.programedClases } </h3>
                 </div>
 
                 {/* <div className='info'>

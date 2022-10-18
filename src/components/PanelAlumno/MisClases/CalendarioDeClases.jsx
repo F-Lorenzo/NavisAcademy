@@ -24,9 +24,8 @@ const CalendarioDeClases = () => {
                     id: date.id,
                     ...date.data()
                 })
-            ) 
             )
-        )
+        ))
 
     }, [])
 
