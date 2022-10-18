@@ -30,7 +30,7 @@ const CalendarioDeClases = () => {
     }, [])
 
     return (
-        <div>
+        <div className='form__Register'>
             <h1>CALENDARIO DE CLASES</h1>
             <Class classDate={data} />
         </div>

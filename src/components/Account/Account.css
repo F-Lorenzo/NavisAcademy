@@ -1,0 +1,84 @@
+.section_Profile_Account {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(216, 216, 219);
+    background: linear-gradient(90deg, rgba(216, 216, 219, 1) 0%, rgba(162, 170, 173, 1) 35%, rgba(231, 238, 238, 0.17690826330532217) 100%);
+    background-size: cover;
+}
+
+.section_Profile_Content {
+    margin: 10px;
+    width: 400px;
+    height: 400px;
+    background: rgb(132, 212, 194);
+    backdrop-filter: blur( 1.9px);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.foo_Profile_Button {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0px;
+}
+
+.foo_Profile_Button button {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: #000;
+    font-size: 14px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: all .3s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.foo_Profile_Button .foo_Profile_Button_edit {
+    background-color: rgb(1, 70, 47);
+}
+
+.foo_Profile_Button .foo_Profile_Button_edit:hover {
+    background-color: rgb(2, 99, 68);
+    transform: translateY(-5px);
+}
+
+.foo_Profile_Button .foo_Profile_Button_Logout {
+    background-color: rgb(23, 54, 39);
+}
+
+.foo_Profile_Button .foo_Profile_Button_Logout:hover {
+    background-color: rgb(2, 100, 51);
+    transform: translateY(-5px);
+}
+
+.boton__Edit {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgb(2, 100, 51);
+    font-size: 14px;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: all .3s;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.account__Title {
+    font-family: sans-serif;
+    font-weight: bold;
+    color: rgb(1, 83, 52);
+}
