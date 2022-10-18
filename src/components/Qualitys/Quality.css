@@ -88,6 +88,31 @@ span {
     padding: 0;
 }
 
+.swiper-scrollbar-drag {
+    display: none;
+}
+
+.swiper-wrapper {
+    margin-left: 60px;
+}
+
+.quality_Content .swiper {
+    width: 100%;
+    max-width: 1400px;
+}
+
+.quality_Content .swiper-button-next {
+    color: #266f56
+}
+
+.quality_Content .swiper-button-prev {
+    color: #266f56
+}
+
+.swiper-scrollbar {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .quality_Body {
         flex-direction: column;

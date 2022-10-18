@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './MisClases.css';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
 import { UserAuth } from '../../../Context/AuthContext';
 import Loader from '../../Loader/Loader';
@@ -74,7 +74,7 @@ const ProgramarClases = () => {
                 <div className="caja__trasera-login">
 
                 
-                    <form onSubmit={handleSubmit}>
+                    <form className='form__Register' onSubmit={handleSubmit}>
 
                         <label htmlFor="date">
                             Select DateTime : 
@@ -102,7 +102,7 @@ const ProgramarClases = () => {
 
                         <br />
   
-                    <button type="submit" id="btn__iniciar-sesion">Programar</button>
+                    <button className='boton__programar' type="submit" id="btn__iniciar-sesion">Programar</button>
 
                 </form>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import TeachersList from './TeachersList';
+import './Admin.css';
 
 
 const Dates = ({info, teachersList}) => {
@@ -25,14 +26,18 @@ const Dates = ({info, teachersList}) => {
     } 
     
             return (
-                <div>
-                    <ul>
+                <div className='panel_Content'>
+
+                    <div className='profile-card'>
+                    <ul className='profile-card'>
                         <li> Date: {info.date} </li>
                         <li> Time: {info.time} </li>
                         <li> Teacher: {info.teacher} </li>
                         <li> Student: {info.studentEmail} </li>
-                        <button onClick={handleAsignarProfesor}>ASIGNAR PROFESOR</button>
-                    </ul>      
+                        <button className='profile-card__button' onClick={handleAsignarProfesor}>ASIGNAR PROFESOR</button>
+                    </ul>   
+                    </div>
+                    
                 </div>
             )
 

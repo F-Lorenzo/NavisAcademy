@@ -68,7 +68,7 @@ const Signup = () => {
                     </Link>
                 </p>
 
-                <form onSubmit={handleSubmit}>
+                <form className='form__Register' onSubmit={handleSubmit}>
 
                     <label htmlFor="name">
                         Name : 
@@ -161,7 +161,7 @@ const Signup = () => {
 
                     <br />
 
-                    <button type="submit" id="btn__iniciar-sesion">Crear Cuenta</button>
+                    <button className='boton__login' type="submit" id="btn__iniciar-sesion">Crear Cuenta</button>
 
                 </form>
             </div>

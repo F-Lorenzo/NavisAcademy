@@ -1,0 +1,12 @@
+.card__Container .swiper {
+    width: 100%;
+    max-width: 1800px;
+}
+
+.card__Container .swiper-button-next {
+    color: #266f56
+}
+
+.card__Container .swiper-button-prev {
+    color: #266f56
+}

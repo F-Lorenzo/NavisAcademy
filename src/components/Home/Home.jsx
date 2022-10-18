@@ -5,6 +5,8 @@ import Qualitys from '../Qualitys/Qualitys'
 import Reviews from '../Reviews/Reviews'
 import Questions from '../Questions/Questions'
 import Contact from '../Contact/Contact'
+import Cards from '../Cards/Cards'
+
 
 const Home = () => {
   return (
@@ -12,7 +14,7 @@ const Home = () => {
           <About />
           <Qualitys />
           <Reviews/>
-        <ItemCards />
+          <Cards/>
         <Questions/>
         <Contact/>
 
@@ -21,3 +23,6 @@ const Home = () => {
 }
 
 export default Home
+
+
+

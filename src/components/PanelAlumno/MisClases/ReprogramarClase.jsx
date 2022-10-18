@@ -51,7 +51,7 @@ const ReprogramarClase = (dateId) => {
                 <div className="caja__trasera-login">
 
                 
-                    <form onSubmit={handleSubmit}>
+                    <form className='reprogra boton__login' onSubmit={handleSubmit}>
 
                         <label htmlFor="date">
                             Select DateTime : 
@@ -79,9 +79,10 @@ const ReprogramarClase = (dateId) => {
 
                         <br />
   
-                        <button type="submit" id="btn__iniciar-sesion">Programar</button>
-
+                       
+                        <button className='boton__Reprogramar' type="submit" id="btn__iniciar-sesion">Programar</button>
                     </form>
+                   
                 </div>
 
             </div>

@@ -16,10 +16,16 @@ const Admin = () => {
     }
 
     return (
-        <div>
-            <h1>ADMIN ACCOUNT</h1>
-            <button onClick={handleCreateTeacher}>CREATE A TEACHERS ACCOUNT</button>
-            <button onClick={handleProgramingClassesAsAdmin}>PROGRAMING CLASSES</button>
+        <div className='admin__Options'>
+            <div className='admin__Body'>
+            <h2>ADMIN ACCOUNT</h2>
+            <div className='admin__Button'>
+            <button className='card__Admin__Buttons'onClick={handleCreateTeacher}>CREATE A TEACHERS ACCOUNT</button>
+            <button className='card__Admin__Buttons' onClick={handleProgramingClassesAsAdmin}>PROGRAMING CLASSES</button>
+            </div>
+         
+            </div>
+      
         </div>
     )
 }
