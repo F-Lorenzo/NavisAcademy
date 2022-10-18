@@ -69,8 +69,19 @@ const MisClases = (clases) => {
             </div>
 
           <p>Tu proxima clase esta por comenzar</p>
-          <span className="class__button-start">iniciar clase</span>
-          <span className="class__button-end">programar clase</span>
+                 <button
+                  className="class__button-start"
+                  // onClick={handleProgramarClases} debe redireccionar al link de la clase una vez que el profesor inicia la clase
+                >
+                  <span>iniciar clase</span>
+                </button>
+                <button
+                  className="class__button-end"
+                  onClick={handleProgramarClases}
+                  disabled={clases.remainingClases === clases.programedClases}
+                >
+                  <span>Programar clases</span>
+                </button>
         </div>
       </div>
       <div className="info-container">
@@ -81,42 +92,23 @@ const MisClases = (clases) => {
         <div className="info">
           <h3>CLASES PROGRAMADAS: {clases.completedClases} </h3>
         </div>
-
-        {/* <div className='info'>
-                    <h3>CLASES PROGRAMADAS : { clases.programedClases } </h3>
-                </div> */}
-        <div className="info-button-container">
-          {/* <div className='info-button'>
-                        <button onClick={handleInicioDeClase} disabled={clases.programedClases === 0}><h3>INICIO DE CLASE</h3></button>
-                    </div> */}
-          <div className="info__Content">
+        <div className="info__Content">
             <div className="info-button-classes-container">
-              <div className="info-button">
-                <button
-                  onClick={handleProgramarClases}
-                  disabled={clases.remainingClases === clases.programedClases}
-                >
-                  <h3>Programar clases</h3>
-                </button>
-              </div>
               <div className="info-button">
                 <button
                   onClick={handleCalendarioDeClases}
                   disabled={clases.programedClases === 0}
                 >
-                  <h3>Calendario de clases</h3>
+                  <span>Calendario de clases</span>
                 </button>
-              </div>
-            </div>
+                <button
+                  // onClick={handleCalendarioDeClases} boton que te envia a tu perfil
+                >
+                  <span>Perfil</span>
+                </button>    
           </div>
-          <div className="info-button-perfil">
-            <h3>Perfil</h3>
-          </div>
-
-          {/* <div className='info-button'>
-                        <button onClick={handleFunctionControl}>FUNCTION CONTROL</button>
-                    </div> */}
-        </div>
+      </div>        
+      </div>
       </div>
       <div className="buy-container">
         <div>
