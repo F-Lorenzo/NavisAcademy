@@ -1,0 +1,121 @@
+.panel_Content {
+    margin: 10px;
+}
+
+.profile-card {
+    width: 100%;
+    min-height: 460px;
+    margin: auto;
+    box-shadow: 0px 8px 60px -10px rgb(13 28 39 / 60%);
+    background: #fff;
+    border-radius: 12px;
+    max-width: 400px;
+    position: relative;
+    gap: 20px;
+}
+
+.profile-card:hover {
+    box-shadow: 0px 5px 10px rgba(10, 190, 115, 0.75);
+}
+
+.profile-card__button {
+    background: linear-gradient(45deg, #1da1f2, #0e71c8);
+    box-shadow: 0px 4px 30px rgba(19, 212, 148, 0.4);
+}
+
+.profile-card__button {
+    background: none;
+    border: none;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    margin: 15px 35px;
+    padding: 15px 40px;
+    min-width: 201px;
+    border-radius: 50px;
+    min-height: 55px;
+    color: rgb(3, 3, 3);
+    cursor: pointer;
+    backface-visibility: hidden;
+    transition: all 0.3s;
+}
+
+.profile-card__button:hover {
+    box-shadow: 0px 7px 30px rgba(10, 190, 115, 0.75);
+    transform: translateY(-5px);
+}
+
+.admin__Options {
+    color: #2b2c48;
+    font-family: "Jost", sans-serif;
+    background: rgb(216, 216, 219);
+    background: linear-gradient(90deg, rgba(216, 216, 219, 1) 0%, rgba(162, 170, 173, 1) 35%, rgba(231, 238, 238, 0.17690826330532217) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 120vh;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.admin__Body {
+    width: 100%;
+    max-width: 440px;
+    height: 600px;
+    margin: auto;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: white;
+    display: flex;
+    transition: 0.3s;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0 0 8px rgb(255 255 255 / 20%);
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.admin__Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.admin__Button {
+    flex: 1 1 auto;
+    user-select: none;
+    background: 0;
+    font-size: 13px;
+    border: 0;
+    padding: 15px 5px;
+    cursor: pointer;
+    color: #5c5c6d;
+    transition: 0.3s;
+    font-family: "Jost", sans-serif;
+    font-weight: 500;
+    outline: 0;
+    border-bottom: 3px solid transparent;
+}
+
+.card__Admin__Buttons {
+    width: 200px;
+    height: 50px;
+    margin: 5px;
+    border: 0;
+    cursor: pointer;
+    color: #2b2c48;
+    border-bottom: 3px solid #21b892;
+    background: linear-gradient(to bottom, rgba(25, 165, 118, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
+}
+
+.card__Admin__Buttons:hover {
+    color: #2b2c48;
+    border-bottom: 3px solid #067550;
+    transform: translateY(-5px);
+    background: linear-gradient(to bottom, rgba(7, 122, 172, 0) 0%, rgba(207, 204, 255, 0.2) 44%, rgba(211, 226, 255, 0.4) 100%);
+}

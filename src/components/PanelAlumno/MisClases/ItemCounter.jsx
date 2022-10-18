@@ -30,7 +30,10 @@ const ItemCounter = ({comprarClases}) => {
             <button onClick={decrease} disabled={counter===0}>-</button>
             <button onClick={increase}>+</button>
             <button onClick={reset}>Reset</button>
-            <button onClick={handleCompra} disabled={counter === 0}>Comprar Clases</button>
+            <br/>
+            <div>  
+            <button className="button__Card" onClick={handleCompra} disabled={counter === 0}>Adquirir Clases</button>
+            </div>
         </div>
     )
 }
