@@ -1,30 +1,17 @@
 import React from "react";
 import { useState } from "react";
 
-import ItemCounter from "./ItemCounter";
 import { UserAuth } from "../../../Context/AuthContext";
 import { doc, getFirestore, updateDoc, increment } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
-import "./MisClases.css";
+
+
 
 const MisClases = (clases) => {
+
   const { user } = UserAuth();
   const navigate = useNavigate();
-
-  const comprarClases = async (nuevas) => {
-    try {
-      const firestore = getFirestore();
-      const userClases = doc(firestore, `Users/${user.uid}`);
-      console.log(userClases);
-      await updateDoc(userClases, {
-        remainingClases: increment(nuevas),
-      });
-      swal("Muy Bien", `Adquiriste ${nuevas} nuevas clases`, "success");
-    } catch (e) {
-      swal("UPS!", `${e.message}`, "error");
-    }
-  };
 
   const handleInicioDeClase = async () => {
     try {
@@ -52,34 +39,18 @@ const MisClases = (clases) => {
     swal("BIENVENIDO", `Aquí podras ver tu calendario de clases`, "success");
   };
 
-  const handleFunctionControl = () => {
-    console.log(clases);
-  };
 
   return (
-    <div className="container">
-      <div className="next-class-container">
-        {/* componente encagado de hacer visible la proxima clase del alumno */}
-        {/* <NextClass/>  */}
-        <div className="class__Body">
-          <div>
-            
-          <h3>18:30HS</h3>
-          <p>Profesor:Facundo Escobar</p>
-            </div>
+    <div>
 
-          <p>Tu proxima clase esta por comenzar</p>
-          <span className="class__button-start">iniciar clase</span>
-          <span className="class__button-end">programar clase</span>
-        </div>
-      </div>
       <div className="info-container">
+
         <div className="info">
           <h3>CLASES DISPONIBLES : {clases.remainingClases}</h3>
         </div>
 
         <div className="info">
-          <h3>CLASES PROGRAMADAS: {clases.completedClases} </h3>
+          <h3>CLASES PROGRAMADAS: {clases.programedClases} </h3>
         </div>
 
         {/* <div className='info'>
@@ -113,47 +84,7 @@ const MisClases = (clases) => {
             <h3>Perfil</h3>
           </div>
 
-          {/* <div className='info-button'>
-                        <button onClick={handleFunctionControl}>FUNCTION CONTROL</button>
-                    </div> */}
-        </div>
-      </div>
-      <div className="buy-container">
-        <div>
-          <h2>Adquirir más clases</h2>
-        </div>
-        <div className="buy-card-container">
-          <div className="buy-card">
-            <h3>Duración de la clase : </h3>
-            <div className="button__Card">
-              <ItemCounter comprarClases={comprarClases} />
-            </div>
-          </div>
-          <div className="buy-card">
-            <h3>Duración de la clase :</h3>
-            <div className="button__Card">
-              <ItemCounter comprarClases={comprarClases} />
-            </div>
-          </div>
-          <div className="buy-card">
-            <h3>Duración de la clase : </h3>
-            <div className="button__Card">
-              <ItemCounter comprarClases={comprarClases} />
-            </div>
-          </div>
-          <div className="buy-card">
-            <h3>Duración de la clase :</h3>
-            <div className="button__Card">
-              <ItemCounter comprarClases={comprarClases} />
-            </div>
-          </div>
-          <div className="buy-card">
-            <h3>Duración de la clase :</h3>
 
-            <div className="button__Card">
-              <ItemCounter comprarClases={comprarClases} />
-            </div>
-          </div>
         </div>
       </div>
     </div>

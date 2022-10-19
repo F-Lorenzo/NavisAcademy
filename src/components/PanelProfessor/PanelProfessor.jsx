@@ -2,6 +2,7 @@ import React from 'react'
 import { UserAuth } from '../../Context/AuthContext';
 import RoadLog from './RoadLog';
 import { Link, useNavigate } from 'react-router-dom';
+import MyClassesOfThePastMonth from './MyClasses/MyClassesOfThePastMonth';
 
 
 function PanelProfessor() {
@@ -21,6 +22,14 @@ function PanelProfessor() {
         swal("BIENVENIDO", `Aquí podras ver una lista de todas tus classes`, "success");
     }
 
+    const handleTestFilters = () => {
+
+        console.log("TestFilters");
+        navigate('/Account/Teacher/TestFilters');
+        swal("BIENVENIDO", `TEST`, "success");
+
+    }
+
     return (
         <>
             <div>
@@ -31,6 +40,10 @@ function PanelProfessor() {
                 <br />
 
                 <button onClick={handleAllMyClasses}>ALL MY CLASSES</button>
+
+                <br />
+
+                <button onClick={handleTestFilters}>TEST FILTERS</button>
 
                 <br />
 
