@@ -1,14 +1,15 @@
-import React from 'react'
-import Payment from './Payment'
-import './checkout.css'
+import React from "react";
+import Payment from "./Payment";
+import "./checkout.css";
 
-function Checkout(data) {
+function Checkout({ totalValue }) {
+  const total = totalValue.toString();
   return (
-   <div className="payment-container">
-    <span className="amount">${data.amount}</span>
-    <Payment className='payment'/>
-   </div>
-  )
+    <div className="payment-container">
+      <span className="amount">${total}</span>
+      <Payment totalValue={total} className="payment" />
+    </div>
+  );
 }
 
-export default Checkout
+export default Checkout;
