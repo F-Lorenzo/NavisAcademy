@@ -35,6 +35,7 @@ const Account = () => {
         ) : (
           <TeacherProfile {...user.form} />
         )}
+
         <div className="foo_Profile_Button">
           <button
             className="foo_Profile_Button_edit"
@@ -46,6 +47,8 @@ const Account = () => {
           <button className="foo_Profile_Button_Logout" onClick={handleLogout}>
             Logout
           </button>
+
+
         </div>
       </div>
     </div>

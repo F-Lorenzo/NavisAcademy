@@ -11,7 +11,6 @@ const Teachers = ({dateId, teacher}) => {
     const [ classData, setClassData ] = useState([]);
     const [ loader, setLoader ] = useState(false);
 
-
     async function getClassData(id) {
 
         const firestore = getFirestore();
@@ -34,7 +33,9 @@ const Teachers = ({dateId, teacher}) => {
     const teacherAssignament = {
         teacher: "assigned",
         teacherEmail: teacher.email,
-        teacherUid: teacher.id
+        teacherUid: teacher.id,
+        teacherName: teacher.name,
+        teacherLastName: teacher.lastName,
     }
 
 
@@ -64,7 +65,9 @@ const Teachers = ({dateId, teacher}) => {
             });
             await setDoc(teacherStudent, {
                 studentEmail: classData.studentEmail,
-                studentUid: classData.studentUid
+                studentUid: classData.studentUid,
+                studentName: classData.studentName,
+                studentLastName: classData.studentLastName,
             });
             await updateDoc(studentClass, {
                 ...teacherAssignament
