@@ -35,7 +35,7 @@ const PanelAlumno = () => {
           <MisClases {...user.misClases} />
         </div>
         <BuyClasses />
-        <RoadLog />
+
       </div>
     </>
   );

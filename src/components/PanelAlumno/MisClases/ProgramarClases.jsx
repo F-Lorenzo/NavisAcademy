@@ -17,8 +17,9 @@ const ProgramarClases = () => {
             ...form,
             [e.target.name]:e.target.value,
         })
-        console.log(form);
-    }
+     }
+
+    const studentForm = {...user.form};
 
     const moreInfo = {
         condition: "pending",
@@ -29,6 +30,8 @@ const ProgramarClases = () => {
     const studentData = {
         studentUid: user.uid,
         studentEmail: user.email,
+        studentName: studentForm.name,
+        studentLastName: studentForm.lastName,    
     }
 
     const handleSubmit = async (e) => {
@@ -40,7 +43,6 @@ const ProgramarClases = () => {
             const queryRef = query(collection(firestore, `Users/${user.uid}/myClases`));
             addDoc(queryRef, { ...form, ...moreInfo })
                 .then(({ id }) => {
-                    console.log(id);
 
                     const docuRef = doc(firestore, `Classes/${id}`);
                     setDoc(docuRef, {...form, ...moreInfo, ...studentData });
@@ -57,7 +59,6 @@ const ProgramarClases = () => {
             setLoader(false);
         }
 
-        console.log(form);
     }
 
     if (loader) {

@@ -6,11 +6,13 @@ import Loader from '../Loader/Loader'
 const SignIn = () => {
   
     const navigate = useNavigate();
-    const { signIn } = UserAuth();
+    const { user, signIn } = UserAuth();
     const [ email, setEmail ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState('');
     const [ loader, setLoader ] = useState(false);
+    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +21,13 @@ const SignIn = () => {
         try {
             await signIn(email, password)
             swal("Bienvenido", `sesion iniciada como ${email}`, "success");
-            navigate('/account')
+
+            user.role === "alumn" ? (
+                navigate('/Alumn')
+            ) : (
+                navigate('/Teacher')
+            )
+
         } catch (e) {
             setError(e.message)
             console.log(e.message)
