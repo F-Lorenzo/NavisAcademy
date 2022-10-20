@@ -18,10 +18,10 @@ const Admin = () => {
     return (
         <div className='admin__Options'>
             <div className='admin__Body'>
-            <h2>ADMIN ACCOUNT</h2>
+            <h2>PANEL DE ADMINISTRADOR</h2>
             <div className='admin__Button'>
-            <button className='card__Admin__Buttons'onClick={handleCreateTeacher}>CREATE A TEACHERS ACCOUNT</button>
-            <button className='card__Admin__Buttons' onClick={handleProgramingClassesAsAdmin}>PROGRAMING CLASSES</button>
+            <button className='card__Admin__Buttons'onClick={handleCreateTeacher}>CREAR CUENTA DE PROFESOR</button>
+            <button className='card__Admin__Buttons' onClick={handleProgramingClassesAsAdmin}>PROGRAMAR CLASES</button>
             </div>
          
             </div>

@@ -46,9 +46,11 @@
 }
 
 .admin__Options {
-    color: #2b2c48;
     font-family: "Jost", sans-serif;
     background-color: white;
+    padding: 20px;
+    /*
+    color: #2b2c48;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -56,13 +58,15 @@
     min-height: 120vh;
     display: flex;
     flex-wrap: wrap;
-    padding: 20px;
+    */
 }
 
 .admin__Body {
     width: 100%;
     max-width: 440px;
+    /*
     height: 600px;
+    */
     margin: auto;
     overflow-y: auto;
     position: relative;
@@ -82,10 +86,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
-}
-
-.admin__Button {
+    border-bottom: 3px solid transparent;
+    margin-top: 20px;
+    /*
     flex: 1 1 auto;
     user-select: none;
     background: 0;
@@ -98,7 +101,7 @@
     font-family: "Jost", sans-serif;
     font-weight: 500;
     outline: 0;
-    border-bottom: 3px solid transparent;
+    */
 }
 
 .card__Admin__Buttons {
