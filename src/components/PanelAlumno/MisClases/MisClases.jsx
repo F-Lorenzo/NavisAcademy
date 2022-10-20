@@ -49,13 +49,6 @@ const MisClases = (clases) => {
           <h3>CLASES PROGRAMADAS: {clases.programedClases} </h3>
         </div>
 
-        {/* <div className='info'>
-                    <h3>CLASES PROGRAMADAS : { clases.programedClases } </h3>
-                </div> /}
-        <div className="info-button-container">
-          {/ <div className='info-button'>
-                        <button onClick={handleInicioDeClase} disabled={clases.programedClases === 0}><h3>INICIO DE CLASE</h3></button>
-                    </div> */}
           <div className="info__Content">
             <div className="info-button-classes-container">
               <div className="info-button">
@@ -79,9 +72,6 @@ const MisClases = (clases) => {
           <div className="info-button-perfil">
             <h3>Perfil</h3>
           </div>
-
-
-        </div>
       </div>
     </div>
   );
