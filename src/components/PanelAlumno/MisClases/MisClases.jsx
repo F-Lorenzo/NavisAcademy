@@ -14,27 +14,26 @@ const MisClases = (clases) => {
   const handleInicioDeClase = async () => {
     try {
       let actualValue = clases.remainingClases;
-      console.log(actualValue);
       const firestore = getFirestore();
-      const userClases = doc(firestore, Users/${user.uid});
+      const userClases = doc(firestore, `Users/${user.uid}`);
       await updateDoc(userClases, {
         remainingClases: actualValue - 1,
         completedClases: increment(1),
       });
-      swal("Muy Bien", Preparate para tu clase, "success");
+      swal("Muy Bien", `Preparate para tu clase`, "success");
     } catch (e) {
-      swal("UPS!", ${e.message}, "error");
+      swal("UPS!",`${e.message}` , "error");
     }
   };
 
   const handleProgramarClases = () => {
-    swal("Muy Bien", Ahora programaras tus clases, "success");
+    swal("Muy Bien",`Ahora programaras tus clases`, "success");
     navigate("/Account/ProgramarClases");
   };
 
   const handleCalendarioDeClases = () => {
     navigate("/Account/CalendarioDeClases");
-    swal("BIENVENIDO", Aquí podras ver tu calendario de clases, "success");
+    swal("BIENVENIDO", `Aquí podras ver tu calendario de clases`, "success");
   };
   return (
     <div>
