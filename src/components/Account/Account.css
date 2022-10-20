@@ -4,8 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(216, 216, 219);
-    background: linear-gradient(90deg, rgba(216, 216, 219, 1) 0%, rgba(162, 170, 173, 1) 35%, rgba(231, 238, 238, 0.17690826330532217) 100%);
+    background-color: white;
     background-size: cover;
 }
 
@@ -13,7 +12,7 @@
     margin: 10px;
     width: 400px;
     height: 400px;
-    background: rgb(132, 212, 194);
+    background: #F2F2F2;
     backdrop-filter: blur( 1.9px);
     border-radius: 10px;
     display: flex;
