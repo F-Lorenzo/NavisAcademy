@@ -23,6 +23,7 @@ const ProgramarClases = () => {
     const moreInfo = {
         condition: "pending",
         teacher: "unasigned",
+        reprogramedLeft: 2,
     }
 
     const studentData = {

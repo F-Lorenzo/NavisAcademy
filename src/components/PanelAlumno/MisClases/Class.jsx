@@ -10,6 +10,8 @@ const Class = ({classDate=[]}) => {
         return 0;
     })
 
+    console.log(classDate);
+
     return (
         classDate.map( listDate => <Date key={listDate.id} info={listDate} /> )
     )

@@ -1,31 +1,50 @@
 import React from 'react';
-import MisClases from './MisClases/MisClases';
-import RoadLog from './RoadLog';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { UserAuth } from '../../Context/AuthContext';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import LuxonTIme from './LuxonTIme';
-import BuyClasses from './BuyClasses/BuyClasses';
 import MyNextClass from './MyNextClass/MyNextClass';
-import "./MisClases/MisClases.css"
+import MisClases from './MisClases/MisClases';
+import BuyClasses from './BuyClasses/BuyClasses';
+import RoadLog from './RoadLog';
+import "./MisClases/MisClases.css";
 
 const PanelAlumno = () => {
-  const { user } = UserAuth();
 
-  return (
-    <>
-    <h1>PANEL ALUMNO</h1>
-    <div>
-      <LuxonTIme /> 
-      <div className="container">
+    const { user } = UserAuth();
+    const [ allMyClasses, setAllMyClasses ] = useState([]);
 
-      <MyNextClass />
-      <MisClases {...user.misClases}/>
-      </div>
-      <BuyClasses />
-      <RoadLog />
+    useEffect( () => {
 
-    </div>
-    </>
-  )
+        const querydb = getFirestore();
+        const queryCollection = collection (querydb, `Users/${user.uid}/myClases`);
+        getDocs(queryCollection)
+        .then( res => setAllMyClasses( 
+            res.docs.map( 
+                date => ({
+                    id: date.id,
+                    ...date.data()
+                })
+            )
+        ))
+
+    }, [])
+
+    return (
+        <>
+        <h2>PANEL ALUMNO</h2>
+        <div>
+            <div className='container'>
+                <MyNextClass myClasses={allMyClasses} />
+                <MisClases {...user.misClases} />
+            </div>
+            <BuyClasses />
+            <RoadLog />
+        </div>
+        </>
+    )
+
 }
 
 export default PanelAlumno

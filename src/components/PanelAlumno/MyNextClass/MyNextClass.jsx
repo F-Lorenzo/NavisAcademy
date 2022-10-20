@@ -1,24 +1,22 @@
 import React from 'react'
+import { UserAuth } from '../../../Context/AuthContext';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import NextClass from './NextClass';
 
-const MyNextClass = () => {
+const MyNextClass = ({myClasses=[]}) => {
 
+    myClasses.sort((a,b) => {
+        if (a.date < b.date) {return - 1;}
+        if (a.date > b.date) {return 1;}
+        return 0;
+    })
+
+    console.log(myClasses);
+
+    
     return (
         
-        <div className='next-class-container'>
-
-            <div className='class__Body'>
-                <div>
-                    <h3>NULL:NULL HS</h3>
-                    <p>Professor: Unasigned</p>
-                </div>
-
-                <p>Your next class is about to begin</p>
-
-                <span className='class__button-start'>Start Class</span>
-                <span className='class__button-end'>Reprogram Class</span>
-            </div>
-
-        </div>
+        <NextClass myClass={myClasses} />
         
     )
 
