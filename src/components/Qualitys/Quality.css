@@ -117,4 +117,8 @@ span {
     .quality_Body {
         flex-direction: column;
     }
+    .box__body {
+        width: 100%;
+    }
+    .box__1 {}
 }
