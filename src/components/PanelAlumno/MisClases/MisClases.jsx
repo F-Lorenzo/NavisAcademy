@@ -42,7 +42,6 @@ const MisClases = (clases) => {
 
   return (
     <div>
-
           <p>Tu proxima clase esta por comenzar</p>
                  <button
                   className="class__button-start"
