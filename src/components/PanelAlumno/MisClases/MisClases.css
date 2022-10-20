@@ -25,7 +25,7 @@
 .class__button-start {
     width: 229px;
     height: 34px;
-    background-color: #7FEF27;
+    background-color: #266f56;
     text-align: center;
     padding: 2px;
     cursor: pointer;
@@ -38,7 +38,6 @@
 .class__button-end {
     width: 229px;
     height: 34px;
-    background-color: #C7C7C7;
     text-align: center;
     padding: 2px;
     cursor: pointer;
@@ -66,40 +65,32 @@
     margin: 15px;
     padding: 5px;
     width: 350px;
-    height: 51px;
+    height: 50px;
     justify-content: center;
     cursor: pointer;
 }
 
-.info h3 {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 24px;
-}
-
-.info-button-container {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    height: 50px;
-}
 
 .info-button-classes-container {
     display: flex;
     flex-direction: row;
-    margin: 2px;
 }
 
 .info-button {
-    width: 200px;
-    height: 20px;
-    padding: 2px;
-    border: 0;
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    cursor: pointer;
 }
 
 .info-button button {
-    border: 0;
-    border-radius: 30px;
+    background-color: #F2F2F2;
+    border-color: #F2F2F2;
+    margin: 15px;
+    padding:5px;
+    width: 45%;
+    height: 60px;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -107,36 +98,14 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.info-button button span{
+    margin:0px;
+}
+
 .info:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.info__Content {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    align-content: flex-start;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    margin-top: 20px;
-}
-
-.info-button-perfil {
-    width: 338px;
-    height: 45px;
-    background-color: #F5F5F5;
-    display: flex;
-    justify-content: center;
-    margin: 27px;
-    margin-left: 6px;
-    border-radius: 30px;
-    margin-bottom: 10px;
-    cursor: pointer;
-}
-
-.info-button-perfil:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
 
 .buy-container {
     display: flex;
