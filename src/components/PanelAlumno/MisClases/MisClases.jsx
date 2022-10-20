@@ -64,9 +64,6 @@ const MisClases = (clases) => {
             </div>
           </div>
         </div>
-        <div className="info-button-perfil">
-          <h3>Perfil</h3>
-        </div>
       </div>
     </div>
   );
