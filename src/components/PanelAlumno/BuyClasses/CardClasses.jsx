@@ -23,10 +23,11 @@ const CardClasses = ({number,price,duration,amount,includes}) => {
             swal("UPS!", `${e.message}`, "error");
             }
     }
+  };
 
 
     return (
-
+    <div>
         <div className='buy-card'>
 
             <ul>
@@ -39,11 +40,9 @@ const CardClasses = ({number,price,duration,amount,includes}) => {
                   <button className='button__Card' onClick={handleBuyNow}>BUY NOW</button>
                 </div>
             </ul>
-      
         </div>
+    </div>
+  );
+};
 
-    )
-
-}
-
-export default CardClasses
+export default CardClasses;
