@@ -5,10 +5,6 @@ import { UserAuth } from "../../../Context/AuthContext";
 import { doc, getFirestore, updateDoc, increment } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 const MisClases = (clases) => {
   const { user } = UserAuth();
   const navigate = useNavigate();
@@ -24,12 +20,12 @@ const MisClases = (clases) => {
       });
       swal("Muy Bien", `Preparate para tu clase`, "success");
     } catch (e) {
-      swal("UPS!",`${e.message}` , "error");
+      swal("UPS!", `${e.message}`, "error");
     }
   };
 
   const handleProgramarClases = () => {
-    swal("Muy Bien",`Ahora programaras tus clases`, "success");
+    swal("Muy Bien", `Ahora programaras tus clases`, "success");
     navigate("/Account/ProgramarClases");
   };
 
