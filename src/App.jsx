@@ -102,6 +102,34 @@ function App() {
             />
 
             <Route
+              path="/Account/Teacher/MyStudents"
+              element={<MyStudents />}
+            />
+            <Route
+              path="/Account/Teacher/AllMyClasses"
+              element={<AllMyClasses />}
+            />
+            <Route
+              path="/Account/Teacher/TestFilters"
+              element={<MyClassesOfThePastMonth />}
+            />
+
+            <Route
+              path="/Admin/ProgramingClassesAsAdmin"
+              element={<ProgramingClassesAsAdmin />}
+            />
+            <Route path="/Checkout" element={<Checkout />} />
+
+            <Route
+              path="/Alumn"
+              element={
+                <ProtectedRouteStudent>
+                  <PanelAlumno />
+                </ProtectedRouteStudent>
+              }
+            />
+
+            <Route
               path="/Teacher"
               element={
                 <ProtectedRouteTeacher>
