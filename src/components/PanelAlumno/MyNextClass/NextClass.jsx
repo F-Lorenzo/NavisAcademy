@@ -2,7 +2,7 @@ import React from 'react'
 
 const NextClass = (myClass) => {
 
-    console.log(myClass);
+    /*console.log(myClass);*/
 
     return (
         <div className='next-class-container'>

@@ -11,7 +11,7 @@ const MyNextClass = ({myClasses=[]}) => {
         return 0;
     })
 
-    console.log(myClasses);
+    /*console.log(myClasses);*/
 
     
     return (

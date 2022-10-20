@@ -1,6 +1,8 @@
 import React from 'react'
+import { useState } from 'react';
 import { UserAuth } from '../../../Context/AuthContext';
 import { getFirestore, doc, increment, updateDoc } from 'firebase/firestore';
+import Tester from './Tester';
 
 
 const CardClasses = (pack) => {
@@ -8,12 +10,12 @@ const CardClasses = (pack) => {
     const { user } = UserAuth();
 
     const handleBuyNow = async () => {
-        console.log("buyNow");
-
+        /*
+        console.log(pack);
+        */
         try {
             const firestore = getFirestore();
             const userClases = doc(firestore, `Users/${user.uid}`);
-            console.log(userClases);
             await updateDoc(userClases, {
                 remainingClases: increment(pack.amount),
             });
@@ -22,7 +24,6 @@ const CardClasses = (pack) => {
             swal("UPS!", `${e.message}`, "error");
             }
     }
-
 
     return (
 
