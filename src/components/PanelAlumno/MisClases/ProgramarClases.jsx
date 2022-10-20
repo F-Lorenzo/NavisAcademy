@@ -17,11 +17,13 @@ const ProgramarClases = () => {
             ...form,
             [e.target.name]:e.target.value,
         })
+        console.log(form);
     }
 
     const moreInfo = {
         condition: "pending",
         teacher: "unasigned",
+        reprogramedLeft: 2,
     }
 
     const studentData = {
