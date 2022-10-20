@@ -21,6 +21,8 @@ const Date = ({info}) => {
                 <ul>
                     <li> Date: {info.date} </li>
                     <li> Time: {info.time} </li>
+                    <li> Condition: {info.condition} </li>
+                    <li> Teacher: {info.teacher} </li>
                     <button onClick={handleReprogramar}>REPROGRAMAR CLASE</button>
                 </ul>      
             </div>

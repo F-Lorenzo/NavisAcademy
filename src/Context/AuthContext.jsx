@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 
 
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, collection, getDocs } from "firebase/firestore";
 
 
 const UserContext = createContext();
@@ -25,10 +25,18 @@ export const AuthContextProvider = ({children}) => {
         const infoFinal = docuCifrada.data();
         return infoFinal;
     }
+
+    async function getAllClasses(uid) {
+        const queryRef = collection(Firestore, `Users/${uid}/myClases`);
+        const queryCifrada = await getDocs(queryRef);
+        const queryFinal = queryCifrada.data();
+        return queryFinal;
+    }
     
     /*------------------------*/
 
     const [ user, setUser ] = useState({});
+    const [ allMyClasses, setAllMyClasses ] = useState([]);
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -66,7 +74,7 @@ export const AuthContextProvider = ({children}) => {
         return () => {
             unsubscribe();
         };
-    },[])
+    }, [])
 
     return (
         <UserContext.Provider value={{ createUser, user, logOut, signIn }}>

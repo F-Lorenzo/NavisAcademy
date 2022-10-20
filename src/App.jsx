@@ -30,6 +30,10 @@ import CreateTeacherAccount from './components/Admin/CreateTeacherAccount'
 import ProgramingClassesAsAdmin from './components/Admin/ProgramingClassesAsAdmin'
 
 import Footer from './components/Footer/Footer';
+import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
+import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/AllMyClasses";
+import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
+
 
 
 
@@ -64,6 +68,12 @@ function App() {
             <Route path='/Account/EditarInformacion' element={ < EditarInformacion /> } />
             <Route path='/Account/ProgramarClases' element={ <ProgramarClases /> } />
             <Route path='/Account/CalendarioDeClases' element={ <CalendarioDeClases /> } />
+            
+            <Route path='/Account/Teacher/MyStudents' element={ <MyStudents /> } />
+            <Route path='/Account/Teacher/AllMyClasses' element={ <AllMyClasses /> } />
+            <Route path='/Account/Teacher/TestFilters' element={ <MyClassesOfThePastMonth /> } />
+
+            
             <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
             <Route path='/Checkout' element={ <Checkout /> } />
 
@@ -81,7 +91,7 @@ function App() {
               path='/Teacher'
               element={
                 <ProtectedRouteTeacher>
-                  <PanelProfessor/>
+                  <PanelProfessor />
                 </ProtectedRouteTeacher>
               }
             />   
