@@ -2,10 +2,12 @@ import React from 'react'
 import Payment from './Payment'
 import './checkout.css'
 
-function Checkout(data) {
+function Checkout({price,amount}) {
+  console.log(price)
+  console.log(amount)
   return (
    <div className="payment-container">
-    <span className="amount">${data.amount}</span>
+    <span className="amount">${price}</span>
     <Payment className='payment'/>
    </div>
   )

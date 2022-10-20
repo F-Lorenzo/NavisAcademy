@@ -75,7 +75,7 @@ function App() {
 
             
             <Route path='/Admin/ProgramingClassesAsAdmin' element={ <ProgramingClassesAsAdmin />} />
-            <Route path='/Checkout' element={ <Checkout /> } />
+            <Route path='/Checkout' element={ <Checkout /> }/> 
 
             
               <Route

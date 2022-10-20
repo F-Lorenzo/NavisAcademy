@@ -1,8 +1,8 @@
 import React from 'react'
+import Checkout from '../../checkout/Checkout'
 import CardClasses from './CardClasses'
 
 const BuyClasses = () => {
-
     return (
         
         <div>
