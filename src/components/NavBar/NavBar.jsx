@@ -5,10 +5,7 @@ import logo from "../../assets/img/logo.svg";
 import { UserAuth } from "../../Context/AuthContext";
 
 const NavBar = () => {
-
   const { user } = UserAuth;
-
- 
 
   return (
     <>
@@ -18,17 +15,12 @@ const NavBar = () => {
         </NavLink>
         <ul className="navBar-options">
           <li className="navBar-item">
-
-
             <NavLink className="navBar-link" to="/Account">
               <img
                 src="../../../src/Assets/round-account-button-with-user-inside.png"
                 alt=""
               />
             </NavLink>
-
-
-
           </li>
           <li className="navBar-item">
             <NavLink className="navBar-link" to="/home">
@@ -38,8 +30,6 @@ const NavBar = () => {
         </ul>
       </div>
 
-
-      
       <div className="navBarContainer">
         <ul className="navBar-options">
           <li className="navBar-item">
@@ -59,12 +49,6 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-      
-
-
-
-
-
     </>
   );
 };
