@@ -47,11 +47,18 @@ const SignIn = () => {
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
 
-                <p>¿Don't have an account yet?{' '}
-                    <Link to='/signUp'>
-                        Sign up.
-                    </Link>
-                </p>
+                <div className='tittleColumn'>
+                    <p className='tittle'>
+                        Login
+                    </p>
+
+                    <p className='subTittle'>
+                        ¿Todavia no tenes una cuenta?{' '}
+                        <Link to='/signUp'>
+                            Registrate.
+                        </Link>
+                    </p>
+                </div>
 
                 <form className='form__Register' onSubmit={handleSubmit}>
 
@@ -67,8 +74,6 @@ const SignIn = () => {
                         onChange={(e) => setEmail(e.target.value)} 
                     />
 
-                    <br />
-
                     <label htmlFor="password">
                     Clave
                     </label>
@@ -80,12 +85,8 @@ const SignIn = () => {
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
                     />
-
-                    <br />
                 
-                <button className='boton__login' type="submit" id="btn__iniciar-sesion">Iniciar Session</button>
-               
-                    
+                    <button className='boton__login' type="submit" id="btn__iniciar-sesion">Iniciar Sesión</button>                   
                     
                 </form>
             </div>

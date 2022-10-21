@@ -3,15 +3,18 @@ import { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { UserAuth } from '../../../../Context/AuthContext';
 import MyClasses from './MyClasses';
+import Loader from '../../../Loader/Loader';
 import { DateTime } from 'luxon';
 
 const AllMyClasses = () => {
 
     const { user } = UserAuth();
     const [ myClassesData, setMyClassesData ] = useState ([]);
+    const [ loader, setLoader ] = useState(false);
     
     useEffect( () => {
 
+        setLoader(true);
         const querydb = getFirestore();
         const queryCollection = collection (querydb, `Users/${user.uid}/myClases`);
         getDocs(queryCollection)
@@ -23,15 +26,24 @@ const AllMyClasses = () => {
                 })
             )
         ))
+        setLoader(false);
 
     }, [])
-    
-    return (
-        <div>
-            <h1>ALL MY CLASSES</h1>
-            <MyClasses myClasses={myClassesData} />
-        </div>
-    )
+
+    if(loader) {
+        return(
+            <Loader />
+        )
+    } else {
+        return (
+            
+            <div>
+                <p>Mis Proximas Clases</p>
+                <MyClasses myClasses={myClassesData} />
+            </div>
+        )
+    }
+
 
 }
 

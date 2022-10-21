@@ -30,6 +30,7 @@ import Footer from "./components/Footer/Footer";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
 import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/AllMyClasses";
 import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
+import Panel from "./components/Account/Panel";
 
 function App() {
   return (
@@ -45,11 +46,21 @@ function App() {
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/signUp" element={<Signup />} />
 
+            <Route path="/Panel" element={<Panel />} />
+
             <Route path="/Admin" element={<Admin />} />
-            <Route
-              path="/Admin/CreateTeacherAccount"
-              element={<CreateTeacherAccount />}
-            />
+            <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
+            <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
+
+            <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
+            <Route path="/Account/ProgramarClases" element={<ProgramarClases />} />
+            <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
+
+            <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
+            <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
+            <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
+
+            <Route path="/Checkout" element={<Checkout />} />
 
             <Route
               path="/account"
@@ -60,68 +71,7 @@ function App() {
               }
             />
 
-            <Route
-              path="/Account/EditarInformacion"
-              element={<EditarInformacion />}
-            />
-            <Route
-              path="/Account/ProgramarClases"
-              element={<ProgramarClases />}
-            />
-            <Route
-              path="/Account/CalendarioDeClases"
-              element={<CalendarioDeClases />}
-            />
-
-            <Route
-              path="/Account/Teacher/MyStudents"
-              element={<MyStudents />}
-            />
-            <Route
-              path="/Account/Teacher/AllMyClasses"
-              element={<AllMyClasses />}
-            />
-            <Route
-              path="/Account/Teacher/TestFilters"
-              element={<MyClassesOfThePastMonth />}
-            />
-
-            <Route
-              path="/Admin/ProgramingClassesAsAdmin"
-              element={<ProgramingClassesAsAdmin />}
-            />
-            <Route path="/Checkout" element={<Checkout />} />
-
-            <Route
-              path="/Alumn"
-              element={
-                <ProtectedRouteStudent>
-                  <PanelAlumno />
-                </ProtectedRouteStudent>
-              }
-            />
-
-            <Route
-              path="/Account/Teacher/MyStudents"
-              element={<MyStudents />}
-            />
-            <Route
-              path="/Account/Teacher/AllMyClasses"
-              element={<AllMyClasses />}
-            />
-            <Route
-              path="/Account/Teacher/TestFilters"
-              element={<MyClassesOfThePastMonth />}
-            />
-
-            <Route
-              path="/Admin/ProgramingClassesAsAdmin"
-              element={<ProgramingClassesAsAdmin />}
-            />
-            <Route path="/Checkout" element={<Checkout />} />
-
-            <Route
-              path="/Alumn"
+            <Route path="/Alumn" 
               element={
                 <ProtectedRouteStudent>
                   <PanelAlumno />
@@ -139,6 +89,7 @@ function App() {
             />
 
             <Route path="*" element={<h1>404</h1>} />
+            
           </Routes>
 
           <Footer />
