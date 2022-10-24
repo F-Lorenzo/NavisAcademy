@@ -3,8 +3,7 @@ import initialOptions from "../paypal/paypal.config";
 
 export default function Payment({ total }) {
   return (
-    <PayPalScriptProvider deferLoading={true} options={initialOptions}>
-      {isPending ? <div className="spinner" /> : null}
+    <PayPalScriptProvider options={initialOptions}>
       <PayPalButtons
         createOrder={(data, actions) => {
           return actions.order.create({

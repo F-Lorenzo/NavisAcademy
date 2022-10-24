@@ -19,14 +19,12 @@ const CardClasses = ({ number, price, duration, amount }) => {
       await updateDoc(userClases, {
         remainingClases: increment(amount),
       });
+      setCheckout(<Checkout totalValue={totalValue} />);
       // swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
   };
-  if (Checkout) {
-    return <Checkout totalValue={totalValue} />;
-  }
 
   return (
     <div className="buy-card">
