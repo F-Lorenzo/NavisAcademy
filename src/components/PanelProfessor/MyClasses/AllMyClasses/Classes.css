@@ -1,0 +1,38 @@
+
+.infoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    margin: auto;
+    margin-bottom: 10px;
+
+    height: 50px;
+    width: 1250px;
+
+    border: 1px solid grey;
+    font-size: medium;
+
+}
+
+.primerColumna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.nombreAlumno {
+    display: flex;
+    gap: 5px;
+}
+
+.timeClass {
+    font-size: large;
+    font-weight: 600;
+}
+
+.infoContainer li {
+    list-style-type: none;
+}

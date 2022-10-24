@@ -2,8 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../assets/img/logo.svg";
+import { UserAuth } from "../../Context/AuthContext";
 
 const NavBar = () => {
+  const { user } = UserAuth;
+
   return (
     <>
       <div className="navBarContainer">
@@ -12,7 +15,7 @@ const NavBar = () => {
         </NavLink>
         <ul className="navBar-options">
           <li className="navBar-item">
-            <NavLink className="navBar-link" to="/account">
+            <NavLink className="navBar-link" to="/Account">
               <img
                 src="../../../src/Assets/round-account-button-with-user-inside.png"
                 alt=""
@@ -26,6 +29,7 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
+
       <div className="navBarContainer">
         <ul className="navBar-options">
           <li className="navBar-item">

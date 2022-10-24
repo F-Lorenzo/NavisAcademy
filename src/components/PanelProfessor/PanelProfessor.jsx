@@ -43,6 +43,9 @@ function PanelProfessor() {
 
                 <br />
 
+                {/* 
+                
+                
                 <button onClick={handleTestFilters}>TEST FILTERS</button>
 
                 <br />
@@ -68,8 +71,11 @@ function PanelProfessor() {
                 <br />
 
                 <button>PLATAFORMA eLearning</button>
+                
+                */}
 
-                <RoadLog /> 
+
+
             </div>
         </>
     
