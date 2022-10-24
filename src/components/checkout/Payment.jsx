@@ -1,7 +1,7 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import initialOptions from "../paypal/paypal.config";
 
-export default function Payment({ totalValue }) {
+export default function Payment({ total }) {
   return (
     <PayPalScriptProvider deferLoading={true} options={initialOptions}>
       {isPending ? <div className="spinner" /> : null}
@@ -11,7 +11,7 @@ export default function Payment({ totalValue }) {
             purchase_units: [
               {
                 amount: {
-                  value: { totalValue },
+                  value: { total },
                 },
               },
             ],
