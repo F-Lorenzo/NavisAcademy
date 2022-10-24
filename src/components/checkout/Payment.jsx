@@ -1,65 +1,28 @@
-import React, { useState } from "react";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import initialOptions from "../paypal/paypal.config";
 
-import { useEffect } from "react";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  usePayPalScriptReducer,
-} from "@paypal/react-paypal-js";
-
-const ButtonWrapper = ({ currency, showSpinner, totalValue }) => {
-  const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
-
-  useEffect(() => {
-    dispatch({
-      type: "resetOptions",
-      value: {
-        ...options,
-        currency: currency,
-      },
-    });
-  }, [currency, showSpinner]);
-
+export default function Payment({ totalValue }) {
   return (
-    <>
-      {showSpinner && isPending && <div className="spinner" />}
+    <PayPalScriptProvider deferLoading={true} options={initialOptions}>
+      {isPending ? <div className="spinner" /> : null}
       <PayPalButtons
-        disabled={false}
-        fundingSource={undefined}
-        createOrder={async (data, actions) => {
-          const orderId = await actions.order.create({
+        createOrder={(data, actions) => {
+          return actions.order.create({
             purchase_units: [
               {
                 amount: {
-                  currency_code: currency,
                   value: { totalValue },
                 },
               },
             ],
           });
-          return orderId;
         }}
-        onApprove={async function (data, actions) {
-          return actions.order.capture().then(function () {
-            // Your code here after capture the order
-          });
+        onApprove={async (data, actions) => {
+          const details = await actions.order.capture();
+          const name = details.payer.name.given_name;
+          // alert(`${quantity} clases se han agregado`);
         }}
       />
-    </>
-  );
-};
-
-export default function Payment({ totalValue }) {
-  return (
-    <div>
-      <PayPalScriptProvider options={initialOptions}>
-        <ButtonWrapper
-          totalValue={totalValue}
-          currency={currency}
-          showSpinner={false}
-        />
-      </PayPalScriptProvider>
-    </div>
+    </PayPalScriptProvider>
   );
 }
