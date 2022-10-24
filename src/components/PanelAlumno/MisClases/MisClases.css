@@ -40,7 +40,7 @@
     height: 34px;
     text-align: center;
     padding: 2px;
-    background-color:#555555;
+    background-color: #555555;
     color: white;
     cursor: pointer;
 }
@@ -158,10 +158,8 @@
     margin-top: 10px;
     border: 0;
     background-color: #266f56;
-    color:white;
+    color: white;
 }
-
-
 
 .boton__programar {
     width: 192px;
