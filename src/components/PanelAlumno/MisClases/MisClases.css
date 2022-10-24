@@ -166,14 +166,9 @@
     height: 26px;
     margin-top: 10px;
     border: 0;
-<<<<<<< HEAD
-    background-color: #266f56;
-    color: white;
-=======
     background-color:  rgb(70, 172, 30);
     border-radius: 30px 30px 30px 30px;
     color:white;
->>>>>>> Facu
 }
 
 .boton__programar {
