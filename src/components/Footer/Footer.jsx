@@ -4,15 +4,16 @@ import logoFooter from "../../assets/img/logo.svg";
 import facebook from "../../assets/img/facebook.svg";
 import instagram from "../../assets/img/instagram.svg";
 import ws from "../../assets/img/whatsapp.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <>
       <section className="footer_Content">
         <div className="footer__Container">
-          <div className="logoFooter">
+          <Link className="logoFooter" to="/home">
             <img src={logoFooter} alt="" />
-          </div>
+          </Link>
 
           <div className="paquetes__Footer">
             <h2>Paquetes</h2>
@@ -33,9 +34,15 @@ const Footer = () => {
 
           <div>
             <div className="redes__Footer">
-              <img src={facebook} alt="" />
-              <img src={instagram} alt="" />
-              <img src={ws} alt="" />
+              <Link to="">
+                <img src={facebook} alt="" />
+              </Link>
+              <Link to="/#">
+                <img src={instagram} alt="" />
+              </Link>
+              <Link to="/#">
+                <img src={ws} alt="" />
+              </Link>
             </div>
           </div>
         </div>
