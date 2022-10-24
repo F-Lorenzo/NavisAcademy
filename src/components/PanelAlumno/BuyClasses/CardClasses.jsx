@@ -3,11 +3,10 @@ import { UserAuth } from "../../../Context/AuthContext";
 import { getFirestore, doc, increment, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
-import Card from "./Card";
 import "./cardClasses.css";
 
 const CardClasses = ({ number, price, duration, amount }) => {
-  const [checkout, setCheckout] = useState(false);
+  const [Checkout, setCheckout] = useState();
   const precio = parseFloat(price);
   const cantidad = parseFloat(amount);
   const totalValue = cantidad * precio;
@@ -20,28 +19,16 @@ const CardClasses = ({ number, price, duration, amount }) => {
       await updateDoc(userClases, {
         remainingClases: increment(amount),
       });
-      setCheckout(true);
       // swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
   };
-
   if (Checkout) {
     return <Checkout totalValue={totalValue} />;
   }
 
   return (
-    // <div>
-    //   {
-    //     <Card
-    //       number={number}
-    //       price={price}
-    //       duration={duration}
-    //       amount={amount}
-    //     />
-    //   }
-    // </div>
     <div className="buy-card">
       <ul>
         <li className="pack-number">Pack Nº : {number} </li>
