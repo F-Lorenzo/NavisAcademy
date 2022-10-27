@@ -6,10 +6,11 @@ import Checkout from "../../checkout/Checkout";
 import "./cardClasses.css";
 
 const CardClasses = ({ number, price, duration, amount }) => {
-  const [Checkout, setCheckout] = useState();
+  const [isCheckout, setIsCheckout] = useState(false);
   const precio = parseFloat(price);
   const cantidad = parseFloat(amount);
-  const totalValue = cantidad * precio;
+  const total = cantidad * precio;
+  const totalValue = total.toFixed(2).toString();
   const { user } = UserAuth();
   const handleBuyNow = async () => {
     try {
@@ -19,12 +20,15 @@ const CardClasses = ({ number, price, duration, amount }) => {
       await updateDoc(userClases, {
         remainingClases: increment(amount),
       });
-      setCheckout(<Checkout totalValue={totalValue} />);
-      // swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
+      setIsCheckout(true);
+      //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
   };
+  if (isCheckout) {
+    return <Checkout totalValue={totalValue} />;
+  }
 
   return (
     <div className="buy-card">
