@@ -3,6 +3,7 @@ const initialOptions = {
   currency: "USD",
   intent: "capture",
   "data-client-token": "abc123xyz==",
+  components: "buttons",
 };
 
 export default initialOptions;

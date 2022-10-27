@@ -1,7 +1,9 @@
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import React, { useState } from "react";
 import initialOptions from "../paypal/paypal.config";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function Payment({ total }) {
+export default function Payment({ totalValue }) {
+  const amount = totalValue;
   return (
     <PayPalScriptProvider options={initialOptions}>
       <PayPalButtons
@@ -10,7 +12,7 @@ export default function Payment({ total }) {
             purchase_units: [
               {
                 amount: {
-                  value: { total },
+                  value: amount,
                 },
               },
             ],
@@ -19,7 +21,7 @@ export default function Payment({ total }) {
         onApprove={async (data, actions) => {
           const details = await actions.order.capture();
           const name = details.payer.name.given_name;
-          // alert(`${quantity} clases se han agregado`);
+          alert(`Transaction completed by ${name}`); // luego del onApprove se dan las clases
         }}
       />
     </PayPalScriptProvider>
