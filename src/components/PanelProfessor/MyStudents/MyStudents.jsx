@@ -2,11 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { UserAuth } from '../../../Context/AuthContext';
+import { UserUpdates } from '../../../Context/UserUpdatesContext';
 import Students from './Students';
 
 const MyStudents = () => {
 
-    const { user } = UserAuth();
+    const { user } = UserUpdates();
     const [ studentsData, setStudentsData ] = useState([]);
 
     useEffect( () => {

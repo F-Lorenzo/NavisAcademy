@@ -2,77 +2,89 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import logo from "../../assets/img/logo.svg";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../Context/AuthContext";
 
 const NavBar = () => {
 
+  const { userLogged, logOut } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      navigate("/logger");
+      swal("BYE!", `sesion Finalizada!`, "success");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <>
+
       <div className="navBarContainer">
 
-        <NavLink className="navBar-brand" to="/home">
+        <NavLink className="navBar-brand" to="/">
           <img src={logo} alt="" />
         </NavLink>
 
-        <ul className="navBar-options">
-          
-          <li className="navBar-item">
-
-            <input type="checkbox" id="clickEvent" />
-            <label for="clickEvent" >
-              <div className="userMenu">
-                <img
-                  src="../../../src/Assets/round-account-button-with-user-inside.png"
-                  alt=""
-                />
-              </div>
-            </label>
-
-            <div className="modalUserMenu">
-              <ul className="userMenuOptions">
-                <NavLink to="/Account">
-                  <li>Mi Perfil</li>
-                </NavLink>
-                <NavLink to="/Panel">
-                  <li>Mi Panel</li>
-                </NavLink>
-              </ul>
-            </div>
-
-          </li>
-
-          <li className="navBar-item">
-            <NavLink className="navBar-link" to="/home">
-              <img src="../../../src/Assets/home-button.png" alt="" />
-            </NavLink>
-          </li>
-
-        </ul>
-      </div>
-
-
-      {/*
-
-        <div className="navBarContainer">
+        { userLogged ? 
+        
           <ul className="navBar-options">
-            <li className="navBar-item">
-              <NavLink className="navBar-link" to="/Teacher">
-                PROFESSOR
-              </NavLink>
-            </li>
-            <li className="navBar-item">
-              <NavLink className="navBar-link" to="/Alumn">
-                ALUMN
-              </NavLink>
-            </li>
-            <li className="navBar-item">
-              <NavLink className="navBar-link" to="/Admin">
-                ADMIN
-              </NavLink>
-            </li>
-          </ul>
-        </div>
 
-      */}
+            <li className="navBar-item">
+              <NavLink className="navBar-link" to="/MisNotificaciones">
+                <img src="../../../src/Assets/turn-notifications-on-button.png" alt="homeButton.png" />
+              </NavLink>
+            </li>
+            
+            <li className="navBar-item">
+
+              <input type="checkbox" id="clickEvent" />
+              <label htmlFor="clickEvent">
+                <div className="userMenu">
+                  <img
+                    src="../../../src/Assets/round-account-button-with-user-inside.png"
+                    alt="userIcon.png"
+                  />
+                </div>
+              </label>
+
+              <div className="modalUserMenu">
+                <ul className="userMenuOptions">
+                  <NavLink to="/Account">
+                    <li>Mi Perfil</li>
+                  </NavLink>
+                  <NavLink to="/Panel">
+                    <li>Mi Panel</li>
+                  </NavLink>
+                  <NavLink to="/Panel">
+                    <li>Mis Notificaciones</li>
+                  </NavLink>
+                  <NavLink to="/Panel">
+                    <li onClick={handleLogout}>Cerrar Sesión</li>
+                  </NavLink>
+                </ul>
+              </div>
+
+            </li>
+
+          </ul>
+
+          :
+
+          <ul className="navBar-options">
+            <NavLink className="navBar-link" to='/signIn'>
+              <li className="navBar-item">Iniciar Sesion</li>
+            </NavLink>
+            <NavLink className="navBar-link" to='/signUp'>
+              <li className="navBar-item">Registrarse</li>
+            </NavLink>
+          </ul>
+        }
+
+      </div>
 
     </>
   );

@@ -7,7 +7,7 @@ import "./cardClasses.css";
 
 const CardClasses = ({ number, price, duration, amount }) => {
   const [checkout, setCheckout] = useState(false);
-  const { user } = UserAuth();
+  const { userLogged } = UserAuth();
   const navigate = useNavigate();
   const precio = parseFloat(price);
   const cantidad = parseFloat(amount);
@@ -16,12 +16,13 @@ const CardClasses = ({ number, price, duration, amount }) => {
     setCheckout(true);
     try {
       const firestore = getFirestore();
-      const userClases = doc(firestore, `Users/${user.uid}`);
+      const userClases = doc(firestore, `Users/${userLogged.uid}`);
       console.log(userClases);
       await updateDoc(userClases, {
         remainingClases: increment(amount),
       });
-      // swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
+      swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
+      navigate("/Account/ProgramarClases");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }

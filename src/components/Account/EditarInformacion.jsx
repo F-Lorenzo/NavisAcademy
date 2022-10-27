@@ -1,13 +1,15 @@
 import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { UserAuth } from '../../Context/AuthContext';
+import { UserUpdates } from '../../Context/UserUpdatesContext'
 import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
 import TeacherProfile from '../PanelProfessor/TeacherProfile';
 import Loader from '../Loader/Loader';
 
 const EditarInformacion = () => {
 
-    const { user } = UserAuth();
+    const { userLogged } = UserAuth();
+    const { user } = UserUpdates();
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
 
@@ -26,7 +28,7 @@ const EditarInformacion = () => {
 
         try {
             const firestore = getFirestore();
-            const userToEdit = doc(firestore, `Users/${user.uid}`);
+            const userToEdit = doc(firestore, `Users/${userLogged.uid}`);
             await updateDoc(userToEdit, {
                 ...form
             });

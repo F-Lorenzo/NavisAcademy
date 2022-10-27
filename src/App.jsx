@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./Context/AuthContext";
+import { UserUpdatesContextProvider } from "./Context/UserUpdatesContext";
 import "./App.css";
 
 import NavBar from "./components/NavBar/NavBar";
@@ -31,68 +32,81 @@ import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
 import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/AllMyClasses";
 import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
 import Panel from "./components/Account/Panel";
+import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
+import CarouselVanilla from "./components/Carousel/Carousel";
+import MisNotificaciones from "./components/Account/MisNotificaciones";
+
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <AuthContextProvider>
-          <NavBar />
-
-          <Routes>
-            <Route path="/home" element={<Home />} />
-
-            <Route path="/logger" element={<Logger />} />
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/signUp" element={<Signup />} />
-
-            <Route path="/Panel" element={<Panel />} />
-
-            <Route path="/Admin" element={<Admin />} />
-            <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
-            <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
-
-            <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
-            <Route path="/Account/ProgramarClases" element={<ProgramarClases />} />
-            <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
-
-            <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
-            <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
-            <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
-
-            <Route path="/Checkout" element={<Checkout />} />
-
-            <Route
-              path="/account"
-              element={
-                <ProtectedRoute>
-                  <Account />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route path="/Alumn" 
-              element={
-                <ProtectedRouteStudent>
-                  <PanelAlumno />
-                </ProtectedRouteStudent>
-              }
-            />
-
-            <Route
-              path="/Teacher"
-              element={
-                <ProtectedRouteTeacher>
-                  <PanelProfessor />
-                </ProtectedRouteTeacher>
-              }
-            />
-
-            <Route path="*" element={<h1>404</h1>} />
+          <UserUpdatesContextProvider>
             
-          </Routes>
+            <NavBar />
 
-          <Footer />
+            <Routes>
+              <Route path="/" element={<Home />} />
+
+              <Route path="/logger" element={<Logger />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signUp" element={<Signup />} />
+
+              <Route path="/Panel" element={<Panel />} />
+
+              <Route path="/Admin" element={<Admin />} />
+              <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
+              <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
+
+              <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
+              <Route path="/Account/ProgramarClases" element={<ProgramarClases />} />
+              <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
+
+              <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
+              <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
+              <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
+
+              <Route path="/Checkout" element={<Checkout />} />
+
+              <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route path="/Alumn" 
+                element={
+                  <ProtectedRouteStudent>
+                    <PanelAlumno />
+                  </ProtectedRouteStudent>
+                }
+              />
+
+              <Route
+                path="/Teacher"
+                element={
+                  <ProtectedRouteTeacher>
+                    <PanelProfessor />
+                  </ProtectedRouteTeacher>
+                }
+              />
+
+              <Route path="*" element={<h1>404</h1>} />
+
+              <Route path="/MiCalendario" element={<MyCalendario />} />
+              <Route path="/Carousel" element={<CarouselVanilla />} />
+              <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
+              
+              
+            </Routes>
+
+            <Footer />
+
+          </UserUpdatesContextProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </>

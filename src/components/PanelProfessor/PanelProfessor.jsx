@@ -3,13 +3,14 @@ import { UserAuth } from '../../Context/AuthContext';
 import RoadLog from './RoadLog';
 import { Link, useNavigate } from 'react-router-dom';
 import MyClassesOfThePastMonth from './MyClasses/MyClassesOfThePastMonth';
+import { UserUpdates } from '../../Context/UserUpdatesContext';
 import "./PanelProfessor.css"
 import AllMyClasses from './MyClasses/AllMyClasses/AllMyClasses';
 
 
 function PanelProfessor() {
 
-    const { user } = UserAuth();
+    const { user } = UserUpdates();
     const navigate = useNavigate();
 
     const handleMisAlumnos = () => {

@@ -8,7 +8,7 @@ import { DateTime } from 'luxon';
 
 const AllMyClasses = () => {
 
-    const { user } = UserAuth();
+    const { userLogged } = UserAuth();
     const [ myClassesData, setMyClassesData ] = useState ([]);
     const [ loader, setLoader ] = useState(false);
     
@@ -16,7 +16,7 @@ const AllMyClasses = () => {
 
         setLoader(true);
         const querydb = getFirestore();
-        const queryCollection = collection (querydb, `Users/${user.uid}/myClases`);
+        const queryCollection = collection (querydb, `Users/${userLogged.uid}/myClases`);
         getDocs(queryCollection)
         .then( res => setMyClassesData(
             res.docs.map(

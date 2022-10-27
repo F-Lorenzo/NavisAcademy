@@ -40,10 +40,6 @@ const MisClases = (clases) => {
           <h3>CLASES DISPONIBLES : {clases.remainingClases}</h3>
         </div>
 
-        <div className="info">
-          <h3>CLASES PROGRAMADAS: {clases.programedClases} </h3>
-        </div>
-
         <div className="info__Content">
           <div className="info-button-classes-container">
             <div className="info-button">

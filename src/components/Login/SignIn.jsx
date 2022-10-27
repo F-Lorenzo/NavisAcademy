@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
+import cohete from '../../assets/img/cohete.svg';
 import Loader from '../Loader/Loader'
 
 const SignIn = () => {
@@ -11,8 +12,6 @@ const SignIn = () => {
     const [ password, setPassword ] = useState('');
     const [ error, setError ] = useState('');
     const [ loader, setLoader ] = useState(false);
-    
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,13 +20,7 @@ const SignIn = () => {
         try {
             await signIn(email, password)
             swal("Bienvenido", `sesion iniciada como ${email}`, "success");
-
-            user.role === "alumn" ? (
-                navigate('/Alumn')
-            ) : (
-                navigate('/Teacher')
-            )
-
+            navigate("/Panel");
         } catch (e) {
             setError(e.message)
             console.log(e.message)
@@ -46,18 +39,22 @@ const SignIn = () => {
         <>
         <div className="caja__trasera">             
             <div className="caja__trasera-login">
-
-                <div className='tittleColumn'>
-                    <p className='tittle'>
-                        Login
-                    </p>
-
-                    <p className='subTittle'>
-                        ¿Todavia no tenes una cuenta?{' '}
-                        <Link to='/signUp'>
-                            Registrate.
-                        </Link>
-                    </p>
+                <div className='first-column'>
+                    <div className='tittleColumn'>
+                        <p className='login-logo'>
+                            <img className='cohete-navis' src={cohete} alt="cohete.svg" />
+                            <i className="fa-solid fa-user"></i>
+                        </p>
+                        <p className='login-tittle'>
+                            Login
+                        </p>
+                    </div>
+                        <p className='subTittle'>
+                            ¿Todavia no tenes una cuenta?{' '}
+                            <Link to='/signUp'>
+                                Registrate.
+                            </Link>
+                        </p>
                 </div>
 
                 <form className='form__Register' onSubmit={handleSubmit}>
@@ -65,7 +62,7 @@ const SignIn = () => {
                     <label htmlFor="email">
                     Correo electrónico
                     </label>
-                    <br/>
+        
                     <input 
                         type="email" 
                         id='email' 
@@ -77,7 +74,7 @@ const SignIn = () => {
                     <label htmlFor="password">
                     Clave
                     </label>
-                    <br />
+      
                     <input 
                         type="password" 
                         id='password' 

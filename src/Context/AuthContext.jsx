@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 
 
-import { getFirestore, doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { getFirestore, doc, getDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 
 
 const UserContext = createContext();
@@ -25,18 +25,10 @@ export const AuthContextProvider = ({children}) => {
         const infoFinal = docuCifrada.data();
         return infoFinal;
     }
-
-    async function getAllClasses(uid) {
-        const queryRef = collection(Firestore, `Users/${uid}/myClases`);
-        const queryCifrada = await getDocs(queryRef);
-        const queryFinal = queryCifrada.data();
-        return queryFinal;
-    }
     
     /*------------------------*/
 
-    const [ user, setUser ] = useState({});
-    const [ allMyClasses, setAllMyClasses ] = useState([]);
+    const [ userLogged, setUserLogged ] = useState({});
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -52,8 +44,10 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
+            setUserLogged(currentUser);
             /* ----- ROL SHIT ------ */
+
+            /*
             if (currentUser) {
                 getAllData(currentUser.uid).then((user) => {
                     const userData = {
@@ -67,9 +61,12 @@ export const AuthContextProvider = ({children}) => {
                                         programedClases: user.programedClases,
                                    }
                     };
-                    setUser(userData);
+                    setUserLogged(userData);
                 })
-            } 
+            }
+            */
+            
+            
         });
         return () => {
             unsubscribe();
@@ -77,7 +74,7 @@ export const AuthContextProvider = ({children}) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ createUser, user, logOut, signIn }}>
+        <UserContext.Provider value={{ createUser, userLogged, logOut, signIn }}>
             {children}
         </UserContext.Provider>
     );

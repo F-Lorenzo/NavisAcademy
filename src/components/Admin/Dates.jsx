@@ -2,17 +2,25 @@ import React from 'react'
 import { useState } from 'react'
 import TeachersList from './TeachersList';
 import './Admin.css';
+import { connectFirestoreEmulator } from 'firebase/firestore';
+import ListDays from './ListDays';
 
 
 const Dates = ({info, teachersList}) => {
 
     const [ listTeachers, setListTeachers ] = useState(false);
 
+    const dias = info.diasDisponibles;
+
     const handleAsignarProfesor = () => {
         console.log(teachersList);
+        console.log(dias);
+        console.log(dias[0]);
         swal("OK", `Selecciona un profesor de la lista`, "success");
-        setListTeachers(true);
-    }
+        setListTeachers(true);   
+    };
+
+    
 
     if (listTeachers) {
 
@@ -23,23 +31,32 @@ const Dates = ({info, teachersList}) => {
             </>            
         )
 
-    } 
-    
-            return (
-                <div className='panel_Content'>
+    } else {
+        
+        return (
+            <div className='panel_Content'>
 
-                    <div className='profile-card'>
+                <div className='profile-card'>
+                    Programacion de clases:
                     <ul className='profile-card'>
-                        <li> Date: {info.date} </li>
-                        <li> Time: {info.time} </li>
-                        <li> Teacher: {info.teacher} </li>
-                        <li> Student: {info.studentEmail} </li>
+                        <li> Alumno: {info.studentName} {info.studentLastName}</li>
+                        <li> Los dias que prefiere son:
+                        {
+                            dias.map ( dia => <p> {dia.dia} </p> )
+
+                        }
+
+                        </li>
+
+                        <li> Desde el horario: {info.timeStart} </li>
+                        <li> Hasta el horario: {info.timeEnd} </li>
                         <button className='profile-card__button' onClick={handleAsignarProfesor}>ASIGNAR PROFESOR</button>
                     </ul>   
-                    </div>
-                    
                 </div>
-            )
+                 
+            </div>
+        )
+    }
 
     
     
