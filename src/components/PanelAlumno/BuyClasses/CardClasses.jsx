@@ -11,7 +11,7 @@ const CardClasses = ({ number, price, duration, amount }) => {
   const cantidad = parseFloat(amount);
   const total = cantidad * precio;
   const totalValue = total.toFixed(2).toString();
-  const { user } = UserAuth();
+  const { userLogged } = UserAuth();
   const handleBuyNow = async () => {
     try {
       const firestore = getFirestore();
