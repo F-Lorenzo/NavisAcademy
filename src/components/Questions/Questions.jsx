@@ -30,8 +30,30 @@ const Questions = () => {
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            breakpoints={{
+              0:{ 
+                slidesPerView:1, 
+                spaceBetween:10,
+              },
+              480:{ 
+                slidesPerView:2, 
+                spaceBetween:20,
+              },
+              768:{ 
+                slidesPerView:3, 
+                spaceBetween:35,
+              },
+              1024:{ 
+                slidesPerView:3, 
+                spaceBetween:25,
+              },
+              1024:{ 
+                slidesPerView:3, 
+                spaceBetween:45,
+              },
+              
+            }}
+     
           >
             <SwiperSlide>
               <div className="question__1">
