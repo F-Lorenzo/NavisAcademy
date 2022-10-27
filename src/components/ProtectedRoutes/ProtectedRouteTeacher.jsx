@@ -1,11 +1,13 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
+import { UserUpdates } from '../../Context/UserUpdatesContext';
 
 const ProtectedRouteTeacher = ({ children }) => {
-  const { user } = UserAuth();
+  const { userLogged } = UserAuth();
+  const { user } = UserUpdates();
   
-  if (!user) {
+  if (!userLogged) {
     return <Navigate to='/logger' />;
   }
 

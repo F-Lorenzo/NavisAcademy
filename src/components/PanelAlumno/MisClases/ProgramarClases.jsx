@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
-import './MisClases.css';
+import './ProgramarClases.css';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
 import { UserAuth } from '../../../Context/AuthContext';
+import { UserUpdates } from '../../../Context/UserUpdatesContext';
+import Select from 'react-select';
 import Loader from '../../Loader/Loader';
+import { useNavigate } from 'react-router-dom';
 
 const ProgramarClases = () => {
 
-    const { user } = UserAuth();
+    const { user } = UserUpdates();
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
     const myClases = {...user.misClases};
+    const [ diasDeClase, setDiasDeClase ] = useState();
     const actualClases = myClases.remainingClases - myClases.programedClases;
 
     const handleChange = (e) => {
@@ -17,7 +21,22 @@ const ProgramarClases = () => {
             ...form,
             [e.target.name]:e.target.value,
         })
-     }
+    }
+
+    const optionDays = [
+        { value: 'Lunes', label: 'Lunes' },
+        { value: 'Martes', label: 'Martes' },
+        { value: 'Miercoles', label: 'Miercoles' },
+        { value: 'Jueves', label: 'Jueves' },
+        { value: 'Viernes', label: 'Viernes' },
+        { value: 'Sabado', label: 'Sabado' },
+        { value: 'Domingo', label: 'Domingo' },
+    ]
+
+    const testSelect = ( dia  ) => {
+        setDiasDeClase(dia);
+        console.log(diasDeClase);
+    }
 
     const studentForm = {...user.form};
 
@@ -25,6 +44,7 @@ const ProgramarClases = () => {
         condition: "pending",
         teacher: "unasigned",
         reprogramedLeft: 2,
+        programed: "pending",
     }
 
     const studentData = {
@@ -34,6 +54,7 @@ const ProgramarClases = () => {
         studentLastName: studentForm.lastName,    
     }
 
+    /*
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoader(true)
@@ -60,6 +81,36 @@ const ProgramarClases = () => {
         }
 
     }
+    */
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoader(true)
+
+        try {
+            const diasDisponibles = diasDeClase.map(day => ({dia:day.value}))
+            console.log("Los dias elegidos son: ", diasDisponibles);
+
+            const firestore = getFirestore();
+            const queryRef = query(collection(firestore, `Users/${user.uid}/myClases`));
+            addDoc(queryRef, { ...form, diasDisponibles })
+                .then(({ id }) => {
+
+                    const docuRef = doc(firestore, `Classes/${id}`);
+                    setDoc(docuRef, { ...form, ...moreInfo, diasDisponibles, ...studentData });
+
+                })
+            const userClases = doc(firestore, `Users/${user.uid}`);
+            await updateDoc(userClases, { ...form, diasDisponibles });
+            setLoader(false);
+            swal("Muy Bien", `Ahora esperaras a que los administradores acepten tu solicitud!`, "success");
+
+        } catch (e) {
+            swal("UPS!", `${e.message}`, "error");
+            setLoader(false);
+        }
+
+    }
 
     if (loader) {
         return (
@@ -69,48 +120,50 @@ const ProgramarClases = () => {
 
     return (
         <div>
-            <h1>PROGRAMAR CLASES</h1>
+            <p>
+                PROGRAMAR CLASES
+            </p>
 
-            <h2>Tienes { actualClases } clases para programar </h2>
-
-            <div className="caja__trasera">             
-                <div className="caja__trasera-login">
-
+            <div>             
+                <div>
                 
-                    <form className='form__Register' onSubmit={handleSubmit}>
+                    <form className='form__ProgramarClases' onSubmit={handleSubmit}>
 
-                        <label htmlFor="date">
-                            Select DateTime : 
+                        <label htmlFor="diaDeClase">
+                            Selecciona los dias en que quieras tomar las clases
+                            <Select 
+                                options={optionDays}
+                                onChange={testSelect}
+                                isMulti
+                            />
                         </label>
-                        <input 
-                            type="date" 
-                            id='date' 
-                            name='date' 
-                            value={form.date || ''} 
+
+                        <label htmlFor="rangoHorarioDeClase">
+                            Selecciona un rango horario en el que puedas tomar tomar tus clases
+                        </label>
+                        <input
+                            type="time" 
+                            id='timeStart' 
+                            name='timeStart' 
+                            value={form.timeStart || ''} 
                             onChange={handleChange} 
                         />
-
-                        <br />
-
-                        <label htmlFor="time">
-                            Select Time : 
-                        </label>
-                        <input 
+                        <input
                             type="time" 
-                            id='time' 
-                            name='time' 
-                            value={form.time || ''} 
+                            id='timeEnd' 
+                            name='timeEnd' 
+                            value={form.timeEnd || ''} 
                             onChange={handleChange} 
                         />
 
                         <br />
   
-                    <button className='boton__programar' type="submit" id="btn__iniciar-sesion">Programar</button>
+                        <button className='boton__programar' type="submit" id="btn__iniciar-sesion">Programar</button>
 
-                </form>
+                    </form>
+                </div>
+
             </div>
-        </div>
-
 
         </div>
     )

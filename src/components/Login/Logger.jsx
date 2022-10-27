@@ -8,17 +8,17 @@ const Logger = () => {
         <>
         <div className="caja__trasera">             
             <div className='form__Register'>
-                <h3>¿Already have an account?</h3>
-                <p>Sign in to your account</p>
+                <h3>¿Ya tienes una cuenta?</h3>
+                <p>Inicia sesion con tu cuenta</p>
                 <NavLink to='/signIn'>
-                    <button className='boton__login' id="btn__iniciar-sesion">Sign In</button>
+                    <button className='boton__login' id="btn__iniciar-sesion">Iniciar Sesion</button>
                 </NavLink>
             </div>
             <div className='form__Register'>
-                <h3>¿Don't have an account yet?</h3>
-                <p>Sign up for a free account</p>
+                <h3>¿Todavia no te registraste?</h3>
+                <p>Registrate gratis</p>
                 <NavLink to='/signUp'>
-                    <button className='boton__login' id="btn__registrarse">Sign up</button>
+                    <button className='boton__login' id="btn__registrarse">Registrarse</button>
                 </NavLink>
             </div>
         </div>
