@@ -5,18 +5,28 @@ const Classes = ({info}) => {
 
     return (
         <div className='infoContainer'>
-            <div className='primerColumna'>
+            
+            <ul className='primerColumna'>
                 <div className='nombreAlumno'>
                     <li>{info.studentName} </li>
                     <li>{info.studentLastName} </li>
                 </div>
                 <li className='timeClass'>{info.time} </li>
+            </ul>
+
+            <ul className='segundaColumna'>
+                <li>Asistencias: </li>
+                <li>Numero De Clase: </li>
+            </ul>
+
+            <div className='terceraColumna'>
+                <p>{info.date}</p>
             </div>
 
-            <li>Condition: {info.condition} </li>
-            <li>{info.date} </li>
+            <div className='cuartaColumna'>
+                <button>Link de la clase</button>
+            </div>
 
-            <br />
         </div>
     )
 

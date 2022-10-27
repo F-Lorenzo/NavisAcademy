@@ -15,7 +15,7 @@ const CardClasses = ({ number, price, duration, amount }) => {
   const handleBuyNow = async () => {
     try {
       const firestore = getFirestore();
-      const userClases = doc(firestore, `Users/${user.uid}`);
+      const userClases = doc(firestore, `Users/${userLogged.uid}`);
       console.log(userClases);
       await updateDoc(userClases, {
         remainingClases: increment(amount),

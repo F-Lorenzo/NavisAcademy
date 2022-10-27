@@ -11,13 +11,13 @@ import Cards from '../Cards/Cards'
 const Home = () => {
   return (
     <>
-          <About />
-          <Qualitys />
-          <Reviews/>
-          <Cards/>
-        <Questions/>
-        <Contact/>
-
+        <About />
+        <Qualitys />
+        <Reviews />
+        <Cards />
+        <Questions />
+        <Contact />
+        
     </>
   )
 }

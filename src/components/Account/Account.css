@@ -1,10 +1,10 @@
 .section_Profile_Account {
     width: 100%;
-    min-height: 100vh;
+    min-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #FCFCFC;
     background-size: cover;
 }
 
@@ -12,7 +12,7 @@
     margin: 10px;
     width: 400px;
     height: 400px;
-    background: #F2F2F2;
+    background: #FCFCFC;
     backdrop-filter: blur( 1.9px);
     border-radius: 10px;
     display: flex;
@@ -34,7 +34,7 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    color: #fff;
+    color: #FCFCFC;
     background: #000;
     font-size: 14px;
     border: 1px solid #000;
@@ -67,7 +67,7 @@
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    color: #fff;
+    color: #FCFCFC;
     background-color: rgb(2, 100, 51);
     font-size: 14px;
     border: 1px solid #000;

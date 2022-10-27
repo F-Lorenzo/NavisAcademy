@@ -100,6 +100,7 @@ const Teachers = ({dateId, teacher}) => {
                 
                 <li> Teacher: {teacher.name} {teacher.lastName} </li>
                 <li> Email: {teacher.email} </li>
+                
                 <button onClick={handleSeleccionarProfesor}>SELECCIONAR PROFESOR</button>
             </ul>      
         </div>

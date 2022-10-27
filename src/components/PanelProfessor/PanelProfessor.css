@@ -1,0 +1,40 @@
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 20px;
+
+    height: 100px;
+    width: 1250px;
+
+    border: 1px solid black;
+    font-size: medium;
+}
+
+.encabezado button {
+    width: 270px;
+    height: 50px;
+    border: none;
+    font-size: 20px;
+    background-color: #006633;
+    border-radius: 20px 20px 20px 20px;
+    color: #FCFCFC;
+    font-weight: bold;
+}
+
+.encabezado button:hover {
+    cursor: pointer;
+}
+
+.infoEncabezado {
+    list-style: none;
+}
+
+.infoTittle {
+    font-size: 15px;
+    font-weight: 500;
+}

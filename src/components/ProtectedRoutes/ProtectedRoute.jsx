@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = UserAuth();
+  const { userLogged } = UserAuth();
   
-  if (!user) {
+  if (!userLogged) {
     return <Navigate to='/logger' />;
   }
   return children;
