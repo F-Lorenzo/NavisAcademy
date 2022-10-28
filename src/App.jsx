@@ -33,7 +33,7 @@ import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/All
 import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
 import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
-import CarouselVanilla from "./components/Carousel/Carousel";
+
 import MisNotificaciones from "./components/Account/MisNotificaciones";
 
 
@@ -98,7 +98,7 @@ function App() {
               <Route path="*" element={<h1>404</h1>} />
 
               <Route path="/MiCalendario" element={<MyCalendario />} />
-              <Route path="/Carousel" element={<CarouselVanilla />} />
+
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
               
               

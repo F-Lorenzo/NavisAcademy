@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import img00 from '../../assets/imgCarouselHome/img00.jpg';
 import img01 from '../../assets/imgCarouselHome/img01.jpg';
 import img02 from '../../assets/imgCarouselHome/img02.jpg';
-import "./Carousel.css";
+import "./CarouselVanilla.css";
 
 
 const CarouselVanilla = () => {
@@ -13,13 +13,13 @@ const CarouselVanilla = () => {
     const [ loaded, setLoaded ] = useState(false);
 
     const selectNewImage = (index, images, next = true ) => {
-        setLoaded(false);
+        setLoaded(false);        
         setTimeout( () => {
             const condition = next ? index < images.length - 1 : index > 0;
             const nextIndex = next ? (condition ? index + 1 : 0) : (condition ? index - 1 : images.length - 1);
             setSelectedImage(images[nextIndex]);
             setSelectedIndex(nextIndex);
-        }, 250);
+        }, 1000);
     }
     
     const previous = () => {
@@ -33,8 +33,8 @@ const CarouselVanilla = () => {
     return (
         <div className='carousel-container'>
             <img src={selectedImage} alt="img" className={loaded ? "loaded" : "not-loaded"} onLoad={() => setLoaded(true)}/>
-            <button className='boton-der' onClick={previous}> <i class="fa-solid fa-circle-chevron-left"></i> </button>
-            <button className='boton-izq' onClick={next}> <i class="fa-solid fa-circle-chevron-right"></i> </button>
+            <button className='boton-der' onClick={previous}> <i className="fa-solid fa-circle-chevron-left"></i> </button>
+            <button className='boton-izq' onClick={next}> <i className="fa-solid fa-circle-chevron-right"></i> </button>
         </div>
     )
 
