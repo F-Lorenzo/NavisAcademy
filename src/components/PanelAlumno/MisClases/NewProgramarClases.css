@@ -1,0 +1,9 @@
+.unhide-lunes-time {
+    font-weight: bold;
+    visibility: visible;
+}
+
+.hide-lunes-time {
+    display: none;
+    visibility: hidden;
+}

@@ -1,15 +1,11 @@
 import React from 'react'
 
-const Notificacion = (info) => {
-
-    const handleTest = () => {
-        console.log(info);
-    }
-
+const Notificacion = ({info}) => {
     return (
         <div>
-            Tienes {info.info.remainingClases}
-            <button onClick={handleTest}>TestMDK</button>
+            <h4>{info.textNotification}</h4>
+            <p> {info.notificationType} </p>
+            <p>{info.timeStamp}</p>
         </div>
     )
 }

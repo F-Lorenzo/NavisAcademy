@@ -4,28 +4,27 @@ import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, set
 import "./NewProgramarClases.css";
 import Loader from '../../Loader/Loader';
 
-const ProgramarClases = () => {
+const NewProgramarClases = () => {
 
     const { user } = UserUpdates();
-    const [ diasHora, setDiasHora ] = useState({});
+    const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
 
     const handleChange = (e) => {
-        setDiasHora({
-            ...diasHora,
+        setForm({
+            ...form,
             [e.target.name]:e.target.value,
         })
-        console.log(diasHora);
+        console.log(form);
     }
 
     const programedClassData = {
         condition: "pending",
         teacher: "unasigned",
-        remainingClases: user.misClases.remainingClases,
         studentUid: user.uid,
         studentEmail: user.email,
-        studentName: user.form.name,
-        studentLastName: user.form.lastName,   
+        studentName: user.name,
+        studentLastName: user.lastName,   
     }
 
     const handleSubmit = async (e) => {
@@ -35,11 +34,11 @@ const ProgramarClases = () => {
         try {
             const firestore = getFirestore();
             const queryRef = query(collection(firestore, `Users/${user.uid}/mySchedule`));
-            addDoc(queryRef, { diasHora, ...programedClassData })
+            addDoc(queryRef, { ...form, ...programedClassData })
                 .then(({ id }) => {
 
                     const docuRef = doc(firestore, `Classes/${id}`);
-                    setDoc(docuRef, { diasHora, ...programedClassData });
+                    setDoc(docuRef, { ...form, ...programedClassData });
 
                 })
             setLoader(false);
@@ -67,7 +66,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='lunes' 
                             name='lunes' 
-                            value={diasHora.lunes || ''} 
+                            value={form.lunes || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -79,7 +78,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='martes' 
                             name='martes' 
-                            value={diasHora.martes || ''} 
+                            value={form.martes || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -91,7 +90,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='miercoles' 
                             name='miercoles' 
-                            value={diasHora.miercoles || ''} 
+                            value={form.miercoles || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -103,7 +102,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='jueves' 
                             name='jueves' 
-                            value={diasHora.jueves || ''} 
+                            value={form.jueves || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -115,7 +114,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='viernes' 
                             name='viernes' 
-                            value={diasHora.viernes || ''} 
+                            value={form.viernes || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -127,7 +126,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='sabado' 
                             name='sabado' 
-                            value={diasHora.sabado || ''} 
+                            value={form.sabado || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -139,7 +138,7 @@ const ProgramarClases = () => {
                             type="time" 
                             id='domingo' 
                             name='domingo' 
-                            value={diasHora.domingo || ''} 
+                            value={form.domingo || ''} 
                             onChange={handleChange} 
                         />
                     </li>
@@ -151,4 +150,4 @@ const ProgramarClases = () => {
     )
 }
 
-export default ProgramarClases
+export default NewProgramarClases

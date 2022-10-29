@@ -35,6 +35,7 @@ import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones";
+import NewProgramarClases from "./components/PanelAlumno/MisClases/NewProgramarClases";
 
 
 function App() {
@@ -100,6 +101,8 @@ function App() {
               <Route path="/MiCalendario" element={<MyCalendario />} />
 
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
+
+              <Route path="/NewProgramarClases" element={<NewProgramarClases />} />
               
               
             </Routes>

@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { UserAuth } from "../../../Context/AuthContext";
-import { getFirestore, doc, increment, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, increment, updateDoc, query, collection, setDoc, addDoc } from "firebase/firestore";
+import { DateTime } from 'luxon';
 import { useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
 import "./cardClasses.css";
 
 const CardClasses = ({ number, price, duration, amount }) => {
+
   const [isCheckout, setIsCheckout] = useState(false);
   const precio = parseFloat(price);
   const cantidad = parseFloat(amount);
   const total = cantidad * precio;
   const totalValue = total.toFixed(2).toString();
   const { userLogged } = UserAuth();
+
+  const textNotification = "Felicitaciones, adquiriste nuevas clases";
+  const notificationType = "compra";
+  const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+
   const handleBuyNow = async () => {
     try {
       const firestore = getFirestore();
@@ -19,17 +26,29 @@ const CardClasses = ({ number, price, duration, amount }) => {
       console.log(userClases);
       await updateDoc(userClases, {
         remainingClases: increment(amount),
+        newNotifications: true,
+        notifications: increment(1),
       });
+      const newNotification = query(collection(firestore, `Users/${userLogged.uid}/myNotifications`));
+      addDoc(newNotification, { notificationType, textNotification, cantidad, timeStamp })
+          .then(({ id }) => {
+
+            const docuRef = doc(firestore, `AdminNotifications/${id}`);
+              setDoc(docuRef, { notificationType, cantidad });
+
+          })
+
+
       setIsCheckout(true);
       //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
   };
+
   if (isCheckout) {
     return <Checkout totalValue={totalValue} />;
   }
-
   return (
     <div className="buy-card">
       <ul>

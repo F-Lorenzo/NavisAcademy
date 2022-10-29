@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
+import { DateTime } from 'luxon';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import Loader from '../Loader/Loader'
 
@@ -11,6 +12,7 @@ const Signup = () => {
     const [ error, setError ] = useState('')
     const { createUser } = UserAuth();
     const navigate = useNavigate();
+    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
 
     const handleChange = (e) => {
         setForm({
@@ -25,6 +27,14 @@ const Signup = () => {
         completedClases: 0,
         absentedClases: 0,
         teacher: "unasigned",
+        newNotifications: true,
+        notifications: 1,
+    }
+
+    const welcomeNotification = {
+        textNotification: "Bienvenido a Navis!",
+        notificationType: "Welcome",
+
     }
 
     const handleSubmit = async (e) => {
@@ -39,6 +49,9 @@ const Signup = () => {
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
             setDoc(docuRef, {...form, ...studentData});
+
+            const notifications =  collection(firestore, `Users/${infoUser.user.uid}/myNotifications`);
+            addDoc(notifications, {...welcomeNotification, timeStamp});
 
             navigate('/account');
         } catch (e) {

@@ -6,14 +6,15 @@ const UserUpdatesContext = createContext();
 
 export const UserUpdatesContextProvider = ({children}) => {
 
-    const Firestore = getFirestore();
+    const firestore = getFirestore();
     const { userLogged } = UserAuth();
     const [ user, setUser ] = useState({});
 
     useEffect(() => {
         if (userLogged) {
-            const unsubscribe = onSnapshot(doc(Firestore, `Users/${userLogged.uid}`), (updData) => {
+            const unsubscribe = onSnapshot(doc(firestore, `Users/${userLogged.uid}`), (updData) => {
                 const newData = updData.data();
+                console.log(newData);
                 const userData = {
                     uid: userLogged.uid,
                     email: userLogged.email,
@@ -22,7 +23,8 @@ export const UserUpdatesContextProvider = ({children}) => {
                     misClases: { 
                                     remainingClases: newData.remainingClases,
                                     completedClases: newData.completedClases,
-                                    programedClases: newData.programedClases,
+                                    absentedClases: newData.absentedClases,
+                                    teacher: newData.teacher,
                                }
                 };
                 setUser(userData);
