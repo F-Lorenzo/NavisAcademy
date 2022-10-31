@@ -1,107 +1,59 @@
 import React, { useState } from 'react'
-import './ProgramarClases.css';
-import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
-import { UserAuth } from '../../../Context/AuthContext';
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
-import Select from 'react-select';
+import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
+import { DateTime } from 'luxon';
+import "./ProgramarClases.css";
 import Loader from '../../Loader/Loader';
-import { useNavigate } from 'react-router-dom';
 
 const ProgramarClases = () => {
 
     const { user } = UserUpdates();
-    const [ form, setForm ] = useState({});
+    const [ diasHora, setDiasHora ] = useState({});
+    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
     const [ loader, setLoader ] = useState(false);
-    const myClases = {...user.misClases};
-    const [ diasDeClase, setDiasDeClase ] = useState();
-    const actualClases = myClases.remainingClases - myClases.programedClases;
 
     const handleChange = (e) => {
-        setForm({
-            ...form,
+        setDiasHora({
+            ...diasHora,
             [e.target.name]:e.target.value,
         })
+        console.log(diasHora);
     }
 
-    const optionDays = [
-        { value: 'Lunes', label: 'Lunes' },
-        { value: 'Martes', label: 'Martes' },
-        { value: 'Miercoles', label: 'Miercoles' },
-        { value: 'Jueves', label: 'Jueves' },
-        { value: 'Viernes', label: 'Viernes' },
-        { value: 'Sabado', label: 'Sabado' },
-        { value: 'Domingo', label: 'Domingo' },
-    ]
-
-    const testSelect = ( dia  ) => {
-        setDiasDeClase(dia);
-        console.log(diasDeClase);
-    }
-
-    const studentForm = {...user.form};
-
-    const moreInfo = {
+    const programedClassData = {
         condition: "pending",
         teacher: "unasigned",
-        reprogramedLeft: 2,
-        programed: "pending",
-    }
-
-    const studentData = {
+        remainingClases: user.misClases.remainingClases,
         studentUid: user.uid,
         studentEmail: user.email,
-        studentName: studentForm.name,
-        studentLastName: studentForm.lastName,    
+        studentName: user.form.name,
+        studentLastName: user.form.lastName,   
     }
 
-    /*
+    const userNotification = {
+        textNotification: "Programaste tus clases, en breve se te asiganara un profesor",
+        notificationType: "Notificacion",
+
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoader(true)
 
         try {
             const firestore = getFirestore();
-            const queryRef = query(collection(firestore, `Users/${user.uid}/myClases`));
-            addDoc(queryRef, { ...form, ...moreInfo })
+            const mySchedule = query(collection(firestore, `Users/${user.uid}/mySchedule`));
+            addDoc(mySchedule, { diasHora, ...programedClassData })
                 .then(({ id }) => {
 
                     const docuRef = doc(firestore, `Classes/${id}`);
-                    setDoc(docuRef, {...form, ...moreInfo, ...studentData });
+                    setDoc(docuRef, { diasHora, ...programedClassData });
+                    const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${id}`);
+                    setDoc(myNotifications, {...userNotification, timeStamp});
 
                 })
-            const userClases = doc(firestore, `Users/${user.uid}`);
-            await updateDoc(userClases, {
-                programedClases: increment(1)
-            });
-            setLoader(false);
-
-        } catch (e) {
-            swal("UPS!", `${e.message}`, "error");
-            setLoader(false);
-        }
-
-    }
-    */
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoader(true)
-
-        try {
-            const diasDisponibles = diasDeClase.map(day => ({dia:day.value}))
-            console.log("Los dias elegidos son: ", diasDisponibles);
-
-            const firestore = getFirestore();
-            const queryRef = query(collection(firestore, `Users/${user.uid}/myClases`));
-            addDoc(queryRef, { ...form, diasDisponibles })
-                .then(({ id }) => {
-
-                    const docuRef = doc(firestore, `Classes/${id}`);
-                    setDoc(docuRef, { ...form, ...moreInfo, diasDisponibles, ...studentData });
-
-                })
-            const userClases = doc(firestore, `Users/${user.uid}`);
-            await updateDoc(userClases, { ...form, diasDisponibles });
+            const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+            await updateDoc( teacherUpdate, { teacher: "pending"} )
             setLoader(false);
             swal("Muy Bien", `Ahora esperaras a que los administradores acepten tu solicitud!`, "success");
 
@@ -112,58 +64,100 @@ const ProgramarClases = () => {
 
     }
 
-    if (loader) {
-        return (
-            <Loader />
-        )
-    }
-
     return (
         <div>
-            <p>
-                PROGRAMAR CLASES
-            </p>
+            <h5>PROGRAMAR CLASES</h5>
 
-            <div>             
-                <div>
-                
-                    <form className='form__ProgramarClases' onSubmit={handleSubmit}>
+            <form className='form__ProgramarClases' onSubmit={handleSubmit}>
 
-                        <label htmlFor="diaDeClase">
-                            Selecciona los dias en que quieras tomar las clases
-                            <Select 
-                                options={optionDays}
-                                onChange={testSelect}
-                                isMulti
-                            />
-                        </label>
-
+                <ol>
+                    <li>
                         <label htmlFor="rangoHorarioDeClase">
-                            Selecciona un rango horario en el que puedas tomar tomar tus clases
+                            Lunes
                         </label>
                         <input
                             type="time" 
-                            id='timeStart' 
-                            name='timeStart' 
-                            value={form.timeStart || ''} 
+                            id='lunes' 
+                            name='lunes' 
+                            value={diasHora.lunes || ''} 
                             onChange={handleChange} 
                         />
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Martes
+                        </label>
                         <input
                             type="time" 
-                            id='timeEnd' 
-                            name='timeEnd' 
-                            value={form.timeEnd || ''} 
+                            id='martes' 
+                            name='martes' 
+                            value={diasHora.martes || ''} 
                             onChange={handleChange} 
                         />
-
-                        <br />
-  
-                        <button className='boton__programar' type="submit" id="btn__iniciar-sesion">Programar</button>
-
-                    </form>
-                </div>
-
-            </div>
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Miercoles
+                        </label>
+                        <input
+                            type="time" 
+                            id='miercoles' 
+                            name='miercoles' 
+                            value={diasHora.miercoles || ''} 
+                            onChange={handleChange} 
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Jueves
+                        </label>
+                        <input
+                            type="time" 
+                            id='jueves' 
+                            name='jueves' 
+                            value={diasHora.jueves || ''} 
+                            onChange={handleChange} 
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Viernes
+                        </label>
+                        <input
+                            type="time" 
+                            id='viernes' 
+                            name='viernes' 
+                            value={diasHora.viernes || ''} 
+                            onChange={handleChange} 
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Sabado
+                        </label>
+                        <input
+                            type="time" 
+                            id='sabado' 
+                            name='sabado' 
+                            value={diasHora.sabado || ''} 
+                            onChange={handleChange} 
+                        />
+                    </li>
+                    <li>
+                        <label htmlFor="rangoHorarioDeClase">
+                            Domingo
+                        </label>
+                        <input
+                            type="time" 
+                            id='domingo' 
+                            name='domingo' 
+                            value={diasHora.domingo || ''} 
+                            onChange={handleChange} 
+                        />
+                    </li>
+                </ol>
+                <button className='boton__programar' type="submit" id="btn__iniciar-sesion">Programar</button>
+            </form>
 
         </div>
     )

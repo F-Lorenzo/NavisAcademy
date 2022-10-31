@@ -29,6 +29,10 @@ function PanelProfessor() {
         navigate('/Account');
     }
 
+    const handleMiCalendario = () => {
+        navigate('/MiCalendario');
+    }
+
     return (
         <>
             <div>
@@ -36,6 +40,7 @@ function PanelProfessor() {
                 <div className='encabezado'>
                     <button onClick={handleMiPerfil}>Mi Perfil</button>
                     <button onClick={handleMisAlumnos}>Mis Alumnos</button>
+                    <button onClick={handleMiCalendario}>Mi Calendario</button>
                     <ul className='infoEncabezado'>
                         <li className='infoTittle'>Mis Clases Impartidas</li>
                         <li>Totales:</li>

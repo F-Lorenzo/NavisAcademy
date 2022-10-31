@@ -10,12 +10,10 @@ const Dates = ({info, teachersList}) => {
 
     const [ listTeachers, setListTeachers ] = useState(false);
 
-    const dias = info.diasDisponibles;
+    const dia = info.diasHora;
 
     const handleAsignarProfesor = () => {
         console.log(teachersList);
-        console.log(dias);
-        console.log(dias[0]);
         swal("OK", `Selecciona un profesor de la lista`, "success");
         setListTeachers(true);   
     };
@@ -40,17 +38,19 @@ const Dates = ({info, teachersList}) => {
                     Programacion de clases:
                     <ul className='profile-card'>
                         <li> Alumno: {info.studentName} {info.studentLastName}</li>
-                        <li> Los dias que prefiere son:
-                        {
-                            dias.map ( dia => <p> {dia.dia} </p> )
-
-                        }
-
+                        <li> Dias y hora: 
+                            {dia.lunes ? <p>Lunes: {dia.lunes}</p> : ""} 
+                            {dia.martes ? <p>Martes: {dia.martes}</p> : ""} 
+                            {dia.miercoles ? <p>miercoles: {dia.miercoles}</p> : ""} 
+                            {dia.jueves ? <p>Jueves: {dia.jueves}</p> : ""}
+                            {dia.viernes ? <p>Viernes: {dia.viernes}</p> : ""}
+                            {dia.sabado ? <p>Sabado: {dia.sabado}</p> : ""}
+                            {dia.domingo ? <p>Domingo: {dia.domingo}</p> : ""}
                         </li>
 
-                        <li> Desde el horario: {info.timeStart} </li>
-                        <li> Hasta el horario: {info.timeEnd} </li>
+
                         <button className='profile-card__button' onClick={handleAsignarProfesor}>ASIGNAR PROFESOR</button>
+
                     </ul>   
                 </div>
                  

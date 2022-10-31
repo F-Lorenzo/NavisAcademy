@@ -22,6 +22,7 @@ const ProgramingClassesAsAdmin = () => {
             ) 
             )
         )
+
         const allUsers = collection (querydb, `Users`);
         const onlyTeachers = query(allUsers, where('role', '==', 'teacher'));
         getDocs(onlyTeachers)
@@ -33,7 +34,6 @@ const ProgramingClassesAsAdmin = () => {
                 })
             )
         ))
-
 
     }, [])
 

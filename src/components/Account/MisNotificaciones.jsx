@@ -2,26 +2,40 @@ import React from 'react'
 import { UserUpdates } from '../../Context/UserUpdatesContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Notificacion from './Notificacion';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import ListarMisNotificaciones from './ListarMisNotificaciones';
 
 const MisNotificaciones = () => {
 
     const { user } = UserUpdates();
-    const [ userData, setUserData ] = useState({});
+    const [ notifications, setNotifications ] = useState([]);
+
+    const newNotification = user.form.newNotifications;
 
     useEffect(() => {
-        setUserData(user.form);
+
+            const firestore = getFirestore();
+            const notificationsRef = collection(firestore, `Users/${user.uid}/myNotifications`);
+            getDocs(notificationsRef)
+            .then( res => setNotifications(
+                res.docs.map(
+                    notif => ({
+                        id: notif.id,
+                        ...notif.data()
+                    })
+                )
+            ))
+        
     }, [user]);
 
     const handleTest = () => {
-        console.log(userData);
-
+        console.log(newNotification)
+        console.log(notifications);
     }
 
     return  (
         <div>
-            MIS NOTIFICACIONES {userData ? userData.remainingClases : "Nothing New Yet"}
-            <Notificacion info={userData} />
+            <ListarMisNotificaciones notificaciones={notifications} />
             <button onClick={handleTest}>TestMdfk</button>
         </div>
     )

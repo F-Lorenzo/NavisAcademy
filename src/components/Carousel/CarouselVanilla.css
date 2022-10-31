@@ -1,4 +1,5 @@
 .carousel-container {
+    position: relative;
     display: flex;
     align-items: center;
 }
@@ -27,8 +28,8 @@
     height: auto;
     width: 100%;
     max-width: 550px;
-    border-radius: 30px 30px 30px 30px;
-    transition: 1s;
+    border-radius: 30px 30px 30px 30px; 
+    transition: 1s; 
 }
 
 .loaded {

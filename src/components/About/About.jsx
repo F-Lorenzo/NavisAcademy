@@ -1,6 +1,7 @@
 import React from "react";
 import "./About.css";
 import about from "../../assets/img/about.jpg";
+import CarouselVanilla from "../Carousel/CarouselVanilla"
 
 const About = () => {
   return (
@@ -21,10 +22,7 @@ Aprende inglés de manera fácil, rápida y entretenida.
         </div>
 
         <div className="about__2">
-          <img
-            src={about}
-            alt=""
-          />
+          <CarouselVanilla />
         </div>
       </section>
     </>

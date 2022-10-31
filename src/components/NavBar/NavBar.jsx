@@ -4,6 +4,8 @@ import "./NavBar.css";
 import logo from "../../assets/img/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../Context/AuthContext";
+import NotificationsAlert from "./NotificationsAlert";
+
 
 const NavBar = () => {
 
@@ -35,7 +37,7 @@ const NavBar = () => {
 
             <li className="navBar-item">
               <NavLink className="navBar-link" to="/MisNotificaciones">
-                <img src="../../../src/Assets/turn-notifications-on-button.png" alt="homeButton.png" />
+                <NotificationsAlert />
               </NavLink>
             </li>
             
