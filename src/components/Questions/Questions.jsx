@@ -4,7 +4,7 @@ import arrow1 from "../../assets/img/flechaderecha.svg";
 import arrow2 from "../../assets/img/flechaizquierda.svg";
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,6 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import 'swiper/css/autoplay';
 
 const Questions = () => {
   return (
@@ -24,10 +25,11 @@ const Questions = () => {
         <div className="question_Body">
           <Swiper
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, A11y,Autoplay]}
             spaceBetween={50}
             slidesPerView={3}
             navigation
+            autoplay={{delay:1000}}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             breakpoints={{
