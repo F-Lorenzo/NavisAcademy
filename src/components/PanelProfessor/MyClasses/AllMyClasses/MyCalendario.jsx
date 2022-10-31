@@ -1,56 +1,23 @@
-import React from 'react'
-import "./MyCalendario.css"
+import React from 'react';
+import "./MyCalendario.css";
+import Scheduler from '../../../Scheduler';
 
 const MyCalendario = () => {
 
+    const dates = [
+        { start_date:'2022-11-1 6:00', end_date:'2022-11-1 7:00', text:'Alumno: Facundo Lorenzo', id: 1 },
+        { start_date:'2022-11-4 10:00', end_date:'2022-11-4 11:00', text:'Alumno: Facundo Lorenzo', id: 2 },
+        { start_date:'2022-11-8 6:00', end_date:'2022-11-8 7:00', text:'Alumno: Facundo Lorenzo', id: 3 },
+        { start_date:'2022-11-11 10:00', end_date:'2022-11-11 11:00', text:'Alumno: Facundo Lorenzo', id: 4 },
+        { start_date:'2022-11-15 6:00', end_date:'2022-11-15 7:00', text:'Alumno: Facundo Lorenzo', id: 5 },
+        { start_date:'2022-11-18 10:00', end_date:'2022-11-18 11:00', text:'Alumno: Facundo Lorenzo', id: 6 },
+    ];
+
     return (
         <div>
-            <h1>Mi Calendario</h1>
-
-            <div className='calendario'>
-                <ol>
-                    <li className='day-name'>Lunes</li>
-                    <li className='day-name'>Martes</li>
-                    <li className='day-name'>Miercoles</li>
-                    <li className='day-name'>Jueves</li>
-                    <li className='day-name'>Viernes</li>
-                    <li className='day-name'>Sabado</li>
-                    <li className='day-name'>Domingo</li>
-                    
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                    <li>13</li>
-                    <li>14</li>
-                    <li>15</li>
-                    <li>16</li>
-                    <li>17</li>
-                    <li>18</li>
-                    <li>19</li>
-                    <li>20</li>
-                    <li>21</li>
-                    <li>22</li>
-                    <li>23</li>
-                    <li>24</li>
-                    <li>25</li>
-                    <li>26</li>
-                    <li>27</li>
-                    <li>28</li>
-                    <li>29</li>
-                    <li>30</li>
-                    <li>31</li>
-                </ol>
+            <div className='scheduler-container'>
+                <Scheduler events={dates}/>
             </div>
-      
         </div>
     )
 

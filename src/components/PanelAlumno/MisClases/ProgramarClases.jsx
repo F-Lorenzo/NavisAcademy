@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
-import "./NewProgramarClases.css";
+import { DateTime } from 'luxon';
+import "./ProgramarClases.css";
 import Loader from '../../Loader/Loader';
 
 const ProgramarClases = () => {
 
     const { user } = UserUpdates();
     const [ diasHora, setDiasHora ] = useState({});
+    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
     const [ loader, setLoader ] = useState(false);
 
     const handleChange = (e) => {
@@ -28,20 +30,30 @@ const ProgramarClases = () => {
         studentLastName: user.form.lastName,   
     }
 
+    const userNotification = {
+        textNotification: "Programaste tus clases, en breve se te asiganara un profesor",
+        notificationType: "Notificacion",
+
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoader(true)
 
         try {
             const firestore = getFirestore();
-            const queryRef = query(collection(firestore, `Users/${user.uid}/mySchedule`));
-            addDoc(queryRef, { diasHora, ...programedClassData })
+            const mySchedule = query(collection(firestore, `Users/${user.uid}/mySchedule`));
+            addDoc(mySchedule, { diasHora, ...programedClassData })
                 .then(({ id }) => {
 
                     const docuRef = doc(firestore, `Classes/${id}`);
                     setDoc(docuRef, { diasHora, ...programedClassData });
+                    const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${id}`);
+                    setDoc(myNotifications, {...userNotification, timeStamp});
 
                 })
+            const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+            await updateDoc( teacherUpdate, { teacher: "pending"} )
             setLoader(false);
             swal("Muy Bien", `Ahora esperaras a que los administradores acepten tu solicitud!`, "success");
 

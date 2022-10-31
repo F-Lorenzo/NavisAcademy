@@ -11,6 +11,8 @@ const Teachers = ({dateId, teacher}) => {
     const [ classData, setClassData ] = useState([]);
     const [ loader, setLoader ] = useState(false);
 
+    const dia = teacher.disponibility;
+
     async function getClassData(id) {
 
         const firestore = getFirestore();
@@ -98,8 +100,17 @@ const Teachers = ({dateId, teacher}) => {
         <div>
             <ul>
                 
-                <li> Teacher: {teacher.name} {teacher.lastName} </li>
+                <li> Profesor: {teacher.name} {teacher.lastName} </li>
                 <li> Email: {teacher.email} </li>
+                <li> Disponibilidad: 
+                    {dia.lunesStart ? <p>Lunes desde las: {dia.lunesStart}hs hasta las {dia.lunesEnd}hs</p> : ""} 
+                    {dia.martesStart ? <p>Martes desde las: {dia.martesStart}hs hasta las {dia.martesEnd}hs</p> : ""} 
+                    {dia.miercolesStart ? <p>miercoles desde las:: {dia.miercolesStart} hasta las {dia.miercolesEnd}hs</p> : ""} 
+                    {dia.juevesStart ? <p>Jueves desde las: {dia.juevesStart}hs hasta las {dia.juevesEnd}hs</p>  : ""}
+                    {dia.viernesStart ? <p>Viernes desde las: {dia.viernesStart}hs hasta las {dia.viernesEnd}hs</p> : ""}
+                    {dia.sabadoStart ? <p>Sabado desde las: {dia.sabadoStart}hs hasta las {dia.sabadoEnd}hs</p> : ""}
+                    {dia.domingoStart ? <p>Domingo desde las: {dia.domingoStart}hs hasta las {dia.domingoEnd}hs</p> : ""}
+                </li>
                 
                 <button onClick={handleSeleccionarProfesor}>SELECCIONAR PROFESOR</button>
             </ul>      

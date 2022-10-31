@@ -35,7 +35,6 @@ import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones";
-import NewProgramarClases from "./components/PanelAlumno/MisClases/NewProgramarClases";
 
 
 function App() {
@@ -67,6 +66,8 @@ function App() {
               <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
               <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
               <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
+              
+              <Route path="/MiCalendario" element={<MyCalendario />} />
 
               <Route path="/Checkout" element={<Checkout />} />
 
@@ -98,13 +99,8 @@ function App() {
 
               <Route path="*" element={<h1>404</h1>} />
 
-              <Route path="/MiCalendario" element={<MyCalendario />} />
-
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
 
-              <Route path="/NewProgramarClases" element={<NewProgramarClases />} />
-              
-              
             </Routes>
 
             <Footer />
