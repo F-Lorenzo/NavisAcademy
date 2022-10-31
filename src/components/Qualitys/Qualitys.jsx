@@ -11,8 +11,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import 'swiper/css/autoplay';
-import 'animate.css';
+import "swiper/css/autoplay";
+import "animate.css";
 
 const Qualitys = () => {
   return (
@@ -22,45 +22,40 @@ const Qualitys = () => {
         <h2>Cualidades</h2>
       </div>
       <div className="quality_Content">
-          <div className="animate__fadeInDown quality_Body">
-
-      <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation
-        autoplay={{delay:1000}}
-        
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        breakpoints={{
-          0:{ 
-            slidesPerView:1, 
-            spaceBetween:10,
-          },
-          480:{ 
-            slidesPerView:2, 
-            spaceBetween:20,
-          },
-          768:{ 
-            slidesPerView:3, 
-            spaceBetween:35,
-          },
-          1024:{ 
-            slidesPerView:3, 
-            spaceBetween:25,
-          },
-          1024:{ 
-            slidesPerView:3, 
-            spaceBetween:45,
-          },
-          
-        }}
-     
- 
-      >
-      
+        <div className="animate__fadeInDown quality_Body">
+          <Swiper
+            // install Swiper modules
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={50}
+            slidesPerView={3}
+            navigation
+            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            loop={true}
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              480: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 35,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 45,
+              },
+            }}
+          >
             <SwiperSlide>
               <div className="box__1">
                 <div className="box__body">
@@ -93,7 +88,6 @@ const Qualitys = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              
               <div className="box__3">
                 <div className="box__body">
                   <div className="quality__Svg">
@@ -111,16 +105,10 @@ const Qualitys = () => {
               </div>
             </SwiperSlide>
 
-
-
-
-
-       <SwiperSlide></SwiperSlide>
-      
-        
-      </Swiper>
-          </div>
+            <SwiperSlide></SwiperSlide>
+          </Swiper>
         </div>
+      </div>
     </>
   );
 };
