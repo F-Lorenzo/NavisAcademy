@@ -4,10 +4,11 @@ import "swiper/css";
 import coh1 from "../../assets/img/cohete.svg";
 import arrow1 from "../../assets/img/flechaderecha.svg";
 import arrow2 from "../../assets/img/flechaizquierda.svg";
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import 'swiper/css/autoplay';
 
 {
   /* <div className="arrow1">
@@ -32,10 +33,11 @@ const Cards = () => {
    
         <Swiper
           // install Swiper modules
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={50}
           slidesPerView={3}
           navigation
+          autoplay={{delay:1000}}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           breakpoints={{

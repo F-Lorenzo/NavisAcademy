@@ -9,8 +9,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Navigation, Pagination } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css/autoplay';
 import 'animate.css';
 
 const Qualitys = () => {
@@ -25,10 +26,12 @@ const Qualitys = () => {
 
       <Swiper
         // install Swiper modules
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={50}
         slidesPerView={3}
         navigation
+        autoplay={{delay:1000}}
+        
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         breakpoints={{
@@ -54,6 +57,7 @@ const Qualitys = () => {
           },
           
         }}
+     
  
       >
       
