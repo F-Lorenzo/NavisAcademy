@@ -5,9 +5,12 @@
     font-family: 'Maven Pro', sans-serif;
 }
 
-
 .NavBar {
     text-align: center;
+}
+
+.navBar-brand img {
+    margin-top: 10px;
 }
 
 .navBarContainer {
@@ -17,7 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(0, 104, 55);
+    background-color: white;
+    margin-bottom: 50px;
 }
 
 .navBarContainer-login {
@@ -55,7 +59,6 @@
     filter: brightness(0) invert(1);
 }
 
-
 .navBar-link {
     display: block;
     text-decoration: none;
@@ -72,7 +75,8 @@
 }
 
 .navBar-link img {
-    width: 20px;
+    width: 30px;
+    margin-top: 10px;
 }
 
 .userMenu {
@@ -91,12 +95,13 @@
     background-color: rgba(66, 66, 66, 0.5)
 }
 
-.userMenu:hover img{
+.userMenu:hover img {
     filter: brightness(0) invert(1);
 }
 
 .userMenu img {
-    width: 20px;
+    width: 30px;
+    margin-top: 10px;
 }
 
 .userMenuOptions {
@@ -110,7 +115,6 @@
     text-decoration: none;
 }
 
-
 .modalUserMenu {
     top: -120px;
     visibility: hidden;
@@ -123,7 +127,7 @@
     font-size: 15px;
     height: 60px;
     width: 150px;
-    color:black;
+    color: black;
 }
 
 .userMenuOptions li:hover {
@@ -132,13 +136,36 @@
     background-color: rgba(66, 66, 66, 0.5)
 }
 
-
-
 #clickEvent {
     display: none;
 }
 
-#clickEvent:checked ~ .modalUserMenu {
+#clickEvent:checked~.modalUserMenu {
     visibility: visible;
     top: 0;
+}
+
+@media (max-width: 768px) {
+    .navBar-options li {
+        font-size: 12px;
+        color: black;
+        margin: 5px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .navBar-options li {
+        font-size: 12px;
+        color: black;
+        margin: 5px;
+    }
+}
+
+@media (min-width:480px) and (max-width:599px) {
+    /* smartphones, Android phones, landscape iPhone */
+    .navBar-options li {
+        font-size: 12px;
+        color: black;
+        margin: 5px;
+    }
 }

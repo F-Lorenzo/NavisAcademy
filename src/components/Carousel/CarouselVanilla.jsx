@@ -5,6 +5,8 @@ import img02 from '../../assets/imgCarouselHome/img02.jpg';
 import "./CarouselVanilla.css";
 
 
+
+
 const CarouselVanilla = () => {
 
     const images = [ img00, img01, img02 ];
@@ -19,9 +21,11 @@ const CarouselVanilla = () => {
             const nextIndex = next ? (condition ? index + 1 : 0) : (condition ? index - 1 : images.length - 1);
             setSelectedImage(images[nextIndex]);
             setSelectedIndex(nextIndex);
-        }, 1000);
+        }, 500);
     }
     
+
+
     const previous = () => {
         selectNewImage(selectedIndex, images, false);
     };
@@ -30,9 +34,15 @@ const CarouselVanilla = () => {
         selectNewImage(selectedIndex, images);
     }
     
+    // interface Props {
+    //     images :string[];
+    //     autoplay?: boolean;
+    //     showButtons?: boolean;
+    // }
+    // className={loaded ? "loaded" : "not-loaded"}
     return (
         <div className='carousel-container'>
-            <img src={selectedImage} alt="img" className={loaded ? "loaded" : "not-loaded"} onLoad={() => setLoaded(true)}/>
+            <img src={selectedImage} alt="img"  onLoad={() => setLoaded(true)}/>
             <button className='boton-der' onClick={previous}> <i className="fa-solid fa-circle-chevron-left"></i> </button>
             <button className='boton-izq' onClick={next}> <i className="fa-solid fa-circle-chevron-right"></i> </button>
         </div>
