@@ -1,6 +1,7 @@
 import React from "react";
 
 const NextClass = (myClass) => {
+<<<<<<< HEAD
   console.log(myClass);
 
 <<<<<<<<< Temporary merge branch 1
@@ -22,6 +23,8 @@ const NextClass = (myClass) => {
             </div>
 
 =========
+=======
+>>>>>>> master
   return (
     <div className="next-class-container">
       <div className="class__Body">

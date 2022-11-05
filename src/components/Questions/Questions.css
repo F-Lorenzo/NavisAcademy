@@ -13,7 +13,7 @@
     height: auto;
     background-color: #266f56;
     border-radius: 20px 20px 20px 20px;
-    color: white;
+    color: #FCFCFC;
     padding: 15px;
     text-align: center;
     margin-top: 150px;
@@ -34,7 +34,7 @@
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 
@@ -52,7 +52,7 @@
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 
@@ -62,7 +62,7 @@
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 

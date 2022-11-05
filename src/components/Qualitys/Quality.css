@@ -10,10 +10,10 @@
 
 .quality__Title h2 {
     width: 220px;
-    height: 30px;
+    height: 60px;
     background-color: #266f56;
     border-radius: 25px 25px 25px 25px;
-    color: white;
+    color: #FCFCFC;
     padding: 15px;
     text-align: center;
 }
@@ -48,7 +48,7 @@
     border: 1px solid #ccc;
     border-radius: 30px 30px 30px 30px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 
@@ -62,7 +62,7 @@
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 
@@ -72,7 +72,7 @@
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
     background-color: rgb(70, 172, 30);
-    color: white;
+    color: #FCFCFC;
     text-align: center;
 }
 

@@ -3,14 +3,17 @@ import { UserAuth } from '../../Context/AuthContext';
 import RoadLog from './RoadLog';
 import { Link, useNavigate } from 'react-router-dom';
 import MyClassesOfThePastMonth from './MyClasses/MyClassesOfThePastMonth';
+import { UserUpdates } from '../../Context/UserUpdatesContext';
+import "./PanelProfessor.css"
+import AllMyClasses from './MyClasses/AllMyClasses/AllMyClasses';
 
 
 function PanelProfessor() {
 
-    const { user } = UserAuth();
+    const { user } = UserUpdates();
     const navigate = useNavigate();
 
-    const handleMyStudents = () => {
+    const handleMisAlumnos = () => {
         console.log("MyStudents");
         navigate('/Account/Teacher/MyStudents');
         swal("BIENVENIDO", `Aquí podras ver una lista de tus alumnos`, "success");
@@ -22,26 +25,35 @@ function PanelProfessor() {
         swal("BIENVENIDO", `Aquí podras ver una lista de todas tus classes`, "success");
     }
 
-    const handleTestFilters = () => {
+    const handleMiPerfil = () => {
+        navigate('/Account');
+    }
 
-        console.log("TestFilters");
-        navigate('/Account/Teacher/TestFilters');
-        swal("BIENVENIDO", `TEST`, "success");
-
+    const handleMiCalendario = () => {
+        navigate('/MiCalendario');
     }
 
     return (
         <>
             <div>
-                <h3>Panel Professor</h3>
 
-                <button onClick={handleMyStudents}>MY STUDENTS</button>
+                <div className='encabezado'>
+                    <button onClick={handleMiPerfil}>Mi Perfil</button>
+                    <button onClick={handleMisAlumnos}>Mis Alumnos</button>
+                    <button onClick={handleMiCalendario}>Mi Calendario</button>
+                    <ul className='infoEncabezado'>
+                        <li className='infoTittle'>Mis Clases Impartidas</li>
+                        <li>Totales:</li>
+                        <li>Este mes:</li>
+                        <li>Mes Anterior:</li>
+                    </ul>
+                </div>
 
-                <br />
+                <AllMyClasses />
 
-                <button onClick={handleAllMyClasses}>ALL MY CLASSES</button>
+                
 
-                <br />
+
 
                 {/* 
                 

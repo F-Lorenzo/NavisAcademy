@@ -1,13 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import { UserUpdates } from "../../../Context/UserUpdatesContext";
 
 import { UserAuth } from "../../../Context/AuthContext";
 import { doc, getFirestore, updateDoc, increment } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 
 const MisClases = (clases) => {
-  const { user } = UserAuth();
+  const { user } = UserUpdates();
   const navigate = useNavigate();
+
 
   const handleInicioDeClase = async () => {
     try {
@@ -40,20 +42,22 @@ const MisClases = (clases) => {
           <h3>CLASES DISPONIBLES : {clases.remainingClases}</h3>
         </div>
 
-        <div className="info">
-          <h3>CLASES PROGRAMADAS: {clases.programedClases} </h3>
-        </div>
-
         <div className="info__Content">
           <div className="info-button-classes-container">
-            <div className="info-button">
-              <button
-                onClick={handleProgramarClases}
-                disabled={clases.remainingClases === clases.programedClases}
-              >
-                <h3>Programar clases</h3>
-              </button>
-            </div>
+
+            {
+              user.form.teacher="pending" ? "" :
+
+                <div className="info-button">
+                  <button
+                    onClick={handleProgramarClases}
+                    disabled={clases.remainingClases === clases.programedClases}
+                  >
+                    <h3>Programar clases</h3>
+                  </button>
+                </div>
+            }
+
             <div className="info-button">
               <button
                 onClick={handleCalendarioDeClases}

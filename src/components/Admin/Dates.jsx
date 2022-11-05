@@ -2,17 +2,23 @@ import React from 'react'
 import { useState } from 'react'
 import TeachersList from './TeachersList';
 import './Admin.css';
+import { connectFirestoreEmulator } from 'firebase/firestore';
+import ListDays from './ListDays';
 
 
 const Dates = ({info, teachersList}) => {
 
     const [ listTeachers, setListTeachers ] = useState(false);
 
+    const dia = info.diasHora;
+
     const handleAsignarProfesor = () => {
         console.log(teachersList);
         swal("OK", `Selecciona un profesor de la lista`, "success");
-        setListTeachers(true);
-    }
+        setListTeachers(true);   
+    };
+
+    
 
     if (listTeachers) {
 
@@ -23,23 +29,34 @@ const Dates = ({info, teachersList}) => {
             </>            
         )
 
-    } 
-    
-            return (
-                <div className='panel_Content'>
+    } else {
+        
+        return (
+            <div className='panel_Content'>
 
-                    <div className='profile-card'>
+                <div className='profile-card'>
+                    Programacion de clases:
                     <ul className='profile-card'>
-                        <li> Date: {info.date} </li>
-                        <li> Time: {info.time} </li>
-                        <li> Teacher: {info.teacher} </li>
-                        <li> Student: {info.studentEmail} </li>
+                        <li> Alumno: {info.studentName} {info.studentLastName}</li>
+                        <li> Dias y hora: 
+                            {dia.lunes ? <p>Lunes: {dia.lunes}</p> : ""} 
+                            {dia.martes ? <p>Martes: {dia.martes}</p> : ""} 
+                            {dia.miercoles ? <p>miercoles: {dia.miercoles}</p> : ""} 
+                            {dia.jueves ? <p>Jueves: {dia.jueves}</p> : ""}
+                            {dia.viernes ? <p>Viernes: {dia.viernes}</p> : ""}
+                            {dia.sabado ? <p>Sabado: {dia.sabado}</p> : ""}
+                            {dia.domingo ? <p>Domingo: {dia.domingo}</p> : ""}
+                        </li>
+
+
                         <button className='profile-card__button' onClick={handleAsignarProfesor}>ASIGNAR PROFESOR</button>
+
                     </ul>   
-                    </div>
-                    
                 </div>
-            )
+                 
+            </div>
+        )
+    }
 
     
     

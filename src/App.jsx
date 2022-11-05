@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./Context/AuthContext";
+import { UserUpdatesContextProvider } from "./Context/UserUpdatesContext";
 import "./App.css";
 
 import NavBar from "./components/NavBar/NavBar";
@@ -30,118 +31,81 @@ import Footer from "./components/Footer/Footer";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
 import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/AllMyClasses";
 import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
+import Panel from "./components/Account/Panel";
+import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
+
+import MisNotificaciones from "./components/Account/MisNotificaciones";
+
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <AuthContextProvider>
-          <NavBar />
+          <UserUpdatesContextProvider>
+            
+            <NavBar />
 
-          <Routes>
-            <Route path="/home" element={<Home />} />
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-            <Route path="/logger" element={<Logger />} />
-            <Route path="/signIn" element={<SignIn />} />
-            <Route path="/signUp" element={<Signup />} />
+              <Route path="/logger" element={<Logger />} />
+              <Route path="/signIn" element={<SignIn />} />
+              <Route path="/signUp" element={<Signup />} />
 
-            <Route path="/Admin" element={<Admin />} />
-            <Route
-              path="/Admin/CreateTeacherAccount"
-              element={<CreateTeacherAccount />}
-            />
+              <Route path="/Panel" element={<Panel />} />
 
-            <Route
-              path="/account"
-              element={
-                <ProtectedRoute>
-                  <Account />
-                </ProtectedRoute>
-              }
-            />
+              <Route path="/Admin" element={<Admin />} />
+              <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
+              <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
 
-            <Route
-              path="/Account/EditarInformacion"
-              element={<EditarInformacion />}
-            />
-            <Route
-              path="/Account/ProgramarClases"
-              element={<ProgramarClases />}
-            />
-            <Route
-              path="/Account/CalendarioDeClases"
-              element={<CalendarioDeClases />}
-            />
+              <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
+              <Route path="/Account/ProgramarClases" element={<ProgramarClases />} />
+              <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
 
-            <Route
-              path="/Account/Teacher/MyStudents"
-              element={<MyStudents />}
-            />
-            <Route
-              path="/Account/Teacher/AllMyClasses"
-              element={<AllMyClasses />}
-            />
-            <Route
-              path="/Account/Teacher/TestFilters"
-              element={<MyClassesOfThePastMonth />}
-            />
+              <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
+              <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
+              <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
+              
+              <Route path="/MiCalendario" element={<MyCalendario />} />
 
-            <Route
-              path="/Admin/ProgramingClassesAsAdmin"
-              element={<ProgramingClassesAsAdmin />}
-            />
-            <Route path="/Checkout" element={<Checkout />} />
+              <Route path="/Checkout" element={<Checkout />} />
 
-            <Route
-              path="/Alumn"
-              element={
-                <ProtectedRouteStudent>
-                  <PanelAlumno />
-                </ProtectedRouteStudent>
-              }
-            />
+              <Route
+                path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
 
-            <Route
-              path="/Account/Teacher/MyStudents"
-              element={<MyStudents />}
-            />
-            <Route
-              path="/Account/Teacher/AllMyClasses"
-              element={<AllMyClasses />}
-            />
-            <Route
-              path="/Account/Teacher/TestFilters"
-              element={<MyClassesOfThePastMonth />}
-            />
+              <Route path="/Alumn" 
+                element={
+                  <ProtectedRouteStudent>
+                    <PanelAlumno />
+                  </ProtectedRouteStudent>
+                }
+              />
 
-            <Route
-              path="/Admin/ProgramingClassesAsAdmin"
-              element={<ProgramingClassesAsAdmin />}
-            />
-            <Route path="/Checkout" element={<Checkout />} />
+              <Route
+                path="/Teacher"
+                element={
+                  <ProtectedRouteTeacher>
+                    <PanelProfessor />
+                  </ProtectedRouteTeacher>
+                }
+              />
 
-            <Route
-              path="/Alumn"
-              element={
-                <ProtectedRouteStudent>
-                  <PanelAlumno />
-                </ProtectedRouteStudent>
-              }
-            />
+              <Route path="*" element={<h1>404</h1>} />
 
-            <Route
-              path="/Teacher"
-              element={
-                <ProtectedRouteTeacher>
-                  <PanelProfessor />
-                </ProtectedRouteTeacher>
-              }
-            />
+              <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
 
-            <Route path="*" element={<h1>404</h1>} />
-          </Routes>
+            </Routes>
 
-          <Footer />
+            <Footer />
+
+          </UserUpdatesContextProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </>

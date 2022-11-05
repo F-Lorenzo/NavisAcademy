@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
+import { DateTime } from 'luxon';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import Loader from '../Loader/Loader'
 
@@ -11,6 +12,7 @@ const Signup = () => {
     const [ error, setError ] = useState('')
     const { createUser } = UserAuth();
     const navigate = useNavigate();
+    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
 
     const handleChange = (e) => {
         setForm({
@@ -19,14 +21,21 @@ const Signup = () => {
         })
     }
 
-    const student = {
+    const studentData = {
         role: "alumn",
         remainingClases: 0,
         completedClases: 0,
-        programedClases: 0,
+        absentedClases: 0,
+        teacher: "unasigned",
+        newNotifications: true,
+        notifications: 1,
     }
 
-    const myClases = { }
+    const welcomeNotification = {
+        textNotification: "Bienvenido a Navis!",
+        notificationType: "Welcome",
+
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,12 +48,14 @@ const Signup = () => {
             console.log(infoUser); // BORRAR ESTA SHIT!!
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
-            setDoc(docuRef, {...form, ...student});
+            setDoc(docuRef, {...form, ...studentData});
+
+            const notifications =  collection(firestore, `Users/${infoUser.user.uid}/myNotifications`);
+            addDoc(notifications, {...welcomeNotification, timeStamp});
 
             navigate('/account');
         } catch (e) {
             setError(e.message);
-            console.log(e.message); // BORRAR ESTA SHIT!!
             swal("UPS!", `${e.message}`, "error");
             setLoader(false);
         }
@@ -62,16 +73,16 @@ const Signup = () => {
             <div className="caja__trasera-login">
 
                 <p>
-                    ¿Already have an account?{' '}
+                    ¿Ya tienes una cuenta?{' '}
                     <Link to='/signIn'>
-                        Sign in.
+                        Inicia sesion.
                     </Link>
                 </p>
 
                 <form className='form__Register' onSubmit={handleSubmit}>
 
                     <label htmlFor="name">
-                        Name : 
+                        Nombre : 
                     </label>
                     <input 
                         type="text" 
@@ -81,10 +92,8 @@ const Signup = () => {
                         onChange={handleChange} 
                     />
 
-                    <br />
-
                     <label htmlFor="lastName">
-                        Last name : 
+                        Apellido : 
                     </label>
                     <input 
                         type="text" 
@@ -92,9 +101,7 @@ const Signup = () => {
                         name='lastName' 
                         value={form.lastName || ''} 
                         onChange={handleChange} 
-                    />
-                    
-                    <br />
+                    />                
 
                     <label htmlFor="password">
                         Password : 
@@ -107,8 +114,6 @@ const Signup = () => {
                         onChange={handleChange} 
                     />
 
-                    <br />
-
                     <label htmlFor="email">
                         Email : 
                     </label>
@@ -120,10 +125,8 @@ const Signup = () => {
                         onChange={handleChange} 
                     />
 
-                    <br />
-
                     <label htmlFor="phoneNumber">
-                        Phone Number : 
+                        Numero de celular : 
                     </label>
                     <input 
                         type="tel" 
@@ -133,10 +136,8 @@ const Signup = () => {
                         onChange={handleChange} 
                     />
 
-                    <br />
-
                     <label htmlFor="country">
-                        Country: 
+                        Pais: 
                     </label>
                     <input 
                         type="text" 
@@ -146,10 +147,8 @@ const Signup = () => {
                         onChange={handleChange} 
                     />
 
-                    <br />
-
                     <label htmlFor="city">
-                        City: 
+                        Ciudad: 
                     </label>
                     <input 
                         type="text" 
@@ -158,8 +157,6 @@ const Signup = () => {
                         value={form.city || ''} 
                         onChange={handleChange} 
                     />
-
-                    <br />
 
                     <button className='boton__login' type="submit" id="btn__iniciar-sesion">Crear Cuenta</button>
 

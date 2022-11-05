@@ -1,4 +1,4 @@
-*{
+* {
     text-decoration: none;
 }
 
@@ -10,6 +10,19 @@
     width: 100%;
     height: 300px;
     background-color: white;
+}
+
+.form__Register {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
+    position: relative;
+    transition: all .2s ease-in-out;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
 }
 
 .next-class-container {
@@ -25,12 +38,14 @@
     align-items: center;
     border-radius: 30px 30px 30px 30px;
     gap: 20px;
+    margin-top: 20px;
 }
 
 .class__button-start {
     width: 229px;
     height: 34px;
-    background-color:  rgb(70, 172, 30);;
+    background-color: rgb(70, 172, 30);
+    ;
     text-align: center;
     padding: 2px;
     cursor: pointer;
@@ -115,8 +130,6 @@
     margin: 0px;
 }
 
-
-
 .buy-container {
     display: flex;
     flex-direction: column;
@@ -145,7 +158,7 @@
     align-items: center;
     background-color: #F5F5F5;
     margin: 10px;
-    width: 245px;
+    width: 276px;
     height: 376px;
     flex-wrap: nowrap;
     align-content: space-between;
@@ -166,9 +179,9 @@
     height: 26px;
     margin-top: 10px;
     border: 0;
-    background-color:  rgb(70, 172, 30);
+    background-color: rgb(70, 172, 30);
     border-radius: 30px 30px 30px 30px;
-    color:white;
+    color: white;
 }
 
 .boton__programar {
@@ -183,4 +196,103 @@
     margin-left: 20px;
     margin-top: 10px;
     font-family: "open sans-serif"
+}
+
+@media (max-width: 768px) {
+    .buy-card-container {
+        flex-direction: column;
+    }
+    .info-container {
+        flex-direction: column;
+    }
+    .next-class-container {
+        width: 100%;
+    }
+    .class__Body {
+        width: 75%;
+    }
+    .class__Body p {
+        margin-left: 23px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .class__button-end {
+        height: 38px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+    }
+    .class__button-start {
+        height: 37px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .buy-card-container {
+        flex-direction: column;
+    }
+    .info-container {
+        flex-direction: column;
+    }
+    .next-class-container {
+        width: 100%;
+    }
+    .class__Body {
+        width: 75%;
+    }
+    .class__Body p {
+        margin-left: 23px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .class__button-end {
+        height: 38px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+    }
+    .class__button-start {
+        height: 37px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+    }
+}
+
+@media (min-width:480px) and (max-width:599px) {
+    /* smartphones, Android phones, landscape iPhone */
+    .buy-card-container {
+        width: 50%;
+    }
+    .info-container {
+        flex-direction: column;
+    }
+    .next-class-container {
+        width: 100%;
+    }
+    .class__Body {
+        width: 75%;
+        margin-left: 5px;
+    }
+    .class__Body p {
+        margin-left: 23px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+    .class__button-end {
+        height: 38px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+    }
+    .class__button-start {
+        height: 37px;
+        width: auto;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 12px;
+    }
 }

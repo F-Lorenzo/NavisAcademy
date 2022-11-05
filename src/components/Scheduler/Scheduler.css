@@ -1,0 +1,16 @@
+.scheduler-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.dhx_event_move {
+    background-color: rgb(0, 104, 55) !important;
+}
+
+.dhx_body {
+    background-color: rgb(4, 167, 91) !important;
+}
+
+.dhx_cal_navline {
+    box-shadow: -1px 0 0 #3dd102 !important;
+}

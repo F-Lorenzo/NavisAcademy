@@ -2,11 +2,13 @@ import React from "react";
 import "./Account.css";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../Context/AuthContext";
+import { UserUpdates } from "../../Context/UserUpdatesContext";
 import TeacherProfile from "../PanelProfessor/TeacherProfile";
 import PerfilAlumno from "../PanelAlumno/PerfilAlumno";
 
 const Account = () => {
-  const { user, logOut } = UserAuth();
+  const { userLogged, logOut } = UserAuth();
+  const { user } = UserUpdates();
   const navigate = useNavigate();
 
   const handleLogout = async () => {

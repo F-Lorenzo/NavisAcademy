@@ -1,0 +1,41 @@
+.form__ProgramarClases {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    background-color: #FCFCFC;
+    padding: 20px;
+    width: 1024px;
+    margin: 0 auto;
+
+    font-size: 20px;
+}
+
+.semanaCalendario {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.semanaCalendario li {
+    width: 70px;
+    height: 25px;
+    text-align: center;
+
+}
+
+.semanaCalendario li:hover {
+    background-color: #006633;
+
+    color: #FCFCFC;
+
+    border-radius: 15px;
+}
+
+.semanaCalendario li:focus {
+    background-color: #006633;
+
+    color: #FCFCFC;
+
+    border-radius: 15px;
+}
