@@ -5,6 +5,7 @@ import {
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
+import CardClasses from "../PanelAlumno/BuyClasses/CardClasses";
 
 export default function Payment({ totalValue }) {
   // useEffect(() => {
