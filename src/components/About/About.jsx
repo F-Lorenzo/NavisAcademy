@@ -22,7 +22,7 @@ Aprende inglés de manera fácil, rápida y entretenida.
         </div>
 
         <div className="about__2">
-          <CarouselVanilla />
+          <CarouselVanilla autoplay={true} />
         </div>
       </section>
     </>
