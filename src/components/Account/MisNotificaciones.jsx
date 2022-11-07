@@ -10,8 +10,6 @@ const MisNotificaciones = () => {
     const { user } = UserUpdates();
     const [ notifications, setNotifications ] = useState([]);
 
-    const newNotification = user.form.newNotifications;
-
     useEffect(() => {
 
             const firestore = getFirestore();
@@ -29,7 +27,6 @@ const MisNotificaciones = () => {
     }, [user]);
 
     const handleTest = () => {
-        console.log(newNotification)
         console.log(notifications);
     }
 

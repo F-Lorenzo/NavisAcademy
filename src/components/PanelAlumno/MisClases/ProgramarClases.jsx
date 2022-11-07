@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
-import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc } from 'firebase/firestore';
+import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, serverTimestamp } from 'firebase/firestore';
 import { DateTime } from 'luxon';
 import "./ProgramarClases.css";
 import Loader from '../../Loader/Loader';
@@ -9,7 +9,7 @@ const ProgramarClases = () => {
 
     const { user } = UserUpdates();
     const [ diasHora, setDiasHora ] = useState({});
-    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+    const timeStamp = serverTimestamp(); 
     const [ loader, setLoader ] = useState(false);
 
     const handleChange = (e) => {

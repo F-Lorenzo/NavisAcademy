@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 import { DateTime } from 'luxon';
-import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
+import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs, serverTimestamp } from 'firebase/firestore';
 import Loader from '../Loader/Loader'
 
 const Signup = () => {
@@ -12,7 +12,8 @@ const Signup = () => {
     const [ error, setError ] = useState('')
     const { createUser } = UserAuth();
     const navigate = useNavigate();
-    const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+    const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+    const timeStamp = serverTimestamp();
 
     const handleChange = (e) => {
         setForm({

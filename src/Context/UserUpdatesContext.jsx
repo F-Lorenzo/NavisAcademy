@@ -27,11 +27,14 @@ export const UserUpdatesContextProvider = ({children}) => {
                                     teacher: newData.teacher,
                                }
                 };
+                
                 setUser(userData);
             });
             return () => {
                 unsubscribe();
             }
+        } else {
+            setUser({});
         }
     }, [userLogged])
 

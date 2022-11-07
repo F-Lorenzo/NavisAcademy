@@ -1,10 +1,10 @@
 import React from 'react'
 import Teachers from './Teachers'
 
-const TeachersList = ({dateId, teachers=[]}) => {
+const TeachersList = ({date, teachers=[], daysInfo}) => {
 
     return (
-        teachers.map( listTeacher => <Teachers dateId={dateId} key={listTeacher.id} teacher={listTeacher}/> )
+        teachers.map( listTeacher => <Teachers date={date} key={listTeacher.id} teacher={listTeacher} requiredDays={daysInfo}/> )
     )
     
 }

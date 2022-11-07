@@ -43,9 +43,9 @@ function PanelProfessor() {
                     <button onClick={handleMiCalendario}>Mi Calendario</button>
                     <ul className='infoEncabezado'>
                         <li className='infoTittle'>Mis Clases Impartidas</li>
-                        <li>Totales:</li>
-                        <li>Este mes:</li>
-                        <li>Mes Anterior:</li>
+                        <li>Totales: {user.form.totalClasses}</li>
+                        <li>Este mes: {user.form.thisMonthClasses} </li>
+                        <li>Mes Anterior: {user.form.lastMonthClasses}</li>
                     </ul>
                 </div>
 

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { DateTime } from 'luxon';
 import 'dhtmlx-scheduler';
 import 'dhtmlx-scheduler/codebase/dhtmlxscheduler_material.css';
  
 const scheduler = window.scheduler;
+const toDay = (DateTime.now()).toFormat("y, L, d");
  
 export default class Scheduler extends Component {
     componentDidMount() {
@@ -18,7 +20,7 @@ export default class Scheduler extends Component {
         ];
  
         const { events } = this.props;
-        scheduler.init(this.schedulerContainer, new Date(2022, 9, 31));
+        scheduler.init(this.schedulerContainer, toDay);
         scheduler.clearAll();
         scheduler.parse(events);
     }

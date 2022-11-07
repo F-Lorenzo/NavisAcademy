@@ -46,16 +46,18 @@ const MisClases = (clases) => {
           <div className="info-button-classes-container">
 
             {
-              user.form.teacher="pending" ? "" :
-
+              user.form.teacher==="unasigned" ? 
+                
                 <div className="info-button">
                   <button
                     onClick={handleProgramarClases}
-                    disabled={clases.remainingClases === clases.programedClases}
+                    disabled={clases.remainingClases === 0}
                   >
                     <h3>Programar clases</h3>
                   </button>
                 </div>
+                
+              : ""
             }
 
             <div className="info-button">

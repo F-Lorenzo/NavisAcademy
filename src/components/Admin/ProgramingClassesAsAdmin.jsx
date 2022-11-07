@@ -1,14 +1,16 @@
 import React, { useState, useEffect }  from 'react';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import Classes from './Classes';
+import Loader from '../Loader/Loader';
 
 
 const ProgramingClassesAsAdmin = () => {
 
     const [ data, setData ] = useState([]);
     const [ teachers, setTeachers ] = useState([]);
+    const [ loader, setLoader ] = useState(true);
 
-    useEffect( () => {
+    useEffect(() => {
 
         const querydb = getFirestore();
         const queryCollection = collection (querydb, `Classes`);
@@ -20,8 +22,7 @@ const ProgramingClassesAsAdmin = () => {
                     ...date.data()
                 })
             ) 
-            )
-        )
+        ))
 
         const allUsers = collection (querydb, `Users`);
         const onlyTeachers = query(allUsers, where('role', '==', 'teacher'));
@@ -35,19 +36,25 @@ const ProgramingClassesAsAdmin = () => {
             )
         ))
 
+        setLoader(false);
+
     }, [])
 
-
-    return (
-        <div>
-            <h1>
-                CLASES PROGRAMADAS
-            </h1>
-            <Classes classDate={data} teachers={teachers} />
-
-        </div>
-    )
-
+    if (loader) {
+        return (
+            <Loader />
+        )
+    } else {
+        return (
+            <div>
+                <h1>
+                    CLASES PROGRAMADAS
+                </h1>
+                <Classes classDate={data} teachers={teachers} />
+    
+            </div>
+        )
+    }
 }
 
 export default ProgramingClassesAsAdmin

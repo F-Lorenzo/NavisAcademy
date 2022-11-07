@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UserAuth } from "../../../Context/AuthContext";
-import { getFirestore, doc, increment, updateDoc, query, collection, setDoc, addDoc } from "firebase/firestore";
+import { getFirestore, doc, increment, updateDoc, query, collection, setDoc, addDoc, serverTimestamp } from "firebase/firestore";
 import { DateTime } from 'luxon';
 import { useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
@@ -17,7 +17,8 @@ const CardClasses = ({ number, price, duration, amount }) => {
 
   const textNotification = "Felicitaciones, adquiriste nuevas clases";
   const notificationType = "compra";
-  const timeStamp = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+  const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+  const timeStamp = serverTimestamp();
 
   const handleBuyNow = async () => {
     try {
