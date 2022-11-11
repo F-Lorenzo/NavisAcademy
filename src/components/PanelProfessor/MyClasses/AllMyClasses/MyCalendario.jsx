@@ -4,7 +4,7 @@ import Scheduler from '../../../Scheduler';
 import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { doc, getDoc, getDocs, getFirestore, collection } from 'firebase/firestore';
 import { UserUpdates } from '../../../../Context/UserUpdatesContext';
 
 const MyCalendario = () => {
@@ -13,35 +13,29 @@ const MyCalendario = () => {
     const [ myClasses, setMyClasses ] = useState([]);
     const [ loader, setLoader ] = useState(true);
 
-    async function getMyClasses(id) {
+    useEffect(()=> {
         const firestore = getFirestore();
-        const myClassesDocRef = doc( firestore, `Users/${id}/mySchedule/myClasses`);
-        const myClassesDocRes = await getDoc(myClassesDocRef);
-        const myClassesDoc = myClassesDocRes.data();
-        return myClassesDoc;
-    }
-
-    useEffect(() => {
-        getMyClasses(user.uid).then( (dates) => {  
-            const allMyClasses = {...dates};
-            const arrayOfClasses = [];
-            Object.keys(allMyClasses).forEach(key => arrayOfClasses.push({
-                id: key,
-                /*
-                start_date: allMyClasses[key].start_date.toDate(),
-                end_date: allMyClasses[key].end_date.toDate(),
-                */
-                start_date: allMyClasses[key].start_date,
-                end_date: allMyClasses[key].end_date,
-                text: allMyClasses[key].text
-            }))
-            setMyClasses(arrayOfClasses);
-            setLoader(false);
-        })
-    }, [])
-
-
-    const handleTestTime = () => {
+        const myClassesCollection = collection(firestore, `Users/${user.uid}/mySchedule`);
+        getDocs(myClassesCollection)
+        .then( res => 
+            {
+                const mySchedule = res.docs.map(date => ({ ...date.data()}))
+                console.log(mySchedule);
+                const arrayOfClasses = [];        
+                mySchedule.forEach( allMyClasses => 
+                    Object.keys(allMyClasses).forEach(key => arrayOfClasses.push({
+                        start_date: allMyClasses[key].start_date,
+                        end_date: allMyClasses[key].end_date,
+                        text: allMyClasses[key].text
+                    }))
+                );
+                setMyClasses(arrayOfClasses);
+                setLoader(false);
+            }
+        )
+    }, []); 
+ 
+    const handleTest = () => {
         console.log(myClasses);
     }
 
@@ -50,11 +44,10 @@ const MyCalendario = () => {
             <h5>loading...</h5>
         )
     } else {
-
         return (
             <div>
+                <button onClick={handleTest}>TEST</button>
                 {/* 
-                <button onClick={handleTestTime}>testTime</button>
                 */}
                 <div className='scheduler-container'>
                     <Scheduler events={myClasses}/>
@@ -62,7 +55,6 @@ const MyCalendario = () => {
             </div>
         )
     }
-
 
 }
 

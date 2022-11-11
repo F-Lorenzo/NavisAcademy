@@ -3,19 +3,31 @@
 }
 
 .profile-card {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     width: 100%;
-    min-height: 460px;
+    
     margin: auto;
-    box-shadow: 0px 8px 60px -10px rgb(13 28 39 / 60%);
+    box-shadow: 0px 8px 60px -10px rgb(0 104 55 / 80%);
     background: #fff;
     border-radius: 12px;
-    max-width: 400px;
+    max-width: 800px;
     position: relative;
     gap: 20px;
 }
 
+.profile-card ul li {
+    margin: 15px 35px;
+    padding: 15px 40px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
 .profile-card:hover {
-    box-shadow: 0px 5px 10px rgba(10, 190, 115, 0.75);
+    box-shadow: 0px 5px 10px rgba(108, 175, 55, 0.75);
 }
 
 .profile-card__button {
@@ -28,7 +40,7 @@
     border: none;
     font-family: "Quicksand", sans-serif;
     font-weight: 700;
-    font-size: 19px;
+    font-size: 15px;
     margin: 15px 35px;
     padding: 15px 40px;
     min-width: 201px;

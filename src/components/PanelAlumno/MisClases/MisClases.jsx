@@ -31,10 +31,9 @@ const MisClases = (clases) => {
     navigate("/Account/ProgramarClases");
   };
 
-  const handleCalendarioDeClases = () => {
-    navigate("/Account/CalendarioDeClases");
-    swal("BIENVENIDO", `Aquí podras ver tu calendario de clases`, "success");
-  };
+  const handleMiCalendario = () => {
+    navigate('/MiCalendario');
+  }
   return (
     <div>
       <div className="info-container">
@@ -62,7 +61,7 @@ const MisClases = (clases) => {
 
             <div className="info-button">
               <button
-                onClick={handleCalendarioDeClases}
+                onClick={handleMiCalendario}
                 disabled={clases.programedClases === 0}
               >
                 <h3>Calendario de clases</h3>
