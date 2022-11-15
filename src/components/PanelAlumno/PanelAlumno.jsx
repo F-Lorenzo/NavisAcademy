@@ -19,7 +19,7 @@ const PanelAlumno = () => {
 
   useEffect(() => {
     const querydb = getFirestore();
-    const queryCollection = collection(querydb, `Users/${user.uid}/myClases`);
+    const queryCollection = collection(querydb, `Users/${user.uid}/mySchedule`);
     getDocs(queryCollection).then((res) =>
       setAllMyClasses(
         res.docs.map((date) => ({
@@ -30,9 +30,15 @@ const PanelAlumno = () => {
     );
   }, []);
 
+  const handleTest = () => {
+    console.log(allMyClasses);
+  }
+
   return (
     <>
       <div>
+
+        <button onClick={handleTest}>TEST</button>
 
         <div className="container">
           <MyNextClass myClasses={allMyClasses} />

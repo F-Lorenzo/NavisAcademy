@@ -1,12 +1,20 @@
 import React from "react";
+import { UserUpdates } from "../../../Context/UserUpdatesContext";
 
 const NextClass = (myClass) => {
+
+  const { user } = UserUpdates();
+
+  console.log(user);
+
   return (
     <div className="next-class-container">
       <div className="class__Body">
         <div>
           <h3>{myClass.time}18 HS</h3>
-          <p>Professor: Unasigned</p>
+          <div>
+            { user.form.teacherName ? <p>Profesor: {user.form.teacherName}</p> : <p>Profesor no asignado</p> }
+          </div>
         </div>
 
         <p>TU PROXIMA CLASE ESTA POR COMENZAR</p>

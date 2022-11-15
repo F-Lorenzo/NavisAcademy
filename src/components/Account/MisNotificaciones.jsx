@@ -33,7 +33,9 @@ const MisNotificaciones = () => {
     return  (
         <div>
             <ListarMisNotificaciones notificaciones={notifications} />
+            {/*
             <button onClick={handleTest}>TestMdfk</button>
+            */}
         </div>
     )
 }

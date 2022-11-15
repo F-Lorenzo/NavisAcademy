@@ -53,7 +53,7 @@ const ProgramarClases = () => {
 
                 })
             const teacherUpdate = doc(firestore, `Users/${user.uid}`);
-            await updateDoc( teacherUpdate, { teacher: "pending"} )
+            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1)} )
             setLoader(false);
             swal("Muy Bien", `Ahora esperaras a que los administradores acepten tu solicitud!`, "success");
 
