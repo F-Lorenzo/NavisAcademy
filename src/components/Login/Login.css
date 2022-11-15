@@ -1,5 +1,5 @@
 .caja__trasera {
-    padding: 10px 40px;
+    padding: 40px 40px;
     display: flex;
     justify-content: center;
     background-color: #FCFCFC;
@@ -15,6 +15,7 @@
     gap: 15px;
     flex-direction: row;
     align-items: center;
+    height: 542px;
 }
 
 .tittleColumn {
@@ -122,6 +123,7 @@
     display: block;
     width: 350px;
     text-align: left;
+    font-size: 13px;
 }
 
 label {
@@ -133,13 +135,18 @@ label {
     padding: 12px 5%;
     width: 350px;
     border: 2px solid black;
-    height: 60px;
+    height: 35px;
     border-radius: 20px;
     background-color: #FFFFFF;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     color: #2C3E50;
-    font-size: 20px;
+    font-size: 12px;
     font-family: 'Open Sans', sans-serif;
+}
+
+.navBar-item {
+    color: black;
+    padding: 6px;
 }
 
 

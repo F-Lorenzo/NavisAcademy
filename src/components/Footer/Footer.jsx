@@ -14,7 +14,7 @@ const Footer = () => {
           <Link className="logoFooter" to="/home">
             <img src={logoFooter} alt="" />
           </Link>
-
+{/* 
           <div className="paquetes__Footer">
             <h2>Paquetes</h2>
             <p>
@@ -30,7 +30,7 @@ const Footer = () => {
               nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
               erat volutpat. Ut wisi enim.
             </p>
-          </div>
+          </div> */}
 
           <div>
             <div className="redes__Footer">
