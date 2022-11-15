@@ -1,3 +1,9 @@
 .buy-card li {
     list-style: none;
+    text-align: center;
+}
+
+.buy-card .button__Card {
+    margin-top: 30px;
+    margin-left: 20px;
 }

@@ -9,10 +9,10 @@
     
     .footer__Container {
         display: flex;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: center;
         gap: 80px;
-        margin-top: 20px;
+        margin-top: 50px;
         color: #FCFCFC;
         width: 100%;
         position: absolute;
