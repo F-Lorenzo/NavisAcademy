@@ -35,6 +35,7 @@ import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones";
+import TestingShit from "./components/TestingShit/TestingShit";
 
 
 function App() {
@@ -71,6 +72,8 @@ function App() {
 
               <Route path="/Checkout" element={<Checkout />} />
 
+              <Route path="/TEST" element={<TestingShit />} />
+
               <Route
                 path="/account"
                 element={
@@ -101,8 +104,8 @@ function App() {
 
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
 
-            </Routes>
-
+            </Routes>         
+            
             <Footer />
 
           </UserUpdatesContextProvider>

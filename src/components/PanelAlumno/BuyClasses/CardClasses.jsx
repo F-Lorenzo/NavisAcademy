@@ -24,7 +24,7 @@ const CardClasses = ({ number, price, duration, amount }) => {
   const { userLogged } = UserAuth();
 
   const textNotification = "Felicitaciones, adquiriste nuevas clases";
-  const notificationType = "compra";
+  const notificationType = "Compra";
   const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
   const timeStamp = serverTimestamp();
 

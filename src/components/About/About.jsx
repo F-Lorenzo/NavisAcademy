@@ -9,7 +9,7 @@ const About = () => {
       <section className="main__Content">
         <div className="about__1">
           <div className="contenido">
-          <h2 className="about__title">Quienes Somos</h2>
+          <h2 className="about__title">APRENDER</h2>
             <span className="parrafo__content">
             En un mundo donde la globalización está cada vez más presente en nuestro día a día, Navis es tu
 impulso hacia ello, siendo el inglés el principal idioma utilizado para los negocios, estudios y viajes, este
@@ -22,7 +22,7 @@ Aprende inglés de manera fácil, rápida y entretenida.
         </div>
 
         <div className="about__2">
-          <CarouselVanilla autoplay={true} />
+          <CarouselVanilla  />
         </div>
       </section>
     </>

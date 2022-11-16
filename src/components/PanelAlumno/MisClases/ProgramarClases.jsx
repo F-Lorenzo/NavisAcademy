@@ -42,7 +42,7 @@ const ProgramarClases = () => {
 
         try {
             const firestore = getFirestore();
-            const mySchedule = query(collection(firestore, `Users/${user.uid}/mySchedule`));
+            const mySchedule = query(collection(firestore, `Users/${user.uid}/myClasses`));
             addDoc(mySchedule, { diasHora, ...programedClassData })
                 .then(({ id }) => {
 

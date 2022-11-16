@@ -28,7 +28,7 @@ const MyStudents = () => {
 
     return (
         <div>
-            <h1>MY STUDENTS</h1>
+            <h4>Mis Alumnos</h4>
             <Students myStudents={studentsData} />
         </div>
     )

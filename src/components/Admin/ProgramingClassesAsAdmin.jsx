@@ -47,11 +47,10 @@ const ProgramingClassesAsAdmin = () => {
     } else {
         return (
             <div>
-                <h1>
-                    CLASES PROGRAMADAS
-                </h1>
+                <h4>
+                    CLASES A PROGRAMAR
+                </h4>
                 <Classes classDate={data} teachers={teachers} />
-    
             </div>
         )
     }

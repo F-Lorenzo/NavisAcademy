@@ -1,11 +1,10 @@
 import React from "react";
 import "./ItemCards.css";
 import coh1 from "../../assets/img/cohete.svg";
-import arrow1 from "../../assets/img/flechaderecha.svg";
-import arrow2 from "../../assets/img/flechaizquierda.svg";
+import { Link } from "react-router-dom";
 
- 
-export default function ItemCards  ()  {
+
+export default function ItemCards() {
   return (
     <>
       <div className="paquetes__title">
@@ -13,11 +12,10 @@ export default function ItemCards  ()  {
       </div>
       <section className="card_Content">
         <div className="card__Container">
-          <div className="arrow1">
-            <img src={arrow2} alt="" />
-          </div>
           <div className="card__body">
+          <span className='mini_Title'>El Mas Barato</span>
             <div className="cohete">
+            
               <img src={coh1} alt={""}></img>
             </div>
             <h2 className="box-1">Navis °1</h2>
@@ -28,8 +26,14 @@ export default function ItemCards  ()  {
               blanditiis praesentium molestias incidunt, dicta facilis? Harum
               ducimus, eos atque ipsa corrupti architecto!
             </span>
+            <Link to='signUp'> 
+            <button className="button_itemCards">
+            Adquirir
+            </button>
+            </Link>
           </div>
           <div className="card__body">
+          <span className='mini_Title'>El Mas Popular</span>
             <div className="cohete">
               <img src={coh1} alt={""}></img>
             </div>
@@ -42,8 +46,14 @@ export default function ItemCards  ()  {
               blanditiis praesentium molestias incidunt, dicta facilis? Harum
               ducimus, eos atque ipsa corrupti architecto!
             </span>
+            <Link to='signUp'> 
+            <button className="button_itemCards">
+            Adquirir
+            </button>
+            </Link>
           </div>
           <div className="card__body">
+          <span className='mini_Title'>Recomendado</span>
             <div className="cohete">
               <img src={coh1} alt={""}></img>
             </div>
@@ -56,14 +66,14 @@ export default function ItemCards  ()  {
               blanditiis praesentium molestias incidunt, dicta facilis? Harum
               ducimus, eos atque ipsa corrupti architecto!
             </span>
-          </div>
-          <div className="arrow1">
-            <img src={arrow1} alt="" />
+            <Link to='signUp'> 
+            <button className="button_itemCards">
+            Adquirir
+            </button>
+            </Link>
           </div>
         </div>
       </section>
     </>
   );
-};
-
-
+}

@@ -40,6 +40,8 @@ export const UserUpdatesContextProvider = ({ children }) => {
       return () => {
         unsubscribe();
       };
+    } else {
+        setUser({});
     }
   }, [userLogged]);
 
