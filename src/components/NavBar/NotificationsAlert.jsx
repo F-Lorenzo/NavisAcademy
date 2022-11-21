@@ -17,8 +17,7 @@ const NotificationsAlert = () => {
             <div className="notificaciones">
             <img src="../../../src/Assets/turn-notifications-on-button.png" alt="notifications.png" />
             { user ? (user.newNotifications ? user.notifications : "") : "" }
-        
-           
+            </div>    
         </div>
     )
 
