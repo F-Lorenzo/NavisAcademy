@@ -26,7 +26,7 @@ const Qualitys = () => {
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={50}
+            spaceBetween={10}
             slidesPerView={3}
             navigation
             autoplay={{ delay: 2000, disableOnInteraction: false }}
@@ -44,15 +44,15 @@ const Qualitys = () => {
               },
               768: {
                 slidesPerView: 3,
-                spaceBetween: 35,
+                spaceBetween: 15,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 25,
+                spaceBetween: 15,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 45,
+                spaceBetween: 15,
               },
             }}
           >
@@ -105,7 +105,7 @@ const Qualitys = () => {
               </div>
             </SwiperSlide>
 
-            <SwiperSlide></SwiperSlide>
+      
           </Swiper>
         </div>
       </div>

@@ -89,7 +89,7 @@ const Questions = () => {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide></SwiperSlide>
+           
           </Swiper>
         </div>
       </div>
