@@ -5,6 +5,7 @@ import { UserAuth } from "../../Context/AuthContext";
 import { UserUpdates } from "../../Context/UserUpdatesContext";
 import TeacherProfile from "../PanelProfessor/TeacherProfile";
 import PerfilAlumno from "../PanelAlumno/PerfilAlumno";
+import perfil from "../../assets/img/perfil.jpg";
 
 const Account = () => {
   const { userLogged, logOut } = UserAuth();
@@ -28,9 +29,12 @@ const Account = () => {
   return (
     <div className="section_Profile_Account">
       <div className="section_Profile_Content">
-        <h1 className='account__Title'>Account</h1>
-        <p>User Email: {user && user.email}</p>
-        <p>ROL DE USUARIO: {user.role}</p>
+        <h1 className="account__Pic">
+          <img src={perfil} alt={""} />
+        </h1>
+        <h1 className="account__Title">Account</h1>
+        <p className="profile-card__txt">User Email: {user && user.email}</p>
+        <p className="profile-card__txt">ROL DE USUARIO: {user.role}</p>
 
         {user.role === "alumn" ? (
           <PerfilAlumno {...user.form} />
@@ -49,8 +53,6 @@ const Account = () => {
           <button className="foo_Profile_Button_Logout" onClick={handleLogout}>
             Logout
           </button>
-
-
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { useState } from 'react';
 import { UserUpdates } from '../../Context/UserUpdatesContext'
 
@@ -11,9 +12,11 @@ const NotificationsAlert = () => {
 
     return (
         <div>
-            
+            <div className="notificaciones">
             <img src="../../../src/Assets/turn-notifications-on-button.png" alt="notifications.png" />
             { user ? (newNotifications ? notifications : "") : "" }
+            </div>
+           
         
            
         </div>
