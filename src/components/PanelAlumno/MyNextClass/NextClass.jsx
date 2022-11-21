@@ -4,14 +4,28 @@ import { UserUpdates } from "../../../Context/UserUpdatesContext";
 const NextClass = (myClass) => {
 
   const { user } = UserUpdates();
+  const classNumber = user.form.actualClass;
 
-  console.log(user);
+  const actualDate = new Date();
+
+  const handleTest = () => {
+
+    console.log(actualDate);
+
+    console.log(myClass.myClass[classNumber].time);
+
+  }
+
+
 
   return (
     <div className="next-class-container">
       <div className="class__Body">
+
+        <button onClick={handleTest}>TEST</button>
+
         <div>
-          <h3>{myClass.time}18 HS</h3>
+          <h3>{myClass.myClass[classNumber].time}</h3>
           <div>
             { user.form.teacherName ? <p>Profesor: {user.form.teacherName}</p> : <p>Profesor no asignado</p> }
           </div>

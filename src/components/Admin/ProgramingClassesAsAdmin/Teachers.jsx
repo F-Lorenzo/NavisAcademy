@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { DateTime } from 'luxon';
 
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, getDoc, serverTimestamp, arrayUnion } from 'firebase/firestore';
-import Loader from '../Loader/Loader';
+import Loader from '../../Loader/Loader';
 import { useEffect } from 'react';
 
 const Teachers = ({date, teacher, requiredDays}) => {
@@ -158,7 +158,8 @@ const Teachers = ({date, teacher, requiredDays}) => {
                 end_date : `${classDateHour_end}`,
                 text : `Alumno : ${date.studentName} ${date.studentLastName}`,
                 condition: `pending`,
-                date: `${año}-${mes+1}-${dia}`,
+                date: `${año}-${mes+1}`,
+                day: dia,
                 time: classTime,
             }
             teacherSchedule.push(classDate);

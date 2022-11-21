@@ -39,15 +39,12 @@ const Account = () => {
         )}
 
         <div className="foo_Profile_Button">
-          <button
-            className="foo_Profile_Button_edit"
-            onClick={handleEditarInformacion}
-          >
+          <button className="foo_Profile_Button_edit" onClick={handleEditarInformacion}>
             EDITAR INFORMACION
           </button>
 
           <button className="foo_Profile_Button_Logout" onClick={handleLogout}>
-            Logout
+            Cerrar Sesión
           </button>
 
 

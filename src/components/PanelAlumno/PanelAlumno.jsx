@@ -20,18 +20,44 @@ const PanelAlumno = () => {
   useEffect(() => {
     const querydb = getFirestore();
     const queryCollection = collection(querydb, `Users/${user.uid}/mySchedule`);
-    getDocs(queryCollection).then((res) =>
-      setAllMyClasses(
-        res.docs.map((date) => ({
-          id: date.id,
-          ...date.data(),
-        }))
-      )
+    getDocs(queryCollection)
+    .then((res) =>
+      {
+
+        const mySchedule = res.docs.map(date => ({ ...date.data()}));
+        const arrayOfClasses = [];        
+        mySchedule.forEach( allMyDates => 
+          Object.keys(allMyDates).forEach(key => arrayOfClasses.push({
+
+              condition: allMyDates[key].condition,
+              date: allMyDates[key].date,
+              time: allMyDates[key].time,
+              day: allMyDates[key].day,
+          }))
+        );
+
+        arrayOfClasses.sort((a,b) => {
+          if (a.day < b.day) {return - 1;}
+          if (a.day > b.day)  {return 1;}
+          return 0;
+        })  
+
+        arrayOfClasses.sort((a,b) => {
+          if (a.date < b.date) {return - 1;}
+          if (a.date > b.date) {return 1;}
+          return 0;
+        })
+
+        setAllMyClasses(arrayOfClasses);
+
+      }
     );
   }, []);
 
   const handleTest = () => {
+
     console.log(allMyClasses);
+
   }
 
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { UserUpdates } from '../../Context/UserUpdatesContext';
+import { UserUpdates } from '../../../Context/UserUpdatesContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';

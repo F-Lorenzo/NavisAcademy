@@ -8,12 +8,14 @@ const NotificationsAlert = () => {
     const { user } = UserUpdates();
     const [ newNotifications, setNewNotifications ] = useState(false);
     const [ notifications, setNotifications ] = useState(0);
+    console.log(user);
+
 
     return (
         <div>
             
             <img src="../../../src/Assets/turn-notifications-on-button.png" alt="notifications.png" />
-            { user ? (newNotifications ? notifications : "") : "" }
+            { user ? (user.newNotifications ? user.notifications : "") : "" }
         
            
         </div>
