@@ -49,6 +49,23 @@ const CardClasses = ({ number, price, duration, amount }) => {
   if (isCheckout) {
     return <Checkout totalValue={totalValue} />;
   }
+
+
+// const valores = {
+//   dolar: '$',
+//   euro: '€'
+// };
+
+
+
+//  function convertir  () {
+//   let valores1 = parseFloat(document.getElementById('dolar').value);
+//   let valores2 = parseFloat(document.getElementById('euro').value);
+//   let precio ={price}
+//  }
+
+
+
   return (
     <div className="buy-card">
       <ul>
@@ -57,6 +74,13 @@ const CardClasses = ({ number, price, duration, amount }) => {
         <li className="price">$ {price} USD/Clase </li>
         <li className="duration"> Duración : {duration} min/Class </li>
         <div>
+  <div>
+    <select >
+    <option  value="dolar" id='dolar'>$</option>
+    <option  value="euro" id='euro'>€</option>
+    </select>
+  </div>
+
           <button className="button__Card" onClick={handleBuyNow}>
             ADQUIRIR CLASES
           </button>
