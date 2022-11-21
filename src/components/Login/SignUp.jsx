@@ -27,6 +27,7 @@ const Signup = () => {
         remainingClases: 0,
         completedClases: 0,
         absentedClases: 0,
+        actualClass: 0,
         teacher: "unasigned",
         newNotifications: true,
         notifications: 1,

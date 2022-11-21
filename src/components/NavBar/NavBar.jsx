@@ -62,7 +62,7 @@ const NavBar = () => {
                   <NavLink to="/Panel">
                     <li>Mi Panel</li>
                   </NavLink>
-                  <NavLink to="/Panel">
+                  <NavLink to="/MisNotificaciones">
                     <li>Mis Notificaciones</li>
                   </NavLink>
                   <NavLink to="/Panel">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore';
 import Classes from './Classes';
-import Loader from '../Loader/Loader';
+import Loader from '../../Loader/Loader';
 
 
 const ProgramingClassesAsAdmin = () => {

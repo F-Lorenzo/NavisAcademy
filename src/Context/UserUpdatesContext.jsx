@@ -27,6 +27,8 @@ export const UserUpdatesContextProvider = ({ children }) => {
             email: userLogged.email,
             role: newData.role,
             form: newData,
+            newNotifications: newData.newNotifications,
+            notifications: newData.notifications,
             misClases: {
               remainingClases: newData.remainingClases,
               completedClases: newData.completedClases,
