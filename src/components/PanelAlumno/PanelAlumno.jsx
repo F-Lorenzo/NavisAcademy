@@ -8,6 +8,8 @@ import LuxonTIme from "./LuxonTIme";
 import MyNextClass from "./MyNextClass/MyNextClass";
 import MisClases from "./MisClases/MisClases";
 import BuyClasses from "./BuyClasses/BuyClasses";
+import Loader from "../Loader/Loader";
+
 
 import "./MisClases/MisClases.css";
 
@@ -16,6 +18,7 @@ const PanelAlumno = () => {
 
   const { user } = UserUpdates();
   const [ allMyClasses, setAllMyClasses ] = useState([]);
+  const [ loader, setLoader ] = useState(true);
 
   useEffect(() => {
     const querydb = getFirestore();
@@ -49,6 +52,7 @@ const PanelAlumno = () => {
         })
 
         setAllMyClasses(arrayOfClasses);
+        setLoader(false);
 
       }
     );
@@ -59,6 +63,10 @@ const PanelAlumno = () => {
     console.log(allMyClasses);
 
   }
+  
+  if (loader) {
+    return 
+  }
 
   return (
     <>
@@ -67,8 +75,12 @@ const PanelAlumno = () => {
         <button onClick={handleTest}>TEST</button>
 
         <div className="container">
-          <MyNextClass myClasses={allMyClasses} />
-          <MisClases {...user.misClases} />
+          { 
+            user.form.teacher === "assigned" ? 
+            <MyNextClass myClasses={allMyClasses} /> 
+            : "" 
+          }
+            <MisClases {...user.misClases} />
         </div>
 
         <BuyClasses />

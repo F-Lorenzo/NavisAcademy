@@ -48,10 +48,7 @@ const MisClases = (clases) => {
               user.form.teacher==="unasigned" ? 
                 
                 <div className="info-button">
-                  <button
-                    onClick={handleProgramarClases}
-                    disabled={clases.remainingClases === 0}
-                  >
+                  <button onClick={handleProgramarClases} disabled={user.form.remainingClases===0}>
                     <h3>Programar clases</h3>
                   </button>
                 </div>
@@ -59,14 +56,18 @@ const MisClases = (clases) => {
               : ""
             }
 
-            <div className="info-button">
-              <button
-                onClick={handleMiCalendario}
-                disabled={clases.programedClases === 0}
-              >
-                <h3>Calendario de clases</h3>
-              </button>
-            </div>
+            {
+              user.form.teacher==="assigned" ? 
+
+              <div className="info-button">
+                <button onClick={handleMiCalendario}>
+                  <h3>Calendario de clases</h3>
+                </button>
+              </div>
+  
+              : ""
+            }
+
           </div>
         </div>
       </div>

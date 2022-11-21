@@ -64,18 +64,21 @@ const ProgramarClases = () => {
 
     }
 
+    
+
     return (
         <div>
             <h5>PROGRAMAR CLASES</h5>
 
             <form className='form__ProgramarClases' onSubmit={handleSubmit}>
 
-                <ol>
+                <ol className='form__ProgramarClases'>
                     <li>
-                        <label htmlFor="rangoHorarioDeClase">
+                        <label className='day_name' htmlFor="rangoHorarioDeClase">
                             Lunes
                         </label>
                         <input
+                            className='time_input'
                             type="time" 
                             id='lunes' 
                             name='lunes' 

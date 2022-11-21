@@ -1,41 +1,39 @@
+.dayName {
+
+}
+
 .form__ProgramarClases {
     display: flex;
+    align-items: center;
     flex-direction: column;
-
     position: relative;
     background-color: #FCFCFC;
     padding: 20px;
     width: 1024px;
+    gap: 40px;
     margin: 0 auto;
+    list-style: none;
 
     font-size: 20px;
 }
 
-.semanaCalendario {
-    list-style: none;
+.form__ProgramarClases li {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-around;
+    height: 35px;
+    width: 200px;
 }
 
-.semanaCalendario li {
-    width: 70px;
-    height: 25px;
-    text-align: center;
-
-}
-
-.semanaCalendario li:hover {
+.form__ProgramarClases li:hover {
     background-color: #006633;
 
     color: #FCFCFC;
 
     border-radius: 15px;
+    cursor: pointer;
 }
 
-.semanaCalendario li:focus {
-    background-color: #006633;
-
-    color: #FCFCFC;
-
-    border-radius: 15px;
+.time_input {
+  
 }
