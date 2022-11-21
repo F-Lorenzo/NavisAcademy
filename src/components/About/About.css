@@ -10,13 +10,14 @@
 }
 
 .about__title {
-    width: 220px;
-    height: 60px;
-    background-color: #266f56;
-    border-radius: 20px 20px 20px 20px;
-    color: #FCFCFC;
     padding: 15px;
-    text-align: center;
+    text-align: left;
+}
+
+.about__title span {
+    background-color: rgb(70, 172, 30);
+    padding:5px;
+    border-radius: 30px;
 }
 
 .about__1 {
