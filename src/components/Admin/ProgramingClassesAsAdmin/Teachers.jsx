@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { DateTime } from 'luxon';
 
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, getDoc, serverTimestamp, arrayUnion } from 'firebase/firestore';
-import Loader from '../Loader/Loader';
+import Loader from '../../Loader/Loader';
 import { useEffect } from 'react';
 
 const Teachers = ({date, teacher, requiredDays}) => {
@@ -14,20 +14,19 @@ const Teachers = ({date, teacher, requiredDays}) => {
     const requiredDay = date.diasHora;
     const dia = teacher.disponibility;
     let teacherDisponibility = false;
-    
 
-    function setDisponibility (studentDay, teacherDayStart, teacherDayEnd, disponible) {
+    function setDisponibility (studentDay, teacherDayStart, teacherDayEnd, disponibility) {
         if (studentDay) {
             if (teacherDayStart) {
                 if ((studentDay > teacherDayStart) && (studentDay < teacherDayEnd)) {
-                    disponible = true;
+                    disponibility = true;
                     console.log(`${studentDay} disponible`);
                 }
             } else {
-                disponible = false;
+                disponibility = false;
             }
         } 
-        return disponible;
+        return disponibility;
     }
 
     teacherDisponibility = setDisponibility(requiredDay.lunes, dia.lunesStart, dia.lunesEnd, teacherDisponibility);
@@ -158,6 +157,10 @@ const Teachers = ({date, teacher, requiredDays}) => {
                 start_date : `${classDateHour_start}`,
                 end_date : `${classDateHour_end}`,
                 text : `Alumno : ${date.studentName} ${date.studentLastName}`,
+                condition: `pending`,
+                date: `${año}-${mes+1}`,
+                day: dia,
+                time: classTime,
             }
             teacherSchedule.push(classDate);
             addDays(dateOfClass, -classDay);
@@ -244,6 +247,7 @@ const Teachers = ({date, teacher, requiredDays}) => {
             await updateDoc(studentDataUpdate, {
                 teacher: "assigned",
                 teacherName: `${teacher.name} ${teacher.lastName}`,
+                notifications: increment(1),
             });
 
             const studentMyClasses = doc(firestore, `Users/${date.studentUid}/myClasses/${date.id}`);

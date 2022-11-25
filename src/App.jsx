@@ -25,7 +25,7 @@ import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 
 import Admin from "./components/Admin/Admin";
 import CreateTeacherAccount from "./components/Admin/CreateTeacherAccount";
-import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmin";
+import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmin/ProgramingClassesAsAdmin";
 
 import Footer from "./components/Footer/Footer";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
@@ -34,7 +34,7 @@ import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyCla
 import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
 
-import MisNotificaciones from "./components/Account/MisNotificaciones";
+import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
 import TestingShit from "./components/TestingShit/TestingShit";
 
 

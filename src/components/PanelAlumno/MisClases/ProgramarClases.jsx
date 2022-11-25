@@ -53,7 +53,7 @@ const ProgramarClases = () => {
 
                 })
             const teacherUpdate = doc(firestore, `Users/${user.uid}`);
-            await updateDoc( teacherUpdate, { teacher: "pending"} )
+            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1)} )
             setLoader(false);
             swal("Muy Bien", `Ahora esperaras a que los administradores acepten tu solicitud!`, "success");
 
@@ -64,18 +64,21 @@ const ProgramarClases = () => {
 
     }
 
+    
+
     return (
         <div>
             <h5>PROGRAMAR CLASES</h5>
 
             <form className='form__ProgramarClases' onSubmit={handleSubmit}>
 
-                <ol>
+                <ol className='form__ProgramarClases'>
                     <li>
-                        <label htmlFor="rangoHorarioDeClase">
+                        <label className='day_name' htmlFor="rangoHorarioDeClase">
                             Lunes
                         </label>
                         <input
+                            className='time_input'
                             type="time" 
                             id='lunes' 
                             name='lunes' 

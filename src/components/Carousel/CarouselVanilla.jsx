@@ -23,8 +23,6 @@ const CarouselVanilla = () => {
             setSelectedIndex(nextIndex);
         }, 500);
     }
-    
-
 
     const previous = () => {
         selectNewImage(selectedIndex, images, false);
@@ -34,12 +32,6 @@ const CarouselVanilla = () => {
         selectNewImage(selectedIndex, images);
     }
     
-    // interface Props {
-    //     images :string[];
-    //     autoplay?: boolean;
-    //     showButtons?: boolean;
-    // }
-    // className={loaded ? "loaded" : "not-loaded"}
     return (
         <div className='carousel-container'>
             <img src={selectedImage} alt="img"  onLoad={() => setLoaded(true)}/>
