@@ -104,6 +104,67 @@ const Qualitys = () => {
                 </div>
               </div>
             </SwiperSlide>
+            <SwiperSlide>
+              <div className="box__2">
+                <div className="box__body">
+                  <div className="quality__Svg">
+                    {" "}
+                    <img src={notas} alt=" " />
+                  </div>
+                  <div>
+                    <h4> Divide el inglés en 4 áreas:</h4>
+                    <span>
+                    hablar, escuchar, vocabulario y gramática.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="box__2">
+                <div className="box__body">
+                  <div className="quality__Svg">
+                    {" "}
+                    <img src={notas} alt=" " />
+                  </div>
+                  <div>
+                    <h4> No es una clase normal</h4>
+                    <span>
+                     No es estática: juegos, roles, ejercicios y conversación.                     </span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="box__2">
+                <div className="box__body">
+                  <div className="quality__Svg">
+                    {" "}
+                    <img src={notas} alt=" " />
+                  </div>
+                  <div>
+                    <h4>  -	Recursos profesionales.</h4>
+                    <span>
+                    Nos basamos en el método de Cambridge, la escala de inglés global.                    </span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="box__2">
+                <div className="box__body">
+                  <div className="quality__Svg">
+                    {" "}
+                    <img src={notas} alt=" " />
+                  </div>
+                  <div>
+                    <h4>  -	Profesores altamente cualificados.</h4>
+                    <span>
+                    Contamos con profesores especializados en la enseñanza del inglés a niños y adultos de distintas edades.                     </span>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
 
       
           </Swiper>
