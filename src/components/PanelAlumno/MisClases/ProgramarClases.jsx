@@ -9,8 +9,9 @@ const ProgramarClases = () => {
 
     const { user } = UserUpdates();
     const [ diasHora, setDiasHora ] = useState({});
-    const timeStamp = serverTimestamp(); 
+    const [ isSelected, setIsSelected ] = useState(false);
     const [ loader, setLoader ] = useState(false);
+    const timeStamp = serverTimestamp(); 
 
     const handleChange = (e) => {
         setDiasHora({
@@ -33,7 +34,6 @@ const ProgramarClases = () => {
     const userNotification = {
         textNotification: "Programaste tus clases, en breve se te asiganara un profesor",
         notificationType: "Notificacion",
-
     }
 
     const handleSubmit = async (e) => {
@@ -64,6 +64,9 @@ const ProgramarClases = () => {
 
     }
 
+    const handleDay = () => {
+        setIsSelected(!isSelected);
+    }
     
 
     return (
@@ -74,11 +77,11 @@ const ProgramarClases = () => {
 
                 <ol className='form__ProgramarClases'>
                     <li>
-                        <label className='day_name' htmlFor="rangoHorarioDeClase">
+                        <label onClick={handleDay} className='day_name' htmlFor="rangoHorarioDeClase">
                             Lunes
                         </label>
                         <input
-                            className='time_input'
+                            className={`time_input ${isSelected ? 'time_input-active' : '' }`}
                             type="time" 
                             id='lunes' 
                             name='lunes' 
@@ -87,7 +90,7 @@ const ProgramarClases = () => {
                         />
                     </li>
                     <li>
-                        <label htmlFor="rangoHorarioDeClase">
+                        <label onClick={handleDay} htmlFor="rangoHorarioDeClase">
                             Martes
                         </label>
                         <input

@@ -1,38 +1,78 @@
-import React from "react";
-import CardClasses from "./CardClasses";
+import React, { useState } from "react";
+import { CardsItems50 } from "./CardsItems50";
+import { CardsItems30 } from "./CardsItems30";
+
+import { UserAuth } from "../../../Context/AuthContext";
+import {
+  getFirestore,
+  doc,
+  increment,
+  updateDoc,
+  query,
+  collection,
+  setDoc,
+  addDoc, serverTimestamp,
+} from "firebase/firestore";
+import { Navigate, useNavigate } from "react-router-dom";
+import Checkout from "../../checkout/Checkout";
+import "./cardClasses.css";
+
 
 const BuyClasses = () => {
-  return (
-    <div>
-      <div className="buy-container">
-        <h3>ADQUIRIR MAS CLASES</h3>
 
-        <div className="buy-card-container">
-          <CardClasses number="01" price="9.55" amount="60" duration="50" />
+    const [ isCheckout, setIsCheckout ] = useState(false);
 
-          <CardClasses number="02" price="10.99" amount="30" duration="50" />
+    const [ totalValue, setTotalValue ] = useState();
+    const [ cantidad, setCantidad ] = useState();
 
-          <CardClasses number="03" price="13.55" amount="20" duration="50" />
+    if (isCheckout) {
+        return <Checkout totalValue={totalValue} cantidad={cantidad} />
+    }
 
-          <CardClasses number="04" price="16.99" amount="10" duration="50" />
+    return (
+        <div className="buy-container">
+            <h3>ADQUIRIR MAS CLASES</h3>
 
-          <CardClasses number="05" price="22.99" amount="5" duration="50" />
+            <div className="buy-card-container">
+                { CardsItems50.map((item, index) => {
+                    return (
+                        <div key={index} className="buy-card">
+                            <li>
+                            <ul>
+                                <li className="pack-number">Pack Nº : {item.number} </li>
+                                <li className="amount">Cantidad de clases {item.amount} </li>
+                                <li className="price">$ {item.price} USD/Clase </li>
+                                <li className="duration"> Duración : {item.duration} min/Class </li>
+                                <div>
+                                    <div>
+                                        <select >
+                                            <option  value="dolar" id='dolar'>$</option>
+                                            <option  value="euro" id='euro'>€</option>
+                                        </select>
+                                    </div>
+                
+                                    <button className="button__Card" onClick={handleBuyClasses => {
+                                        console.log(item);
+                                        let precio = parseFloat(item.price);
+                                        let amount = parseInt(item.amount); 
+                                        let total = amount * precio;
+                                        let finalValue = total.toFixed(2).toString();
+                                        setCantidad(amount);
+                                        setTotalValue(finalValue);
+
+                                        setIsCheckout(!isCheckout);
+                                        }}>
+                                        ADQUIRIR CLASES
+                                    </button>
+                                </div>
+                            </ul>
+                            </li>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
-
-        <div className="buy-card-container">
-          <CardClasses number="01" price="6.55" amount="60" duration="30" />
-
-          <CardClasses number="02" price="7.99" amount="30" duration="30" />
-
-          <CardClasses number="03" price="9.55" amount="20" duration="30" />
-
-          <CardClasses number="04" price="12.55" amount="10" duration="30" />
-
-          <CardClasses number="05" price="16.99" amount="5" duration="30" />
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default BuyClasses;

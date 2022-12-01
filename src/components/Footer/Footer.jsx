@@ -14,7 +14,7 @@ const Footer = () => {
           <Link className="logoFooter" to="/home">
             <img src={logoFooter} alt="" />
           </Link>
-{/* 
+          {/* 
           <div className="paquetes__Footer">
             <h2>Paquetes</h2>
             <p>

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import ListarMisNotificaciones from './ListarMisNotificaciones';
+import "./MisNotificaciones.css";
 
 const MisNotificaciones = () => {
 
@@ -31,7 +32,7 @@ const MisNotificaciones = () => {
     }
 
     return  (
-        <div>
+        <div className='notification_body'>
             <ListarMisNotificaciones notificaciones={notifications} />
             {/*
             <button onClick={handleTest}>TestMdfk</button>

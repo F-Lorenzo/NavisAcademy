@@ -8,14 +8,16 @@
 }
 
 .caja__trasera-login {
-    margin: 108px 40px;
     color: black;
     transition: all 500ms;
     display: flex;
     gap: 15px;
     flex-direction: row;
     align-items: center;
+    /*
+    margin: 108px 40px;
     height: 542px;
+    */
 }
 
 .tittleColumn {
@@ -150,12 +152,17 @@ label {
 }
 
 
-/* Sin acc y acc al cerrar sesion */
+/* 
+
+Sin acc y acc al cerrar sesion 
+
 
 .not__Acc {
     height: 800px;
     width: 100%;
 }
+*/
+
 
 
 /* RESPONSIVE */

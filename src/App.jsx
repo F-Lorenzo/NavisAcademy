@@ -4,6 +4,8 @@ import { AuthContextProvider } from "./Context/AuthContext";
 import { UserUpdatesContextProvider } from "./Context/UserUpdatesContext";
 import "./App.css";
 
+import OldNavBar from "./components/NavBar/OldNavBar";
+
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 
@@ -24,7 +26,7 @@ import CalendarioDeClases from "./components/PanelAlumno/MisClases/CalendarioDeC
 import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 
 import Admin from "./components/Admin/Admin";
-import CreateTeacherAccount from "./components/Admin/CreateTeacherAccount";
+import CreateTeacherAccount from "./components/Admin/CreateTeacherAccount/CreateTeacherAccount";
 import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmin/ProgramingClassesAsAdmin";
 
 import Footer from "./components/Footer/Footer";
@@ -35,7 +37,8 @@ import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
-import TestingShit from "./components/TestingShit/TestingShit";
+import DiaHoraClase from "./components/DiaHoraClase/DiaHoraClase";
+
 
 
 function App() {
@@ -44,10 +47,17 @@ function App() {
       <BrowserRouter>
         <AuthContextProvider>
           <UserUpdatesContextProvider>
-            
-            <NavBar />
 
+            {/*
+            <NavBar />
+            */}
+
+            <OldNavBar />
+            
             <Routes>
+
+              <Route path="/dev" element={<DiaHoraClase />} />
+
               <Route path="/" element={<Home />} />
 
               <Route path="/logger" element={<Logger />} />
@@ -61,7 +71,7 @@ function App() {
               <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
 
               <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
-              <Route path="/Account/ProgramarClases" element={<ProgramarClases />} />
+              <Route path="/Account/ProgramarClases" element={<DiaHoraClase />} />
               <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
 
               <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
@@ -71,8 +81,6 @@ function App() {
               <Route path="/MiCalendario" element={<MyCalendario />} />
 
               <Route path="/Checkout" element={<Checkout />} />
-
-              <Route path="/TEST" element={<TestingShit />} />
 
               <Route
                 path="/account"
@@ -103,9 +111,8 @@ function App() {
               <Route path="*" element={<h1>404</h1>} />
 
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
-
             </Routes>         
-            
+
             <Footer />
 
           </UserUpdatesContextProvider>

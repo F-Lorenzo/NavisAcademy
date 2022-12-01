@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "./Notificacion.css";
 
 const Notificacion = ({info}) => {
     
@@ -6,16 +7,14 @@ const Notificacion = ({info}) => {
     
     const handleVisto = () => {
         console.log(info);
-
     }
 
     return (
-        <div>
-            <h4>{info.textNotification}</h4>
-            <p> {info.notificationType} </p>
-            <p> {timeStamp} </p>
-
-            <button onClick={handleVisto}>Visto</button>
+        <div className='notification_container'>
+            <p className='notification_type'> {info.notificationType} </p>
+            <p className='notification_info'> {info.textNotification} </p>
+            <p className='notification_date'> {timeStamp} </p>
+            <button className='notification_button' onClick={handleVisto}>Visto</button>
         </div>
     )
 }
