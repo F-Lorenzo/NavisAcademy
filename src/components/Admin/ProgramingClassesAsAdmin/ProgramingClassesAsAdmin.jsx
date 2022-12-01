@@ -13,8 +13,9 @@ const ProgramingClassesAsAdmin = () => {
     useEffect(() => {
 
         const querydb = getFirestore();
-        const queryCollection = collection (querydb, `Classes`);
-        getDocs(queryCollection)
+        const classesCollection = collection (querydb, `Classes`);
+        const classes = query(classesCollection, where('teacher', '==', 'unasigned'));
+        getDocs(classes)
         .then( res => setData( 
             res.docs.map( 
                 date => ({
