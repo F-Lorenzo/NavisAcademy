@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.css";
-import about from "../../assets/img/about.jpg";
-import CarouselVanilla from "../Carousel/CarouselVanilla";
+import about from "../../../assets/img/about.jpg";
+import CarouselVanilla from "../../Carousel/CarouselVanilla";
 
 const About = () => {
   return (

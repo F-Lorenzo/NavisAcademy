@@ -1,6 +1,6 @@
 import React from "react";
 import "./ItemCards.css";
-import coh1 from "../../assets/img/cohete.svg";
+import coh1 from "../../../assets/img/cohete.svg";
 import { Link } from "react-router-dom";
 
 

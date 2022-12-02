@@ -1,10 +1,10 @@
 import React from "react";
 import "./Quality.css";
-import reloj from "../../assets/img/reloj.svg";
-import notas from "../../assets/img/notas.svg";
-import objetivo from "../../assets/img/objetivo.svg";
-import arrow1 from "../../assets/img/flechaderecha.svg";
-import arrow2 from "../../assets/img/flechaizquierda.svg";
+import reloj from "../../../assets/img/reloj.svg";
+import notas from "../../../assets/img/notas.svg";
+import objetivo from "../../../assets/img/objetivo.svg";
+import arrow1 from "../../../assets/img/flechaderecha.svg";
+import arrow2 from "../../../assets/img/flechaizquierda.svg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

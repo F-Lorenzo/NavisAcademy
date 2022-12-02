@@ -1,8 +1,8 @@
 import React from "react";
 import "./Contact.css";
-import arrow1 from "../../assets/img/flechaderecha.svg";
-import arrow2 from "../../assets/img/flechaizquierda.svg";
-import contact from "../../assets/img/contacto.svg";
+import arrow1 from "../../../assets/img/flechaderecha.svg";
+import arrow2 from "../../../assets/img/flechaizquierda.svg";
+import contact from "../../../assets/img/contacto.svg";
 
 const Contact = () => {
   return (

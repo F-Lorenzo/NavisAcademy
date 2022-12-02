@@ -1,7 +1,7 @@
 import React from "react";
 import "./Questions.css";
-import arrow1 from "../../assets/img/flechaderecha.svg";
-import arrow2 from "../../assets/img/flechaizquierda.svg";
+import arrow1 from "../../../assets/img/flechaderecha.svg";
+import arrow2 from "../../../assets/img/flechaizquierda.svg";
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";

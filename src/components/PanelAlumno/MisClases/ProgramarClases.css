@@ -13,27 +13,30 @@
     gap: 40px;
     margin: 0 auto;
     list-style: none;
-
     font-size: 20px;
 }
 
 .form__ProgramarClases li {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 35px;
-    width: 200px;
-}
+    width: 250px;
+    
+}   
 
 .form__ProgramarClases li:hover {
     background-color: #006633;
-
     color: #FCFCFC;
-
     border-radius: 15px;
     cursor: pointer;
 }
 
 .time_input {
-  
+    display: none;
+}
+
+.time_input-active {
+    display: block;
+
 }

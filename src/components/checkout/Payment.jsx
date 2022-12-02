@@ -7,7 +7,25 @@ import {
 } from "@paypal/react-paypal-js";
 import CardClasses from "../PanelAlumno/BuyClasses/CardClasses";
 
-export default function Payment({ totalValue }) {
+//
+
+import { UserAuth } from "../../Context/AuthContext";
+import {
+  getFirestore,
+  doc,
+  increment,
+  updateDoc,
+  query,
+  collection,
+  setDoc,
+  addDoc, serverTimestamp,
+} from "firebase/firestore";
+
+
+
+//
+
+const Payment = ({totalValue, cantidad}) => {
   // useEffect(() => {
   //   const [{ options }, dispatch] = usePayPalScriptReducer();
   //   const [currency, setCurrency] = useState(options.currency);
@@ -23,7 +41,47 @@ export default function Payment({ totalValue }) {
   //   }
   // }, [currency]);
 
-  const amount = totalValue;
+  const { userLogged } = UserAuth();
+
+
+  const textNotification = "Felicitaciones, adquiriste nuevas clases";
+  const notificationType = "Compra";
+  const timeStamp = serverTimestamp();
+
+
+  const sumarClases = async () => {
+
+    //SUMA DE CLASES PARA ALUMNO
+    try {
+      const firestore = getFirestore();
+      const userClases = doc(firestore, `Users/${userLogged.uid}`);
+      await updateDoc(userClases, {
+        remainingClases: increment(cantidad),
+        newNotifications: true,
+        notifications: increment(1),
+      });
+      const newNotification = query(
+        collection(firestore, `Users/${userLogged.uid}/myNotifications`)
+      );
+      addDoc(newNotification, {
+        notificationType,
+        textNotification,
+        cantidad,
+        timeStamp,
+      }).then(({ id }) => {
+        const docuRef = doc(firestore, `AdminNotifications/${id}`);
+        setDoc(docuRef, { notificationType, cantidad });
+      });
+
+      
+      //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
+    } catch (e) {
+      swal("UPS!", `${e.message}`, "error");
+    }
+
+  }
+
+  const totalAmount = totalValue;
   return (
     <PayPalScriptProvider options={initialOptions}>
       <PayPalButtons
@@ -32,7 +90,7 @@ export default function Payment({ totalValue }) {
             purchase_units: [
               {
                 amount: {
-                  value: amount,
+                  value: totalAmount,
                 },
               },
             ],
@@ -41,6 +99,16 @@ export default function Payment({ totalValue }) {
         onApprove={async (data, actions) => {
           const details = await actions.order.capture();
           console.log(details); // luego del onApprove se dan las clases
+          
+          let tempDetails = details;
+
+          if (tempDetails) {
+            sumarClases();
+            tempDetails = false;
+          } else {
+            console.log("pago not apprub")
+          }
+
         }}
       />
       {/* <select value={currency} onChange={onCurrencyChange}>
@@ -50,3 +118,5 @@ export default function Payment({ totalValue }) {
     </PayPalScriptProvider>
   );
 }
+
+export default Payment;

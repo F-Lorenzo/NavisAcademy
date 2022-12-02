@@ -1,0 +1,28 @@
+export const DisponibilityItem = [
+    {
+        "00:00" : true,
+        "01:00" : true,
+        "02:00" : true,
+        "03:00" : true,
+        "04:00" : true,
+        "05:00" : true,
+        "06:00" : true,
+        "07:00" : true,
+        "08:00" : true,
+        "09:00" : true,
+        "10:00" : true,
+        "11:00" : true,
+        "12:00" : true,
+        "13:00" : true,
+        "14:00" : true,
+        "15:00" : true,
+        "16:00" : true,
+        "17:00" : true,
+        "18:00" : true,
+        "19:00" : true,
+        "20:00" : true,
+        "21:00" : true,
+        "22:00" : true,
+        "23:00" : true,
+    }
+]

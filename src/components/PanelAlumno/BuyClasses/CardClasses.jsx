@@ -12,7 +12,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { DateTime } from "luxon";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
 import "./cardClasses.css";
 
@@ -24,12 +24,16 @@ const CardClasses = ({ number, price, duration, amount }) => {
   const totalValue = total.toFixed(2).toString();
   const { userLogged } = UserAuth();
 
+  const navigate = useNavigate();
+
   const textNotification = "Felicitaciones, adquiriste nuevas clases";
   const notificationType = "Compra";
   const timeStampLuxon = DateTime.now().toFormat("DDDD - HH:mm:ss");
   const timeStamp = serverTimestamp();
 
   const handleBuyNow = async () => {
+
+    /*
     try {
       const firestore = getFirestore();
       const userClases = doc(firestore, `Users/${userLogged.uid}`);
@@ -57,10 +61,14 @@ const CardClasses = ({ number, price, duration, amount }) => {
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
+    */
+    setIsCheckout(true);
   };
 
   if (isCheckout) {
-    return <Checkout totalValue={totalValue} />;
+    
+    return <Checkout totalValue={totalValue} cantidad={amount} />
+
   }
 
   // const valores = {
