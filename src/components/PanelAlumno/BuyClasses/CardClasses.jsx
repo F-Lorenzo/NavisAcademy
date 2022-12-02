@@ -8,7 +8,8 @@ import {
   query,
   collection,
   setDoc,
-  addDoc, serverTimestamp,
+  addDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 import { DateTime } from "luxon";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +26,7 @@ const CardClasses = ({ number, price, duration, amount }) => {
 
   const textNotification = "Felicitaciones, adquiriste nuevas clases";
   const notificationType = "Compra";
-  const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
+  const timeStampLuxon = DateTime.now().toFormat("DDDD - HH:mm:ss");
   const timeStamp = serverTimestamp();
 
   const handleBuyNow = async () => {
@@ -62,21 +63,16 @@ const CardClasses = ({ number, price, duration, amount }) => {
     return <Checkout totalValue={totalValue} />;
   }
 
+  // const valores = {
+  //   dolar: '$',
+  //   euro: '€'
+  // };
 
-// const valores = {
-//   dolar: '$',
-//   euro: '€'
-// };
-
-
-
-//  function convertir  () {
-//   let valores1 = parseFloat(document.getElementById('dolar').value);
-//   let valores2 = parseFloat(document.getElementById('euro').value);
-//   let precio ={price}
-//  }
-
-
+  //  function convertir  () {
+  //   let valores1 = parseFloat(document.getElementById('dolar').value);
+  //   let valores2 = parseFloat(document.getElementById('euro').value);
+  //   let precio ={price}
+  //  }
 
   return (
     <div className="buy-card">
@@ -86,12 +82,16 @@ const CardClasses = ({ number, price, duration, amount }) => {
         <li className="price">$ {price} USD/Clase </li>
         <li className="duration"> Duración : {duration} min/Class </li>
         <div>
-  <div>
-    <select >
-    <option  value="dolar" id='dolar'>$</option>
-    <option  value="euro" id='euro'>€</option>
-    </select>
-  </div>
+          <div>
+            <select>
+              <option value="dolar" id="dolar">
+                $
+              </option>
+              <option value="euro" id="euro">
+                €
+              </option>
+            </select>
+          </div>
 
           <button className="button__Card" onClick={handleBuyNow}>
             ADQUIRIR CLASES
