@@ -30,9 +30,11 @@ export const UserUpdatesContextProvider = ({ children }) => {
             newNotifications: newData.newNotifications,
             notifications: newData.notifications,
             misClases: {
+              actualClass: newData.actualClass,
               remainingClases: newData.remainingClases,
               completedClases: newData.completedClases,
               absentedClases: newData.absentedClases,
+              teacherUid: newData.teacherUid,
               teacher: newData.teacher,
             },
           };

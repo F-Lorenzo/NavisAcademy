@@ -5,7 +5,6 @@ import {
   PayPalButtons,
   usePayPalScriptReducer,
 } from "@paypal/react-paypal-js";
-import CardClasses from "../PanelAlumno/BuyClasses/CardClasses";
 
 //
 

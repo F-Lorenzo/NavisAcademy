@@ -2,17 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2rem;
 }
 
 .review__title h2 {
     width: 220px;
     height: 60px;
-    background-color: #266f56;
+    background-color: #006633;
     border-radius: 20px 20px 20px 20px;
     color: #FCFCFC;
     padding: 15px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 0.5rem;
 }
 
 .review__body {
@@ -32,7 +33,7 @@
     border-radius: 30px 30px 30px 30px;
     align-content: stretch;
     flex-direction: column;
-    background-color: rgb(70, 172, 30);
+    background-color: #479B05;
     color: #FCFCFC;
     align-items: center;
     justify-content: space-around;

@@ -132,16 +132,14 @@ const Teachers = ({date, teacher}) => {
             horaFin = horaFin + ":00";
             let classDateHour_start = `${año}-${mes+1}-${dia} ${horaComienzo}`;
             let classDateHour_end = `${año}-${mes+1}-${dia} ${horaFin}`;
-            /*
-            console.log("fecha y hora de comienzo de la clase :",classDateHour_start);
-            console.log("fecha y hora de fin de la clase :",classDateHour_end);
-            */
             const classDate = {
                 start_date : `${classDateHour_start}`,
                 end_date : `${classDateHour_end}`,
                 condition: `pending`,
                 date: `${año}-${mes+1}`,
                 day: dia,
+                month: mes,
+                year: año,
                 time: classTime,
             }
 
@@ -223,6 +221,7 @@ const Teachers = ({date, teacher}) => {
             await updateDoc(studentDataUpdate, {
                 teacher: "assigned",
                 teacherName: `${teacher.name} ${teacher.lastName}`,
+                teacherUid: teacher.id,
                 notifications: increment(1),
             });
 

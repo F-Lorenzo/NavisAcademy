@@ -1,29 +1,63 @@
 .notification_container {
     display: flex;
+    justify-content: center;
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    margin: 0.2rem;
+    border-radius: 0.2rem;
+    max-width: 90%;
+}
+
+.notification_card {
+    border: 1px solid #00663328;
+    border-radius: 0.2rem;
+
+    background-color: rgba(83, 83, 83, 0.4);
+    color: #FCFCFC;
+
+    margin: 1.5rem 1rem;
+    padding: 0.5rem 1rem;
+
+    display: flex;
     flex-direction: column;
     gap: 5px;
     width: 900px;
 }
 
 .notification_type {
-    font-size: 16px;
+    font-size: 80%;
     font-weight: 500;
     text-align: left;
 }
 
 .notification_info {
-    font-size: 20px;
+    padding: 1rem;
+    border-radius: 0.2rem;
+    background: rgba(83, 83, 83, 0.76);
+    font-size: 18px;
     font-weight: 700;
     text-align: center;
-
 }
 
 .notification_date {
-    font-size: 13px;
+    font-size: 80%;
     text-align: right;
 }
 
 .notification_button {
-    width: 150px;
+    border: none;
+    border-radius: 0.45rem;
+    background-color: #006633;
+    font-weight: 500;
+    font-size: 0.9rem;
+    width: 15%;
+    height: 2rem;
+    cursor: pointer;
+    color: #FCFCFC;
+    transition: background-color 0.5s, color 0.5s;
     align-self: flex-end;
+}
+
+.notification_button:hover {
+    background-color: #479B05;
+    color: black;
 }

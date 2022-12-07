@@ -71,8 +71,9 @@ const PanelAlumno = () => {
   return (
     <>
       <div>
-
+        {/*
         <button onClick={handleTest}>TEST</button>
+        */}
 
         <div className="container">
           { 
