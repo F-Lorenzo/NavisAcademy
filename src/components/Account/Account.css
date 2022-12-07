@@ -1,169 +1,107 @@
-.section_Profile_Account {
-    width: 100%;
-    min-height: 83vh;
+.mainProfile-container {
+    border: 1px solid black;
+    margin: auto;
+    margin-top: 1rem;
+    width: 90%;
+    color: white;
+}
+
+.asideProfile-container {
+    background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+    border-radius: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    
+    width: 26rem;
+    border-radius: 0.20rem;
+}
+
+.userCard-header_container {
+    border: 1px solid rgba(0, 128, 0, 0.027);
+    border-radius: 0.35rem;
+    background-color: rgba(83, 83, 83, 0.4);
+    margin: 1.2rem;
+}
+
+.userCard-header {
+    margin: 1.2rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.user-avatar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover;
+    width: 5.1rem;
+    height: 5.1rem;
+    
+    background-color: #006633;
+    border-radius: 55px;
+    margin-left: 1rem;
+
 }
 
-.section_Profile_Content {
-    margin: 10px;
-    width: 980px;
-    height: 635px;
-    background: #FCFCFC;
-    backdrop-filter: blur( 1.9px);
-    border-radius: 10px;
+.userMain-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.foo_Profile_Button {
+.userMain-info p {
+    font-weight: bold; 
+    font-size: larger;
+}
+
+.userMain-info span {
+    font-weight: 400; 
+    font-size: medium;
+}
+
+.userCard-body {
+    border: 1px solid rgba(0, 128, 0, 0.027);
+    border-radius: 0.1rem;
+    background-color: rgba(83, 83, 83, 0.4);
+    margin: 1.2rem;
+    font-size: 0.9rem;
+}
+
+.userCard-body-input {
+    margin: 1.2rem;
     display: flex;
-    gap: 10px;
-    padding: 20px 0px;
+    flex-direction: column;
 }
 
-.foo_Profile_Button button {
-    border: none;
-    font-weight: 700;
-    font-size: 19px;
-    margin: 15px 35px;
-    padding: 15px 40px;
-    min-width: 201px;
-    border-radius: 50px;
-    min-height: 55px;
-    color: #fff;
-    cursor: pointer;
-    backface-visibility: hidden;
-    transition: all 0.3s;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.foo_Profile_Button .foo_Profile_Button_edit {
-    background: linear-gradient(45deg, #1da1f2, #0e71c8);
-    box-shadow: 0px 4px 30px rgb(19 127 212 / 40%);
-}
-
-.foo_Profile_Button .foo_Profile_Button_edit:hover {
-    background-color: rgb(2, 99, 68);
-    transform: translateY(-5px);
-}
-
-.foo_Profile_Button .foo_Profile_Button_Logout {
-    background: linear-gradient(45deg, #d5135a, #f05924);
-    box-shadow: 0px 4px 30px rgb(223 45 70 / 35%);
-}
-
-.foo_Profile_Button .foo_Profile_Button_Logout:hover {
-    background-color: rgb(2, 100, 51);
-    transform: translateY(-5px);
-}
-
-.boton__Edit {
+.userCard-body-input_content {
+    border: 1px solid rgba(0, 128, 0, 0.027);
+    border-radius: 0.35rem;
     width: 100%;
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    color: #FCFCFC;
-    background-color: rgb(2, 100, 51);
-    font-size: 14px;
-    border: 1px solid #000;
-    cursor: pointer;
-    transition: all .3s;
-    font-family: Arial, Helvetica, sans-serif;
+    height: 2rem;
+    background: rgba(83, 83, 83, 0.76);
+    padding: 0.31rem 1rem;
 }
 
-.account__Pic {
-    font-family: sans-serif;
-    font-weight: bold;
-    width: 150px;
-    height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    overflow: hidden;
-    position: relative;
-    z-index: 4;
-    box-shadow: 0px 5px 50px 0px #01926e, 0px 0px 0px 7px rgba(36, 150, 2, 0.5);
+.userCard-footer {
+    margin: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.account__Pic img {
-    width: 151px;
-    height: 65px;
-}
-
-.profile-card__txt {
-    font-size: 18px;
+.userCard-button {
+    border: none;
+    border-radius: 0.45rem;
+    background-color: #006633;
     font-weight: 500;
-    color: #324e63;
-    margin-bottom: 15px;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 2.2rem;
+    cursor: pointer;
+    color: #FCFCFC;
+    transition: background-color 0.5s, color 0.5s;
 }
 
-.account__Title {}
-
-.input__Profile {
-    padding: 17px 98px;
-    border: solid 1px;
-    gap: 20px;
-    border-radius: 50px 50px 50px 50px;
-}
-
-.input__Profile img {
-    width: 20px;
-    height: 20px;
-}
-
-@media (max-width: 768px) {
-    .section_Profile_Content {
-        width: 100%;
-    }
-    .section_Profile_Account {
-        width: 450px;
-    }
-    .foo_Profile_Button_Logout {
-        width: 50%;
-    }
-    .foo_Profile_Button {
-        margin: 0;
-        padding: 0;
-    }
-}
-
-@media only screen and (max-width: 340px) {
-    .section_Profile_Content {
-        width: 100%;
-    }
-    .section_Profile_Account {
-        width: 450px;
-    }
-    .foo_Profile_Button_Logout {
-        width: 50%;
-    }
-    .foo_Profile_Button {
-        margin: 0;
-        padding: 0;
-    }
-}
-
-@media (min-width:480px) and (max-width:599px) {
-    /* smartphones, Android phones, landscape iPhone */
-    .section_Profile_Content {
-        width: 100%;
-    }
-    .section_Profile_Account {
-        width: 450px;
-    }
-    .foo_Profile_Button_Logout {
-        width: 50%;
-    }
-    .foo_Profile_Button {
-        margin: 0;
-        padding: 0;
-    }
+.userCard-button:hover {
+    background-color: #479B05;
+    color: black;
 }

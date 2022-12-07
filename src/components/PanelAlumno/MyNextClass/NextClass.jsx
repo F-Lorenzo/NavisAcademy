@@ -1,10 +1,12 @@
 import React from "react";
 import { UserUpdates } from "../../../Context/UserUpdatesContext";
-import MyClasses from "../../PanelProfessor/MyClasses/AllMyClasses/MyClasses";
+import { useNavigate } from "react-router-dom";
+
 
 const NextClass = (myClass) => {
 
   const { user } = UserUpdates();
+  const navigate = useNavigate();
 
   const classNumber = user.form.actualClass;
 
@@ -18,11 +20,19 @@ const NextClass = (myClass) => {
 
   }
 
+  const handleReprogramClass = () => {
+    swal("Muy Bien", `Aqui podras reprogramar tu clase`, "success");
+    navigate("/Account/ReprogramClass");
+  }
+
   return (
     <div className="next-class-container">
       <div className="class__Body">
 
+        {/*
         <button onClick={handleTest}>TEST</button>
+        */}
+
 
         <div>
           <h3>{ myClass.myClass[classNumber].time ? myClass.myClass[classNumber].time : ""} HS</h3>
@@ -43,7 +53,7 @@ const NextClass = (myClass) => {
           <span>BLINK LEARNING</span>
         </a>
 
-        <span className="class__button-end">REPROGRAMAR CLASE</span>
+        <span className="class__button-end" onClick={handleReprogramClass}>REPROGRAMAR CLASE</span>
 
       </div>
     </div>

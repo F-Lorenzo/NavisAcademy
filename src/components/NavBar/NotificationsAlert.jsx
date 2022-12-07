@@ -7,10 +7,6 @@ import { UserUpdates } from '../../Context/UserUpdatesContext'
 const NotificationsAlert = () => {
 
     const { user } = UserUpdates();
-    const [ newNotifications, setNewNotifications ] = useState(false);
-    const [ notifications, setNotifications ] = useState(0);
-    console.log(user);
-
 
     return (
         <div>

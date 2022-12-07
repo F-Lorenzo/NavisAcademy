@@ -20,8 +20,6 @@ import ProtectedRouteStudent from "./components/ProtectedRoutes/ProtectedRouteSt
 import ProtectedRouteTeacher from "./components/ProtectedRoutes/ProtectedRouteTeacher";
 
 import PanelAlumno from "./components/PanelAlumno/PanelAlumno";
-import ProgramarClases from "./components/PanelAlumno/MisClases/ProgramarClases";
-import CalendarioDeClases from "./components/PanelAlumno/MisClases/CalendarioDeClases";
 
 import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 
@@ -38,6 +36,7 @@ import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyC
 
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
 import DiaHoraClase from "./components/DiaHoraClase/DiaHoraClase";
+import ReprogramarClase from "./components/PanelAlumno/MisClases/ReprogramarClase";
 
 
 
@@ -56,7 +55,7 @@ function App() {
             
             <Routes>
 
-              <Route path="/dev" element={<DiaHoraClase />} />
+              <Route path="/dev" element={<ReprogramarClase />} />
 
               <Route path="/" element={<Home />} />
 
@@ -72,7 +71,7 @@ function App() {
 
               <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
               <Route path="/Account/ProgramarClases" element={<DiaHoraClase />} />
-              <Route path="/Account/CalendarioDeClases" element={<CalendarioDeClases />} />
+              <Route path="/Account/ReprogramClass" element={<ReprogramarClase />} />
 
               <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
               <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />

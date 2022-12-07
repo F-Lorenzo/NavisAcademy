@@ -1,0 +1,148 @@
+.main__Content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    flex-direction: wrap;
+}
+
+.about__title {
+    padding: 15px;
+    text-align: left;
+}
+
+.about__title span {
+    background-color: rgb(70, 172, 30);
+    padding:5px;
+    border-radius: 30px;
+}
+
+.about__1 {
+    display: flex;
+    width: 50%;
+    max-width: 1300px;
+    flex-direction: wrap;
+}
+
+.parrafo__content {
+    display: flex;
+    flex-direction: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    color: black;
+    line-height: 24px;
+    margin-right: 80px;
+    text-align: justify;
+}
+
+.about__2 img {
+    height: 100%;
+    width: 100%;
+    max-width: 550px;
+    max-height: 400px;
+    flex-direction: wrap;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.about__2 {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    flex-direction: wrap;
+}
+
+
+/* .boton-der {
+    display: none;
+}
+
+.boton-izq {
+    display: none;
+} */
+
+@media (max-width: 768px) {
+    .parrafo__content {
+        flex-direction: column;
+    }
+    .about__1 {
+        flex-direction: column;
+        width: 100%;
+    }
+    .about__2 {
+        width: 100%;
+    }
+    .contenido {
+        flex-direction: column;
+    }
+    .boton-der {
+        display: none;
+    }
+    .boton-izq {
+        display: none;
+    }
+    .about__1 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .parrafo__content {
+        flex-direction: column;
+        margin: 0;
+        gap: 0;
+    }
+    .about__1 {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        gap: 0;
+    }
+    .about__2 {
+        width: 100%;
+    }
+    .contenido {
+        flex-direction: column;
+    }
+    .boton-der {
+        display: none;
+    }
+    .boton-izq {
+        display: none;
+    }
+    .about__1 {
+        display: none;
+    }
+}
+
+@media (min-width:480px) and (max-width:599px) {
+    /* smartphones, Android phones, landscape iPhone */
+    .parrafo__content {
+        flex-direction: column;
+        margin: 0;
+        gap: 0;
+    }
+    .about__1 {
+        width: 100%;
+        flex-direction: column;
+        margin: 0;
+        gap: 0;
+    }
+    .about__2 {
+        width: 100%;
+    }
+    .contenido {
+        flex-direction: column;
+    }
+    .boton-der {
+        display: none;
+    }
+    .boton-izq {
+        display: none;
+    }
+    .about__1 {
+        display: none;
+    }
+}

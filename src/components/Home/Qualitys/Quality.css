@@ -6,12 +6,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2rem;
 }
 
 .quality__Title h2 {
     width: 220px;
     height: 60px;
-    background-color: #266f56;
+    background-color: #006633;
     border-radius: 25px 25px 25px 25px;
     color: #FCFCFC;
     padding: 15px;
@@ -47,7 +48,7 @@
     height: 130px;
     border: 1px solid #ccc;
     border-radius: 30px 30px 30px 30px;
-    background-color: rgb(70, 172, 30);
+    background-color: #479B05;
     color: #FCFCFC;
     text-align: center;
 }
@@ -61,7 +62,7 @@
     height: 130px;
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
-    background-color: rgb(70, 172, 30);
+    background-color: #479B05;
     color: #FCFCFC;
     text-align: center;
 }
@@ -71,7 +72,7 @@
     height: 130px;
     border: 1px solid #ccc;
     border-radius: 25px 25px 25px 25px;
-    background-color: rgb(70, 172, 30);
+    background-color: #479B05;
     color: #FCFCFC;
     text-align: center;
 }
@@ -98,15 +99,15 @@ span {
 
 .quality_Content .swiper {
     width: 100%;
-    max-width: 1077px;
+    max-width: 1260px;
 }
 
 .quality_Content .swiper-button-next {
-    color: #266f56
+    color: #479B05;
 }
 
 .quality_Content .swiper-button-prev {
-    color: #266f56
+    color: #479B05;
 }
 
 .swiper-scrollbar {

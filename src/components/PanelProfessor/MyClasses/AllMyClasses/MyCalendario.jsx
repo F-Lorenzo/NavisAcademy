@@ -20,7 +20,6 @@ const MyCalendario = () => {
         .then( res => 
             {
                 const mySchedule = res.docs.map(date => ({ ...date.data()}))
-                console.log(mySchedule);
                 const arrayOfClasses = [];        
                 mySchedule.forEach( allMyClasses => 
                     Object.keys(allMyClasses).forEach(key => arrayOfClasses.push({
