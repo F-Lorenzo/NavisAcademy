@@ -4,6 +4,7 @@ import { UserAuth } from '../../Context/AuthContext';
 import { UserUpdates } from '../../Context/UserUpdatesContext';
 
 const ProtectedRouteTeacher = ({ children }) => {
+  
   const { userLogged } = UserAuth();
   const { user } = UserUpdates();
   

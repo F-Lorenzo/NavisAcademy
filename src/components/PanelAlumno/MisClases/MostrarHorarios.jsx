@@ -8,7 +8,9 @@ const MostrarHorarios = ({teacher, newDate}) => {
     const disponibility = teacher.disponibility;
     
     (teacher.teacherWeek).map((week, index) => {
+        /*
         console.log(week.day);
+        */
         let dayDisponibility = disponibility[week.day];           
         let timeStart = parseInt(week.timeStart);
         let timeEnd = parseInt(week.timeEnd);

@@ -4,33 +4,36 @@
     z-index: 10;
     text-align: start;
     list-style: none;
-    
-  }
+}
   
-  .dropdown-menu li {
-    background: rgb(0, 104, 55);
+.dropdown-menu li {
+    background: #006633;
     cursor: pointer;
-  }
+}
   
-  .dropdown-menu li:hover {
+.dropdown-menu li:hover {
     background: #479b05;
-  }
+}
   
-  .dropdown-menu.clicked {
+.dropdown-menu.clicked {
     display: none;
-  }
+}
   
-  .dropdown-link {
+.dropdown-link {
     display: block;
     height: 100%;
     width: 100%;
     text-decoration: none;
     color: #fff;
     padding: 16px;
-  }
+}
+
+.dropdown-link:hover {
+    color: black;
+}
   
-  @media screen and (max-width: 960px) {
+@media screen and (max-width: 960px) {
     .fa-caret-down {
       display: none;
     }
-  }
+}

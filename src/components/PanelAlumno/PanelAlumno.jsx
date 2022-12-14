@@ -39,6 +39,8 @@ const PanelAlumno = () => {
           }))
         );
 
+        /*
+
         arrayOfClasses.sort((a,b) => {
           if (a.day < b.day) {return - 1;}
           if (a.day > b.day)  {return 1;}
@@ -50,6 +52,8 @@ const PanelAlumno = () => {
           if (a.date > b.date) {return 1;}
           return 0;
         })
+
+        */
 
         setAllMyClasses(arrayOfClasses);
         setLoader(false);

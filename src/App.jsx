@@ -47,11 +47,11 @@ function App() {
         <AuthContextProvider>
           <UserUpdatesContextProvider>
 
-            {/*
             <NavBar />
+            {/*
+            <OldNavBar />
             */}
 
-            <OldNavBar />
             
             <Routes>
 

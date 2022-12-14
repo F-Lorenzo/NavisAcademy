@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from './Button';
 import DropDown from './DropDown';
 import { UserAuth } from "../../Context/AuthContext";
@@ -12,6 +12,7 @@ import './NavBar.css';
 const UpdatedNavBar = () => {
 
     const { userLogged, logOut } = UserAuth();
+    const navigate = useNavigate();
     const [ click, setClick ] = useState(false);
     const [ dropdown, setDropdown ] = useState(false);
     const handleClick = () => setClick(!click);
@@ -33,8 +34,19 @@ const UpdatedNavBar = () => {
         }
     };
 
+    const handleLogout = async () => {
+        closeMobileMenu
+        try {
+          await logOut();
+          navigate("/logger");
+          swal("BYE!", `sesion Finalizada!`, "success");
+        } catch (e) {
+          console.log(e.message);
+        }
+    };
+
     return (
-        <div>
+        <>
             <nav className='navbar'>
 
                 <Link to='/' className='navbar-logo'>
@@ -54,25 +66,25 @@ const UpdatedNavBar = () => {
                         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
 
                             <li className="nav-item">
-                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/Account' className='nav-links' onClick={closeMobileMenu}>
                                     Mi Perfil
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/Panel' className='nav-links' onClick={closeMobileMenu}>
                                     Mi Panel
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/MisNotificaciones' className='nav-links' onClick={closeMobileMenu}>
                                     Mis Notificaciones
                                 </Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                <Link to='/' className='nav-links' onClick={handleLogout}>
                                     Cerrar Sesión
                                 </Link>
                             </li>
@@ -93,10 +105,13 @@ const UpdatedNavBar = () => {
                             </li>
 
                             <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                                <Link to='/Services' className='nav-links' onClick={closeMobileMenu}>
-                                    <img src="../../../src/Assets/round-account-button-with-user-inside.png" alt="userIcon.png"/>
-                                    <i className='fas fa-caret-down'/>
-                                </Link>
+                                <div>
+                                    <Link to='/Panel' className='nav-links' onClick={closeMobileMenu}>
+                                        <img src="../../../src/Assets/round-account-button-with-user-inside.png" alt="userIcon.png"/>
+                                        <i className='fas fa-caret-down'/>
+                                    </Link>
+
+                                </div>
                                 {dropdown ? <DropDown /> : ''}
                             </li>
 
@@ -107,28 +122,63 @@ const UpdatedNavBar = () => {
                 </div>
 
                 : 
-                
-                    <div>
-                        <ul className="nav-menu">
-                            <li className='nav-item'>
-                                <Link to='/signIn' className='nav-links'>
-                                    Iniciar Sesión
+
+                <div>
+
+                    <div className='mobile-menu'>
+
+                        <div className="menu-icon" onClick={handleClick}>
+                            <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
+                        </div>
+
+                        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+
+                            <li className="nav-item">
+                                <Link to='/signIn' className='nav-links' onClick={closeMobileMenu}>
+                                    Iniciar Sesion
                                 </Link>
                             </li>
-                            <li className='nav-item'>
-                                <Link to='/signUp' className='nav-links'>
+
+                            <li className="nav-item">
+                                <Link to='/signUp' className='nav-links' onClick={closeMobileMenu}>
                                     Registrarse
                                 </Link>
                             </li>
 
+                            <li className="nav-item">
+                                <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                    Cerrar
+                                </Link>
+                            </li>
+
                         </ul>
+
                     </div>
+
+                    <div className="desktop-menu">
+                        <div>
+                            <ul className="nav-menu">
+                                <li className='nav-item'>
+                                    <Link to='/signIn' className='nav-links'>
+                                        Iniciar Sesión
+                                    </Link>
+                                </li>
+                                <li className='nav-item'>
+                                    <Link to='/signUp' className='nav-links'>
+                                        Registrarse
+                                    </Link>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>               
 
                 }
 
-
             </nav>
-        </div>
+        </>
     )
 
 }

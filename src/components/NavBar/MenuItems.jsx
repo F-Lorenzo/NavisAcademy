@@ -14,9 +14,5 @@ export const MenuItems = [
         path: '/MisNotificaciones',
         cName: 'dropdown-link'
     },
-    {
-        title: 'Cerrar Sesión',
-        path: '/Panel',
-        cName: 'dropdown-link'
-    }
+
 ];

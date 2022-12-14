@@ -124,7 +124,9 @@ const Teachers = ({date, teacher}) => {
             addDays(dateOfClass, classDay);
             let dia = dateOfClass.getDate();
             let mes = dateOfClass.getMonth();
-            let año = dateOfClass.getFullYear();  
+            let año = dateOfClass.getFullYear();
+            let hora = parseInt(classTime);
+            let fullDate = new Date(año, mes, dia, hora);  
             let horaComienzo = classTime;
             let horaFin = parseInt(classTime);
             horaFin++;
@@ -133,14 +135,15 @@ const Teachers = ({date, teacher}) => {
             let classDateHour_start = `${año}-${mes+1}-${dia} ${horaComienzo}`;
             let classDateHour_end = `${año}-${mes+1}-${dia} ${horaFin}`;
             const classDate = {
+                condition: `pending`,
                 start_date : `${classDateHour_start}`,
                 end_date : `${classDateHour_end}`,
-                condition: `pending`,
-                date: `${año}-${mes+1}`,
+                date: fullDate,
+                time: classTime,
                 day: dia,
                 month: mes,
                 year: año,
-                time: classTime,
+                dayNumber: classDay,
             }
 
             const classDateTeacher = {

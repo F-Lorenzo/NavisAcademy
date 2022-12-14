@@ -35,8 +35,10 @@ const CarouselVanilla = () => {
     return (
         <div className='carousel-container'>
             <img src={selectedImage} alt="img"  onLoad={() => setLoaded(true)}/>
-            <button className='boton-der' onClick={previous}> <i className="fa-solid fa-circle-chevron-left"></i> </button>
-            <button className='boton-izq' onClick={next}> <i className="fa-solid fa-circle-chevron-right"></i> </button>
+            <div className="carousel-buttons">
+                <button className='boton-der' onClick={previous}> <i className="fa-solid fa-circle-chevron-left"></i> </button>
+                <button className='boton-izq' onClick={next}> <i className="fa-solid fa-circle-chevron-right"></i> </button>
+            </div>
         </div>
     )
 

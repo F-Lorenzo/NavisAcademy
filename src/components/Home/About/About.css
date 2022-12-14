@@ -1,7 +1,7 @@
 .about_container {
     display: flex;
     justify-content: center;
-    gap: 0.1rem;
+    gap: 1rem;
     margin: 0.5rem auto;
     flex-wrap: wrap;
     align-items: center;

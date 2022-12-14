@@ -14,9 +14,14 @@ const ReprogramarClase = () => {
 
     const [ studentSchedule, setStudentSchedule ] = useState ();
 
+    const classNumber = user.misClases.actualClass;
     const teacherUid = user.misClases.teacherUid;
-    const newStudentDate = [];
-    const newTeacherDate = [];
+
+    let newStudentDate = [];
+    let newTeacherDate = [];
+    const newStudentSchedule = [];
+    const newTeacherSchedule = [];
+
     const navigate = useNavigate();
 
     async function getTeacherData(id) {
@@ -26,7 +31,8 @@ const ReprogramarClase = () => {
         const teacherData = teacherCifredData.data();
 
         const studentSchedulePath = collection(firestore, `Users/${user.uid}/mySchedule`);
-        getDocs(studentSchedulePath).then(res => {
+        getDocs(studentSchedulePath)
+        .then(res => {
             setStudentSchedule(
                 res.docs.map(date => ({
                     id: date.id,
@@ -50,7 +56,12 @@ const ReprogramarClase = () => {
 
     const newDate = (day, time) => {
 
-        let dateOfClass = new Date();
+        const fullSchedule = studentSchedule[0];
+        const classDateInfo = (fullSchedule[classNumber]); 
+        console.log(classDateInfo);
+
+        let oldClassDate = new Date(classDateInfo.year, classDateInfo.month, classDateInfo.day);
+        console.log(`Fecha de la clase a reprogramar : ${oldClassDate}`);
 
         const addDays = (date, period) => {
             date.setDate(date.getDate() + period);
@@ -63,38 +74,40 @@ const ReprogramarClase = () => {
         let jueves = 4;
         let viernes = 5;
         let sabado = 6;
-        
-        const actualDay = dateOfClass.getDay(); 
 
-        switch (actualDay) {
+        const oldClassDay = oldClassDate.getDay();
+        
+        switch (oldClassDay) {
             case 0:
-                addDays(dateOfClass, 0);
+                addDays(oldClassDate, 0);
                 break;
             case 1:
-                addDays(dateOfClass, -1);
+                addDays(oldClassDate, -1);
                 break;
             case 2:
-                addDays(dateOfClass, -2);
+                addDays(oldClassDate, -2);
                 break;
             case 3:
-                addDays(dateOfClass, -3);
+                addDays(oldClassDate, -3);
                 break;
             case 4:
-                addDays(dateOfClass, -4);
+                addDays(oldClassDate, -4);
                 break;
             case 5:
-                addDays(dateOfClass, -5);
+                addDays(oldClassDate, -5);
                 break;
             case 6:
-                addDays(dateOfClass, -6);
+                addDays(oldClassDate, -6);
                 break;
         }
 
         const generateClassDate = (classTime, classDay) => {
-            addDays(dateOfClass, classDay);
-            let dia = dateOfClass.getDate();
-            let mes = dateOfClass.getMonth();
-            let año = dateOfClass.getFullYear();  
+            addDays(oldClassDate, classDay);
+            let dia = oldClassDate.getDate();
+            let mes = oldClassDate.getMonth();
+            let año = oldClassDate.getFullYear();  
+            let hora = parseInt(classTime);
+            let fullDate = new Date(año, mes, dia, hora); 
             let horaComienzo = classTime;
             let horaFin = parseInt(classTime);
             horaFin++;
@@ -103,14 +116,15 @@ const ReprogramarClase = () => {
             let classDateHour_start = `${año}-${mes+1}-${dia} ${horaComienzo}`;
             let classDateHour_end = `${año}-${mes+1}-${dia} ${horaFin}`;
             const classDate = {
+                condition: `pending`,
                 start_date : `${classDateHour_start}`,
                 end_date : `${classDateHour_end}`,
-                condition: `pending`,
-                date: `${año}-${mes+1}`,
+                date: fullDate,
+                time: classTime,
                 day: dia,
                 month: mes,
                 year: año,
-                time: classTime,
+                dayNumber: classDay,
             }
 
             const classDateTeacher = {
@@ -123,9 +137,9 @@ const ReprogramarClase = () => {
                 text : `Profesor : ${user.form.teacherName}`,
             }
 
-            newTeacherDate.push(classDateTeacher);
-            newStudentDate.push(classDateStudent);
-            addDays(dateOfClass, -classDay);
+            newTeacherDate = classDateTeacher;
+            newStudentDate = classDateStudent;
+            addDays(oldClassDate, -classDay);
         }
 
         const caseOf = (day, time) => {
@@ -138,40 +152,37 @@ const ReprogramarClase = () => {
             ((day) === "sabado") && generateClassDate(time, sabado);
         }
 
-        addDays(dateOfClass, 7);
-
-        /*
-        console.log(actualDay);
-        console.log(dateOfClass);
-        console.log(`Se va a reprogramar la clase nro. ${user.misClases.actualClass}`);
-        console.log(`El nuevo dia sera el prox ${day}, y el horario sera ${time} Hs`);
-        */
-
+        addDays(oldClassDate, 7);
         caseOf(day, time);
 
+        fullSchedule[classNumber] = newStudentDate;
 
-        /*
-        console.log(user);
-        const fullSchedule = studentSchedule[0];
-        console.log(fullSchedule);
-        console.log(fullSchedule.id);
-        console.log(fullSchedule[user.misClases.actualClass]);
-        fullSchedule[user.misClases.actualClass] = {
-            ...fullSchedule[user.misClases.actualClass],
-            time: time
-        }
- 
-        console.log(fullSchedule[user.misClases.actualClass]);
-        console.log(fullSchedule);
- 
-        console.log(newStudentDate);
-        console.log(newTeacherDate);
-        console.log(dateOfClass);
-        */
+        const scheduleArrayFormat = [];
 
-        swal("Muy Bien", `Tu clase fue reprogramada`, "success");
-        navigate("/Panel");
+        studentSchedule.forEach(element => 
+            Object.keys(element).forEach(key => scheduleArrayFormat.push(element[key]))
+        );
 
+        scheduleArrayFormat.pop();
+        
+        scheduleArrayFormat.sort((a,b) => {
+            if (a.start_date < b.start_date) {return - 1;}
+            if (a.start_date > b.start_date) {return 1;}
+            return 0;
+        })
+
+        scheduleArrayFormat.map(date => {
+            newStudentSchedule.push(date);
+            let newForTeacher = {
+                ...date,
+                text : `Alumno : ${user.form.name} ${user.form.lastName}`
+            }
+            newTeacherSchedule.push(newForTeacher);
+        });
+
+        console.log("ID del doc en firestore a actualizar : ", studentSchedule[0].id);
+        console.log("Calendario Student Ordenado : ", newStudentSchedule);
+        console.log("Calendario Teacher Ordenado : ", newTeacherSchedule);
 
 
     }

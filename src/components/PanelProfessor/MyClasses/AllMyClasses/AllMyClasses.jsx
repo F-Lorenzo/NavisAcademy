@@ -18,9 +18,9 @@ const AllMyClasses = () => {
         const querydb = getFirestore();
         const queryCollection = collection (querydb, `Users/${userLogged.uid}/myClases`);
         getDocs(queryCollection)
-        .then( res => setMyClassesData(
-            res.docs.map(
-                classes => ({
+        .then( res => 
+            setMyClassesData(
+                res.docs.map(classes => ({
                     id: classes.id,
                     ...classes.data()
                 })

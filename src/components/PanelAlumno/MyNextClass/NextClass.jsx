@@ -14,7 +14,12 @@ const NextClass = (myClass) => {
 
   const handleTest = () => {
 
-    console.log(actualDate);
+    console.log(myClass);
+
+    const classDate = myClass.myClass[classNumber].date;
+    console.log(classDate.toDate().toString());
+
+
 
     console.log(myClass.myClass[classNumber].time);
 
@@ -29,8 +34,8 @@ const NextClass = (myClass) => {
     <div className="next-class-container">
       <div className="class__Body">
 
-        {/*
         <button onClick={handleTest}>TEST</button>
+        {/*
         */}
 
 
@@ -41,7 +46,7 @@ const NextClass = (myClass) => {
           </div>
         </div>
 
-        <p> TU PROXIMA CLASE ES EL DIA: {myClass.myClass[classNumber].date}-{myClass.myClass[classNumber].day} </p>
+        <p> TU PROXIMA CLASE ES EL DIA: {(myClass.myClass[classNumber].date).toString()}-{myClass.myClass[classNumber].day} </p>
 
         <span className="class__button-start">INICIAR CLASE</span>
 
