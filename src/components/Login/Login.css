@@ -14,52 +14,6 @@
     gap: 15px;
     flex-direction: row;
     align-items: center;
-    /*
-    margin: 108px 40px;
-    height: 542px;
-    */
-}
-
-.tittleColumn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-}
-
-.cohete-navis {
-    width: 50px;
-    position: relative;
-}
-
-.login-logo i {
-    position: absolute;
-    font-size: 25px;
-    color: #FCFCFC;
-}
-
-.login-tittle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FCFCFC;
-    background-color: rgb(0, 104, 55);
-    font-size: 35px;
-    border-radius: 20px;
-    width: 350px;
-    height: 70px;
-    margin: 10px;
-}
-
-.subTittle {
-    font-size: 18px;
-    text-align: center;
 }
 
 .bg-active {
@@ -128,10 +82,6 @@
     font-size: 13px;
 }
 
-label {
-    margin: 10px 0;
-}
-
 .form__Register input {
     margin: 0 0 20px 0;
     padding: 12px 5%;
@@ -150,19 +100,6 @@ label {
     color: black;
     padding: 6px;
 }
-
-
-/* 
-
-Sin acc y acc al cerrar sesion 
-
-
-.not__Acc {
-    height: 800px;
-    width: 100%;
-}
-*/
-
 
 
 /* RESPONSIVE */

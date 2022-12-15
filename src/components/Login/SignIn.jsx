@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 import cohete from '../../assets/img/cohete.svg';
 import Loader from '../Loader/Loader'
+import './SignIn.css';
 
 const SignIn = () => {
   
@@ -37,35 +38,35 @@ const SignIn = () => {
 
     return (
         <>
-        <div className="caja__trasera">             
-            <div className="caja__trasera-login">
-                <div className='first-column'>
-                    <div className='tittleColumn'>
-                        <p className='login-logo'>
+        <div className="signIn__main-container">        
+
+            <div className="signIn__container">
+
+                <div>
+
+                    <div className='signIn__tittleColumn'>
+                        <p className='signIn-logo'>
                             <img className='cohete-navis' src={cohete} alt="cohete.svg" />
                             <i className="fa-solid fa-user"></i>
                         </p>
-                        <p className='login-tittle'>
+                        <p className='signIn-tittle'>
                             Login
                         </p>
                     </div>
 
+                    <p className='subTittle'>
+                        ¿Todavia no tenes una cuenta?
+                        <Link to='/signUp'>
+                            Registrate.
+                        </Link>
+                    </p>
 
-
-
-                    
-                        <p className='subTittle'>
-                            ¿Todavia no tenes una cuenta?{' '}
-                            <Link to='/signUp'>
-                                Registrate.
-                            </Link>
-                        </p>
                 </div>
 
-                <form className='form__Register' onSubmit={handleSubmit}>
+                <form className='signIn__form' onSubmit={handleSubmit}>
 
                     <label htmlFor="email">
-                    Correo electrónico
+                        Correo electrónico
                     </label>
         
                     <input 
@@ -77,7 +78,7 @@ const SignIn = () => {
                     />
 
                     <label htmlFor="password">
-                    Clave
+                        Clave
                     </label>
       
                     <input 
@@ -88,10 +89,12 @@ const SignIn = () => {
                         onChange={(e) => setPassword(e.target.value)} 
                     />
                 
-                    <button className='boton__login' type="submit" id="btn__iniciar-sesion">Iniciar Sesión</button>                   
+                    <button type="submit" id="btn__iniciar-sesion">Iniciar Sesión</button>                   
                     
                 </form>
+
             </div>
+
         </div>
         </>
     );
