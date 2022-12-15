@@ -178,3 +178,9 @@
         }
     }
     */
+
+    @media screen and (max-width: 960px) {
+        .logoFooter {
+            display: none;
+        }
+    }
