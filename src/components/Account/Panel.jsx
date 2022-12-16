@@ -2,7 +2,7 @@ import React from 'react'
 import { UserAuth } from "../../Context/AuthContext";
 import { UserUpdates } from '../../Context/UserUpdatesContext';
 import Loader from '../Loader/Loader';
-import PanelAlumno from '../PanelAlumno/PanelAlumno';
+import NewPanelAlumno from '../PanelAlumno/NewPanelAlumno';
 import PanelProfessor from '../PanelProfessor/PanelProfessor';
 
 
@@ -14,7 +14,7 @@ const Panel = () => {
     return (
         <div>            
             { 
-            user.role === "alumn" ? ( <PanelAlumno /> ) 
+            user.role === "alumn" ? ( <NewPanelAlumno /> ) 
             : user.role === "teacher" ? ( <PanelProfessor /> )
             : <Loader />
             }

@@ -35,7 +35,7 @@ const Account = () => {
             <div className="userCard-header">
   
               <div className="user-avatar">
-                <i class="fa-solid fa-user fa-3x"></i>
+                <i className="fa-solid fa-user fa-3x"></i>
               </div>
   
               <div className="userMain-info">

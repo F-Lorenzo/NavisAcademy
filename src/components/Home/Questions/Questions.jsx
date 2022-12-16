@@ -18,8 +18,8 @@ import "swiper/css/autoplay";
 const Questions = () => {
   return (
     <>
-      <div className="question__Title">
-        <h2>PREGUNTAS FRECUENTES</h2>
+      <div className="homeSection__Title">
+        <h2>Preguntas Frecuentes</h2>
       </div>
       <div className="question_Content">
         <div className="question_Body">

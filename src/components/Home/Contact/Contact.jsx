@@ -7,7 +7,7 @@ import contact from "../../../assets/img/contacto.svg";
 const Contact = () => {
   return (
     <>
-      <div className="contact__Title">
+      <div className="homeSection__Title">
         <h2>Contacto</h2>
       </div>
 

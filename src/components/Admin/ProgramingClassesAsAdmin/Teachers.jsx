@@ -35,6 +35,7 @@ const Teachers = ({date, teacher}) => {
     const studentNewNotification = {
         textNotification: "Felicitaciones, tu peticion de clases fue aceptada, ya te asignamos un profesor",
         notificationType: "Notificacion",
+        checked: false,
     }
 
     // DISPONIBILIDAD

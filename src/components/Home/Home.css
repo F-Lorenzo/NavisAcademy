@@ -1,0 +1,19 @@
+/* Titulos de las secciones del Home */
+
+.homeSection__Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    margin-top: 3.5rem;
+}
+
+.homeSection__Title h2 {
+    font-size: 1.8rem;
+    background-color: #006633;
+    border-radius: 1.5rem;
+    color: #FCFCFC;
+    padding: 0.8rem 3.5rem 1rem;
+    text-align: center;
+}
+

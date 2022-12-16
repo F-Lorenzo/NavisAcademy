@@ -2,23 +2,6 @@
     text-align: center;
 }
 
-.quality__Title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem;
-}
-
-.quality__Title h2 {
-    width: 220px;
-    height: 60px;
-    background-color: #006633;
-    border-radius: 25px 25px 25px 25px;
-    color: #FCFCFC;
-    padding: 15px;
-    text-align: center;
-}
-
 .quality_Body {
     display: flex;
     justify-content: center;
@@ -107,7 +90,10 @@ span {
 }
 
 .quality_Content .swiper-button-prev {
-    color: #479B05;
+    background-color: #479B05;
+    color: white;
+    padding: 2rem;
+    border-radius: 5rem;
 }
 
 .swiper-scrollbar {

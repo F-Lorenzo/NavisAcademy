@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 export default function ItemCards() {
   return (
     <>
-      <div className="paquetes__title">
+      <div className="homeSection__Title">
         <h2> Paquetes</h2>
       </div>
+      
       <section className="card_Content">
         <div className="card__Container">
           <div className="card__body">

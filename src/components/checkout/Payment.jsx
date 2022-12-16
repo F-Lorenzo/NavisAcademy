@@ -43,9 +43,13 @@ const Payment = ({totalValue, cantidad}) => {
   const { userLogged } = UserAuth();
 
 
-  const textNotification = "Felicitaciones, adquiriste nuevas clases";
-  const notificationType = "Compra";
   const timeStamp = serverTimestamp();
+
+  const buyNotification = {
+      textNotification: "Felicitaciones, adquiriste nuevas clases",
+      notificationType: "Compra",
+      checked: false,
+  }
 
 
   const sumarClases = async () => {
@@ -63,8 +67,7 @@ const Payment = ({totalValue, cantidad}) => {
         collection(firestore, `Users/${userLogged.uid}/myNotifications`)
       );
       addDoc(newNotification, {
-        notificationType,
-        textNotification,
+        ...buyNotification,
         cantidad,
         timeStamp,
       }).then(({ id }) => {

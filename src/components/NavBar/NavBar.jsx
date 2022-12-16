@@ -38,7 +38,7 @@ const UpdatedNavBar = () => {
         closeMobileMenu
         try {
           await logOut();
-          navigate("/logger");
+          navigate("/");
           swal("BYE!", `sesion Finalizada!`, "success");
         } catch (e) {
           console.log(e.message);

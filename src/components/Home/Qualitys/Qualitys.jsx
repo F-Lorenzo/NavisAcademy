@@ -3,22 +3,14 @@ import "./Quality.css";
 import reloj from "../../../assets/img/reloj.svg";
 import notas from "../../../assets/img/notas.svg";
 import objetivo from "../../../assets/img/objetivo.svg";
-import arrow1 from "../../../assets/img/flechaderecha.svg";
-import arrow2 from "../../../assets/img/flechaizquierda.svg";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/autoplay";
-import "animate.css";
+
 
 const Qualitys = () => {
   return (
     <>
-      <div className="quality__Title">
-        {" "}
+      <div className="homeSection__Title">
         <h2>Cualidades</h2>
       </div>
       <div className="quality_Content">
@@ -28,11 +20,12 @@ const Qualitys = () => {
             modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={15}
             slidesPerView={3}
-            navigation
+            navigation={true}
             autoplay={{ delay: 2000, disableOnInteraction: false }}
             loop={true}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
+            
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -40,21 +33,14 @@ const Qualitys = () => {
               },
               480: {
                 slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
                 spaceBetween: 5,
               },
-              1024: {
+              720: {
                 slidesPerView: 3,
-                spaceBetween: 5,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 5,
-              },
+                spaceBetween: 15,
+              }
             }}
+            
           >
             <SwiperSlide>
               <div className="box__1">

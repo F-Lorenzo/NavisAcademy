@@ -3,7 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 import { DateTime } from 'luxon';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs, serverTimestamp } from 'firebase/firestore';
-import Loader from '../Loader/Loader'
+import Loader from '../Loader/Loader';
+import cohete from '../../assets/img/cohete.svg';
+import { FormItems } from './FormItems';
+import './SignIn.css';
 
 const Signup = () => {
     
@@ -36,7 +39,7 @@ const Signup = () => {
     const welcomeNotification = {
         textNotification: "Bienvenido a Navis!",
         notificationType: "Welcome",
-
+        checked: false,
     }
 
     const handleSubmit = async (e) => {
@@ -70,84 +73,54 @@ const Signup = () => {
 
   return (
     <>
-      <div className="caja__trasera">
-        <div className="caja__trasera-login">
-          <p>
-            ¿Ya tienes una cuenta? <Link to="/signIn">Inicia sesion.</Link>
-          </p>
+      <div className="signIn__main-container">
+        <div className="signIn__container">
 
-          <form className="form__Register" onSubmit={handleSubmit}>
-            <label htmlFor="name">Nombre :</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={form.name || ""}
-              onChange={handleChange}
-            />
+          <form onSubmit={handleSubmit}>
 
-            <label htmlFor="lastName">Apellido :</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={form.lastName || ""}
-              onChange={handleChange}
-            />
+            {FormItems.map((item, index) => {
+              return (
+              <div key={index}>
+                <label htmlFor={item.inNameId}>
+                  {item.field} : 
+                </label>
+                <input 
+                  type={item.inType} 
+                  id={item.inNameId} 
+                  name={item.inNameId} 
+                  value={form[item.inNameId] || ''} 
+                  onChange={handleChange} 
+                />
+              </div>
+              )
+            })}
 
-            <label htmlFor="password">Password :</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={form.password || ""}
-              onChange={handleChange}
-            />
-
-            <label htmlFor="email">Email :</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={form.email || ""}
-              onChange={handleChange}
-            />
-
-            <label htmlFor="phoneNumber">Numero de celular :</label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={form.phoneNumber || ""}
-              onChange={handleChange}
-            />
-
-            <label htmlFor="country">Pais:</label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value={form.country || ""}
-              onChange={handleChange}
-            />
-
-            <label htmlFor="city">Ciudad:</label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={form.city || ""}
-              onChange={handleChange}
-            />
-
-            <button
-              className="boton__login"
-              type="submit"
-              id="btn__iniciar-sesion"
-            >
+            <button type="submit">
               Crear Cuenta
             </button>
           </form>
+
+          <div>
+
+            <div className='signIn__tittleColumn'>
+                <p className='signIn-logo'>
+                    <img className='cohete-navis' src={cohete} alt="cohete.svg" />
+                    <i className="fa-solid fa-user"></i>
+                </p>
+                <p className='signIn-tittle'>
+                    SignUp
+                </p>
+            </div>
+
+            <p className='subTittle'>
+                ¿Ya tienes una cuenta?
+                <Link to='/signIn'>
+                    Inicia sesión.
+                </Link>
+            </p>
+
+          </div>
+
         </div>
       </div>
     </>

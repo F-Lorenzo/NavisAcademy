@@ -4,14 +4,14 @@ import { AuthContextProvider } from "./Context/AuthContext";
 import { UserUpdatesContextProvider } from "./Context/UserUpdatesContext";
 import "./App.css";
 
-import OldNavBar from "./components/NavBar/OldNavBar";
-
 import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 
 import Account from "./components/Account/Account";
 import EditarInformacion from "./components/Account/EditarInformacion";
-import Logger from "./components/Login/Logger";
+
+
+
 import SignIn from "./components/Login/SignIn";
 import Signup from "./components/Login/SignUp";
 import Checkout from "./components/checkout/Checkout";
@@ -37,6 +37,7 @@ import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyC
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
 import DiaHoraClase from "./components/DiaHoraClase/DiaHoraClase";
 import ReprogramarClase from "./components/PanelAlumno/MisClases/ReprogramarClase";
+import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
 
 
 
@@ -49,17 +50,16 @@ function App() {
 
             <NavBar />
             {/*
-            <OldNavBar />
-            */}
 
-            
+            */}
+           
             <Routes>
 
-              <Route path="/dev" element={<ReprogramarClase />} />
+              <Route path="/dev" element={<NewPanelAlumno />} />
 
               <Route path="/" element={<Home />} />
 
-              <Route path="/logger" element={<Logger />} />
+
               <Route path="/signIn" element={<SignIn />} />
               <Route path="/signUp" element={<Signup />} />
 

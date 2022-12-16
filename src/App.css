@@ -7,16 +7,19 @@
   
   html {
     height: 100%;
+    background: #fcfcfc;
   }
 
   body {
     height: 100%;
+    max-width: 100%;
   }
   
   #root {
     margin: 0;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     min-height: 100%;
   }
   

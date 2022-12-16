@@ -10,11 +10,9 @@ import MisClases from "./MisClases/MisClases";
 import BuyClasses from "./BuyClasses/BuyClasses";
 import Loader from "../Loader/Loader";
 
-
 import "./MisClases/MisClases.css";
 
 const PanelAlumno = () => {
-
 
   const { user } = UserUpdates();
   const [ allMyClasses, setAllMyClasses ] = useState([]);
@@ -39,22 +37,6 @@ const PanelAlumno = () => {
           }))
         );
 
-        /*
-
-        arrayOfClasses.sort((a,b) => {
-          if (a.day < b.day) {return - 1;}
-          if (a.day > b.day)  {return 1;}
-          return 0;
-        })  
-
-        arrayOfClasses.sort((a,b) => {
-          if (a.date < b.date) {return - 1;}
-          if (a.date > b.date) {return 1;}
-          return 0;
-        })
-
-        */
-
         setAllMyClasses(arrayOfClasses);
         setLoader(false);
 
@@ -75,8 +57,8 @@ const PanelAlumno = () => {
   return (
     <>
       <div>
-        {/*
         <button onClick={handleTest}>TEST</button>
+        {/*
         */}
 
         <div className="container">

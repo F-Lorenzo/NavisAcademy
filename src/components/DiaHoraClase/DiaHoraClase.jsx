@@ -28,6 +28,7 @@ const DiaHoraClase = () => {
     const userNotification = {
         textNotification: "Programaste tus clases, en breve se te asiganara un profesor",
         notificationType: "Notificacion",
+        checked: false,
     }
 
     const sendToFire = async () => {
