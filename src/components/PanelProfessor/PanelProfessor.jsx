@@ -2,10 +2,9 @@ import React from 'react'
 import { UserAuth } from '../../Context/AuthContext';
 import RoadLog from './RoadLog';
 import { Link, useNavigate } from 'react-router-dom';
-import MyClassesOfThePastMonth from './MyClasses/MyClassesOfThePastMonth';
 import { UserUpdates } from '../../Context/UserUpdatesContext';
 import "./PanelProfessor.css"
-import AllMyClasses from './MyClasses/AllMyClasses/AllMyClasses';
+
 
 
 function PanelProfessor() {
@@ -17,12 +16,6 @@ function PanelProfessor() {
         console.log("MyStudents");
         navigate('/Account/Teacher/MyStudents');
         swal("BIENVENIDO", `Aquí podras ver una lista de tus alumnos`, "success");
-    }
-
-    const handleAllMyClasses = () => {
-        console.log("AllMyClasses");
-        navigate('/Account/Teacher/AllMyClasses');
-        swal("BIENVENIDO", `Aquí podras ver una lista de todas tus classes`, "success");
     }
 
     const handleMiPerfil = () => {
@@ -48,8 +41,7 @@ function PanelProfessor() {
                         <li>Mes Anterior: {user.form.lastMonthClasses}</li>
                     </ul>
                 </div>
-
-                <AllMyClasses />
+    
 
                 
 

@@ -12,7 +12,7 @@ const StudentClassInfo = (clases) => {
     return (
         <div className='studentClassInfo__container'>
             <div className='studentClassInfo__remainingClases'>
-                <p>CLASES RESTANTES: {clases.remainingClases}</p>
+                <p>CLASES DISPONIBLES: {clases.remainingClases}</p>
             </div>
         
             <button className='studentPanelButton' onClick={handleMiCalendario}>Ver Calendario</button>    

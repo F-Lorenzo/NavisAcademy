@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import "./DiaHoraClase.css";
-
-import { UserUpdates } from '../../Context/UserUpdatesContext';
+import "./ProgramClasses.css";
+import { UserUpdates } from '../../../../Context/UserUpdatesContext';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, serverTimestamp } from 'firebase/firestore';
 
 
-const DiaHoraClase = () => {
+const ProgramClasses = () => {
 
     const { user } = UserUpdates();
     const timeStamp = serverTimestamp(); 
@@ -53,7 +52,7 @@ const DiaHoraClase = () => {
 
                 })
             const teacherUpdate = doc(firestore, `Users/${user.uid}`);
-            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1)} )
+            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false} )
 
             swal("Muy Bien", `Pronto se te asignara un profesor!`, "success");
 
@@ -161,4 +160,4 @@ const DiaHoraClase = () => {
 
 }
 
-export default DiaHoraClase
+export default ProgramClasses

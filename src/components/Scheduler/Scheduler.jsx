@@ -27,7 +27,7 @@ export default class Scheduler extends Component {
  
     render() {
         return (
-            <div ref={ (input) => { this.schedulerContainer = input } } style={ { width: '100%', height: '100%' } }></div>
+            <div ref={ (input) => { this.schedulerContainer = input } } style={ { width: '100%', height: '800px' } }></div>
        );
     }
 }

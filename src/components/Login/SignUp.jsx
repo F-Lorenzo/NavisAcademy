@@ -34,6 +34,8 @@ const Signup = () => {
         teacher: "unasigned",
         newNotifications: true,
         notifications: 1,
+        newbie: true,
+        durationClass: 0,
     }
 
     const welcomeNotification = {

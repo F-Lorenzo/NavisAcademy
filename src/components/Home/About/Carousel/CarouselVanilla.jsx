@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import img00 from '../../assets/imgCarouselHome/img00.jpg';
-import img01 from '../../assets/imgCarouselHome/img01.jpg';
-import img02 from '../../assets/imgCarouselHome/img02.jpg';
+import img00 from '../../../../assets/imgCarouselHome/img00.jpg';
+import img01 from '../../../../assets/imgCarouselHome/img01.jpg';
+import img02 from '../../../../assets/imgCarouselHome/img02.jpg';
 import "./CarouselVanilla.css";
 
 

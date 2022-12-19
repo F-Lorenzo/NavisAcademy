@@ -11,6 +11,7 @@ import NextClassInfo from './NextClass/NextClassInfo/NextClassInfo';
 import StudentPanelActionButtons from './NextClass/StundentPanelActionButtons/StudentPanelActionButtons';
 import StudentClassInfo from './NextClass/StudentClassInfo/StudentClassInfo';
 import Asistencia from './NextClass/Asistencia/Asistencia';
+import MyFirstClasses from './MyFirstClasses/MyFirstClasses';
 
 
 const NewPanelAlumno = () => {
@@ -19,6 +20,7 @@ const NewPanelAlumno = () => {
     const [ allMyClasses, setAllMyClasses ] = useState([]);
     const [ loader, setLoader ] = useState(true);
     const [ classNumber, setClassNumber ] = useState();
+    const userData = user.form;
 
     useEffect(() => {
         const querydb = getFirestore();
@@ -45,6 +47,10 @@ const NewPanelAlumno = () => {
         );
     }, [user]);
 
+    const handleTest = () => {
+        console.log(user);
+    }
+
     if (loader) {
         return (
             <Loader />
@@ -53,19 +59,35 @@ const NewPanelAlumno = () => {
 
     return (
         <div>
-            <div>
+            {/*
+            <button onClick={handleTest}>test</button>
+            */}
+                        
+            {
+                userData.teacher === "assigned" ? (
+                <div>
+                    <div className='nextClass__container'>
+                        <NextClassInfo {...allMyClasses[classNumber]}/>
+                        <StudentPanelActionButtons />
+                        <Asistencia {...user.misClases}/>
+                    </div> 
 
-                <div className='nextClass__container'>
-                    <NextClassInfo {...allMyClasses[classNumber]}/>
-                    <StudentPanelActionButtons />
-                    <Asistencia {...user.misClases}/>
-                </div> 
+                    <StudentClassInfo {...user.misClases}/>
+                </div>
+                ) :
 
-                <StudentClassInfo {...user.misClases}/>
+                <div className='MyfirstClasses__welcome'>
+                    <h5>FELICITACIONES!</h5>
+                    <p>Pronto se te asignara un profesor</p>
+                </div>
 
-            </div>
+            }
 
-            <BuyClasses />
+            {
+                userData.newbie ? <MyFirstClasses /> : <BuyClasses duration={userData.durationClass} />
+ 
+            }
+
         </div>
     )
 

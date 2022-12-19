@@ -4,6 +4,7 @@ import { Button } from './Button';
 import DropDown from './DropDown';
 import { UserAuth } from "../../Context/AuthContext";
 import logo from "../../assets/img/logo.svg";
+import userButton from "../../../src/Assets/userButton.png";
 import NotificationsAlert from "./NotificationsAlert";
 
 
@@ -107,7 +108,7 @@ const UpdatedNavBar = () => {
                             <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                                 <div>
                                     <Link to='/Panel' className='nav-links' onClick={closeMobileMenu}>
-                                        <img src="../../../src/Assets/round-account-button-with-user-inside.png" alt="userIcon.png"/>
+                                        <img src={userButton} alt="userIcon.png"/>
                                         <i className='fas fa-caret-down'/>
                                     </Link>
 

@@ -14,7 +14,7 @@ import {
 import { DateTime } from "luxon";
 import { Navigate, useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
-import "./cardClasses.css";
+import "./CardClasses.css";
 
 const CardClasses = ({ number, price, duration, amount }) => {
   const [isCheckout, setIsCheckout] = useState(false);

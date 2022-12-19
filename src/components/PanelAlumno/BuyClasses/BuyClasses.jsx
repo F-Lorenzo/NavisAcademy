@@ -18,12 +18,23 @@ import Checkout from "../../checkout/Checkout";
 import "./cardClasses.css";
 
 
-const BuyClasses = () => {
+const BuyClasses = ({duration}) => {
 
     const [ isCheckout, setIsCheckout ] = useState(false);
 
     const [ totalValue, setTotalValue ] = useState();
     const [ cantidad, setCantidad ] = useState();
+
+    let buyCards = [];
+
+    switch (duration) {
+        case 30:
+            buyCards = CardsItems30;
+            break;
+        case 50:
+            buyCards = CardsItems50;
+            break;
+    }
 
     if (isCheckout) {
         return <Checkout totalValue={totalValue} cantidad={cantidad} />
@@ -34,7 +45,7 @@ const BuyClasses = () => {
             <h3>ADQUIRIR MAS CLASES</h3>
 
             <div className="buy-card-container">
-                { CardsItems50.map((item, index) => {
+                { buyCards.map((item, index) => {
                     return (
                         <div key={index} className="buy-card">
                             <li>

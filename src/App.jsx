@@ -8,9 +8,6 @@ import NavBar from "./components/NavBar/NavBar";
 import Home from "./components/Home/Home";
 
 import Account from "./components/Account/Account";
-import EditarInformacion from "./components/Account/EditarInformacion";
-
-
 
 import SignIn from "./components/Login/SignIn";
 import Signup from "./components/Login/SignUp";
@@ -19,7 +16,6 @@ import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import ProtectedRouteStudent from "./components/ProtectedRoutes/ProtectedRouteStudent";
 import ProtectedRouteTeacher from "./components/ProtectedRoutes/ProtectedRouteTeacher";
 
-import PanelAlumno from "./components/PanelAlumno/PanelAlumno";
 
 import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 
@@ -29,14 +25,14 @@ import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmi
 
 import Footer from "./components/Footer/Footer";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
-import AllMyClasses from "./components/PanelProfessor/MyClasses/AllMyClasses/AllMyClasses";
-import MyClassesOfThePastMonth from "./components/PanelProfessor/MyClasses/MyClassesOfThePastMonth";
+
+
 import Panel from "./components/Account/Panel";
-import MyCalendario from "./components/PanelProfessor/MyClasses/AllMyClasses/MyCalendario";
+import MyCalendario from "./components/PanelProfessor/MyCalendario/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
-import DiaHoraClase from "./components/DiaHoraClase/DiaHoraClase";
-import ReprogramarClase from "./components/PanelAlumno/MisClases/ReprogramarClase";
+import ProgramClasses from "./components/PanelAlumno/MyFirstClasses/ProgramClasses/ProgramClasses";
+import ReprogramarClase from "./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase";
 import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
 
 
@@ -55,7 +51,7 @@ function App() {
            
             <Routes>
 
-              <Route path="/dev" element={<NewPanelAlumno />} />
+              <Route path="/dev" element={<MyCalendario />} />
 
               <Route path="/" element={<Home />} />
 
@@ -69,13 +65,9 @@ function App() {
               <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
               <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
 
-              <Route path="/Account/EditarInformacion" element={<EditarInformacion />} />
-              <Route path="/Account/ProgramarClases" element={<DiaHoraClase />} />
               <Route path="/Account/ReprogramClass" element={<ReprogramarClase />} />
 
               <Route path="/Account/Teacher/MyStudents" element={<MyStudents />} />
-              <Route path="/Account/Teacher/AllMyClasses" element={<AllMyClasses />} />
-              <Route path="/Account/Teacher/TestFilters" element={<MyClassesOfThePastMonth />} />
               
               <Route path="/MiCalendario" element={<MyCalendario />} />
 
@@ -93,7 +85,7 @@ function App() {
               <Route path="/Alumn" 
                 element={
                   <ProtectedRouteStudent>
-                    <PanelAlumno />
+                    <NewPanelAlumno />
                   </ProtectedRouteStudent>
                 }
               />

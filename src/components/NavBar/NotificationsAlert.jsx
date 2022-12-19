@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useState } from 'react';
 import { UserUpdates } from '../../Context/UserUpdatesContext'
+import notificationsIcon from "../../../src/Assets/turn-notifications-on-button.png";
 
 
 const NotificationsAlert = () => {
@@ -11,7 +12,7 @@ const NotificationsAlert = () => {
     return (
         <div>
             <div className="notificaciones">
-                <img src="../../../src/Assets/turn-notifications-on-button.png" alt="notifications.png" />
+                <img src={notificationsIcon} alt="notifications.png" />
                 { user ? (user.notifications > 0 ? <p>{user.notifications}</p> : "") : "" }
             </div>    
         </div>

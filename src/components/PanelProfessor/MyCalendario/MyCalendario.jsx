@@ -1,11 +1,10 @@
 import React from 'react';
-import "./MyCalendario.css";
-import Scheduler from '../../../Scheduler';
-import { DateTime } from 'luxon';
+import Scheduler from '../../Scheduler/Scheduler';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { doc, getDoc, getDocs, getFirestore, collection } from 'firebase/firestore';
-import { UserUpdates } from '../../../../Context/UserUpdatesContext';
+import { getDocs, getFirestore, collection } from 'firebase/firestore';
+import { UserUpdates } from '../../../Context/UserUpdatesContext';
+import "./MyCalendario.css";
 
 const MyCalendario = () => {
 

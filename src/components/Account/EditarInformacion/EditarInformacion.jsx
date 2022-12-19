@@ -1,10 +1,13 @@
-import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 import React, { useState } from 'react';
-import { UserAuth } from '../../Context/AuthContext';
-import { UserUpdates } from '../../Context/UserUpdatesContext'
-import PerfilAlumno from '../PanelAlumno/PerfilAlumno';
-import TeacherProfile from '../PanelProfessor/TeacherProfile';
-import Loader from '../Loader/Loader';
+import { getFirestore, updateDoc, doc } from 'firebase/firestore';
+
+import { UserAuth } from '../../../Context/AuthContext';
+import { UserUpdates } from '../../../Context/UserUpdatesContext';
+
+import PerfilAlumno from '../../PanelAlumno/PerfilAlumno';
+import TeacherProfile from '../../PanelProfessor/TeacherProfile';
+import Loader from '../../Loader/Loader';
+import './EditarInformacion.css';
 
 const EditarInformacion = () => {
 
@@ -47,7 +50,7 @@ const EditarInformacion = () => {
     }
 
     return (
-        <div>
+        <div className='editarInfo-container'>
             <h1>EDITAR INFO DE USUARIO</h1>
                 {user.role === "alumn" ? <PerfilAlumno {...user.form} /> : <TeacherProfile {...user.form} /> }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { UserUpdates } from "../../../Context/UserUpdatesContext";
+import { UserUpdates } from "../../../../Context/UserUpdatesContext";
 
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, getDocs, getDoc} from 'firebase/firestore';
 import MostrarHorarios from './MostrarHorarios';
