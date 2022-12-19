@@ -63,28 +63,35 @@ const NewPanelAlumno = () => {
             <button onClick={handleTest}>test</button>
             */}
                         
-            {
-                userData.teacher === "assigned" ? (
-                <div>
-                    <div className='nextClass__container'>
-                        <NextClassInfo {...allMyClasses[classNumber]}/>
-                        <StudentPanelActionButtons />
-                        <Asistencia {...user.misClases}/>
-                    </div> 
 
-                    <StudentClassInfo {...user.misClases}/>
-                </div>
-                ) :
-
-                <div className='MyfirstClasses__welcome'>
-                    <h5>FELICITACIONES!</h5>
-                    <p>Pronto se te asignara un profesor</p>
-                </div>
-
-            }
 
             {
-                userData.newbie ? <MyFirstClasses /> : <BuyClasses duration={userData.durationClass} />
+                userData.newbie ? <MyFirstClasses /> : (
+
+                    userData.teacher === "assigned" ? (
+                        <div>
+                            <div className='nextClass__container'>
+                                <NextClassInfo {...allMyClasses[classNumber]}/>
+                                <StudentPanelActionButtons />
+                                <Asistencia {...user.misClases}/>
+                            </div> 
+        
+                            <StudentClassInfo {...user.misClases}/>
+                            <BuyClasses duration={userData.durationClass} />
+                        </div>
+                        ) :
+        
+                        (
+                        <div>
+                            <div className='MyfirstClasses__welcome'>
+                                <h5>FELICITACIONES!</h5>
+                                <p>Pronto se te asignara un profesor</p>
+                            </div> 
+                            <BuyClasses duration={userData.durationClass} />
+                        </div> 
+                        )
+
+                )
  
             }
 

@@ -26,12 +26,10 @@ import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmi
 import Footer from "./components/Footer/Footer";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
 
-
 import Panel from "./components/Account/Panel";
 import MyCalendario from "./components/PanelProfessor/MyCalendario/MyCalendario";
 
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
-import ProgramClasses from "./components/PanelAlumno/MyFirstClasses/ProgramClasses/ProgramClasses";
 import ReprogramarClase from "./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase";
 import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
 
