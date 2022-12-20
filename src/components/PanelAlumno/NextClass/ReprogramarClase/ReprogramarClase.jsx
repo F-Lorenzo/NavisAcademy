@@ -58,10 +58,13 @@ const ReprogramarClase = () => {
 
         const fullSchedule = studentSchedule[0];
         const classDateInfo = (fullSchedule[classNumber]); 
+        /*
         console.log(classDateInfo);
-
+        */
         let oldClassDate = new Date(classDateInfo.year, classDateInfo.month, classDateInfo.day);
+        /*
         console.log(`Fecha de la clase a reprogramar : ${oldClassDate}`);
+        */
 
         const addDays = (date, period) => {
             date.setDate(date.getDate() + period);
@@ -180,9 +183,12 @@ const ReprogramarClase = () => {
             newTeacherSchedule.push(newForTeacher);
         });
 
+        /*
         console.log("ID del doc en firestore a actualizar : ", studentSchedule[0].id);
         console.log("Calendario Student Ordenado : ", newStudentSchedule);
         console.log("Calendario Teacher Ordenado : ", newTeacherSchedule);
+        */
+
 
 
     }

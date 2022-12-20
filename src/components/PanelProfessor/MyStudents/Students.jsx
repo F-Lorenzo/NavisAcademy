@@ -3,9 +3,9 @@ import Student from './Student'
 
 const Students = ({myStudents=[]}) => {
 
-      return (
-          myStudents.map( listStudents => <Student key={listStudents.id} info={listStudents} />)
-      )
+        return (
+            myStudents.map( listStudents => <Student key={listStudents.id} info={listStudents} />)
+        )
 
 }
 

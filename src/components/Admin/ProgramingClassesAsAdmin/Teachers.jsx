@@ -150,6 +150,7 @@ const Teachers = ({date, teacher}) => {
             const classDateTeacher = {
                 ...classDate,
                 text : `Alumno : ${date.studentName} ${date.studentLastName}`,
+                studentUid : date.studentUid,
             }
 
             const classDateStudent = {

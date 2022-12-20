@@ -4,6 +4,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { UserAuth } from '../../../Context/AuthContext';
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
 import Students from './Students';
+import './MyStudents.css';
 
 const MyStudents = () => {
 
@@ -27,8 +28,7 @@ const MyStudents = () => {
     }, [])
 
     return (
-        <div>
-            <h4>Mis Alumnos</h4>
+        <div className='myStudents-container'>
             <Students myStudents={studentsData} />
         </div>
     )

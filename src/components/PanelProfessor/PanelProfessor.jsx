@@ -1,19 +1,51 @@
-import React from 'react'
-import { UserAuth } from '../../Context/AuthContext';
-import RoadLog from './RoadLog';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 import { UserUpdates } from '../../Context/UserUpdatesContext';
-import "./PanelProfessor.css"
+import MyClasses from './MyClasses/MyClasses';
+import "./PanelProfessor.css";
+import Loader from '../Loader/Loader';
+
 
 
 
 function PanelProfessor() {
 
     const { user } = UserUpdates();
+    const [ allMyClasses, setAllMyClasses ] = useState([]);
+
+    const [ loader, setLoader ] = useState(true);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const mySchedule = getFirestore();
+        const myScheduleCollection = collection(mySchedule, `Users/${user.uid}/mySchedule`);
+        getDocs(myScheduleCollection)
+        .then((res) =>
+            {
+            const mySchedule = res.docs.map(date => ({ ...date.data()}));
+            const arrayOfClasses = [];      
+            mySchedule.forEach( allMyDates => 
+                Object.keys(allMyDates).forEach(key => arrayOfClasses.push({ 
+                    condition: allMyDates[key].condition,
+                    date: allMyDates[key].date,
+                    time: allMyDates[key].time,
+                    student: allMyDates[key].text,
+                    studentUid: allMyDates[key].studentUid,
+                }))
+            );
+            arrayOfClasses.sort((a,b) => {
+                if (a.date < b.date) {return - 1;}
+                if (a.date > b.date) {return 1;}
+                return 0;
+            })
+            setAllMyClasses(arrayOfClasses);
+            setLoader(false);
+            }
+        );
+    }, [user]);
+
     const handleMisAlumnos = () => {
-        console.log("MyStudents");
         navigate('/Account/Teacher/MyStudents');
         swal("BIENVENIDO", `Aquí podras ver una lista de tus alumnos`, "success");
     }
@@ -41,12 +73,11 @@ function PanelProfessor() {
                         <li>Mes Anterior: {user.form.lastMonthClasses}</li>
                     </ul>
                 </div>
+
+                <div>
+                    <MyClasses myClass={allMyClasses} />
+                </div>
     
-
-                
-
-
-
                 {/* 
                 
                 
