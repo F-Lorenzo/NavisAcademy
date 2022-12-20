@@ -20,17 +20,20 @@
 }
 
 .cohete{
-    position: relative;
     width: 56px;
+    display: block;
     height: 44px;
     background-image: url(../../../assets/cardImg/cohete.png);
     background-repeat: no-repeat;
     background-size: cover;
-    bottom: 0 !important;
-    left: 0 !important;
+    position: absolute;
+    bottom: -1rem;
+    left: -1rem;
+
 }
 
 .buy-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
