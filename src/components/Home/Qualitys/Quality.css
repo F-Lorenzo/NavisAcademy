@@ -90,10 +90,7 @@ span {
 }
 
 .quality_Content .swiper-button-prev {
-    background-color: #479B05;
-    color: white;
-    padding: 2rem;
-    border-radius: 5rem;
+    color: #479B05;
 }
 
 .swiper-scrollbar {
