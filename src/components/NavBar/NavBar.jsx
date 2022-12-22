@@ -36,7 +36,7 @@ const UpdatedNavBar = () => {
         closeMobileMenu
         try {
           await logOut();
-          navigate("/");
+          navigate("/signIn");
           swal("BYE!", `sesion Finalizada!`, "success");
         } catch (e) {
           console.log(e.message);
@@ -82,7 +82,7 @@ const UpdatedNavBar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link to='/' className='nav-links' onClick={handleLogout}>
+                                <Link to='/signIn' className='nav-links' onClick={handleLogout}>
                                     Cerrar Sesión
                                 </Link>
                             </li>

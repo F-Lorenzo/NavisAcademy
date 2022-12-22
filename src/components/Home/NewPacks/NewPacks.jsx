@@ -5,6 +5,8 @@ import './NewPacks.css';
 
 const NewPacks = () => {
 
+    
+
     const { user } = UserUpdates();
     const userData = user.form;
     const [ duration, setDuration ] = useState(50);
@@ -16,7 +18,7 @@ const NewPacks = () => {
     return (
         <div>
             <div className="homeSection__Title">
-                <h2> Paquetes</h2>
+                <h2>Paquetes</h2>
             </div>
 
             { userData ? 

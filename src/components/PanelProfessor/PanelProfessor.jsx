@@ -7,8 +7,6 @@ import "./PanelProfessor.css";
 import Loader from '../Loader/Loader';
 
 
-
-
 function PanelProfessor() {
 
     const { user } = UserUpdates();

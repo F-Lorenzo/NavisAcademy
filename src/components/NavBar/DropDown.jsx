@@ -16,7 +16,6 @@ const DropDown = () => {
         setClick(false);
         try {
           await logOut();
-          navigate("/");
           swal("BYE!", `sesion Finalizada!`, "success");
         } catch (e) {
           console.log(e.message);
@@ -36,7 +35,7 @@ const DropDown = () => {
                     );
                 })}
                 <li>
-                    <Link className='dropdown-link' to='/' onClick={handleLogout}>
+                    <Link className='dropdown-link' to='/signIn' onClick={handleLogout}>
                         Cerrar Sesión
                     </Link>
                 </li>
