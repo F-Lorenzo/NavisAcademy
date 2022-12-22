@@ -44,29 +44,7 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUserLogged(currentUser);
-            /* ----- ROL SHIT ------ */
-
-            /*
-            if (currentUser) {
-                getAllData(currentUser.uid).then((user) => {
-                    const userData = {
-                        uid: currentUser.uid,
-                        email: currentUser.email,
-                        role: user.role,
-                        form: user,
-                        misClases: { 
-                                        remainingClases: user.remainingClases,
-                                        completedClases: user.completedClases,
-                                        programedClases: user.programedClases,
-                                   }
-                    };
-                    setUserLogged(userData);
-                })
-            }
-            */
-            
-            
+            setUserLogged(currentUser);          
         });
         return () => {
             unsubscribe();

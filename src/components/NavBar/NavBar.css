@@ -1,9 +1,11 @@
+
 .navbar {
     background: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
+    max-width: 100rem;
+    margin: auto;
     height: 100px;
     margin-bottom: 1rem;
 }
@@ -35,7 +37,8 @@
 .nav-item {
     display: block;
     list-style: none;
-    width: 100%;
+    width: 15rem;
+    max-width: 100%;
 }
 
 .nav-item img {

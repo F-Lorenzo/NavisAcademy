@@ -1,0 +1,77 @@
+/* Swiper SHIT ------------------------------------------------------- */
+
+.mySwiper {
+    display: flex;
+    justify-content: center;
+    max-width: 80rem;
+}
+
+.swiper-wrapper {
+    align-items: center;
+    margin-left: 0;
+}
+
+.swiper-slide {
+    margin: auto;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    --swiper-navigation-size: 1.5rem;
+    font-weight: bolder; 
+    padding: 1.5rem;
+    border-radius: 2rem;
+    background-color: #006633;
+    top: 45% !important;
+    color: #FCFCFC !important;
+}
+
+/* ------------------------------------------------------------------- */
+
+.qualityCard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 25rem;
+    height: 11rem;
+    max-width: 25rem;
+    margin: auto;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    color: #FCFCFC;
+    background-color: #479B05;
+}
+
+.qualityCard_icon {
+    width: 20%;
+}
+
+.qualityCard_description {
+    display: flex;
+    flex-direction: column;
+}
+
+.qualityCard_title {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.qualityCard_text {
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width: 1200px) { 
+   
+    .mySwiper {
+        max-width: 900px;
+    }
+
+}
+
+@media screen and (max-width: 780px) { 
+   
+    .mySwiper {
+        max-width: 550px;
+    }
+
+}
