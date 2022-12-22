@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { userLogged } = UserAuth();
   
   if (!userLogged) {
-    return <Navigate to='/logger' />;
+    return <Navigate to='/signIn' />;
   }
   return children;
 

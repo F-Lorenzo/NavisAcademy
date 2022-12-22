@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from './Button';
 import DropDown from './DropDown';
 import { UserAuth } from "../../Context/AuthContext";
 import logo from "../../assets/img/logo.svg";
 import userButton from "../../../src/Assets/userButton.png";
 import NotificationsAlert from "./NotificationsAlert";
-
-
 import './NavBar.css';
 
 const UpdatedNavBar = () => {
@@ -47,7 +44,7 @@ const UpdatedNavBar = () => {
     };
 
     return (
-        <>
+        <div>
             <nav className='navbar'>
 
                 <Link to='/' className='navbar-logo'>
@@ -179,7 +176,7 @@ const UpdatedNavBar = () => {
                 }
 
             </nav>
-        </>
+        </div>
     )
 
 }

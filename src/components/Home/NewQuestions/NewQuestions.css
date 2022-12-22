@@ -1,0 +1,36 @@
+.questionsCard-container {
+    display: flex;
+    align-items: center;
+    width: 25rem;
+    height: 11rem;
+    max-width: 25rem;
+    margin: auto;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    color: #FCFCFC;
+    background-color: #479B05;
+}
+
+.questionCard_content {
+    display: flex;
+    flex-direction: column;
+}
+
+.questionCard_question {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.questionCard_answer {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 420px) { 
+
+    .questionsCard-container {
+        width: 16.5rem;
+    }
+
+}

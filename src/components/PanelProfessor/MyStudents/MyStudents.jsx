@@ -25,7 +25,7 @@ const MyStudents = () => {
             )
         ))
 
-    }, [])
+    }, [user])
 
     return (
         <div className='myStudents-container'>

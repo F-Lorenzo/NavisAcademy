@@ -77,7 +77,7 @@ const NewPanelAlumno = () => {
                             </div> 
         
                             <StudentClassInfo {...user.misClases}/>
-                            <BuyClasses duration={userData.durationClass} />
+                            <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES'/>
                         </div>
                         ) :
         
@@ -87,7 +87,7 @@ const NewPanelAlumno = () => {
                                 <h5>FELICITACIONES!</h5>
                                 <p>Pronto se te asignara un profesor</p>
                             </div> 
-                            <BuyClasses duration={userData.durationClass} />
+                            <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES' />
                         </div> 
                         )
 

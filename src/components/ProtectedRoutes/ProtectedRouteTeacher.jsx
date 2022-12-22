@@ -9,7 +9,7 @@ const ProtectedRouteTeacher = ({ children }) => {
   const { user } = UserUpdates();
   
   if (!userLogged) {
-    return <Navigate to='/logger' />;
+    return <Navigate to='/signIn' />;
   }
 
   if (user.role === "alumn") {

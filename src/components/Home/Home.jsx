@@ -1,22 +1,20 @@
 import React from 'react';
-import ItemCards from './PackCards/ItemCards';
 import About from './About/About';
-import Qualitys from './Qualitys/Qualitys';
 import Reviews from './Reviews/Reviews';
-import Questions from './Questions/Questions';
 import Contact from './Contact/Contact';
+import NewQualitys from './NewQualitys/NewQualitys';
+import NewQuestions from './NewQuestions/NewQuestions';
+import NewPacks from './NewPacks/NewPacks';
 import './Home.css';
 
 const Home = () => {
   return (
     <>
         <About />
-        <Qualitys />
+        <NewQualitys />
         <Reviews />  
-        <ItemCards/>
-        {/*
-        */}
-        <Questions />
+        <NewPacks />
+        <NewQuestions />
         <Contact />
     </>
   )

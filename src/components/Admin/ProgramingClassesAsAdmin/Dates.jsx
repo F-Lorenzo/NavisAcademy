@@ -2,8 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import TeachersList from './TeachersList';
 import '../Admin.css';
-import { connectFirestoreEmulator } from 'firebase/firestore';
-import ListDays from '../ListDays';
 
 
 const Dates = ({info, teachersList}) => {

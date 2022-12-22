@@ -31,7 +31,7 @@ const MyCalendario = () => {
                 setLoader(false);
             }
         )
-    }, []); 
+    }, [user]); 
  
     const handleTest = () => {
         console.log(myClasses);
