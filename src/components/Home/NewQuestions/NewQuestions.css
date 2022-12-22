@@ -26,3 +26,11 @@
     font-size: 1.1rem;
     text-align: center;
 }
+
+@media screen and (max-width: 420px) { 
+
+    .questionsCard-container {
+        width: 16.5rem;
+    }
+
+}

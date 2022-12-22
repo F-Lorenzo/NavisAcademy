@@ -69,9 +69,17 @@
 }
 
 @media screen and (max-width: 780px) { 
-   
+
     .mySwiper {
         max-width: 550px;
+    }
+
+}
+
+@media screen and (max-width: 420px) { 
+
+    .qualityCard-container {
+        width: 16.5rem;
     }
 
 }

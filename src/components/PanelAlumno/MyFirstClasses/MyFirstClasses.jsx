@@ -84,7 +84,7 @@ const MyFirstClasses = () => {
                 <h5>Bienvenido a NAVIS</h5>
                 <p>Adquiere tu primer paquete de clases</p>
               </div>
-              <BuyClasses duration={userData.durationClass} />
+              <BuyClasses duration={userData.durationClass}/>
             </div>
           }
         </div>

@@ -14,15 +14,18 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
 import "./cardClasses.css";
 
-const BuyClasses = ({ duration }) => {
+const BuyClasses = ({ duration, msg }) => {
   const [isCheckout, setIsCheckout] = useState(false);
-
+  const { userLogged } = UserAuth();
+  const navigate = useNavigate();
   const [totalValue, setTotalValue] = useState();
   const [cantidad, setCantidad] = useState();
+
+  const [currency, setCurrency] = useState("USD");
 
   let buyCards = [];
 
@@ -35,16 +38,22 @@ const BuyClasses = ({ duration }) => {
       break;
   }
 
+  const handleCurrencySelect = (selected) => {
+    setCurrency(selected);
+  }
+
   if (isCheckout) {
     return <Checkout totalValue={totalValue} cantidad={cantidad} />;
   }
 
   return (
     <div className="buy-container">
-      <h3>ADQUIRIR MAS CLASES</h3>
+      <h3>{msg}</h3>
 
-      <div className="buy-card-container">
+        <div className="buy-card-container">
+
         {buyCards.map((item, index) => {
+
           return (
             <div key={index} className="buy-card">
               <li>
@@ -56,31 +65,31 @@ const BuyClasses = ({ duration }) => {
                   </li>
                   <li className="duration"> {item.duration} min/Class </li>
                   <li className="libros">Libros interactivos </li>
-                  <li className="price">$ {item.price} USD por clase </li>
+                  <li className="price">$ {item[currency]} {currency} por clase </li>
                   <div>
+
                     <div>
-                      <select>
-                        <option value="dolar" id="dolar">
-                          $
-                        </option>
-                        <option value="euro" id="euro">
-                          €
-                        </option>
+                      <label>Moneda: </label>
+                      <select value={currency} onChange={opt => handleCurrencySelect(opt.target.value)} >
+                        <option value="USD">$</option>
+                        <option value="EUR">€</option>
                       </select>
                     </div>
 
                     <button
                       className="button__Card"
                       onClick={(handleBuyClasses) => {
-                        console.log(item);
-                        let precio = parseFloat(item.price);
-                        let amount = parseInt(item.amount);
-                        let total = amount * precio;
-                        let finalValue = total.toFixed(2).toString();
-                        setCantidad(amount);
-                        setTotalValue(finalValue);
-
-                        setIsCheckout(!isCheckout);
+                        if (!userLogged) {
+                          navigate('./signIn')
+                        } else {
+                          let precio = parseFloat(item[currency]);
+                          let amount = parseInt(item.amount);
+                          let total = amount * precio;
+                          let finalValue = total.toFixed(2).toString();
+                          setCantidad(amount);
+                          setTotalValue(finalValue);
+                          setIsCheckout(!isCheckout);
+                        }
                       }}
                     >
                       Comprar
