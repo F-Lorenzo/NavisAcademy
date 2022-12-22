@@ -16,9 +16,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
+
 }
 
 .cohete{
@@ -28,8 +28,8 @@
     background-image: url(../../../assets/cardImg/cohete.png);
     background-repeat: no-repeat;
     background-size: cover;
-    bottom: 0 !important;
-    left: 0 !important;
+    bottom: 0 ;
+    left: 0 ;
 }
 
 .buy-card {
