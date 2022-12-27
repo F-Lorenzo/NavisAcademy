@@ -12,7 +12,7 @@ const Signup = () => {
     
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
-    const [ error, setError ] = useState('')
+    const [ error, setError ] = useState('');
     const { createUser } = UserAuth();
     const navigate = useNavigate();
     const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
@@ -31,11 +31,13 @@ const Signup = () => {
         completedClases: 0,
         absentedClases: 0,
         actualClass: 0,
+        totalClasses: 0,
         teacher: "unasigned",
         newNotifications: true,
         notifications: 1,
         newbie: true,
         durationClass: 0,
+        linkToClass: "",
     }
 
     const welcomeNotification = {

@@ -14,7 +14,7 @@
 .myClasses-card {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
@@ -24,7 +24,7 @@
     color: #FCFCFC;
 
     margin: 1.5rem 1rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 10rem;
 
 
     width: 75rem;

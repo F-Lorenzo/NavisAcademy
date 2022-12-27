@@ -1,18 +1,17 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { UserUpdates } from "../../Context/UserUpdatesContext";
-import './NewPanelAlumno.css';
-import Loader from "../Loader/Loader";
-import BuyClasses from "./BuyClasses/BuyClasses";
 import { useNavigate } from 'react-router-dom';
 import NextClassInfo from './NextClass/NextClassInfo/NextClassInfo';
 import StudentPanelActionButtons from './NextClass/StundentPanelActionButtons/StudentPanelActionButtons';
 import StudentClassInfo from './NextClass/StudentClassInfo/StudentClassInfo';
 import Asistencia from './NextClass/Asistencia/Asistencia';
 import MyFirstClasses from './MyFirstClasses/MyFirstClasses';
+import BuyClasses from "./BuyClasses/BuyClasses";
+import Loader from "../Loader/Loader";
+import './NewPanelAlumno.css';
 
+import { AddClases } from './AddClasses';
 
 const NewPanelAlumno = () => {
 
@@ -49,6 +48,7 @@ const NewPanelAlumno = () => {
 
     const handleTest = () => {
         console.log(user);
+        AddClases();
     }
 
     if (loader) {
@@ -59,11 +59,9 @@ const NewPanelAlumno = () => {
 
     return (
         <div>
-            {/*
             <button onClick={handleTest}>test</button>
-            */}
-                        
-
+            {/*
+            */}                        
 
             {
                 userData.newbie ? <MyFirstClasses /> : (
@@ -72,7 +70,7 @@ const NewPanelAlumno = () => {
                         <div>
                             <div className='nextClass__container'>
                                 <NextClassInfo {...allMyClasses[classNumber]}/>
-                                <StudentPanelActionButtons />
+                                <StudentPanelActionButtons {...allMyClasses[classNumber]}/>
                                 <Asistencia {...user.misClases}/>
                             </div> 
         
@@ -94,7 +92,6 @@ const NewPanelAlumno = () => {
                 )
  
             }
-
         </div>
     )
 

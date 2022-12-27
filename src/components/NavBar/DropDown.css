@@ -1,9 +1,10 @@
 .dropdown-menu {
-    width: 200px;
+    width: 180px;
     position: absolute;
     z-index: 10;
     text-align: start;
     list-style: none;
+    transition: all 0.5s ease-in;
 }
   
 .dropdown-menu li {
@@ -26,6 +27,7 @@
     text-decoration: none;
     color: #fff;
     padding: 16px;
+    transition: all 0.25s;
 }
 
 .dropdown-link:hover {
@@ -33,7 +35,9 @@
 }
   
 @media screen and (max-width: 960px) {
+
     .fa-caret-down {
-      display: none;
+        display: none;
     }
+
 }

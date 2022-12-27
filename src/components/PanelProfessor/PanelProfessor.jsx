@@ -6,7 +6,6 @@ import MyClasses from './MyClasses/MyClasses';
 import "./PanelProfessor.css";
 import Loader from '../Loader/Loader';
 
-
 function PanelProfessor() {
 
     const { user } = UserUpdates();
@@ -74,40 +73,7 @@ function PanelProfessor() {
 
                 <div>
                     <MyClasses myClass={allMyClasses} />
-                </div>
-    
-                {/* 
-                
-                
-                <button onClick={handleTestFilters}>TEST FILTERS</button>
-
-                <br />
-
-                <button>MY NEXT CLASSES</button>
-
-                <br />
-
-                <button>MY PAST CLASSES</button>
-
-                <br />
-
-                <button>MY CLASSES OF THIS MONTH</button>
-
-                <br />
-
-                <button>MY CLASSES OF THE PAST MONTH</button>
-
-                <br />
-
-                <button>CONFIRMAR INICIO DE CLASES</button>
-
-                <br />
-
-                <button>PLATAFORMA eLearning</button>
-                
-                */}
-
-
+                </div>  
 
             </div>
         </>
