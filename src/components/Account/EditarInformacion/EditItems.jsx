@@ -1,4 +1,4 @@
-export const FormItems = [
+export const EditItems = [
     {
         field: "Nombre",
         inNameId: "name",
@@ -10,25 +10,18 @@ export const FormItems = [
         inType: "text",
     },
     {
-        field: "Contraseña",
-        inNameId: "password",
-        inType: "password",
-    },
-    {
         field: "Email",
         inNameId: "email",
         inType: "email",
+    },
+    {
+        field: "Ciudad",
+        inNameId: "city",
+        inType: "text",
     },
     {
         field: "Número De Contacto",
         inNameId: "phoneNumber",
         inType: "tel",
     },
-    /*
-    {
-        field: "Ciudad",
-        inNameId: "city",
-        inType: "text",
-    },
-    */
-];
+]

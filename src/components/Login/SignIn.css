@@ -1,140 +1,136 @@
 .signIn__main-container {
-    margin: auto;
-    padding: 40px 40px;
-    display: flex;
-    justify-content: center;
-    background-color: #FCFCFC;
-    font-weight: 600;
+  margin: auto;
+  padding: 40px 40px;
+  display: flex;
+  justify-content: center;
+  background-color: #FCFCFC;
+  font-weight: 600;
 }
 
 .signIn__container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .signIn__tittleColumn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .signIn-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
 }
 
 .cohete-navis {
-    width: 50px;
-    position: relative;
+  width: 50px;
+  position: relative;
 }
 
 .signIn-logo i {
-    position: absolute;
-    font-size: 25px;
-    color: #FCFCFC;
-    padding-top: 16px;
-    padding-left: 0.5px;
+  position: absolute;
+  font-size: 25px;
+  color: #FCFCFC;
+  padding-top: 16px;
+  padding-left: 0.5px;
 }
 
 .signIn-tittle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FCFCFC;
-    background-color: rgb(0, 104, 55);
-    font-size: 35px;
-    border-radius: 20px;
-    width: 350px;
-    height: 70px;
-    margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FCFCFC;
+  background-color: rgb(0, 104, 55);
+  font-size: 35px;
+  border-radius: 20px;
+  width: 350px;
+  height: 70px;
+  margin: 10px;
 }
 
 .subTittle {
-    font-size: 0.95rem;
-    text-align: center;
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-.signIn__form {
+.signIn__form, .signUp__form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 400px;
+}
+.signIn__form label, .signUp__form label {
+  font-size: 2rem;
+  color: rgb(133, 133, 133);
+  margin-bottom: 0.5rem;
+}
+.signIn__form input, .signUp__form input {
+  height: 60px;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+.signIn__form button, .signUp__form button {
+  margin-top: 0.5rem;
+  height: 60px;
+  border: none;
+  background-color: rgb(0, 104, 55);
+  border-radius: 1rem;
+  color: #FCFCFC;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+}
+.signIn__form button:hover, .signUp__form button:hover {
+  background-color: #479B05;
+  color: black;
+}
+
+.signUp__form {
+  width: 45rem;
+}
+.signUp__form div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 960px) {
+  .signIn__main-container {
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    width: 400px;
-}
-
-.signIn__form label {
-    font-size: 2rem;
-    color: rgb(133, 133, 133);
-    margin-bottom: 0.5rem;
-}
-
-.signIn__form input {
-    height: 60px;
-    border-radius: 1rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-    padding: 1rem;
-}
-
-.signIn__form button {
-    margin-top: 0.5rem;
-    height: 60px;
-    border: none;
-    background-color: rgb(0, 104, 55);
-    border-radius: 1rem;
-    color: #FCFCFC;
+    padding: 0;
+  }
+  .signIn-tittle {
     font-size: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
-}
-
-.signIn__form button:hover {
-    background-color: #479B05;
-    color: black;
-}
-
-@media screen and (max-width: 960px) { 
-
-    .signIn__main-container {
-        margin: auto;
-        padding: 0;
-    }
-
-    .signIn-tittle {
-        font-size: 25px;
-        border-radius: 15px;
-        width: 300px;
-        height: 60px;
-        margin: 10px;
-    }
-
-    .signIn__tittleColumn {
-        flex-direction: column;
-    }
-
-    .signIn__form {
-        width: 300px;
-    }
-
-    .signIn__form label {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .signIn__form input {
-        height: 45px;
-        border-radius: 0.5rem;
-        margin-bottom: 1.5rem;
-        font-size: 1rem;
-    }
-    
-}
-
-
+    border-radius: 15px;
+    width: 300px;
+    height: 60px;
+    margin: 10px;
+  }
+  .signIn__tittleColumn {
+    flex-direction: column;
+  }
+  .signIn__form {
+    width: 300px;
+  }
+  .signIn__form label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .signIn__form input {
+    height: 45px;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=SignIn.css.map */

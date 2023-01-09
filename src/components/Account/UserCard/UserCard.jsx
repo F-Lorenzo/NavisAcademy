@@ -23,14 +23,14 @@ const UserCard = ({userInfo, role, toggle}) => {
 
             <div className="userCard-body">
                 <div className="userCard-body-input">
-                    <span className="userCard-body-input_title">Mail:</span>
+                    <span className="userCard-body-input_title">Email:</span>
                     <span className="userCard-body-input_content">{userInfo.email}</span> 
                 </div>
             </div>
 
             <div className="userCard-body">
                 <div className="userCard-body-input">
-                    <span className="userCard-body-input_title">Pais:</span>
+                    <span className="userCard-body-input_title">País:</span>
                     <span className="userCard-body-input_content">{userInfo.country}</span> 
                 </div>
             </div>  
@@ -44,14 +44,14 @@ const UserCard = ({userInfo, role, toggle}) => {
 
             <div className="userCard-body">
                 <div className="userCard-body-input">
-                    <span className="userCard-body-input_title">Numero de contacto:</span>
+                    <span className="userCard-body-input_title">Número de contacto:</span>
                     <span className="userCard-body-input_content">{userInfo.phoneNumber}</span> 
                 </div>
             </div>  
 
             <div className="userCard-footer">
                 <button className="userCard-button" onClick={() => {toggle()}}>
-                    Editar Informacion
+                    Editar Información
                 </button>
             </div>
         </div>

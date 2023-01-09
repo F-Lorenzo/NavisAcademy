@@ -44,6 +44,7 @@
 
 .qualityCard_icon {
     width: 20%;
+    filter: brightness(0) invert(1);
 }
 
 .qualityCard_description {

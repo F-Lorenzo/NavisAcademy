@@ -30,6 +30,9 @@ import MyCalendario from "./components/PanelProfessor/MyCalendario/MyCalendario"
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
 import ReprogramarClase from "./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase";
 import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
+import Develope from "./components/Develope/Develope";
+
+
 /*
 
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoutes/ProtectedRoute'));
@@ -63,6 +66,8 @@ function App() {
             */}
            
             <Routes>
+
+              <Route path="/dev" element={<Develope />} />
 
               <Route path="/" element={<Home />} />
               <Route path="/signIn" element={<SignIn />} />

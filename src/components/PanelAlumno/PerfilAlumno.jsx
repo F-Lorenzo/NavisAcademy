@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import location from '../../assets/img/location-sign.svg'
-import profileIcon from '../../assets/img/profile-user.svg'
-import phone from '../../assets/img/phone-call-telephone-call.svg'
 
 
 const PerfilAlumno = (info) => {

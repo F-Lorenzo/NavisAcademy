@@ -16,6 +16,8 @@ const Home = () => {
         <NewPacks />
         <NewQuestions />
         <Contact />
+        {/*
+        */}
     </>
   )
 }

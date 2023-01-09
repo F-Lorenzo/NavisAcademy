@@ -93,7 +93,13 @@ const ProgramClasses = () => {
 
     const handleChange = (e) => {
 
-        //console.log(e.target.id,e.target.name, ":", e.target.value);
+        let hour = parseInt(e.target.value);
+
+        let utcDate = new Date (Date.UTC(0,0,0,hour,0,0));
+
+        console.log(utcDate.toUTCString());
+
+        console.log(e.target.id,e.target.name, ":", e.target.value);
 
         let dayToChange = usersWeek.filter((d) => d.day === e.target.id);
         let restOfDays = usersWeek.filter((d) => d.day != e.target.id);
@@ -104,7 +110,7 @@ const ProgramClasses = () => {
         dayToChange = { day: e.target.id , time: e.target.value }
         restOfDays.push(dayToChange);
 
-        //console.log("dias actualizados :", restOfDays);
+        console.log("dias actualizados :", restOfDays);
 
         setUsersWeek(restOfDays);
         
@@ -139,7 +145,6 @@ const ProgramClasses = () => {
                                     {day}
                                 </li>
                                     { clicked && <input 
-                                        step={600}
                                         type="time"
                                         id={day}
                                         name="time"

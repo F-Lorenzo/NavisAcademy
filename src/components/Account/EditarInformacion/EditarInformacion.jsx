@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { getFirestore, updateDoc, doc } from 'firebase/firestore';
 
+import { EditItems } from './EditItems';
 import { UserAuth } from '../../../Context/AuthContext';
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
 
-import PerfilAlumno from '../../PanelAlumno/PerfilAlumno';
-import TeacherProfile from '../../PanelProfessor/TeacherProfile';
 import Loader from '../../Loader/Loader';
-import './EditarInformacion.css';
+import './EditarInformacion.scss';
 
 const EditarInformacion = () => {
 
@@ -51,80 +50,31 @@ const EditarInformacion = () => {
 
     return (
         <div className='editarInfo-container'>
-            <h1>EDITAR INFO DE USUARIO</h1>
-                {user.role === "alumn" ? <PerfilAlumno {...user.form} /> : <TeacherProfile {...user.form} /> }
+            <h5>EDITAR MI INFORMACION</h5>
 
-            <div className="caja__trasera">             
-                <div className="caja__trasera-login">
+            <div>             
+                <div>
 
-                    <form className='form__Register' onSubmit={handleSubmit}>
+                    <form className='editarInfo__form' onSubmit={handleSubmit}>
 
-                        <label htmlFor="name">
-                            Name : 
-                        </label>
-                        <input 
-                            type="text" 
-                            id='name' 
-                            name='name' 
-                            value={form.name || ''} 
-                            onChange={handleChange} 
-                        />
+                        {EditItems.map((item, index) =>{
+                            return (
+                                <div key={index}>
+                                    <label htmlFor={item.inNameId}>
+                                        {item.field} : 
+                                    </label>
+                                    <input 
+                                        type={item.inType} 
+                                        id={item.inNameId} 
+                                        name={item.inNameId} 
+                                        value={form[item.inNameId] || ''} 
+                                        onChange={handleChange} 
+                                    />
+                                </div>
+                            )
+                        })}
 
-                        <br />
-
-                        <label htmlFor="lastName">
-                            Last name : 
-                        </label>
-                        <input 
-                            type="text" 
-                            id='lastName' 
-                            name='lastName' 
-                            value={form.lastName || ''} 
-                            onChange={handleChange} 
-                        />
-                        
-                        <br />
-
-                        <label htmlFor="phoneNumber">
-                            Phone Number : 
-                        </label>
-                        <input 
-                            type="tel" 
-                            id='phoneNumber' 
-                            name='phoneNumber' 
-                            value={form.phoneNumber || ''} 
-                            onChange={handleChange} 
-                        />
-
-                        <br />
-
-                        <label htmlFor="country">
-                            Country: 
-                        </label>
-                        <input 
-                            type="text" 
-                            id='country' 
-                            name='country' 
-                            value={form.country || ''} 
-                            onChange={handleChange} 
-                        />
-
-                        <br />
-
-                        <label htmlFor="city">
-                            City: 
-                        </label>
-                        <input 
-                            type="text" 
-                            id='city' 
-                            name='city' 
-                            value={form.city || ''} 
-                            onChange={handleChange} 
-                        />
-
-                        <br />
-
-                        <button className='boton__Edit' type="submit" id="btn__iniciar-sesion">Editar</button>
+                        <button className='editarInfo-button' type="submit">Editar</button>
 
                     </form>
                 </div>

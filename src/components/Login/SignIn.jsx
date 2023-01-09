@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../Context/AuthContext';
 import cohete from '../../assets/img/cohete.svg';
 import Loader from '../Loader/Loader'
-import './SignIn.css';
+import './SignIn.scss';
 
 const SignIn = () => {
   
@@ -39,7 +39,6 @@ const SignIn = () => {
     return (
         <>
         <div className="signIn__main-container">        
-
             <div className="signIn__container">
 
                 <div>
@@ -94,7 +93,6 @@ const SignIn = () => {
                 </form>
 
             </div>
-
         </div>
         </>
     );

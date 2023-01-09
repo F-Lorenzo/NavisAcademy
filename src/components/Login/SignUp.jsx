@@ -6,7 +6,9 @@ import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs, serverTi
 import Loader from '../Loader/Loader';
 import cohete from '../../assets/img/cohete.svg';
 import { FormItems } from './FormItems';
-import './SignIn.css';
+import CountryDropdown from './CountryDropdown/CountryDropdown';
+import './SignIn.scss';
+
 
 const Signup = () => {
     
@@ -18,11 +20,17 @@ const Signup = () => {
     const timeStampLuxon = (DateTime.now()).toFormat("DDDD - HH:mm:ss"); 
     const timeStamp = serverTimestamp();
 
+    const [ country, setCountry ] = useState();
+
     const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]:e.target.value,
         })
+    }
+
+    const handleCountry = (select) => {
+        setCountry(select)
     }
 
     const studentData = {
@@ -57,7 +65,7 @@ const Signup = () => {
             console.log(infoUser); // BORRAR ESTA SHIT!!
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
-            setDoc(docuRef, {...form, ...studentData});
+            setDoc(docuRef, {...form, country, ...studentData});
 
             const notifications =  collection(firestore, `Users/${infoUser.user.uid}/myNotifications`);
             addDoc(notifications, {...welcomeNotification, timeStamp});
@@ -80,7 +88,7 @@ const Signup = () => {
       <div className="signIn__main-container">
         <div className="signIn__container">
 
-          <form onSubmit={handleSubmit}>
+          <form className='signUp__form' onSubmit={handleSubmit}>
 
             {FormItems.map((item, index) => {
               return (
@@ -98,6 +106,8 @@ const Signup = () => {
               </div>
               )
             })}
+
+            <CountryDropdown selected={handleCountry}/>
 
             <button type="submit">
               Crear Cuenta

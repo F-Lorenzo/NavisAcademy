@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import about from "../../../assets/img/about.jpg";
+import VideoNavis from "./VideoNavis/VideoNavis";
 import CarouselVanilla from "./Carousel/CarouselVanilla";
 
 const About = () => {
@@ -21,7 +21,10 @@ const About = () => {
       </div>
 
       <div className="about__2">
+        <VideoNavis /> 
+        {/*
         <CarouselVanilla />
+        */}
       </div>
       
     </section>

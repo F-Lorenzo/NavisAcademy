@@ -4,7 +4,7 @@ import { UserAuth } from '../../../Context/AuthContext';
 import { FormItems } from './FormItems';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import SetTeacherDisponobility from './SetTeacherDisponobility';
-import './CreateTeacherAccount.css'
+import './CreateTeacherAccount.scss'
 
 const CreateTeacherAccount = () => {
 
@@ -25,9 +25,9 @@ const CreateTeacherAccount = () => {
     return (
         <>
         <div className='createTeacher-container'>             
-            <div className="caja__trasera-login">
+            <div>
 
-                <form className='form__Register'>
+                <form className='createTeacher__form'>
 
                     {FormItems.map((item, index) => {
                         return (

@@ -28,7 +28,7 @@ const NewQualitys = () => {
                     loop={true}
                     loopFillGroupWithBlank={true}
                     pagination={{
-                    clickable: true,
+                        clickable: true,
                     }}
                     navigation={true}
                     modules={[Pagination, Navigation]}

@@ -10,27 +10,20 @@
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^7.8.1",
-    "animate.css": "^4.1.1",
-    "bootstrap": "^5.2.2",
     "dhtmlx-scheduler": "^6.0.2",
     "firebase": "^9.9.4",
     "luxon": "^3.0.4",
-    "node-sass": "^8.0.0",
-    "primeicons": "^6.0.1",
-    "primereact": "^8.6.1",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.6.0",
     "react-router-dom": "^6.3.0",
-    "react-select": "^5.5.4",
+    "react-youtube": "^10.1.0",
     "swiper": "^8.4.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
-    "sass": "^1.56.1",
+    "sass": "^1.57.1",
     "vite": "^3.0.7"
   }
 }
