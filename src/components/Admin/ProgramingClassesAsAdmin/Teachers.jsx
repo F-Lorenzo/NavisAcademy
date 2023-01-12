@@ -38,6 +38,12 @@ const Teachers = ({date, teacher}) => {
         checked: false,
     }
 
+    const teacherNewNotification = {
+        textNotification: `Se te asigno un nuevo alumno, su nombre es ${date.studentName} ${date.studentLastName}`,
+        notificationType: "Notificacion",
+        checked: false,
+    }
+
     // DISPONIBILIDAD
 
     const teacherWeek = [];
@@ -60,7 +66,7 @@ const Teachers = ({date, teacher}) => {
     
     (date.userWeek).length != teacherWeek.length ? Disponibility() : (
         (date.userWeek).map((user, index) => {
-            !((user.time >= teacherWeek[index].timeStart) && (user.time < teacherWeek[index].timeEnd)) && Disponibility();
+            !((user.timeDate >= teacherWeek[index].timeStartDate) && (user.timeDate < teacherWeek[index].timeEndDate)) && Disponibility();
         })
     );
 
@@ -149,13 +155,13 @@ const Teachers = ({date, teacher}) => {
 
             const classDateTeacher = {
                 ...classDate,
-                text : `Alumno : ${date.studentName} ${date.studentLastName}`,
+                text : `Alumno: ${date.studentName} ${date.studentLastName}`,
                 studentUid : date.studentUid,
             }
 
             const classDateStudent = {
                 ...classDate,
-                text : `Profesor : ${teacher.name} ${teacher.lastName}`,
+                text : `Profesor: ${teacher.name} ${teacher.lastName}`,
             }
 
             teacherSchedule.push(classDateTeacher);
@@ -176,7 +182,7 @@ const Teachers = ({date, teacher}) => {
         let index = 0;
         //console.log(date.remainingClases);
 
-        addDays(dateOfClass, 7);
+        addDays(dateOfClass, 0);
         
         for (let count = 0; count < date.remainingClases ; count++) {
 

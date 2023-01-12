@@ -4,13 +4,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../../Context/AuthContext';
 import { DisponibilityItem } from './DisponibilityItem';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
+import TimePicker from '../../Develope/TimePicker';
+
 
 const SetTeacherDisponobility = ({teacherForm}) => {
 
     const { createUser } = UserAuth();
     const navigate = useNavigate();
     const week = [ "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo" ];
-    const [ weekDisponibility, setUserWeek ] = useState([]);
+    const [ weekDisponibility, setWeekDisponibility ] = useState([]);
     const [ lunes, setLunes ] = useState(...DisponibilityItem);
     const [ martes, setMartes ] = useState(...DisponibilityItem);
     const [ miercoles, setMiercoles ] = useState(...DisponibilityItem);
@@ -20,21 +22,39 @@ const SetTeacherDisponobility = ({teacherForm}) => {
     const [ domingo, setDomingo ] = useState(...DisponibilityItem);
 
     const handleChangeStart = (s) => {
-        let dayToChange = weekDisponibility.filter((d) => d.day === s.target.id);
-        let time = dayToChange[0].timeEnd;
-        let restOfDays = weekDisponibility.filter((d) => d.day != s.target.id);
-        dayToChange = { day: s.target.id, timeStart: s.target.value, timeEnd : time }
+        let dayToChange = weekDisponibility.filter((d) => d.day === s.id);
+        console.log(dayToChange);
+        let timeEnd = dayToChange[0].timeEnd;
+        let timeEndDate = dayToChange[0].timeEndDate;
+        console.log(timeEndDate);
+        let restOfDays = weekDisponibility.filter((d) => d.day != s.id);
+        dayToChange = { 
+            day: s.id, 
+            timeStart: s.timeString, 
+            timeEnd : timeEnd, 
+            timeStartDate: s.timeDate,
+            timeEndDate : timeEndDate,
+        }
+        console.log(dayToChange);
         restOfDays.push(dayToChange);
-        setUserWeek(restOfDays);
+        setWeekDisponibility(restOfDays);
     }
 
     const handleChangeEnd = (e) => {
-        let dayToChange = weekDisponibility.filter((d) => d.day === e.target.id);
-        let time = dayToChange[0].timeStart;
-        let restOfDays = weekDisponibility.filter((d) => d.day != e.target.id);
-        dayToChange = { day: e.target.id , timeStart: time, timeEnd: e.target.value }
+        let dayToChange = weekDisponibility.filter((d) => d.day === e.id);
+        let timeStart = dayToChange[0].timeStart;
+        let timeStartDate = dayToChange[0].timeStartDate;
+        let restOfDays = weekDisponibility.filter((d) => d.day != e.id);
+        dayToChange = { 
+            day: e.id, 
+            timeStart: timeStart, 
+            timeEnd: e.timeString, 
+            timeEndDate: e.timeDate,
+            timeStartDate: timeStartDate,
+        }
+        console.log(dayToChange)
         restOfDays.push(dayToChange);
-        setUserWeek(restOfDays);
+        setWeekDisponibility(restOfDays);
     }
 
     const sendToFire = async () => {
@@ -104,12 +124,12 @@ const SetTeacherDisponobility = ({teacherForm}) => {
                                 <li className={clicked ? 'teacherDisponibility-day-button clicked' : 'teacherDisponibility-day-button'} 
                                     onClick={() => {
                                         let selectedDays = weekDisponibility;
-                                        !clicked ? selectedDays.push({day, timeStart: undefined, timeEnd: undefined}) 
+                                        !clicked ? selectedDays.push({day, timeStart: undefined, timeEnd: undefined, timeStartDate: undefined, timeEndDate: undefined}) 
                                         : selectedDays = selectedDays.filter((d) => 
                                             d.day != day
                                         );
                                         setClicked(!clicked);
-                                        setUserWeek(selectedDays);
+                                        setWeekDisponibility(selectedDays);
                                         console.log(weekDisponibility);
                                     }}
                                 >
@@ -119,28 +139,12 @@ const SetTeacherDisponobility = ({teacherForm}) => {
                                         <div className='time-selector'>
                                             <li>
                                                 Horario de inicio : 
-                                                <input 
-                                                    step={900}
-                                                    type="time"
-                                                    id={day}
-                                                    name="timeStart"
-                                                    value={weekDisponibility.timeStart}
-                                                    onChange={handleChangeStart} 
-                                                />
+                                                <TimePicker id={day} name="timeStart" onChange={handleChangeStart}/>
                                             </li>
-
                                             <li>
                                                 Horario de finalizacion : 
-                                                <input 
-                                                    step={900}
-                                                    type="time"
-                                                    id={day}
-                                                    name="timeEnd"
-                                                    value={weekDisponibility.timeEnd}
-                                                    onChange={handleChangeEnd} 
-                                                />
+                                                <TimePicker id={day} name="timeEnd" onChange={handleChangeEnd}/>
                                             </li>
-
                                         </div>
                                         )
                                     }

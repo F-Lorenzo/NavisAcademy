@@ -56,7 +56,7 @@ const MyFirstClasses = () => {
                     <li className="amount">Clases de 30min </li>
                     <div>
                       <button className="button__Card" onClick={() => handleSelection(30)}>
-                        SLECCIONAR
+                        SELECCIONAR
                       </button>
                     </div>
                   </ul>

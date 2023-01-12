@@ -25,7 +25,7 @@ const BuyClasses = ({ durationSelection, msg }) => {
   const [ totalValue, setTotalValue ] = useState();
   const [ cantidad, setCantidad ] = useState();
   const [ duration, setDuration ] = useState(50);
-  const [ currency, setCurrency ] = useState("USD");
+  const [ currency, setCurrency ] = useState("EUR");
   const navigate = useNavigate();
 
   let buyCards = [];
@@ -58,7 +58,7 @@ const BuyClasses = ({ durationSelection, msg }) => {
 
         <div className="buy-container__header">
           {durationSelection && <Switcher title={'DURACION DE LA CLASE :'} opt01={'50'} opt02={'30'} onToggle={handleDurationSelect}/> }
-          <Switcher title={'MONEDA :'} opt01={'USD'} opt02={'EUR'} onToggle={handleCurrency}/>
+          <Switcher title={'MONEDA :'} opt01={'EUR'} opt02={'USD'} onToggle={handleCurrency}/>
         </div>
 
         <div className="buy-card-container">
@@ -80,7 +80,7 @@ const BuyClasses = ({ durationSelection, msg }) => {
                   </li>
                   <li className="duration"> {item.duration} min/Class </li>
                   <li className="libros">Libros interactivos </li>
-                  <li className="price">$ {item[currency]} {currency} por clase </li>
+                  <li className="price">{item[currency]} {currency} por clase </li>
                   <div>
 
                     <button
