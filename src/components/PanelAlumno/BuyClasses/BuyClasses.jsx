@@ -20,12 +20,12 @@ import Checkout from "../../checkout/Checkout";
 import "./cardClasses.scss";
 
 const BuyClasses = ({ durationSelection, msg }) => {
-  const [ isCheckout, setIsCheckout ] = useState(false);
+  const [isCheckout, setIsCheckout] = useState(false);
   const { userLogged } = UserAuth();
-  const [ totalValue, setTotalValue ] = useState();
-  const [ cantidad, setCantidad ] = useState();
-  const [ duration, setDuration ] = useState(50);
-  const [ currency, setCurrency ] = useState("USD");
+  const [totalValue, setTotalValue] = useState();
+  const [cantidad, setCantidad] = useState();
+  const [duration, setDuration] = useState(50);
+  const [currency, setCurrency] = useState("USD");
   const navigate = useNavigate();
 
   let buyCards = [];
@@ -41,12 +41,11 @@ const BuyClasses = ({ durationSelection, msg }) => {
 
   const handleCurrency = (selected) => {
     setCurrency(selected);
-  }
+  };
 
   const handleDurationSelect = (selected) => {
     setDuration(parseInt(selected));
-  }
-
+  };
 
   if (isCheckout) {
     return <Checkout totalValue={totalValue} cantidad={cantidad} />;
@@ -56,21 +55,35 @@ const BuyClasses = ({ durationSelection, msg }) => {
     <div className="buy-container">
       <h3>{msg}</h3>
 
-        <div className="buy-container__header">
-          {durationSelection && <Switcher title={'DURACION DE LA CLASE :'} opt01={'50'} opt02={'30'} onToggle={handleDurationSelect}/> }
-          <Switcher title={'MONEDA :'} opt01={'USD'} opt02={'EUR'} onToggle={handleCurrency}/>
-        </div>
+      <div className="buy-container__header">
+        {durationSelection && (
+          <Switcher
+            title={"DURACION DE LA CLASE :"}
+            opt01={"50"}
+            opt02={"30"}
+            onToggle={handleDurationSelect}
+          />
+        )}
+        <Switcher
+          title={"MONEDA :"}
+          opt01={"USD"}
+          opt02={"EUR"}
+          onToggle={handleCurrency}
+        />
+      </div>
 
-        <div className="buy-card-container">
-
+      <div className="buy-card-container">
         {buyCards.map((item, index) => {
-
           let recomended = false;
-          index === 1 ? recomended = !recomended : recomended;
+          index === 1 ? (recomended = !recomended) : recomended;
 
           return (
             <div key={index} className="buy-card">
-              {recomended ? <span className="recomended-label">RECOMENDADO</span> : ""}
+              {recomended ? (
+                <span className="recomended-label">RECOMENDADO</span>
+              ) : (
+                ""
+              )}
               <li>
                 <ul>
                   <li className="pack-number">Navis {item.number} </li>
@@ -80,14 +93,15 @@ const BuyClasses = ({ durationSelection, msg }) => {
                   </li>
                   <li className="duration"> {item.duration} min/Class </li>
                   <li className="libros">Libros interactivos </li>
-                  <li className="price">$ {item[currency]} {currency} por clase </li>
+                  <li className="price">
+                    {item[currency]} {currency} por clase{" "}
+                  </li>
                   <div>
-
                     <button
                       className="button__Card"
                       onClick={(handleBuyClasses) => {
                         if (!userLogged) {
-                          navigate('./signIn')
+                          navigate("./signIn");
                         } else {
                           let precio = parseFloat(item[currency]);
                           let amount = parseInt(item.amount);
