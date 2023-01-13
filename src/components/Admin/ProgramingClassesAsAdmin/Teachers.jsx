@@ -138,6 +138,7 @@ const Teachers = ({date, teacher}) => {
 
         const actualDay = dateOfClass.getDay();
 
+        /*
         switch (actualDay) {
             case 0:
                 addDays(dateOfClass, 7);
@@ -161,8 +162,33 @@ const Teachers = ({date, teacher}) => {
                 addDays(dateOfClass, 1);
                 break;
         }
+        */
 
-        const generateClassDate = (classTime, classDay) => {
+        switch (actualDay) {
+            case 0:
+                addDays(dateOfClass, 0);
+                break;
+            case 1:
+                addDays(dateOfClass, -1);
+                break;
+            case 2:
+                addDays(dateOfClass, -2);
+                break;
+            case 3:
+                addDays(dateOfClass, -3);
+                break;
+            case 4:
+                addDays(dateOfClass, -4);
+                break;
+            case 5:
+                addDays(dateOfClass, -5);
+                break;
+            case 6:
+                addDays(dateOfClass, -6);
+                break;
+        }
+
+        const generateClassDate = (classTime, classDay, classNumber) => {
             addDays(dateOfClass, classDay);
             let dia = dateOfClass.getDate();
             let mes = dateOfClass.getMonth();
@@ -177,15 +203,22 @@ const Teachers = ({date, teacher}) => {
             let classDateHour_start = `${año}-${mes+1}-${dia} ${horaComienzo}`;
             let classDateHour_end = `${año}-${mes+1}-${dia} ${horaFin}`;
             const classDate = {
-                condition: `pending`,
                 start_date : `${classDateHour_start}`,
                 end_date : `${classDateHour_end}`,
-                date: fullDate,
                 time: classTime,
+                condition: `pending`,
                 day: dia,
                 month: mes,
                 year: año,
+                date: fullDate,
                 dayNumber: classDay,
+                linkToClass: "",
+                classNumber: classNumber,
+                teacherCalification: "",
+                studentCalification: "",
+                studentAssist: false,
+                reprogramed: false,
+                durationClass: date.durationClass,
             }
 
             const classDateTeacher = {
@@ -204,14 +237,14 @@ const Teachers = ({date, teacher}) => {
             addDays(dateOfClass, -classDay);
         }
 
-        const caseOf = (user) => {
-            ((user.day) === "domingo") && generateClassDate(user.time, domingo);
-            ((user.day) === "lunes") && generateClassDate(user.time, lunes);
-            ((user.day) === "martes") && generateClassDate(user.time, martes);
-            ((user.day) === "miercoles") && generateClassDate(user.time, miercoles);
-            ((user.day) === "jueves") && generateClassDate(user.time, jueves);
-            ((user.day) === "viernes") && generateClassDate(user.time, viernes);
-            ((user.day) === "sabado") && generateClassDate(user.time, sabado);
+        const caseOf = (user, classNumber) => {
+            ((user.day) === "domingo") && generateClassDate(user.time, domingo, classNumber);
+            ((user.day) === "lunes") && generateClassDate(user.time, lunes, classNumber);
+            ((user.day) === "martes") && generateClassDate(user.time, martes, classNumber);
+            ((user.day) === "miercoles") && generateClassDate(user.time, miercoles, classNumber);
+            ((user.day) === "jueves") && generateClassDate(user.time, jueves, classNumber);
+            ((user.day) === "viernes") && generateClassDate(user.time, viernes, classNumber);
+            ((user.day) === "sabado") && generateClassDate(user.time, sabado, classNumber);
         }
 
         let index = 0;
@@ -225,7 +258,7 @@ const Teachers = ({date, teacher}) => {
             /*
             console.log(`se programo la clse nº : `, count);
             */
-            caseOf(date.userWeek[index]);
+            caseOf(date.userWeek[index], count);
             index++;
 
         }
@@ -286,6 +319,7 @@ const Teachers = ({date, teacher}) => {
                 teacherName: `${teacher.name} ${teacher.lastName}`,
                 teacherUid: teacher.id,
                 notifications: increment(1),
+                newPurchasedClasses: 0,
             });
 
             const studentMyClasses = doc(firestore, `Users/${date.studentUid}/myClasses/${date.id}`);

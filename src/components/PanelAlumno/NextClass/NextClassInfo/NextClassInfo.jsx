@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NextClassInfo = (date) => {
+const NextClassInfo = ({date}) => {
 
     const classDate = date.date.toDate();
     const nextClassDate = classDate.toLocaleDateString();

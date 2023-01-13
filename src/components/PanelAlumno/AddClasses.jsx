@@ -1,3 +1,3 @@
 export const AddClases = () => {
-    console.log("muchaaaaaachoooooo");
+    console.log("Es necesario agregar clases al schedule");
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import { updateDoc, getFirestore, doc, addDoc, serverTimestamp, collection, increment } from 'firebase/firestore';
 import './StartButton.css';
+import Card from '../../clasesCard/Card';
 
 const StartButton = ({classDate, studentId}) => {
 
@@ -28,34 +30,56 @@ const StartButton = ({classDate, studentId}) => {
         console.log("minutos restantes : ", minsLeft);
 
         console.log(studentId);
-    }
-
-    const handleChange = (e) => {
-        setLinkToClass(e.target.value);
-        console.log(linkToClass)
-    }
-
-    const handleSubmit = () => {
         console.log(linkToClass);
+    }
+
+    const handleLinkToClass = (e) => {
+        setLinkToClass(e.target.value);
+    }
+
+    const timeStamp = serverTimestamp();
+    const studentNewNotification = {
+        textNotification: `Tu profesor ah enviado el link de tu clase ${linkToClass}`,
+        notificationType: "Notificacion",
+        checked: false,
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const firestore = getFirestore();
+
+            const sendLinkToStudent = doc(firestore, `Users/${studentId}`);
+            await updateDoc(sendLinkToStudent, {linkToClass: linkToClass, notifications: increment(1)});
+            const studentNotification = collection(firestore, `Users/${studentId}/myNotifications`);
+            await addDoc(studentNotification, { ...studentNewNotification, timeStamp });
+
+        } catch (e) {
+            swal("UPS!", `${e.message}`, "error");
+        }
     }
 
     return (
         <div>
-            { daysLeft > 0 ?
+            {daysLeft > 0 ?
                 <div>
                     <p>Faltan {daysLeft} dias</p>
                     <p>y {hrsLeft} horas</p>
                 </div> 
-                : ( hrsLeft > 1 ?
+                : ( hrsLeft > 0 ?
                 <div>
                     <p>Faltan {hrsLeft} horas</p>
+                    <p>y {minsLeft} minutos</p>
                 </div>
                 : ( minsLeft > 15 ?
                 <div>
                     <p>Faltan {minsLeft} minutos</p>
                 </div>
-                :
+                : ( minsLeft <= 15 && minsLeft > -50 && daysLeft === 0  ? 
                 <div>
+                    <button onClick={handleTest} >test</button>
+                    {/*
+                    */}
                     <form onSubmit={handleSubmit}>
                         <div className='linkToClass-container'>
                             <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
@@ -66,7 +90,7 @@ const StartButton = ({classDate, studentId}) => {
                                 placeholder="https://Ingrese_el_link_de_la_clase.com"
                                 pattern="https://.*" size="40"
                                 value={linkToClass || ''}
-                                onChange={handleChange} 
+                                onChange={handleLinkToClass} 
                                 required>
                             </input>
                         </div>
@@ -75,7 +99,17 @@ const StartButton = ({classDate, studentId}) => {
                         </button>
                     </form>
                 </div>
-                ))
+                : ( daysLeft < -1 ? 
+                <div>
+                    <p>
+                        La clase ya expiro
+                    </p> 
+                </div>
+                :  
+                <div>
+                    <Card />
+                </div> 
+                ))))
             }
         </div>
     )

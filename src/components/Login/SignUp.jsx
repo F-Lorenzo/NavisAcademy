@@ -39,6 +39,7 @@ const Signup = () => {
         completedClases: 0,
         absentedClases: 0,
         actualClass: 0,
+        newPurchasedClasses: 0,
         totalClasses: 0,
         teacher: "unasigned",
         newNotifications: true,

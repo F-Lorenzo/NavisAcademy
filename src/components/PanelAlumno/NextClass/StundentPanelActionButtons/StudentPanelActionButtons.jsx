@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const StudentPanelActionButtons = (myClass) => {
+const StudentPanelActionButtons = ({myClass, linkToClass}) => {
 
     const navigate = useNavigate();
 
@@ -25,9 +25,21 @@ const StudentPanelActionButtons = (myClass) => {
             navigate("/Account/ReprogramClass");
     }
 
+    const handleTest = () => {
+        console.log(myClass);
+        console.log(linkToClass);
+        linkToClass ? console.log(linkToClass) : console.log("no hay link");
+    }
+
     return (
         <div className='studentPanelActionButtons'>
-            <button className='studentPanelButton'>INICIAR CLASE</button>
+            {linkToClass ?
+                <a href={linkToClass}>
+                    <button className='studentPanelButton'>INICIAR CLASE</button>    
+                </a> 
+            : 
+                <button className='studentPanelButton' onClick={handleTest}>INICIAR CLASE</button>
+            }
             <a href="https://www.blinklearning.com/v/1666102044/themes/tmpux/launch.php">
                 <button className='studentPanelButton'>BLINK LEARNING</button>
             </a>

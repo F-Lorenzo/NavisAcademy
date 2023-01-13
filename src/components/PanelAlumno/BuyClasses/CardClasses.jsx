@@ -32,55 +32,12 @@ const CardClasses = ({ number, price, duration, amount }) => {
   const timeStamp = serverTimestamp();
 
   const handleBuyNow = async () => {
-
-    /*
-    try {
-      const firestore = getFirestore();
-      const userClases = doc(firestore, `Users/${userLogged.uid}`);
-      console.log(userClases);
-      await updateDoc(userClases, {
-        remainingClases: increment(amount),
-        newNotifications: true,
-        notifications: increment(1),
-      });
-      const newNotification = query(
-        collection(firestore, `Users/${userLogged.uid}/myNotifications`)
-      );
-      addDoc(newNotification, {
-        notificationType,
-        textNotification,
-        cantidad,
-        timeStamp,
-      }).then(({ id }) => {
-        const docuRef = doc(firestore, `AdminNotifications/${id}`);
-        setDoc(docuRef, { notificationType, cantidad });
-      });
-
-      setIsCheckout(true);
-      //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
-    } catch (e) {
-      swal("UPS!", `${e.message}`, "error");
-    }
-    */
     setIsCheckout(true);
   };
 
   if (isCheckout) {
-    
     return <Checkout totalValue={totalValue} cantidad={amount} />
-
   }
-
-  // const valores = {
-  //   dolar: '$',
-  //   euro: '€'
-  // };
-
-  //  function convertir  () {
-  //   let valores1 = parseFloat(document.getElementById('dolar').value);
-  //   let valores2 = parseFloat(document.getElementById('euro').value);
-  //   let precio ={price}
-  //  }
 
   return (
     <div className="buy-card">

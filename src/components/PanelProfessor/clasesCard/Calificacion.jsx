@@ -8,8 +8,6 @@ const Calificacion = () => {
   ];
 
   const [value, setValue] =useState('');
-  console.log("🚀 ~ file: calificacion.jsx ~ line 11 ~ Calificacion ~ value", value)
-
   
   const handleChange = (event) => {
     setValue(event.target.value);

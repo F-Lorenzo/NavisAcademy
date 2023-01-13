@@ -21,7 +21,9 @@ const MyClasses = ({myClass}) => {
                 myClass.map((theClass, index) =>{
                     
                     const date = theClass.date.toDate();
+                    /*
                     console.log(date);
+                    */
                     const HH = date.getHours();
                     const minutes = date.getMinutes();
                     const mm = minutes.toString().padStart(2, "0");
