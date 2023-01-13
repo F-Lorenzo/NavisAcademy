@@ -20,9 +20,9 @@ const StudentPanelActionButtons = ({myClass, linkToClass}) => {
     let minsLeft = Math.floor((remainingTime % oneHour) / oneMin);
 
     const handleReprogramClass = () => {
-        (daysLeft < 1 && hrsLeft < 4) ? swal('Ya es tarde', `Solo puedes reprogramar tu clase hasta 4 horas antes`, "error") :
-            swal("Muy Bien", `Aqui podras reprogramar tu clase`, "success");
-            navigate("/Account/ReprogramClass");
+        (daysLeft < 1 && hrsLeft < 4) ? swal('Ya es tarde', `Solo puedes reprogramar tu clase hasta 4 horas antes`, "error") 
+        : navigate("/Account/ReprogramClass");
+       
     }
 
     const handleTest = () => {
