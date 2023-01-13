@@ -50,10 +50,21 @@ const Teachers = ({date, teacher}) => {
     const teacherSchedule = [];
     const studentSchedule = [];
     const teacherDisponibility = teacher.disponibility;
+    const durationClass = date.durationClass;
     let newDisponibility = teacherDisponibility;
 
     let availableTeacher = true;
+    let slotsNeeded = 0;
     let freeSlot = 0;
+
+    switch (durationClass) {
+        case 30:
+            slotsNeeded = 2;
+            break;
+        case 50:
+            slotsNeeded = 3;
+            break;
+    }
 
     const Disponibility = () => {
         availableTeacher = !availableTeacher;
@@ -70,14 +81,38 @@ const Teachers = ({date, teacher}) => {
         })
     );
 
+    function searchForSlots(time, slots, disponibility) {
+        let availabeSlot = true;
+        for (let i = 0; i < slots; i++) {
+            let [hours, minutes] = time.split(":");
+            minutes = Number(minutes) + 15;
+            if (minutes >= 60) {
+                minutes = minutes - 60;
+                hours = Number(hours) + 1;
+                if (hours < 10) {
+                    hours = "0" + hours;
+                }
+                if (minutes < 10) {
+                    minutes = "0" + minutes;
+                }
+            }
+            time = `${hours}:${minutes}`;
+            availabeSlot = disponibility[time]; 
+            if (!availabeSlot) {
+                break;
+            }
+        }
+        return availabeSlot;
+    }
+
     availableTeacher && (date.userWeek).map((user, index) => {
-        (((user.day) === "lunes") && (teacherDisponibility.lunes[user.time])) && freeSlot++;
-        (((user.day) === "martes") && (teacherDisponibility.martes[user.time])) && freeSlot++;
-        (((user.day) === "miercoles") && (teacherDisponibility.miercoles[user.time])) && freeSlot++;
-        (((user.day) === "jueves") && (teacherDisponibility.jueves[user.time])) && freeSlot++;
-        (((user.day) === "viernes") && (teacherDisponibility.viernes[user.time])) && freeSlot++;
-        (((user.day) === "sabado") && (teacherDisponibility.sabado[user.time])) && freeSlot++;
-        (((user.day) === "domingo") && (teacherDisponibility.domingo[user.time])) && freeSlot++;
+        (((user.day) === "lunes") && (teacherDisponibility.lunes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.lunes))) && freeSlot++;
+        (((user.day) === "martes") && (teacherDisponibility.martes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.martes))) && freeSlot++;
+        (((user.day) === "miercoles") && (teacherDisponibility.miercoles[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.miercoles))) && freeSlot++;
+        (((user.day) === "jueves") && (teacherDisponibility.jueves[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.jueves))) && freeSlot++;
+        (((user.day) === "viernes") && (teacherDisponibility.viernes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.viernes))) && freeSlot++;
+        (((user.day) === "sabado") && (teacherDisponibility.sabado[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.sabado))) && freeSlot++;
+        (((user.day) === "domingo") && (teacherDisponibility.domingo[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.domingo))) && freeSlot++;
     });
 
     availableTeacher && ((freeSlot != (date.userWeek).length) && Disponibility());
@@ -198,6 +233,23 @@ const Teachers = ({date, teacher}) => {
         (date.userWeek).map((user) => {
             let userDay = newDisponibility[user.day];  
             userDay[user.time] = false;
+            let time = user.time;
+            for (let i = 0; i < slotsNeeded; i++) {
+                let [hours, minutes] = time.split(":");
+                minutes = Number(minutes) + 15;
+                if (minutes >= 60) {
+                    minutes = minutes - 60;
+                    hours = Number(hours) + 1;
+                    if (hours < 10) {
+                        hours = "0" + hours;
+                    }
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                }
+                time = `${hours}:${minutes}`;
+                userDay[time] = false;
+            }
         });
 
         //console.log(teacherSchedule);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { DisponibilityItem } from '../Admin/CreateTeacherAccount/DisponibilityItem';
 import './Develope.scss'
 import TimePicker from './TimePicker.jsx';
 import Card from '../PanelProfessor/clasesCard/Card.jsx';
@@ -7,19 +8,78 @@ import CountryDropdown from '../Login/CountryDropdown/CountryDropdown.jsx';
 
 const Develope = () => {
 
-    const test = (e) => {
-        console.log(e);
+    const [ day, setDay ] = useState(...DisponibilityItem);
+
+    const test = () => {
+
+        function searchForSlots(time, slots, disponibility) {
+            console.log(disponibility);
+            let availabeSlot = true;
+            for (let i = 0; i < slots; i++) {
+                let [hours, minutes] = time.split(":");
+                minutes = Number(minutes) + 15;
+                if (minutes >= 60) {
+                    minutes = minutes - 60;
+                    hours = Number(hours) + 1;
+                    if (hours < 10) {
+                        hours = "0" + hours;
+                    }
+                    if (minutes < 10) {
+                        minutes = "0" + minutes;
+                    }
+                }
+                time = `${hours}:${minutes}`;
+                availabeSlot = disponibility[time]; 
+                if (!availabeSlot) {
+                    break;
+                }
+                console.log(time);
+                console.log(day[time]);
+            }
+            return availabeSlot;
+        }
+
+        const durationClass = 30;
+        let slotsNeeded = 0;
+        let freeSlot = 0;
+
+        let classTime = '00:00';
+
+        switch (durationClass) {
+            case 30:
+                slotsNeeded = 2;
+                break;
+            case 50:
+                slotsNeeded = 3;
+                break;
+        }
+
+        console.log("Horario de la clase: ",classTime);
+        console.log("Duracion de la clase: ",durationClass);
+        console.log("Slots necesarios: ",slotsNeeded);
+
+        console.log(classTime);
+        console.log(day[classTime]);
+        console.log("Slots disponibles: ",searchForSlots(classTime, slotsNeeded, day));
+
+        freeSlot === 1 ? console.log("El horario esta disponible") : console.log("El horario no esta disponible");
+
+        console.log(day);
+
+
 
     }
 
     return (
         <div>
 
-            <TimePicker id={"lunes"} name={"time"} onChange={test}/>
+            <button onClick={test}>TEST</button>
 
-            <Card />
+
 
             {/*
+            <Card />
+            <TimePicker id={"lunes"} name={"time"} onChange={test}/>
             <Switcher opt01={'opt01'} opt02={'opt02'} onToggle={handleSwitchChange}/>
             <CountryDropdown />
             */}
