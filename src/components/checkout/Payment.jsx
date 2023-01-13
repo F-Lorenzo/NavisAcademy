@@ -60,6 +60,7 @@ const Payment = ({totalValue, cantidad}) => {
       const userClases = doc(firestore, `Users/${userLogged.uid}`);
       await updateDoc(userClases, {
         remainingClases: increment(cantidad),
+        newPurchasedClasses: increment(cantidad),
         totalClasses: increment(cantidad),
         newNotifications: true,
         notifications: increment(1),

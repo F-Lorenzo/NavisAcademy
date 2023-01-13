@@ -31,6 +31,7 @@ import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotific
 import ReprogramarClase from "./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase";
 import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
 import Develope from "./components/Develope/Develope";
+import ProtectedRouteAdmin from "./components/ProtectedRoutes/ProtectedRouteAdmin";
 
 
 /*
@@ -73,9 +74,11 @@ function App() {
               <Route path="/signIn" element={<SignIn />} />
               <Route path="/signUp" element={<Signup />} />
 
-              {/* Lazy Load */}
-
+              {/* Lazy Load 
+              
               <Route path="/Admin" element={<Admin />} />
+              */}
+
               <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
               <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
               
@@ -110,6 +113,15 @@ function App() {
                   <ProtectedRouteTeacher>
                     <PanelProfessor />
                   </ProtectedRouteTeacher>
+                }
+              />
+
+              <Route 
+                path="/Admin"
+                element={
+                  <ProtectedRouteAdmin>
+                    <Admin />
+                  </ProtectedRouteAdmin>
                 }
               />
 

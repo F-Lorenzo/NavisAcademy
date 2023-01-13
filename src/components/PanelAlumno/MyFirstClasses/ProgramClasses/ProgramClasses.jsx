@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./ProgramClasses.css";
 import { UserUpdates } from '../../../../Context/UserUpdatesContext';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, serverTimestamp } from 'firebase/firestore';
-
+import TimePicker from '../../../Develope/TimePicker';
 
 const ProgramClasses = () => {
 
@@ -21,7 +21,8 @@ const ProgramClasses = () => {
         studentUid: user.uid,
         studentEmail: user.email,
         studentName: user.form.name,
-        studentLastName: user.form.lastName,   
+        studentLastName: user.form.lastName,
+        durationClass: user.form.durationClass,
     }
 
     const userNotification = {
@@ -74,48 +75,38 @@ const ProgramClasses = () => {
 
     const handleContinuar = () => {
         let approved = false;
-
+        let conditions = 0;
         usersWeek.length === 0 ? swal("CUIDADO!", `Debes seleccionar al menos un dia y un horario`, "error") : (
             usersWeek.map((day, index) => {
-                if (day.time != undefined) {
-                    approved = true;
-                } else {
+                let validTime = day.time !== undefined;
+                let validTimeDate = false;
+                if (day.timeDate) {
+                    let isDateValid = day.timeDate;
+                    validTimeDate = !(isNaN(isDateValid.getTime()));
+                } 
+                if (!validTime || !validTimeDate) {
                     swal("CUIDADO!", `Debes eleccionar un horario`, "error");
-                    approved = false; 
+                    conditions++; 
                 }
-            }));
-
+            })
+        );       
+        (conditions === 0 && usersWeek.length != 0) && (approved = true);
         if (approved) {
+            /*
+            console.log(approved);
             console.log(usersWeek);
+            */
             sendToFire();
         }
     }
 
     const handleChange = (e) => {
-
-        let hour = parseInt(e.target.value);
-
-        let utcDate = new Date (Date.UTC(0,0,0,hour,0,0));
-
-        console.log(utcDate.toUTCString());
-
-        console.log(e.target.id,e.target.name, ":", e.target.value);
-
-        let dayToChange = usersWeek.filter((d) => d.day === e.target.id);
-        let restOfDays = usersWeek.filter((d) => d.day != e.target.id);
-
-        //console.log("resto de dias : ", restOfDays);
-        //console.log("agregar hora : ", dayToChange);
-
-        dayToChange = { day: e.target.id , time: e.target.value }
+        let dayToChange = usersWeek.filter((d) => d.day === e.id);
+        let restOfDays = usersWeek.filter((d) => d.day != e.id);
+        dayToChange = { day: e.id, time: e.timeString, timeDate: e.timeDate };
         restOfDays.push(dayToChange);
-
-        console.log("dias actualizados :", restOfDays);
-
         setUsersWeek(restOfDays);
-        
     }
-
 
     return (
         <>
@@ -144,13 +135,20 @@ const ProgramClasses = () => {
                                 >
                                     {day}
                                 </li>
-                                    { clicked && <input 
-                                        type="time"
-                                        id={day}
-                                        name="time"
-                                        value={usersWeek.time}
-                                        onChange={handleChange} 
-                                    />}
+                                    { clicked && <TimePicker id={day} name="time" onChange={handleChange}/>
+                                    
+                                    /*
+                                    
+                                                                        <input 
+                                                                            type="time"
+                                                                            id={day}
+                                                                            name="time"
+                                                                            value={usersWeek.time}
+                                                                            onChange={handleChange} 
+                                                                        />
+                                    */
+                                    
+                                    }
                             </div>
                         )
                     })}

@@ -14,8 +14,10 @@ const UserCard = ({userInfo, role, toggle}) => {
                     <div className="userMain-info">
                         <p>{userInfo.name} {userInfo.lastName}</p>
                         <span>
-                        {role === 'alumn' ? 'Estudiante' 
-                        : 'Profesor'}
+                        {role === 'admin' ? 'Administrador' 
+                        : (role === 'alumn' ? 'Estudiante' 
+                        : 'Profesor')
+                        }
                         </span>
                     </div>
                 </div>

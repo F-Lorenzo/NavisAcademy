@@ -40,15 +40,17 @@ const NewPanelAlumno = () => {
                 }))
             );
             setAllMyClasses(arrayOfClasses);
-            setClassNumber(user.form.actualClass)
+            setClassNumber(user.form.actualClass);
             setLoader(false);
             }
         );
     }, [user]);
 
     const handleTest = () => {
-        console.log(user);
-        AddClases();
+        console.log(userData);
+        if (userData.newPurchasedClasses > 0) {
+            AddClases();
+        };
     }
 
     if (loader) {
@@ -59,8 +61,8 @@ const NewPanelAlumno = () => {
 
     return (
         <div>
-            <button onClick={handleTest}>test</button>
             {/*
+            <button onClick={handleTest}>test</button>
             */}                        
 
             {
@@ -69,8 +71,8 @@ const NewPanelAlumno = () => {
                     userData.teacher === "assigned" ? (
                         <div>
                             <div className='nextClass__container'>
-                                <NextClassInfo {...allMyClasses[classNumber]}/>
-                                <StudentPanelActionButtons {...allMyClasses[classNumber]}/>
+                                <NextClassInfo date={allMyClasses[classNumber]}/>
+                                <StudentPanelActionButtons myClass={allMyClasses[classNumber]} linkToClass={userData.linkToClass}/>
                                 <Asistencia {...user.misClases}/>
                             </div> 
         
@@ -85,7 +87,9 @@ const NewPanelAlumno = () => {
                                 <h5>FELICITACIONES!</h5>
                                 <p>Pronto se te asignara un profesor</p>
                             </div> 
+                            {/*
                             <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES' />
+                            */}
                         </div> 
                         )
 

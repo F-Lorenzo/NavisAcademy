@@ -13,9 +13,7 @@ const ProtectedRouteTeacher = ({ children }) => {
   }
 
   if (user.role === "alumn") {
-    return (
-        <h1>NOT A TEACHER ACOUNT</h1>
-    )
+    return <Navigate to='/' />;
   } else {
       return children;
   }

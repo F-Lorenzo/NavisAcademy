@@ -22,10 +22,17 @@ import "./cardClasses.scss";
 const BuyClasses = ({ durationSelection, msg }) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const { userLogged } = UserAuth();
+<<<<<<< HEAD
   const [totalValue, setTotalValue] = useState();
   const [cantidad, setCantidad] = useState();
   const [duration, setDuration] = useState(50);
   const [currency, setCurrency] = useState("USD");
+=======
+  const [ totalValue, setTotalValue ] = useState();
+  const [ cantidad, setCantidad ] = useState();
+  const [ duration, setDuration ] = useState(50);
+  const [ currency, setCurrency ] = useState("EUR");
+>>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
   const navigate = useNavigate();
 
   let buyCards = [];
@@ -55,6 +62,7 @@ const BuyClasses = ({ durationSelection, msg }) => {
     <div className="buy-container">
       <h3>{msg}</h3>
 
+<<<<<<< HEAD
       <div className="buy-container__header">
         {durationSelection && (
           <Switcher
@@ -71,6 +79,14 @@ const BuyClasses = ({ durationSelection, msg }) => {
           onToggle={handleCurrency}
         />
       </div>
+=======
+        <div className="buy-container__header">
+          {durationSelection && <Switcher title={'DURACION DE LA CLASE :'} opt01={'50'} opt02={'30'} onToggle={handleDurationSelect}/> }
+          <Switcher title={'MONEDA :'} opt01={'EUR'} opt02={'USD'} onToggle={handleCurrency}/>
+        </div>
+
+        <div className="buy-card-container">
+>>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
 
       <div className="buy-card-container">
         {buyCards.map((item, index) => {
@@ -93,9 +109,13 @@ const BuyClasses = ({ durationSelection, msg }) => {
                   </li>
                   <li className="duration"> {item.duration} min/Class </li>
                   <li className="libros">Libros interactivos </li>
+<<<<<<< HEAD
                   <li className="price">
                     {item[currency]} {currency} por clase{" "}
                   </li>
+=======
+                  <li className="price">{item[currency]} {currency} por clase </li>
+>>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
                   <div>
                     <button
                       className="button__Card"

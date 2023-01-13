@@ -55,6 +55,12 @@ function PanelProfessor() {
         navigate('/MiCalendario');
     }
 
+    if (loader) {
+        return (
+            <Loader />
+        )
+    }
+
     return (
         <>
             <div>
