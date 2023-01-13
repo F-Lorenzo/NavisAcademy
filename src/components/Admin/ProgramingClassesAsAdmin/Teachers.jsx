@@ -138,7 +138,6 @@ const Teachers = ({date, teacher}) => {
 
         const actualDay = dateOfClass.getDay();
 
-        /*
         switch (actualDay) {
             case 0:
                 addDays(dateOfClass, 7);
@@ -162,8 +161,7 @@ const Teachers = ({date, teacher}) => {
                 addDays(dateOfClass, 1);
                 break;
         }
-        */
-
+        /*
         switch (actualDay) {
             case 0:
                 addDays(dateOfClass, 0);
@@ -187,6 +185,8 @@ const Teachers = ({date, teacher}) => {
                 addDays(dateOfClass, -6);
                 break;
         }
+        */
+
 
         const generateClassDate = (classTime, classDay, classNumber) => {
             addDays(dateOfClass, classDay);
