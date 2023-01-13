@@ -77,8 +77,8 @@ const StartButton = ({classDate, studentId}) => {
                 </div>
                 : ( minsLeft <= 15 && minsLeft > -50 && daysLeft === 0  ? 
                 <div>
-                    <button onClick={handleTest} >test</button>
                     {/*
+                    <button onClick={handleTest} >test</button>
                     */}
                     <form onSubmit={handleSubmit}>
                         <div className='linkToClass-container'>

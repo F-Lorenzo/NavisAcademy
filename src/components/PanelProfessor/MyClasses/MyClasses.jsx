@@ -14,8 +14,8 @@ const MyClasses = ({myClass}) => {
     return (
         <div className='myClasses-container'>
             <h5>PROXIMA CLASE</h5>
-            <button onClick={handleTest}>test</button>
             {/*
+            <button onClick={handleTest}>test</button>
             */}
             {
                 myClass.map((theClass, index) =>{
