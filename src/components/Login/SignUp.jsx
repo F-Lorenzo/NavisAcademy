@@ -66,7 +66,7 @@ const Signup = () => {
             console.log(infoUser); // BORRAR ESTA SHIT!!
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
-            setDoc(docuRef, {...form, country, ...studentData});
+            setDoc(docuRef, {...form, country, ...studentData, uid:infoUser.user.uid});
 
             const notifications =  collection(firestore, `Users/${infoUser.user.uid}/myNotifications`);
             addDoc(notifications, {...welcomeNotification, timeStamp});

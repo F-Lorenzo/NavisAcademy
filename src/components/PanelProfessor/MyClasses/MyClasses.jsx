@@ -14,20 +14,23 @@ const MyClasses = ({myClass}) => {
     return (
         <div className='myClasses-container'>
             <h5>PROXIMA CLASE</h5>
-            {/*
             <button onClick={handleTest}>test</button>
+            {/*
             */}
             {
                 myClass.map((theClass, index) =>{
                     
                     const date = theClass.date.toDate();
-                    /*
                     console.log(date);
+                    /*
                     */
-                    const HH = date.getHours();
+                    const hours = date.getHours();
+                    const HH = hours.toString().padStart(2, "0");
                     const minutes = date.getMinutes();
                     const mm = minutes.toString().padStart(2, "0");
                     const parsedDate = date.toLocaleDateString();
+                    console.log("horas: ", HH);
+                    console.log("minutos: ", minutes);
 
                     return (
                         <div key={index} className='myClasses-card'>

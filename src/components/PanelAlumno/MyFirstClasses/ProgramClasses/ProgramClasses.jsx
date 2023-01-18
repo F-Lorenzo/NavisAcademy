@@ -50,10 +50,13 @@ const ProgramClasses = () => {
                     setDoc(docuRef, { userWeek, ...programedClassData });
                     const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${id}`);
                     setDoc(myNotifications, {...userNotification, timeStamp});
+                    const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+                    updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId: id} )
 
                 })
-            const teacherUpdate = doc(firestore, `Users/${user.uid}`);
-            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false} )
+
+            //const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+            //await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId} )
 
             swal("Muy Bien", `Pronto se te asignara un profesor!`, "success");
 
@@ -135,20 +138,7 @@ const ProgramClasses = () => {
                                 >
                                     {day}
                                 </li>
-                                    { clicked && <TimePicker id={day} name="time" onChange={handleChange}/>
-                                    
-                                    /*
-                                    
-                                                                        <input 
-                                                                            type="time"
-                                                                            id={day}
-                                                                            name="time"
-                                                                            value={usersWeek.time}
-                                                                            onChange={handleChange} 
-                                                                        />
-                                    */
-                                    
-                                    }
+                                    { clicked && <TimePicker id={day} name="time" onChange={handleChange}/> }
                             </div>
                         )
                     })}

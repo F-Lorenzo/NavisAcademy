@@ -68,6 +68,24 @@ const Develope = () => {
 
 
 
+        let fechaOriginal = new Date(2023, 14, 1, 23, 45); // fecha actual
+        console.log("fecha original: ", fechaOriginal);
+        let horaLocal = fechaOriginal.getHours();
+        let minLocal = fechaOriginal.getMinutes();
+        console.log("Hora local:",horaLocal,":",minLocal)
+        let horaUt = fechaOriginal.getUTCHours();
+        let minUt = fechaOriginal.getUTCMinutes();
+        console.log("Hora UTC:",horaUt,":",minUt);
+
+        let sumarMinutos = 30; // número de minutos a sumar
+        console.log("minutos a sumar: ", sumarMinutos)
+        fechaOriginal.setMinutes(fechaOriginal.getMinutes() + sumarMinutos);
+
+        console.log("resultado: ", fechaOriginal); // la fecha con 30 minutos adicionales
+
+
+
+
     }
 
     return (

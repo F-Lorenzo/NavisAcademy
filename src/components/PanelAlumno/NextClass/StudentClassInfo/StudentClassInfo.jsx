@@ -15,7 +15,7 @@ const StudentClassInfo = (clases) => {
                 <p>CLASES DISPONIBLES: {clases.remainingClases}</p>
             </div>
         
-            <button className='studentPanelButton' onClick={handleMiCalendario}>Ver Calendario</button>    
+            <button className='studentPanelButton active' onClick={handleMiCalendario}>Ver Calendario</button>    
         </div>
     )
 

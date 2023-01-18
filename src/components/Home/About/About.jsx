@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "./About.scss";
 import VideoNavis from "./VideoNavis/VideoNavis";
 import CarouselVanilla from "./Carousel/CarouselVanilla";
 
@@ -7,7 +7,7 @@ const About = () => {
   return (
     <section className="about_container">
 
-      <div className="about__1">
+      <div className="about">
         <h2 className="about__title">
           ¡Se <span>aprende</span> desde el primer día!
         </h2>
@@ -20,11 +20,8 @@ const About = () => {
         </span>
       </div>
 
-      <div className="about__2">
+      <div className="about">
         <VideoNavis /> 
-        {/*
-        <CarouselVanilla />
-        */}
       </div>
       
     </section>

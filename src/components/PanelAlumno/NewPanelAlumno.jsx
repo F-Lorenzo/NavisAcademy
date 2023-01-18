@@ -31,12 +31,24 @@ const NewPanelAlumno = () => {
             const arrayOfClasses = [];      
             mySchedule.forEach( allMyDates => 
                 Object.keys(allMyDates).forEach(key => arrayOfClasses.push({ 
+                    classNumber: allMyDates[key].classNumber, 
                     condition: allMyDates[key].condition,
                     date: allMyDates[key].date,
+                    dateEnd: allMyDates[key].dateEnd,
+                    durationClass: allMyDates[key].durationClass,
+                    linkToClass: allMyDates[key].linkToClass,
+                    reprogramed: allMyDates[key].reprogramed,
+                    studentAssist: allMyDates[key].studentAssist,
+                    studentCalification: allMyDates[key].studentCalification,
+                    studentEmail: allMyDates[key].studentEmail,
+                    studentLastName: allMyDates[key].studentLastName,
+                    studentName: allMyDates[key].studentName,
+                    studentUid: allMyDates[key].studentUid,
+                    teacherCalification: allMyDates[key].teacherCalification,
+                    teacherLastName: allMyDates[key].teacherLastName,
+                    teacherName: allMyDates[key].teacherName,
+                    teacherUid: allMyDates[key].teacherUid,
                     time: allMyDates[key].time,
-                    day: allMyDates[key].day,
-                    month: allMyDates[key].month,
-                    teacher: allMyDates[key].text
                 }))
             );
             setAllMyClasses(arrayOfClasses);
@@ -44,12 +56,18 @@ const NewPanelAlumno = () => {
             setLoader(false);
             }
         );
+        if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
+            AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
+        };
+        /*
+        */
     }, [user]);
 
     const handleTest = () => {
-        console.log(userData);
-        if (userData.newPurchasedClasses > 0) {
-            AddClases();
+        // Si hay profesor asignado sumar clases nuevas
+        //console.log(allMyClasses);
+        if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
+            AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
         };
     }
 

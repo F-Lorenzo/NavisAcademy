@@ -20,7 +20,7 @@ import Checkout from "./components/checkout/Checkout";
 
 import Admin from "./components/Admin/Admin";
 import CreateTeacherAccount from "./components/Admin/CreateTeacherAccount/CreateTeacherAccount";
-import ProgramingClassesAsAdmin from "./components/Admin/ProgramingClassesAsAdmin/ProgramingClassesAsAdmin";
+
 
 import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
@@ -80,7 +80,7 @@ function App() {
               */}
 
               <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
-              <Route path="/Admin/ProgramingClassesAsAdmin" element={<ProgramingClassesAsAdmin />} />
+
               
               <Route path="/Panel" element={<Panel />} />
 

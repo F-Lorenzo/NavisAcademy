@@ -4,7 +4,7 @@ import Classes from './Classes';
 import Loader from '../../Loader/Loader';
 
 
-const ProgramingClassesAsAdmin = () => {
+const AssignTeacher = () => {
 
     const [ data, setData ] = useState([]);
     const [ teachers, setTeachers ] = useState([]);
@@ -41,20 +41,17 @@ const ProgramingClassesAsAdmin = () => {
 
     }, [])
 
-    if (loader) {
-        return (
-            <Loader />
-        )
-    } else {
-        return (
+
+    return (
+        <>
+        { loader ? <Loader /> :
             <div>
-                <h4>
-                    CLASES A PROGRAMAR
-                </h4>
                 <Classes classDate={data} teachers={teachers} />
             </div>
-        )
-    }
+        }
+        </>
+    )
+    
 }
 
-export default ProgramingClassesAsAdmin
+export default AssignTeacher

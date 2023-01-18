@@ -5,11 +5,13 @@ import { UserAuth } from '../../../Context/AuthContext';
 import { DisponibilityItem } from './DisponibilityItem';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import TimePicker from '../../Develope/TimePicker';
+import Loader from '../../Loader/Loader';
 
 
 const SetTeacherDisponobility = ({teacherForm}) => {
 
     const { createUser } = UserAuth();
+    const [ loader, setLoader ] = useState(false);
     const navigate = useNavigate();
     const week = [ "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo" ];
     const [ weekDisponibility, setWeekDisponibility ] = useState([]);
@@ -58,6 +60,7 @@ const SetTeacherDisponobility = ({teacherForm}) => {
     }
 
     const sendToFire = async () => {
+
         const disponibility = {lunes, martes, miercoles, jueves, viernes, sabado, domingo};
         const newTeacherData = {...teacherForm, weekDisponibility, disponibility};
         
@@ -70,8 +73,10 @@ const SetTeacherDisponobility = ({teacherForm}) => {
             const newTeacher = doc(firestore, `Users/${infoUser.user.uid}`);
             await setDoc(newTeacher, {...newTeacherData});
 
+            swal("OK", `Nuevo Profesor Creado`, "success");
             navigate('/account');
         } catch (e) {
+
             swal("UPS!", `${e.message}`, "error");
         }
     }
@@ -110,6 +115,7 @@ const SetTeacherDisponobility = ({teacherForm}) => {
 
     return (
         <>
+
             <div className='teacherDisponibility-conteiner'>
                 <h5>
                     Selecciona los dias y el horario de disponibilidad del docente
@@ -157,6 +163,7 @@ const SetTeacherDisponobility = ({teacherForm}) => {
                     CREAR CUENTA DE PROFESOR
                 </button>
             </div>
+        
         </>
     )
 
