@@ -20,13 +20,30 @@ const MyCalendario = () => {
             {
                 const mySchedule = res.docs.map(date => ({ ...date.data()}))
                 const arrayOfClasses = [];        
-                mySchedule.forEach( allMyClasses => 
-                    Object.keys(allMyClasses).forEach(key => arrayOfClasses.push({
-                        start_date: allMyClasses[key].start_date,
-                        end_date: allMyClasses[key].end_date,
-                        text: allMyClasses[key].text
-                    }))
-                );
+                mySchedule.forEach( allMyClasses => {
+                    Object.keys(allMyClasses).forEach(key => {
+
+                        const startDateFormat = allMyClasses[key].date;
+                        const endDateFormat = allMyClasses[key].dateEnd;
+
+                        const startDate = startDateFormat.toDate();
+                        const endDate = endDateFormat.toDate();
+
+                        let description = "";
+
+                        user.role === "teacher" ? 
+                            description = `Alumno: ${allMyClasses[key].studentName} ${allMyClasses[key].studentLastName}`
+                        : 
+                            description = `Profesor: ${allMyClasses[key].teacherName} ${allMyClasses[key].teacherLastName}`
+                        
+
+                        arrayOfClasses.push({
+                            start_date: startDate,
+                            end_date: endDate,
+                            text: description,
+                        })
+                    })
+                });
                 setMyClasses(arrayOfClasses);
                 setLoader(false);
             }

@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation, Autoplay } from "swiper";
 
 
 const NewQualitys = () => {
@@ -31,8 +31,9 @@ const NewQualitys = () => {
                         clickable: true,
                     }}
                     navigation={true}
-                    modules={[Pagination, Navigation]}
+                    modules={[Pagination, Navigation, Autoplay]}
                     className="mySwiper"
+                    autoplay={{ delay: 5000, disableOnInteraction: false }}
                     breakpoints={{
                         780: {
                             slidesPerView: 2,

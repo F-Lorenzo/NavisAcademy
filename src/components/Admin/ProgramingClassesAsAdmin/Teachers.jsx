@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, getDoc, serverTimestamp, arrayUnion } from 'firebase/firestore';
 import Loader from '../../Loader/Loader';
 
@@ -6,11 +6,13 @@ const Teachers = ({date, teacher}) => {
 
     // Control de entradas
 
-    console.log("INFO EN date : ", date);
-    console.log("INFO EN userWeek : ", date.userWeek);
-    console.log("INFO EN teacher : ", teacher);
+    //console.log("INFO EN date : ", date);
+    //console.log("INFO EN userWeek : ", date.userWeek);
+    //console.log("INFO EN teacher : ", teacher);
 
     // ----------------------------------------
+
+    const [ loader, setLoader ] = useState(false);
 
     const timeStamp = serverTimestamp();
 
@@ -29,7 +31,7 @@ const Teachers = ({date, teacher}) => {
         studentName: date.studentName,
         studentLastName: date.studentLastName,
         remainingClases: date.remainingClases,
-        classWith: date.userWeek,
+        classWeek: date.userWeek,
     }
 
     const studentNewNotification = {
@@ -82,7 +84,7 @@ const Teachers = ({date, teacher}) => {
     );
 
     function searchForSlots(time, slots, disponibility) {
-        let availabeSlot = true;
+        let availableSlot = true;
         for (let i = 0; i < slots; i++) {
             let [hours, minutes] = time.split(":");
             minutes = Number(minutes) + 15;
@@ -95,24 +97,35 @@ const Teachers = ({date, teacher}) => {
                 if (minutes < 10) {
                     minutes = "0" + minutes;
                 }
+                if (hours === 24)
+                    hours = "00";
             }
             time = `${hours}:${minutes}`;
-            availabeSlot = disponibility[time]; 
-            if (!availabeSlot) {
+            availableSlot = disponibility[time]; 
+            if (!availableSlot) {
                 break;
             }
         }
-        return availabeSlot;
+        return availableSlot;
     }
 
     availableTeacher && (date.userWeek).map((user, index) => {
-        (((user.day) === "lunes") && (teacherDisponibility.lunes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.lunes))) && freeSlot++;
-        (((user.day) === "martes") && (teacherDisponibility.martes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.martes))) && freeSlot++;
-        (((user.day) === "miercoles") && (teacherDisponibility.miercoles[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.miercoles))) && freeSlot++;
-        (((user.day) === "jueves") && (teacherDisponibility.jueves[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.jueves))) && freeSlot++;
-        (((user.day) === "viernes") && (teacherDisponibility.viernes[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.viernes))) && freeSlot++;
-        (((user.day) === "sabado") && (teacherDisponibility.sabado[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.sabado))) && freeSlot++;
-        (((user.day) === "domingo") && (teacherDisponibility.domingo[user.time] && searchForSlots(user.time, slotsNeeded, teacherDisponibility.domingo))) && freeSlot++;
+
+        const date = user.timeDate;
+        const userDate = date.toDate();
+        const hours = userDate.getUTCHours();
+        const HH = hours.toString().padStart(2, "0");
+        const minutes = userDate.getUTCMinutes();
+        const mm = minutes.toString().padStart(2, "0");
+        const userTime = `${HH}:${mm}`;
+
+        (((user.day) === "lunes") && (teacherDisponibility.lunes[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.lunes))) && freeSlot++;
+        (((user.day) === "martes") && (teacherDisponibility.martes[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.martes))) && freeSlot++;
+        (((user.day) === "miercoles") && (teacherDisponibility.miercoles[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.miercoles))) && freeSlot++;
+        (((user.day) === "jueves") && (teacherDisponibility.jueves[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.jueves))) && freeSlot++;
+        (((user.day) === "viernes") && (teacherDisponibility.viernes[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.viernes))) && freeSlot++;
+        (((user.day) === "sabado") && (teacherDisponibility.sabado[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.sabado))) && freeSlot++;
+        (((user.day) === "domingo") && (teacherDisponibility.domingo[userTime] && searchForSlots(userTime, slotsNeeded, teacherDisponibility.domingo))) && freeSlot++;
     });
 
     availableTeacher && ((freeSlot != (date.userWeek).length) && Disponibility());
@@ -138,6 +151,7 @@ const Teachers = ({date, teacher}) => {
 
         const actualDay = dateOfClass.getDay();
 
+        /*
         switch (actualDay) {
             case 0:
                 addDays(dateOfClass, 7);
@@ -161,7 +175,7 @@ const Teachers = ({date, teacher}) => {
                 addDays(dateOfClass, 1);
                 break;
         }
-        /*
+        */
         switch (actualDay) {
             case 0:
                 addDays(dateOfClass, 0);
@@ -185,66 +199,56 @@ const Teachers = ({date, teacher}) => {
                 addDays(dateOfClass, -6);
                 break;
         }
-        */
 
 
-        const generateClassDate = (classTime, classDay, classNumber) => {
+        const generateClassDate = (classTime, classDay, classNumber, durationOfClass) => {
             addDays(dateOfClass, classDay);
-            let dia = dateOfClass.getDate();
-            let mes = dateOfClass.getMonth();
-            let año = dateOfClass.getFullYear();
-            let hora = parseInt(classTime);
-            let fullDate = new Date(año, mes, dia, hora);  
-            let horaComienzo = classTime;
-            let horaFin = parseInt(classTime);
-            horaFin++;
-            horaFin = horaFin.toString();
-            horaFin = horaFin + ":00";
-            let classDateHour_start = `${año}-${mes+1}-${dia} ${horaComienzo}`;
-            let classDateHour_end = `${año}-${mes+1}-${dia} ${horaFin}`;
+            const classTimeDate = classTime.toDate();
+            const dia = dateOfClass.getDate();
+            const mes = dateOfClass.getMonth();
+            const año = dateOfClass.getFullYear();
+            const HH = classTimeDate.getHours();
+            const mm = classTimeDate.getMinutes();
+            let start = new Date(año, mes, dia, HH, mm);
+            let end = new Date(año, mes, dia, HH, mm);
+            end.setMinutes(end.getMinutes() + durationOfClass);
+
             const classDate = {
-                start_date : `${classDateHour_start}`,
-                end_date : `${classDateHour_end}`,
+                date: start,
+                dateEnd: end,
                 time: classTime,
                 condition: `pending`,
-                day: dia,
-                month: mes,
-                year: año,
-                date: fullDate,
-                dayNumber: classDay,
                 linkToClass: "",
-                classNumber: classNumber,
                 teacherCalification: "",
                 studentCalification: "",
                 studentAssist: false,
                 reprogramed: false,
                 durationClass: date.durationClass,
+                classNumber: classNumber,
+
+                studentName: date.studentName,
+                studentLastName: date.studentLastName,
+                studentUid: date.studentUid,
+                studentEmail: date.studentEmail,
+
+                teacherName: teacher.name,
+                teacherLastName: teacher.lastName,
+                teacherUid: teacher.id
             }
 
-            const classDateTeacher = {
-                ...classDate,
-                text : `Alumno: ${date.studentName} ${date.studentLastName}`,
-                studentUid : date.studentUid,
-            }
-
-            const classDateStudent = {
-                ...classDate,
-                text : `Profesor: ${teacher.name} ${teacher.lastName}`,
-            }
-
-            teacherSchedule.push(classDateTeacher);
-            studentSchedule.push(classDateStudent);
+            teacherSchedule.push(classDate);
+            studentSchedule.push(classDate);
             addDays(dateOfClass, -classDay);
         }
 
         const caseOf = (user, classNumber) => {
-            ((user.day) === "domingo") && generateClassDate(user.time, domingo, classNumber);
-            ((user.day) === "lunes") && generateClassDate(user.time, lunes, classNumber);
-            ((user.day) === "martes") && generateClassDate(user.time, martes, classNumber);
-            ((user.day) === "miercoles") && generateClassDate(user.time, miercoles, classNumber);
-            ((user.day) === "jueves") && generateClassDate(user.time, jueves, classNumber);
-            ((user.day) === "viernes") && generateClassDate(user.time, viernes, classNumber);
-            ((user.day) === "sabado") && generateClassDate(user.time, sabado, classNumber);
+            ((user.day) === "domingo") && generateClassDate(user.timeDate, domingo, classNumber, date.durationClass);
+            ((user.day) === "lunes") && generateClassDate(user.timeDate, lunes, classNumber, date.durationClass);
+            ((user.day) === "martes") && generateClassDate(user.timeDate, martes, classNumber, date.durationClass);
+            ((user.day) === "miercoles") && generateClassDate(user.timeDate, miercoles, classNumber, date.durationClass);
+            ((user.day) === "jueves") && generateClassDate(user.timeDate, jueves, classNumber, date.durationClass);
+            ((user.day) === "viernes") && generateClassDate(user.timeDate, viernes, classNumber, date.durationClass);
+            ((user.day) === "sabado") && generateClassDate(user.timeDate, sabado, classNumber, date.durationClass);
         }
 
         let index = 0;
@@ -264,9 +268,18 @@ const Teachers = ({date, teacher}) => {
         }
 
         (date.userWeek).map((user) => {
+
+            const date = user.timeDate;
+            const userDate = date.toDate();
+            const hours = userDate.getUTCHours();
+            const HH = hours.toString().padStart(2, "0");
+            const minutes = userDate.getUTCMinutes();
+            const mm = minutes.toString().padStart(2, "0");
+            const userTime = `${HH}:${mm}`;
+
             let userDay = newDisponibility[user.day];  
-            userDay[user.time] = false;
-            let time = user.time;
+            userDay[userTime] = false;
+            let time = userTime;
             for (let i = 0; i < slotsNeeded; i++) {
                 let [hours, minutes] = time.split(":");
                 minutes = Number(minutes) + 15;
@@ -292,6 +305,7 @@ const Teachers = ({date, teacher}) => {
 
     // ASIGNAR PROFESOR 
     const handleAssignTeacher = async (e) => {
+        setLoader(true);
         generateSchedule();
         e.preventDefault();
 
@@ -331,34 +345,54 @@ const Teachers = ({date, teacher}) => {
             const studentNotification = collection(firestore, `Users/${date.studentUid}/myNotifications`);
             await addDoc(studentNotification, { ...studentNewNotification, timeStamp });
 
-            //setLoader(false);
+            setLoader(false);
+            swal("OK", `Se asigno el profesor al alumno`, "success");
+
         } catch (e) {
             swal("UPS!", `${e.message}`, "error");
-            //setLoader(false);
+            setLoader(false);
         }
 
     }
 
     // ------------------------
 
+    if (loader) {
+        return <Loader />
+    }
+
     if (availableTeacher) {
         return (
-            <div>
-                <ul>
-                    <li> Profesor: {teacher.name} {teacher.lastName} </li>
-                    <li> Email: {teacher.email} </li>
-                    <li> Disponible para cubrir la clase </li>
-
-                    <button onClick={handleAssignTeacher}>ASIGNAR PROFESOR</button>
-                    
-                    {/*
+            <div className='userCardProfile-container'>
+                {/*
                     <button onClick={generateStudentSchedule}>TEST</button>
-                    */}
-                </ul>      
+                */}
+                <div className='userCardProfile-header_container'>
+                    <div className='userCardProfile-header'>
+
+                        <div className="userCardProfile-avatar">
+                            <i className="fa-solid fa-user fa-2x"></i>
+                        </div>
+
+                        <div className="userCardProfile-info">
+                            <p>Profesor: {teacher.name} {teacher.lastName}</p>
+                            <span>
+                                Email: {teacher.email}
+                            </span>
+                        </div>
+
+                        { loader ? <Loader /> : 
+                            <button className='userCardProfile-button' onClick={handleAssignTeacher}>
+                                ASIGNAR PROFESOR
+                            </button>   
+                        }
+
+                    </div>
+                </div>
+
             </div>
         )
     }
-
 }
 
 export default Teachers

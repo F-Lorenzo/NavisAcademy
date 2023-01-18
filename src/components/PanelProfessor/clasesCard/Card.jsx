@@ -1,10 +1,10 @@
 import React from 'react'
 import Calificacion from './Calificacion'
 
-function Card() {
+function Card({studentId, teacherId}) {
   return (
     <div>
-        <Calificacion/>
+        <Calificacion student={studentId} teacher={teacherId} />
     </div>
   )
 }

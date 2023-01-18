@@ -5,7 +5,7 @@ import Contact from './Contact/Contact';
 import NewQualitys from './NewQualitys/NewQualitys';
 import NewQuestions from './NewQuestions/NewQuestions';
 import NewPacks from './NewPacks/NewPacks';
-import './Home.css';
+import './Home.scss';
 
 const Home = () => {
   return (

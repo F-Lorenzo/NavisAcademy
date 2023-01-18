@@ -9,10 +9,12 @@ import './CreateTeacherAccount.scss'
 const CreateTeacherAccount = () => {
 
     const [ form, setForm ] = useState({ 
-        role: "teacher", totalClasses: 0,
+        role: "teacher", 
+        totalClasses: 0,
         remainingClasses: 0,
         thisMonthClasses: 0,
-        lastMonthClasses: 0
+        lastMonthClasses: 0,
+        absentedClases: 0,
     });
 
     const handleChange = (e) => {

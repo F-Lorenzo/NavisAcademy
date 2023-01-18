@@ -51,6 +51,11 @@ const Payment = ({totalValue, cantidad}) => {
       checked: false,
   }
 
+  const adminNotification = {
+      textNotification: "Un usuario adquirio nuevas clases",
+      notificationType: "Compra",
+      checked: false,
+  }
 
   const sumarClases = async () => {
 
@@ -74,7 +79,7 @@ const Payment = ({totalValue, cantidad}) => {
         timeStamp,
       }).then(({ id }) => {
         const docuRef = doc(firestore, `AdminNotifications/${id}`);
-        setDoc(docuRef, { notificationType, cantidad });
+        setDoc(docuRef, { ...adminNotification, cantidad, timeStamp });
       });
 
       
