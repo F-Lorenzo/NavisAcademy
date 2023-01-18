@@ -35,13 +35,20 @@ const Student = ({info}) => {
                     <span className="userCard-body-input_content">{info.remainingClases}</span> 
                 </div>
             </div>
+            {(info.classWeek).map((date, index) => {
 
-            {(info.classWith).map((date, index) => {
+                const timeStamp = date.timeDate;
+                const time = timeStamp.toDate();
+                const hours = time.getHours();
+                const minutes = time.getMinutes();
+                const HH = hours.toString().padStart(2, "0");
+                const mm = minutes.toString().padStart(2, "0");
+
                 return (
                     <div className="userCard-body" key={index}>
                         <div className="userCard-body-input">
                             <span className="userCard-body-input_title">{date.day} :</span>
-                            <span className="userCard-body-input_content">{date.time} Hs</span> 
+                            <span className="userCard-body-input_content">{HH}:{mm} Hs</span> 
                         </div>
                     </div>
                 )

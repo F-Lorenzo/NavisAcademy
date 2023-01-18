@@ -24,11 +24,24 @@ function PanelProfessor() {
             const arrayOfClasses = [];      
             mySchedule.forEach( allMyDates => 
                 Object.keys(allMyDates).forEach(key => arrayOfClasses.push({ 
+                    classNumber: allMyDates[key].classNumber, 
                     condition: allMyDates[key].condition,
                     date: allMyDates[key].date,
-                    time: allMyDates[key].time,
-                    student: allMyDates[key].text,
+                    dateEnd: allMyDates[key].dateEnd,
+                    durationClass: allMyDates[key].durationClass,
+                    linkToClass: allMyDates[key].linkToClass,
+                    reprogramed: allMyDates[key].reprogramed,
+                    studentAssist: allMyDates[key].studentAssist,
+                    studentCalification: allMyDates[key].studentCalification,
+                    studentEmail: allMyDates[key].studentEmail,
+                    studentLastName: allMyDates[key].studentLastName,
+                    studentName: allMyDates[key].studentName,
                     studentUid: allMyDates[key].studentUid,
+                    teacherCalification: allMyDates[key].teacherCalification,
+                    teacherLastName: allMyDates[key].teacherLastName,
+                    teacherName: allMyDates[key].teacherName,
+                    teacherUid: allMyDates[key].teacherUid,
+                    time: allMyDates[key].time,
                 }))
             );
             arrayOfClasses.sort((a,b) => {

@@ -61,8 +61,8 @@ const MyCalendario = () => {
     } else {
         return (
             <div>
-                <button onClick={handleTest}>TEST</button>
                 {/* 
+                <button onClick={handleTest}>TEST</button>
                 */}
                 <div className='scheduler-container'>
                     <Scheduler events={myClasses}/>

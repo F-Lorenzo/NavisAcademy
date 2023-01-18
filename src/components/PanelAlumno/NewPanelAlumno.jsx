@@ -90,7 +90,7 @@ const NewPanelAlumno = () => {
                         <div>
                             <div className='nextClass__container'>
                                 <NextClassInfo date={allMyClasses[classNumber]}/>
-                                <StudentPanelActionButtons myClass={allMyClasses[classNumber]} linkToClass={userData.linkToClass}/>
+                                <StudentPanelActionButtons myClass={allMyClasses[classNumber]} linkToClass={userData.linkToClass} userInfo={userData}/>
                                 <Asistencia {...user.misClases}/>
                             </div> 
         

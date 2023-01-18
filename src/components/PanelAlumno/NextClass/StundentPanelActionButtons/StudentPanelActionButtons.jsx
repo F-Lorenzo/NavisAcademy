@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const StudentPanelActionButtons = ({myClass, linkToClass}) => {
+const StudentPanelActionButtons = ({myClass, linkToClass, userInfo}) => {
 
     const navigate = useNavigate();
 
@@ -19,12 +19,18 @@ const StudentPanelActionButtons = ({myClass, linkToClass}) => {
     let hrsLeft = Math.floor((remainingTime % oneDay) / oneHour);
     let minsLeft = Math.floor((remainingTime % oneHour) / oneMin);
 
-    let available = daysLeft < 1 && hrsLeft < 4;
+    
+    const reprogramedClasses = userInfo.reprogramedThisMonth;
+    let available = (daysLeft < 1 && hrsLeft < 4) || (reprogramedClasses === 2);
 
     const handleReprogramClass = () => {
-        available ? 
-        swal('Ya es tarde', `Solo puedes reprogramar tu clase hasta 4 horas antes`, "error") 
-        : navigate("/Account/ReprogramClass");
+        if (reprogramedClasses === 2) {
+            swal('CUIDADO', `Solo puedes reprogramar 2 clases por mes y ya las reprogramaste`, "error") 
+        } else {
+            available ? 
+            swal('Ya es tarde', `Solo puedes reprogramar tu clase hasta 4 horas antes`, "error") 
+            : navigate("/Account/ReprogramClass");
+        }
     }
 
     const handleTest = () => {

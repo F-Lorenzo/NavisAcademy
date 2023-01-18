@@ -14,8 +14,8 @@ const MyClasses = ({myClass}) => {
     return (
         <div className='myClasses-container'>
             <h5>PROXIMA CLASE</h5>
-            <button onClick={handleTest}>test</button>
             {/*
+            <button onClick={handleTest}>test</button>
             */}
             {
                 myClass.map((theClass, index) =>{
@@ -36,10 +36,10 @@ const MyClasses = ({myClass}) => {
                         <div key={index} className='myClasses-card'>
                             <p className='myClasses-card_date'>{parsedDate}</p>
                             <ul className='myClasses-card_info'>
-                                <li className='myClasses-card_student'>{theClass.student}</li>
+                                <li className='myClasses-card_student'>{theClass.studentName} {theClass.studentLastName}</li>
                                 <li className='myClasses-card_time'>{HH}:{mm} HS</li>
                             </ul>
-                            <StartButton classDate={theClass.date} studentId={theClass.studentUid}/>
+                            <StartButton classDate={theClass} studentId={theClass.studentUid}/>
                         </div>
                     )
 

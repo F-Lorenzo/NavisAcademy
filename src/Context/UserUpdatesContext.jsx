@@ -31,11 +31,13 @@ export const UserUpdatesContextProvider = ({ children }) => {
             notifications: newData.notifications,
             misClases: {
               actualClass: newData.actualClass,
+              durationClass: newData.durationClass,
               remainingClases: newData.remainingClases,
               completedClases: newData.completedClases,
               absentedClases: newData.absentedClases,
               teacherUid: newData.teacherUid,
               teacher: newData.teacher,
+              reprogramedThisMonth: newData.reprogramedThisMonth,
             },
           };
           setUser(userData);

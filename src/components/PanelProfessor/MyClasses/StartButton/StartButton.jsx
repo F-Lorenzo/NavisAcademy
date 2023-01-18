@@ -7,10 +7,10 @@ import Card from '../../clasesCard/Card';
 const StartButton = ({classDate, studentId}) => {
 
     const [ linkToClass, setLinkToClass ] = useState('');
-    const endDate = classDate.toDate();
+    const startDate = classDate.date.toDate();
     const toDayDate = new Date();
 
-    let remainingTime = endDate - toDayDate;
+    let remainingTime = startDate - toDayDate;
         
     let oneMin = 60 * 1000;
     let oneHour = 60 * oneMin;
@@ -20,10 +20,19 @@ const StartButton = ({classDate, studentId}) => {
     let hrsLeft = Math.floor((remainingTime % oneDay) / oneHour);
     let minsLeft = Math.floor((remainingTime % oneHour) / oneMin);
 
+    let pastDays = 0;
+
+    if (daysLeft < pastDays) {
+        pastDays = Math.abs(daysLeft)
+    }
+
     const handleTest = () => {
-        console.log(endDate);
+        console.log(classDate);
+        console.log(startDate);
         console.log(toDayDate);
-        console.log(remainingTime);
+        console.log("tiempo que paso: ", remainingTime);
+
+        console.log("dias que pasaron: ", pastDays);
 
         console.log("Dias restantes : ", daysLeft);
         console.log("Horas restantes : ", hrsLeft);
@@ -61,9 +70,36 @@ const StartButton = ({classDate, studentId}) => {
 
     return (
         <div>
-                    <form onSubmit={handleSubmit}>
-                        <div className='linkToClass-container'>
-                            <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
+            {/*
+            <button onClick={handleTest}>TEST</button>
+            */}
+
+            { pastDays > 1 ? 
+                <div>
+                    <span>LA CLASE YA EXPIRO</span>
+                </div>
+            : ( pastDays > 0 ?
+                <div>
+                    <Card studentId={studentId} teacherId={classDate.teacherUid} />
+                </div>
+            :   daysLeft > 0 ? 
+                    <div>
+                        <p>Faltan {daysLeft} dias</p>
+                        <p>y {hrsLeft} horas</p>
+                    </div> 
+            : ( hrsLeft > 0 ?
+                <div>
+                    <p>Faltan {hrsLeft} horas</p>
+                    <p>y {minsLeft} minutos</p>
+                </div>
+            : ( minsLeft > 30 ?
+                <div>
+                    <p>Faltan {minsLeft} minutos</p>
+                </div>
+            :  
+                <form onSubmit={handleSubmit}>
+                    <div className='linkToClass-container'>
+                        <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
                             <input 
                                 type="url" 
                                 id="url"
@@ -74,62 +110,13 @@ const StartButton = ({classDate, studentId}) => {
                                 onChange={handleLinkToClass} 
                                 required>
                             </input>
-                        </div>
-                        <button type='submit'>
-                            ENVIAR
-                        </button>
-                    </form>
-                    {/*
-            {daysLeft > 0 ?
-                <div>
-                    <p>Faltan {daysLeft} dias</p>
-                    <p>y {hrsLeft} horas</p>
-                </div> 
-                : ( hrsLeft > 0 ?
-                <div>
-                    <p>Faltan {hrsLeft} horas</p>
-                    <p>y {minsLeft} minutos</p>
-                </div>
-                : ( minsLeft > 15 ?
-                <div>
-                    <p>Faltan {minsLeft} minutos</p>
-                </div>
-                : ( minsLeft <= 50 && minsLeft > -50 && daysLeft === 0  ? 
-                <div>
-                    <button onClick={handleTest} >test</button>
-                    <form onSubmit={handleSubmit}>
-                    <div className='linkToClass-container'>
-                    <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
-                    <input 
-                    type="url" 
-                    id="url"
-                    name="url" 
-                    placeholder="https://Ingrese_el_link_de_la_clase.com"
-                    pattern="https://.*" size="40"
-                    value={linkToClass || ''}
-                    onChange={handleLinkToClass} 
-                    required>
-                    </input>
                     </div>
                     <button type='submit'>
-                    ENVIAR
+                        ENVIAR
                     </button>
-                    </form>
-                    </div>
-                    : ( daysLeft < -1 ? 
-                        <div>
-                        <p>
-                        La clase ya expiro
-                        </p> 
-                        </div>
-                        :  
-                        <div>
-                        <button onClick={handleTest} >test</button>
-                        <Card />
-                        </div> 
-                        ))))
-                    */}
-            
+                </form>
+            )))
+            }           
         </div>
     )
 }

@@ -47,6 +47,7 @@ const Signup = () => {
         newbie: true,
         durationClass: 0,
         linkToClass: "",
+        reprogramedThisMonth: 0,
     }
 
     const welcomeNotification = {
