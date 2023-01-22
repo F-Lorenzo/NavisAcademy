@@ -63,14 +63,6 @@ const NewPanelAlumno = () => {
         */
     }, [user]);
 
-    const handleTest = () => {
-        // Si hay profesor asignado sumar clases nuevas
-        //console.log(allMyClasses);
-        if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
-            AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
-        };
-    }
-
     if (loader) {
         return (
             <Loader />

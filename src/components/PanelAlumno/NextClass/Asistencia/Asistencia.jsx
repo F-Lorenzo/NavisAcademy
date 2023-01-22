@@ -3,7 +3,7 @@ import React from 'react'
 
 const Asistencia = (clases) => {
 
-    let porcentaje = (clases.completedClases / (clases.actualClass + 1))*100
+    let porcentaje = (clases.completedClases / clases.actualClass)*100
     let intPorcentaje = Math.round(porcentaje);
 
     return (

@@ -19,16 +19,18 @@ import { useNavigate } from "react-router-dom";
 import Checkout from "../../checkout/Checkout";
 import "./cardClasses.scss";
 
-const BuyClasses = ({ durationSelection, msg }) => {
+const BuyClasses = ({ durationSelection, msg, userDuration }) => {
   const [ isCheckout, setIsCheckout ] = useState(false);
   const { userLogged } = UserAuth();
   const [ totalValue, setTotalValue ] = useState();
   const [ cantidad, setCantidad ] = useState();
-  const [ duration, setDuration ] = useState(50);
+  const [ duration, setDuration ] = useState(userDuration);
   const [ currency, setCurrency ] = useState("EUR");
   const navigate = useNavigate();
 
   let buyCards = [];
+
+  !duration && setDuration(50);
 
   switch (duration) {
     case 30:
@@ -87,7 +89,7 @@ const BuyClasses = ({ durationSelection, msg }) => {
                       className="button__Card"
                       onClick={(handleBuyClasses) => {
                         if (!userLogged) {
-                          navigate('./signIn')
+                          navigate('./signUp')
                         } else {
                           let precio = parseFloat(item[currency]);
                           let amount = parseInt(item.amount);

@@ -4,6 +4,8 @@ import { updateDoc, getFirestore, doc, addDoc, serverTimestamp, collection, incr
 import './StartButton.css';
 import Card from '../../clasesCard/Card';
 
+import ClassCalification from '../../ClassCalification/ClassCalification';
+
 const StartButton = ({classDate, studentId}) => {
 
     const [ linkToClass, setLinkToClass ] = useState('');
@@ -80,7 +82,7 @@ const StartButton = ({classDate, studentId}) => {
                 </div>
             : ( pastDays > 0 ?
                 <div>
-                    <Card studentId={studentId} teacherId={classDate.teacherUid} />
+                    <ClassCalification studentId={studentId} teacherId={classDate.teacherUid}/>
                 </div>
             :   daysLeft > 0 ? 
                     <div>

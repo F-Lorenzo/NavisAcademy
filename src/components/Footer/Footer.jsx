@@ -12,36 +12,18 @@ const Footer = () => {
       <section className="footer_Content">
         <div className="footer__Container">
           <Link className="logoFooter" to="/home">
-            <img src={logoFooter} alt="" />
+            <img src={logoFooter} alt="enlace a navis" />
           </Link>
-          {/* 
-          <div className="paquetes__Footer">
-            <h2>Paquetes</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim.
-            </p>
-          </div>
-          <div className="paquetes__Footer2">
-            <h2>Navis</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam
-              erat volutpat. Ut wisi enim.
-            </p>
-          </div> */}
-
           <div>
             <div className="redes__Footer">
               <Link to="">
-                <img src={facebook} alt="" />
+                <img src={facebook} alt="link a facebook" />
               </Link>
               <Link to="/#">
-                <img src={instagram} alt="" />
+                <img src={instagram} alt="lint a instagram" />
               </Link>
               <Link to="/#">
-                <img src={ws} alt="" />
+                <img src={ws} alt="link a whatsapp" />
               </Link>
             </div>
           </div>

@@ -107,15 +107,13 @@ const Payment = ({totalValue, cantidad}) => {
         }}
         onApprove={async (data, actions) => {
           const details = await actions.order.capture();
-          console.log(details); // luego del onApprove se dan las clases
+          //console.log(details); // luego del onApprove se dan las clases
           
           let tempDetails = details;
 
           if (tempDetails) {
             sumarClases();
             tempDetails = false;
-          } else {
-            console.log("pago not apprub")
           }
 
         }}

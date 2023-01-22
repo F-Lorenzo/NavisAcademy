@@ -27,8 +27,6 @@ const MyFirstClasses = () => {
       swal("UPS!", `${e.message}`, "error");
     }
 
-    console.log(duration);
-
   }
 
   return (
@@ -67,7 +65,7 @@ const MyFirstClasses = () => {
                     <li className="amount">Clases de 50min </li>
                     <div>
                       <button className="button__Card" onClick={() => handleSelection(50)}>
-                        SLECCIONAR
+                        SELECCIONAR
                       </button>
                     </div>
                   </ul>
@@ -83,8 +81,11 @@ const MyFirstClasses = () => {
               <div className='MyfirstClasses__welcome'>
                 <h5>Bienvenido a NAVIS</h5>
                 <p>Adquiere tu primer paquete de clases</p>
+                {/*
+                */}
+                <button className="button__Card" onClick={() => handleSelection(0)}>ATRAS</button>
               </div>
-              <BuyClasses duration={userData.durationClass}/>
+              <BuyClasses userDuration={userData.durationClass}/>
             </div>
           }
         </div>

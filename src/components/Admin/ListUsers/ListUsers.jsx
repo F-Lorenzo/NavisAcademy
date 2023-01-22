@@ -5,12 +5,12 @@ import UsersList from './UsersList';
 
 const ListUsers = ({roleNeeded}) => {
 
+    const firebase = getFirestore();
     const [ loader, setLoader ] = useState(true);
     const [ users, setUsers ] = useState([]);
 
     useEffect( () => {
 
-        const firebase = getFirestore();
         const usersCollection = collection(firebase, `Users`);
         const usersNeeded = query(usersCollection, where('role', '==', `${roleNeeded}`));
         getDocs(usersNeeded)

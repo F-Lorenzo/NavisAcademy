@@ -74,6 +74,7 @@ export const AddClases = async (userId, myClassesId, oldSchedule, newClasses) =>
             reprogramed: false,
             durationClass: myClassesData.durationClass,
             classNumber: classNumber,
+            calificationOfClass: '',
 
             studentName: myClassesData.studentName,
             studentLastName: myClassesData.studentLastName,

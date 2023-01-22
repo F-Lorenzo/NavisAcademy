@@ -7,15 +7,15 @@ import Loader from '../../Loader/Loader';
 const Dates = ({info, teachersList}) => {
 
     const [ listTeachers, setListTeachers ] = useState(false);
-    const [ requiredDays, setRequiredDays ] = useState([]);
+    const [ clicked, setClicked ] = useState(false);
 
     const handleAsignarProfesor = () => {
         !listTeachers && swal("OK", `Selecciona un profesor de la lista`, "success");
         setListTeachers(!listTeachers);
     };
 
-    const handleTest = () => {
-        console.log(info);
+    const teacherClicked = (e) => {
+        setClicked(e);
     }
        
     return (
@@ -48,8 +48,10 @@ const Dates = ({info, teachersList}) => {
 
                     </div>
                 </div>
-
-            { listTeachers && <TeachersList date={info} teachers={teachersList} daysInfo={requiredDays}/> }
+                
+                <div className='teacherListed-container'>
+                    { !clicked && (listTeachers && <TeachersList date={info} teachers={teachersList} onChange={teacherClicked}/>) }
+                </div>
             </div>
                  
         </div>

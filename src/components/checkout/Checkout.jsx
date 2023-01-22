@@ -4,7 +4,6 @@ import "./checkout.css";
 
 function Checkout({ totalValue, cantidad }) {
 
-  console.log("checkout enter : ", totalValue, cantidad);
   return (
     <div className="payment-container">
       <span className="amount">${totalValue}</span>

@@ -103,7 +103,7 @@
             }
             
             .userCardProfile-button:hover {
-                background-color: #479B05;
+                background-color: rgb(71, 155, 5);
                 color: black;
             }
 
@@ -132,4 +132,15 @@
         list-style: none;
     }
 
+}
+
+// Teachers Listed --------------------
+
+.teacherListed-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .userCardProfile-container {
+        max-width: 50%;
+    }
 }

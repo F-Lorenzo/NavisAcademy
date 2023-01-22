@@ -40,13 +40,13 @@ const StudentPanelActionButtons = ({myClass, linkToClass, userInfo}) => {
     return (
         <div className='studentPanelActionButtons'>
             {linkToClass ?
-                <a href={linkToClass}>
+                <a href={linkToClass} target="_blank">
                     <button className='studentPanelButton active'>INICIAR CLASE</button>    
                 </a> 
             : 
                 <button className='studentPanelButton' onClick={handleTest}>INICIAR CLASE</button>
             }
-            <a href="https://www.blinklearning.com/v/1666102044/themes/tmpux/launch.php">
+            <a href="https://www.blinklearning.com/v/1666102044/themes/tmpux/launch.php" target="_blank">
                 <button className='studentPanelButton active'>BLINK LEARNING</button>
             </a>
             <button className={available ? 'studentPanelButton' : 'studentPanelButton active'} onClick={handleReprogramClass}>REPROGRAMAR CLASE</button>

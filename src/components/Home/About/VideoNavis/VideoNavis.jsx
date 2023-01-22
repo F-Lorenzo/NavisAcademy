@@ -3,9 +3,13 @@ import YouTube from 'react-youtube'
 
 const VideoNavis = () => {
 
+    let videoWidth = '640';
+
+    (window.innerWidth < 600) ? videoWidth = '360' : videoWidth = '580'; 
+
     const opts = {
         height: '390',
-        width: '640',
+        width: videoWidth,
         playerVars: {
             // https://developers.google.com/youtube/player_parameters
             autoplay: 1,
@@ -17,6 +21,7 @@ const VideoNavis = () => {
             <YouTube
                 videoId="UdEuBHCquPI"
                 opts={opts}
+                
                 onReady={() => {}}
                 onPlay={() => {}}
                 onPause={() => {}}

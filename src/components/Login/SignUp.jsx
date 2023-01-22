@@ -64,7 +64,6 @@ const Signup = () => {
             const infoUser = await createUser(form.email, form.password).then((firebaseData) => {
                 return firebaseData;
             });
-            console.log(infoUser); // BORRAR ESTA SHIT!!
             const firestore = getFirestore();
             const docuRef = doc(firestore, `Users/${infoUser.user.uid}`);
             setDoc(docuRef, {...form, country, ...studentData, uid:infoUser.user.uid});
