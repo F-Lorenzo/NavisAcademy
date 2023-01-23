@@ -20,29 +20,9 @@ import {
   addDoc, serverTimestamp,
 } from "firebase/firestore";
 
-
-
-//
-
 const Payment = ({totalValue, cantidad}) => {
-  // useEffect(() => {
-  //   const [{ options }, dispatch] = usePayPalScriptReducer();
-  //   const [currency, setCurrency] = useState(options.currency);
-  //   function onCurrencyChange({ target: { value } }) {
-  //     setCurrency(value);
-  //     dispatch({
-  //       type: "resetOptions",
-  //       value: {
-  //         ...options,
-  //         currency: value,
-  //       },
-  //     });
-  //   }
-  // }, [currency]);
 
   const { userLogged } = UserAuth();
-
-
   const timeStamp = serverTimestamp();
 
   const buyNotification = {
@@ -80,9 +60,7 @@ const Payment = ({totalValue, cantidad}) => {
       }).then(({ id }) => {
         const docuRef = doc(firestore, `AdminNotifications/${id}`);
         setDoc(docuRef, { ...adminNotification, cantidad, timeStamp });
-      });
-
-      
+      });     
       //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
@@ -118,10 +96,6 @@ const Payment = ({totalValue, cantidad}) => {
 
         }}
       />
-      {/* <select value={currency} onChange={onCurrencyChange}>
-        <option value="USD">United States dollar</option>
-        <option value="EUR">Euro</option>
-      </select> */}
     </PayPalScriptProvider>
   );
 }

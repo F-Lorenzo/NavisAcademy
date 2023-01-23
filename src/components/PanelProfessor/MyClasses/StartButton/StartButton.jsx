@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { updateDoc, getFirestore, doc, addDoc, serverTimestamp, collection, increment } from 'firebase/firestore';
-import './StartButton.css';
+import './StartButton.scss';
 import Card from '../../clasesCard/Card';
 
 import ClassCalification from '../../ClassCalification/ClassCalification';
@@ -9,8 +9,12 @@ import ClassCalification from '../../ClassCalification/ClassCalification';
 const StartButton = ({classDate, studentId}) => {
 
     const [ linkToClass, setLinkToClass ] = useState('');
+    const classCondition = classDate.condition;
+    const classCalification = classDate.teacherCalification;
     const startDate = classDate.date.toDate();
     const toDayDate = new Date();
+
+    let calification = '';
 
     let remainingTime = startDate - toDayDate;
         
@@ -23,6 +27,21 @@ const StartButton = ({classDate, studentId}) => {
     let minsLeft = Math.floor((remainingTime % oneHour) / oneMin);
 
     let pastDays = 0;
+
+    switch (classCalification) {
+        case 'success':
+            calification = 'Clase Existosa';
+            break;
+        case 'absentedStudent':
+            calification = 'Estudiante Ausente';
+            break;
+        case 'absentedTeacher':
+            calification = 'Profesor Ausente';
+            break;
+        default:
+            calification = 'No hay calificacion';
+            break;
+    }
 
     if (daysLeft < pastDays) {
         pastDays = Math.abs(daysLeft)
@@ -75,50 +94,59 @@ const StartButton = ({classDate, studentId}) => {
             {/*
             <button onClick={handleTest}>TEST</button>
             */}
-
-            { pastDays > 1 ? 
-                <div>
-                    <span>LA CLASE YA EXPIRO</span>
-                </div>
-            : ( pastDays > 0 ?
-                <div>
-                    <ClassCalification studentId={studentId} teacherId={classDate.teacherUid}/>
-                </div>
-            :   daysLeft > 0 ? 
+            { classCondition === "pending" ? 
+                ( pastDays > 1 ? 
                     <div>
-                        <p>Faltan {daysLeft} dias</p>
-                        <p>y {hrsLeft} horas</p>
-                    </div> 
-            : ( hrsLeft > 0 ?
-                <div>
-                    <p>Faltan {hrsLeft} horas</p>
-                    <p>y {minsLeft} minutos</p>
-                </div>
-            : ( minsLeft > 30 ?
-                <div>
-                    <p>Faltan {minsLeft} minutos</p>
-                </div>
-            :  
-                <form onSubmit={handleSubmit}>
-                    <div className='linkToClass-container'>
-                        <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
-                            <input 
-                                type="url" 
-                                id="url"
-                                name="url" 
-                                placeholder="https://Ingrese_el_link_de_la_clase.com"
-                                pattern="https://.*" size="40"
-                                value={linkToClass || ''}
-                                onChange={handleLinkToClass} 
-                                required>
-                            </input>
+                        <span>LA CLASE YA EXPIRO</span>
                     </div>
-                    <button type='submit'>
-                        ENVIAR
-                    </button>
-                </form>
-            )))
-            }           
+                    :( pastDays > 0 ?
+                        <div>
+                            <ClassCalification studentId={studentId} teacherId={classDate.teacherUid} classNumber={classDate.classNumber}/>
+                        </div>
+                        :( daysLeft > 0 ? 
+                            <div>
+                                <p>Faltan {daysLeft} dias</p>
+                                <p>y {hrsLeft} horas</p>
+                            </div> 
+                            :( hrsLeft > 0 ?
+                                <div>
+                                    <p>Faltan {hrsLeft} horas</p>
+                                    <p>y {minsLeft} minutos</p>
+                                </div>
+                                :( minsLeft > 30 ?
+                                    <div>
+                                        <p>Faltan {minsLeft} minutos</p>
+                                    </div>
+                                    :  
+                                    <form onSubmit={handleSubmit}>
+                                        <div className='linkToClass-container'>
+                                            <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
+                                                <input 
+                                                    type="url" 
+                                                    id="url"
+                                                    name="url" 
+                                                    placeholder="https://Ingrese_el_link_de_la_clase.com"
+                                                    pattern="https://.*" size="40"
+                                                    value={linkToClass || ''}
+                                                    onChange={handleLinkToClass} 
+                                                    required>
+                                                </input>
+                                        </div>
+                                        <button type='submit'>
+                                            ENVIAR
+                                        </button>
+                                    </form>
+                                )
+                            )
+                        )
+                    )
+                ) 
+                : 
+                <div>
+                    <span className={ classCalification === 'success' ? 'calificationGreen' : 'calificationRed' }>{calification}</span>
+                </div>
+            }
+            
         </div>
     )
 }

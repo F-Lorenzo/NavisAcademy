@@ -1,15 +1,16 @@
-import { getFirestore, increment, updateDoc, doc } from 'firebase/firestore';
+import { getFirestore, increment, updateDoc, doc, getDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import './ClassCalification.scss';
 import Loader from '../../Loader/Loader';
 
-const ClassCalification = ({studentId, teacherId}) => {
+const ClassCalification = ({studentId, teacherId, classNumber}) => {
 
     const [ calification, setCalification ] = useState('');
     const [ loader, setLoader ] = useState(false);
+    const [ sended, setSended ] = useState(false);
 
     const califications = [
-        { id: 1, label: 'Clase exitosa', value: 1 },
+        { id: 1, label: 'Clase Exitosa', value: 1 },
         { id: 2, label: 'Estudiante Ausente', value: 2 },
         { id: 3, label: 'Profesor Ausente', value: 3 },
     ];
@@ -43,10 +44,21 @@ const ClassCalification = ({studentId, teacherId}) => {
             thisMonthClasses: increment(teacherThisMonthClasses),
             absentedClasses: increment(teacherAbsentedClasses),
         });
+        /*
+        */
+        const teacherSchedulePath = doc(firestore, `Users/${teacherId}/mySchedule/${studentId}`);
+        const teacherScheduleData = await getDoc(teacherSchedulePath);
+        const teacherSchedule = teacherScheduleData.data();
+        teacherSchedule[classNumber].condition = 'success';
+        teacherSchedule[classNumber].teacherCalification = calificationOfClass;
+        await updateDoc (teacherSchedulePath, {
+            ...teacherSchedule,
+        })
         setLoader(false);
     }
 
     const handleEnviar = () => {
+        setSended(true);
         if (calification === '') {
             swal("CUIDADO!", `Debe seleccionar una opción`, "error");
         } else {
@@ -59,7 +71,7 @@ const ClassCalification = ({studentId, teacherId}) => {
                     teacherTotalClasses = 1;
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
-                    calificationOfClass = 'succes';
+                    calificationOfClass = 'success';
                     break;
                 case '2':
                     studentActualClass = 1;
@@ -81,6 +93,7 @@ const ClassCalification = ({studentId, teacherId}) => {
                     break;
             }
             sendToFire();
+            console.log(classNumber);
             console.log(studentActualClass);
         }
 
@@ -90,11 +103,18 @@ const ClassCalification = ({studentId, teacherId}) => {
         return <Loader />
     }
 
-    return (
-        
+    return (   
+        <>
+        { sended === true ? 
+            <div>
+                <span className='calificationPending'>
+                    Calificación Enviada
+                </span>
+            </div>
+        :
             <div className='calification-container'>
                 <label htmlFor="calificationClass">
-                    Califica la clase:
+                    Califica La Clase:
                     <select name="calificationClass" id="calificationClass" value={calification} onChange={handleChange} >
                         {califications.map((calification) => (
                             <option key={calification.id} value={calification.value} defaultValue={calification.value[1]}>
@@ -108,7 +128,8 @@ const ClassCalification = ({studentId, teacherId}) => {
                 </button>
             </div>
 
-        
+        }
+        </>
     )
 
 }

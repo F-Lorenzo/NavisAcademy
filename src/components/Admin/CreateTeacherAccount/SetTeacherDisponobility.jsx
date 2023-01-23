@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../../../Context/AuthContext';
 import { DisponibilityItem } from './DisponibilityItem';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
-import TimePicker from '../../Develope/TimePicker';
+import TimePicker from '../../TimePicker/TimePicker';
 import Loader from '../../Loader/Loader';
 
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import "./ProgramClasses.css";
+import "./ProgramClasses.scss";
 import { UserUpdates } from '../../../../Context/UserUpdatesContext';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, serverTimestamp } from 'firebase/firestore';
-import TimePicker from '../../../Develope/TimePicker';
+import TimePicker from '../../../TimePicker/TimePicker';
 
 const ProgramClasses = () => {
 
