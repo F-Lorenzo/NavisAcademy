@@ -22,17 +22,10 @@ import "./cardClasses.scss";
 const BuyClasses = ({ durationSelection, msg }) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const { userLogged } = UserAuth();
-<<<<<<< HEAD
   const [totalValue, setTotalValue] = useState();
   const [cantidad, setCantidad] = useState();
   const [duration, setDuration] = useState(50);
-  const [currency, setCurrency] = useState("USD");
-=======
-  const [ totalValue, setTotalValue ] = useState();
-  const [ cantidad, setCantidad ] = useState();
-  const [ duration, setDuration ] = useState(50);
-  const [ currency, setCurrency ] = useState("EUR");
->>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
+  const [currency, setCurrency] = useState("EUR");
   const navigate = useNavigate();
 
   let buyCards = [];
@@ -62,7 +55,6 @@ const BuyClasses = ({ durationSelection, msg }) => {
     <div className="buy-container">
       <h3>{msg}</h3>
 
-<<<<<<< HEAD
       <div className="buy-container__header">
         {durationSelection && (
           <Switcher
@@ -74,74 +66,64 @@ const BuyClasses = ({ durationSelection, msg }) => {
         )}
         <Switcher
           title={"MONEDA :"}
-          opt01={"USD"}
-          opt02={"EUR"}
+          opt01={"EUR"}
+          opt02={"USD"}
           onToggle={handleCurrency}
         />
       </div>
-=======
-        <div className="buy-container__header">
-          {durationSelection && <Switcher title={'DURACION DE LA CLASE :'} opt01={'50'} opt02={'30'} onToggle={handleDurationSelect}/> }
-          <Switcher title={'MONEDA :'} opt01={'EUR'} opt02={'USD'} onToggle={handleCurrency}/>
-        </div>
-
-        <div className="buy-card-container">
->>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
 
       <div className="buy-card-container">
-        {buyCards.map((item, index) => {
-          let recomended = false;
-          index === 1 ? (recomended = !recomended) : recomended;
+        <div className="buy-card-container">
+          {buyCards.map((item, index) => {
+            let recomended = false;
+            index === 1 ? (recomended = !recomended) : recomended;
 
-          return (
-            <div key={index} className="buy-card">
-              {recomended ? (
-                <span className="recomended-label">RECOMENDADO</span>
-              ) : (
-                ""
-              )}
-              <li>
-                <ul>
-                  <li className="pack-number">Navis {item.number} </li>
-                  <li className="amount">
-                    {" "}
-                    {item.amount} <span className="clases-thin">Clases</span>{" "}
-                  </li>
-                  <li className="duration"> {item.duration} min/Class </li>
-                  <li className="libros">Libros interactivos </li>
-<<<<<<< HEAD
-                  <li className="price">
-                    {item[currency]} {currency} por clase{" "}
-                  </li>
-=======
-                  <li className="price">{item[currency]} {currency} por clase </li>
->>>>>>> ba9adcc9d4b63885e9078c5bf7dcc9d9e02e97b9
-                  <div>
-                    <button
-                      className="button__Card"
-                      onClick={(handleBuyClasses) => {
-                        if (!userLogged) {
-                          navigate("./signIn");
-                        } else {
-                          let precio = parseFloat(item[currency]);
-                          let amount = parseInt(item.amount);
-                          let total = amount * precio;
-                          let finalValue = total.toFixed(2).toString();
-                          setCantidad(amount);
-                          setTotalValue(finalValue);
-                          setIsCheckout(!isCheckout);
-                        }
-                      }}
-                    >
-                      Comprar
-                    </button>
-                  </div>
-                </ul>
-              </li>
-              <div className="cohete"></div>
-            </div>
-          );
-        })}
+            return (
+              <div key={index} className="buy-card">
+                {recomended ? (
+                  <span className="recomended-label">RECOMENDADO</span>
+                ) : (
+                  ""
+                )}
+                <li>
+                  <ul>
+                    <li className="pack-number">Navis {item.number} </li>
+                    <li className="amount">
+                      {" "}
+                      {item.amount} <span className="clases-thin">Clases</span>{" "}
+                    </li>
+                    <li className="duration"> {item.duration} min/Class </li>
+                    <li className="libros">Libros interactivos </li>
+                    <li className="price">
+                      {item[currency]} {currency} por clase{" "}
+                    </li>
+                    <div>
+                      <button
+                        className="button__Card"
+                        onClick={(handleBuyClasses) => {
+                          if (!userLogged) {
+                            navigate("./signIn");
+                          } else {
+                            let precio = parseFloat(item[currency]);
+                            let amount = parseInt(item.amount);
+                            let total = amount * precio;
+                            let finalValue = total.toFixed(2).toString();
+                            setCantidad(amount);
+                            setTotalValue(finalValue);
+                            setIsCheckout(!isCheckout);
+                          }
+                        }}
+                      >
+                        Comprar
+                      </button>
+                    </div>
+                  </ul>
+                </li>
+                <div className="cohete"></div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

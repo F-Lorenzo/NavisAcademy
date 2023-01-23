@@ -17,14 +17,13 @@ import {
   query,
   collection,
   setDoc,
-  addDoc, serverTimestamp,
+  addDoc,
+  serverTimestamp,
 } from "firebase/firestore";
-
-
 
 //
 
-const Payment = ({totalValue, cantidad}) => {
+const Payment = ({ totalValue, cantidad }) => {
   // useEffect(() => {
   //   const [{ options }, dispatch] = usePayPalScriptReducer();
   //   const [currency, setCurrency] = useState(options.currency);
@@ -42,23 +41,21 @@ const Payment = ({totalValue, cantidad}) => {
 
   const { userLogged } = UserAuth();
 
-
   const timeStamp = serverTimestamp();
 
   const buyNotification = {
-      textNotification: "Felicitaciones, adquiriste nuevas clases",
-      notificationType: "Compra",
-      checked: false,
-  }
+    textNotification: "Felicitaciones, adquiriste nuevas clases",
+    notificationType: "Compra",
+    checked: false,
+  };
 
   const adminNotification = {
-      textNotification: "Un usuario adquirio nuevas clases",
-      notificationType: "Compra",
-      checked: false,
-  }
+    textNotification: "Un usuario adquirio nuevas clases",
+    notificationType: "Compra",
+    checked: false,
+  };
 
   const sumarClases = async () => {
-
     //SUMA DE CLASES PARA ALUMNO
     try {
       const firestore = getFirestore();
@@ -82,13 +79,11 @@ const Payment = ({totalValue, cantidad}) => {
         setDoc(docuRef, { ...adminNotification, cantidad, timeStamp });
       });
 
-      
       //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
     }
-
-  }
+  };
 
   const totalAmount = totalValue;
   return (
@@ -107,25 +102,20 @@ const Payment = ({totalValue, cantidad}) => {
         }}
         onApprove={async (data, actions) => {
           const details = await actions.order.capture();
-          console.log(details); // luego del onApprove se dan las clases
-          
+
           let tempDetails = details;
 
           if (tempDetails) {
             sumarClases();
             tempDetails = false;
           } else {
-            console.log("pago not apprub")
+            console.log("pago not apprub");
           }
-
         }}
+        forceReRender={[totalAmount]}
       />
-      {/* <select value={currency} onChange={onCurrencyChange}>
-        <option value="USD">United States dollar</option>
-        <option value="EUR">Euro</option>
-      </select> */}
     </PayPalScriptProvider>
   );
-}
+};
 
 export default Payment;
