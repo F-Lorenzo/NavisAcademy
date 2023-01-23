@@ -71,7 +71,7 @@ const Signup = () => {
             const notifications =  collection(firestore, `Users/${infoUser.user.uid}/myNotifications`);
             addDoc(notifications, {...welcomeNotification, timeStamp});
 
-            navigate('/account');
+            navigate('/panel');
         } catch (e) {
             setError(e.message);
             swal("UPS!", `${e.message}`, "error");

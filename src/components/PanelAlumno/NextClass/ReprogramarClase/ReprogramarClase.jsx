@@ -130,6 +130,11 @@ const ReprogramarClase = () => {
             let end = new Date(año, mes, dia, HH, mm);
             end.setMinutes(end.getMinutes() + durationOfClass);
 
+            const newDay = start.getDay();
+            newDay <= oldClassDay && addDays(start, 7) && addDays(end, 7);
+            /*
+            */
+
             const classDate = {
                 date: start,
                 dateEnd: end,
@@ -175,7 +180,7 @@ const ReprogramarClase = () => {
             ((day) === "sabado") && generateClassDate(time, sabado, classDateInfo.classNumber, classDateInfo.durationClass);
         }
 
-        addDays(oldClassDate, 7);
+        addDays(oldClassDate, 0);
         caseOf(day, time);
 
         /*

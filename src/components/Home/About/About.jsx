@@ -1,7 +1,6 @@
 import React from "react";
 import "./About.scss";
 import VideoNavis from "./VideoNavis/VideoNavis";
-import CarouselVanilla from "./Carousel/CarouselVanilla";
 
 const About = () => {
   return (

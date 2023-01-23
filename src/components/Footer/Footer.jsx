@@ -12,15 +12,15 @@ const Footer = () => {
       <section className="footer_Content">
         <div className="footer__Container">
           <Link className="logoFooter" to="/home">
-            <img src={logoFooter} alt="enlace a navis" />
+            <img src={logoFooter} alt="link a navis" />
           </Link>
           <div>
             <div className="redes__Footer">
-              <Link to="">
+              <Link to="/#">
                 <img src={facebook} alt="link a facebook" />
               </Link>
               <Link to="/#">
-                <img src={instagram} alt="lint a instagram" />
+                <img src={instagram} alt="link a instagram" />
               </Link>
               <Link to="/#">
                 <img src={ws} alt="link a whatsapp" />

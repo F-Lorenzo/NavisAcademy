@@ -89,22 +89,15 @@ const NewPanelAlumno = () => {
                             <StudentClassInfo {...user.misClases}/>
                             <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES'/>
                         </div>
-                        ) :
-        
-                        (
+                    ) :
                         <div>
                             <div className='MyfirstClasses__welcome'>
                                 <h5>FELICITACIONES!</h5>
                                 <p>Pronto se te asignara un profesor</p>
                             </div> 
-                            {/*
-                            <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES' />
-                            */}
                         </div> 
-                        )
 
                 )
- 
             }
         </div>
     )

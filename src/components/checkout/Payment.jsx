@@ -21,6 +21,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
+<<<<<<< HEAD
 //
 
 const Payment = ({ totalValue, cantidad }) => {
@@ -41,6 +42,11 @@ const Payment = ({ totalValue, cantidad }) => {
 
   const { userLogged } = UserAuth();
 
+=======
+const Payment = ({totalValue, cantidad}) => {
+
+  const { userLogged } = UserAuth();
+>>>>>>> 1bfc104395e220151101c2a754de26c0e9628611
   const timeStamp = serverTimestamp();
 
   const buyNotification = {
@@ -77,8 +83,12 @@ const Payment = ({ totalValue, cantidad }) => {
       }).then(({ id }) => {
         const docuRef = doc(firestore, `AdminNotifications/${id}`);
         setDoc(docuRef, { ...adminNotification, cantidad, timeStamp });
+<<<<<<< HEAD
       });
 
+=======
+      });     
+>>>>>>> 1bfc104395e220151101c2a754de26c0e9628611
       //swal("Muy Bien", `Adquiriste ${amount} nuevas clases`, "success");
     } catch (e) {
       swal("UPS!", `${e.message}`, "error");
