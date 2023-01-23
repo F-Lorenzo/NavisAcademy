@@ -87,7 +87,7 @@ const Payment = ({ totalValue, cantidad }) => {
 
   const totalAmount = totalValue;
   return (
-    <PayPalScriptProvider options={initialOptions}>
+    <PayPalScriptProvider>
       <PayPalButtons
         createOrder={(data, actions) => {
           return actions.order.create({
@@ -111,7 +111,6 @@ const Payment = ({ totalValue, cantidad }) => {
             console.log("pago not apprub");
           }
         }}
-        forceReRender={[totalAmount]}
       />
     </PayPalScriptProvider>
   );
