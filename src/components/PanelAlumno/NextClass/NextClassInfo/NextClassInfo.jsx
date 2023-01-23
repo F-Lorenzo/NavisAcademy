@@ -15,12 +15,12 @@ const NextClassInfo = ({date}) => {
 
     return (
         <div className='nextClass__info'>
-            <button onClick={handleTest}>test</button>
             {/*
+            <button onClick={handleTest}>test</button>
             */}
             <p className='nextClass__date'>PROXIMA CLASE : {nextClassDate}</p>
             <p className='nextClass__time'>{HH}:{mm} HS</p>
-            <p className='nextClass__teacher'>{date.text}</p>
+            <p className='nextClass__teacher'>{date.teacherName} {date.teacherLastName} </p>
         </div>
     )
 

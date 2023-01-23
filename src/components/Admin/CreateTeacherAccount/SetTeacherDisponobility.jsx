@@ -25,10 +25,8 @@ const SetTeacherDisponobility = ({teacherForm}) => {
 
     const handleChangeStart = (s) => {
         let dayToChange = weekDisponibility.filter((d) => d.day === s.id);
-        console.log(dayToChange);
         let timeEnd = dayToChange[0].timeEnd;
         let timeEndDate = dayToChange[0].timeEndDate;
-        console.log(timeEndDate);
         let restOfDays = weekDisponibility.filter((d) => d.day != s.id);
         dayToChange = { 
             day: s.id, 
@@ -37,7 +35,6 @@ const SetTeacherDisponobility = ({teacherForm}) => {
             timeStartDate: s.timeDate,
             timeEndDate : timeEndDate,
         }
-        console.log(dayToChange);
         restOfDays.push(dayToChange);
         setWeekDisponibility(restOfDays);
     }
@@ -54,7 +51,6 @@ const SetTeacherDisponobility = ({teacherForm}) => {
             timeEndDate: e.timeDate,
             timeStartDate: timeStartDate,
         }
-        console.log(dayToChange)
         restOfDays.push(dayToChange);
         setWeekDisponibility(restOfDays);
     }
@@ -94,21 +90,32 @@ const SetTeacherDisponobility = ({teacherForm}) => {
         !emailIn ? swal("CUIDADO!", `Ingrese una direccion de email valida`, "error") : emailIn = true;
         
         let timeIn = false;
+        let validEnters = 0;
 
         weekDisponibility.length === 0 ? swal("CUIDADO!", `Debes seleccionar al menos un dia y un horario`, "error") : (
             weekDisponibility.map((day) => {
-                if ((day.timeStart != undefined) && (day.timeEnd != undefined)) {
-                    if (day.timeStart >= day.timeEnd) {
-                        swal("CUIDADO!", `El horario de inicio debe ser menor al de finalizacion`, "error");
-                    } else {
-                        timeIn = true;
-                    }
+                let validTime = false;
+                if (day.timeStartDate && day.timeEndDate) {
+                    let isDateStartValid = day.timeStartDate;
+                    let validTimeStartDate = !(isNaN(isDateStartValid.getTime()));
+                    let isDateEndValid = day.timeEndDate;
+                    let validTimeEndDate = !(isNaN(isDateEndValid.getTime()));
+                    (!validTimeStartDate || !validTimeEndDate) 
+                    && swal("CUIDADO!", `Debes seleccionar un horario`, "error");
+                    validTime = validTimeStartDate && validTimeEndDate;
+                    validTime 
+                    && (isDateStartValid >= isDateEndValid) 
+                    && swal("CUIDADO!", `El horario de inicio debe ser menor al de finalizacion`, "error")
+                    && (validTime=!validTime);
                 } else {
                     swal("CUIDADO!", `Debes seleccionar un horario`, "error");
                 }
+                validTime && validEnters++;
             })
         );
 
+        timeIn = (validEnters === weekDisponibility.length) > 0;
+        !timeIn && swal("CUIDADO!", `Debes seleccionar un horario`, "error");
         let dataApproved = nameIn && lastNameIn && passwordIn && emailIn && timeIn;
         dataApproved && sendToFire();
     }
@@ -136,7 +143,6 @@ const SetTeacherDisponobility = ({teacherForm}) => {
                                         );
                                         setClicked(!clicked);
                                         setWeekDisponibility(selectedDays);
-                                        console.log(weekDisponibility);
                                     }}
                                 >
                                     {day}

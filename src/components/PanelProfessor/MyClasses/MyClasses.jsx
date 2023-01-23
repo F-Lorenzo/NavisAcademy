@@ -18,19 +18,14 @@ const MyClasses = ({myClass}) => {
             <button onClick={handleTest}>test</button>
             */}
             {
-                myClass.map((theClass, index) =>{
+                myClass.map((theClass, index) => {
                     
                     const date = theClass.date.toDate();
-                    console.log(date);
-                    /*
-                    */
                     const hours = date.getHours();
                     const HH = hours.toString().padStart(2, "0");
                     const minutes = date.getMinutes();
                     const mm = minutes.toString().padStart(2, "0");
                     const parsedDate = date.toLocaleDateString();
-                    console.log("horas: ", HH);
-                    console.log("minutos: ", minutes);
 
                     return (
                         <div key={index} className='myClasses-card'>

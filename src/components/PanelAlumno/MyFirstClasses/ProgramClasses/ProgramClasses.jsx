@@ -80,7 +80,7 @@ const ProgramClasses = () => {
         let approved = false;
         let conditions = 0;
         usersWeek.length === 0 ? swal("CUIDADO!", `Debes seleccionar al menos un dia y un horario`, "error") : (
-            usersWeek.map((day, index) => {
+            usersWeek.map((day) => {
                 let validTime = day.time !== undefined;
                 let validTimeDate = false;
                 if (day.timeDate) {
@@ -133,7 +133,6 @@ const ProgramClasses = () => {
                                         );
                                         setClicked(!clicked);
                                         setUsersWeek(selectedDays);
-                                        console.log(usersWeek);
                                     }}
                                 >
                                     {day}

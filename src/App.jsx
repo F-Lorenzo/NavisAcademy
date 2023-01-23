@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthContextProvider } from "./Context/AuthContext";
 import { UserUpdatesContextProvider } from "./Context/UserUpdatesContext";
@@ -9,50 +9,20 @@ import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/Login/SignIn";
 import Signup from "./components/Login/SignUp";
-import Loader from "./components/Loader/Loader";
-
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute";
 import ProtectedRouteStudent from "./components/ProtectedRoutes/ProtectedRouteStudent";
 import ProtectedRouteTeacher from "./components/ProtectedRoutes/ProtectedRouteTeacher";
 import Account from "./components/Account/Account";
 import Panel from "./components/Account/Panel";
 import Checkout from "./components/checkout/Checkout";
-
 import Admin from "./components/Admin/Admin";
-import CreateTeacherAccount from "./components/Admin/CreateTeacherAccount/CreateTeacherAccount";
-
-
 import PanelProfessor from "./components/PanelProfessor/PanelProfessor";
 import MyStudents from "./components/PanelProfessor/MyStudents/MyStudents";
-
 import MyCalendario from "./components/PanelProfessor/MyCalendario/MyCalendario";
-
 import MisNotificaciones from "./components/Account/MisNotificaciones/MisNotificaciones";
 import ReprogramarClase from "./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase";
 import NewPanelAlumno from "./components/PanelAlumno/NewPanelAlumno";
-import Develope from "./components/Develope/Develope";
 import ProtectedRouteAdmin from "./components/ProtectedRoutes/ProtectedRouteAdmin";
-
-
-/*
-
-const ProtectedRoute = lazy(() => import('./components/ProtectedRoutes/ProtectedRoute'));
-const ProtectedRouteStudent = lazy(() => import('./components/ProtectedRoutes/ProtectedRouteStudent'));
-const ProtectedRouteTeacher = lazy(() => import('./components/ProtectedRoutes/ProtectedRouteTeacher'));
-const Account = lazy(() => import('./components/Account/Account'));
-const Panel = lazy(() => import('./components/Account/Panel'));
-const Checkout = lazy(() => import('./components/checkout/Checkout'));
-const Admin = lazy(() => import('./components/Admin/Admin'));
-const CreateTeacherAccount = lazy(() => import('./components/Admin/CreateTeacherAccount/CreateTeacherAccount'));
-const ProgramingClassesAsAdmin = lazy(() => import('./components/Admin/ProgramingClassesAsAdmin/ProgramingClassesAsAdmin'));
-const PanelProfessor = lazy(() => import('./components/PanelProfessor/PanelProfessor'));
-const MyStudents = lazy(() => import('./components/PanelProfessor/MyStudents/MyStudents'));
-const MyCalendario = lazy(() => import('./components/PanelProfessor/MyCalendario/MyCalendario'));
-const MisNotificaciones = lazy(() => import('./components/Account/MisNotificaciones/MisNotificaciones'));
-const ReprogramarClase = lazy(() => import('./components/PanelAlumno/NextClass/ReprogramarClase/ReprogramarClase'));
-const NewPanelAlumno = lazy(() => import('./components/PanelAlumno/NewPanelAlumno'));
-*/
-
 
 
 function App() {
@@ -63,24 +33,12 @@ function App() {
           <UserUpdatesContextProvider>
 
             <NavBar />
-            {/*
-            */}
            
             <Routes>
-
-              <Route path="/dev" element={<Develope />} />
 
               <Route path="/" element={<Home />} />
               <Route path="/signIn" element={<SignIn />} />
               <Route path="/signUp" element={<Signup />} />
-
-              {/* Lazy Load 
-              
-              <Route path="/Admin" element={<Admin />} />
-              */}
-
-              <Route path="/Admin/CreateTeacherAccount" element={<CreateTeacherAccount />} />
-
               
               <Route path="/Panel" element={<Panel />} />
 
@@ -90,9 +48,7 @@ function App() {
               <Route path="/Checkout" element={<Checkout />} />
               <Route path="/MisNotificaciones" element={<MisNotificaciones />} />
 
-              <Route
-                path="/account"
-                element={
+              <Route path="/account" element={
                   <ProtectedRoute>
                     <Account />
                   </ProtectedRoute>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const MoreInfo = ({info}) => {
 
-    console.log(info);
+    //console.log(info);
 
     return (
         <div className='moreInfo-container' >
@@ -16,6 +16,7 @@ const MoreInfo = ({info}) => {
                     <li>Total de clases impartidas: {info.totalClasses}</li>
                     <li>Clases impartidas este mes: {info.thisMonthClasses}</li>
                     <li>Clases impartidas el mes pasado: {info.lastMonthClasses}</li>
+                    <li>Clases ausente: {info.absentedClasses}</li>
                 </ul>
             :
                 <ul>

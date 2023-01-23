@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addDoc, updateDoc, collection, getFirestore, doc, query, increment, setDoc, getDoc, serverTimestamp, arrayUnion } from 'firebase/firestore';
 import Loader from '../../Loader/Loader';
 
-const Teachers = ({date, teacher}) => {
+const Teachers = ({date, teacher, selected}) => {
 
     // Control de entradas
 
@@ -225,6 +225,7 @@ const Teachers = ({date, teacher}) => {
                 reprogramed: false,
                 durationClass: date.durationClass,
                 classNumber: classNumber,
+                calificationOfClass: '',
 
                 studentName: date.studentName,
                 studentLastName: date.studentLastName,
@@ -254,7 +255,7 @@ const Teachers = ({date, teacher}) => {
         let index = 0;
         //console.log(date.remainingClases);
 
-        addDays(dateOfClass, 0);
+        addDays(dateOfClass, 7);
         
         for (let count = 0; count < date.remainingClases ; count++) {
 
@@ -306,6 +307,7 @@ const Teachers = ({date, teacher}) => {
     // ASIGNAR PROFESOR 
     const handleAssignTeacher = async (e) => {
         setLoader(true);
+        selected(true);
         generateSchedule();
         e.preventDefault();
 

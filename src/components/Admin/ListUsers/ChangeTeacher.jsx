@@ -1,8 +1,8 @@
 import { getFirestore, doc, getDoc, deleteDoc, updateDoc } from "firebase/firestore";
 
 
-export const ChangeTeacher = async (userData) => {
-    console.log(userData);
+export const ChangeTeacher = async (userData, loader) => {
+    //console.log(userData);
 
     const firestore = getFirestore();
 
@@ -10,13 +10,13 @@ export const ChangeTeacher = async (userData) => {
     const myClassesDataCifred = await getDoc(myClassesDataRef);
     const myClassesData = myClassesDataCifred.data();
 
-    console.log(myClassesData);
+    //console.log(myClassesData);
 
     const teacherDataRef = doc(firestore, `Users/${userData.teacherUid}`);
     const teacherDataCifred = await getDoc(teacherDataRef);
     const teacherData = teacherDataCifred.data();
 
-    console.log(teacherData);
+    //console.log(teacherData);
 
     const teacherDisponibility = teacherData.disponibility;
     let newDisponibility = teacherDisponibility;
@@ -34,8 +34,7 @@ export const ChangeTeacher = async (userData) => {
         teacherLastName: "",
     }
 
-
-    console.log(newDisponibility);
+    //console.log(newDisponibility);
 
     switch (durationClass) {
         case 30:
@@ -77,8 +76,8 @@ export const ChangeTeacher = async (userData) => {
         }
     });
 
-    console.log(newDisponibility);
-    console.log(teacherDisponibility);
+    //console.log(newDisponibility);
+    //console.log(teacherDisponibility);
 
     const userDoc = doc(firestore, `Users/${userData.uid}`);
     await updateDoc(userDoc, {...unasignTeacherInUserDoc});
@@ -96,7 +95,8 @@ export const ChangeTeacher = async (userData) => {
     await deleteDoc(doc(firestore, `Users/${userData.teacherUid}/myStudents/${userData.uid}`));
     await deleteDoc(doc(firestore, `Users/${userData.teacherUid}/mySchedule/${userData.uid}`));   
     
-
+    swal("OK", `El alumno quedo sin profesor, asignale uno en ASIGNAR PROFESOR`, "success");
+    return loader(false);
     /*
 
 

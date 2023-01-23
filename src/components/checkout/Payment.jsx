@@ -102,7 +102,6 @@ const Payment = ({ totalValue, cantidad }) => {
         }}
         onApprove={async (data, actions) => {
           const details = await actions.order.capture();
-
           let tempDetails = details;
 
           if (tempDetails) {

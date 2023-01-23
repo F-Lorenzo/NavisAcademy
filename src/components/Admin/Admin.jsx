@@ -9,8 +9,6 @@ import CreateTeacherAccount from './CreateTeacherAccount/CreateTeacherAccount';
 
 const Admin = () => {
 
-    const navigate = useNavigate();
-    const [ clicked, setClicked ] = useState(false);
     const [ createTeacher, setCreateTeacher ] = useState(false);
     const [ listTeachers, setListTeachers ] = useState(false);
     const [ listAlumns, setListAlumns ] = useState(false);
@@ -30,7 +28,6 @@ const Admin = () => {
         assignTeacher && setAssignTeacher(false);
         !listTeachers && swal("Bienvenido", `Aqui veras una lista de profesores registrados`, "success");
         setListTeachers(!listTeachers);
-
     }
 
     const handleListAlumns = () => {

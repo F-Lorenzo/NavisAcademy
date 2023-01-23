@@ -18,7 +18,6 @@ const CountryDropdown = ({selected}) => {
     const handleCountryChange = (event) => {
         setSelectedCountry(event.target.value);
         selected(event.target.value);
-        console.log("PAIS SELECCIONADO : ",selectedCountry);
     };
 
     return (

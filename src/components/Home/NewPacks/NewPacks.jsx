@@ -14,6 +14,7 @@ const NewPacks = () => {
 
     const [ options, setOptions ] = useState(true);
 
+
     useEffect(() => {
         userLogged ? setOptions(false) : setOptions(true);
     }, [userLogged]);

@@ -2,6 +2,7 @@ import { doc, getFirestore, increment, updateDoc } from 'firebase/firestore';
 import React from 'react';
 import { useState } from 'react';
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
+import Loader from '../../Loader/Loader';
 import "./Notificacion.css";
 
 const Notificacion = ({info}) => {
@@ -12,6 +13,7 @@ const Notificacion = ({info}) => {
     
     const handleVisto = async () => {
 
+        setVisto(!visto);
         try {
             const firestore = getFirestore();
             const userRef = doc(firestore, `Users/${user.uid}`);
@@ -25,7 +27,6 @@ const Notificacion = ({info}) => {
         } catch (e) {
             swal("UPS!", `${e.message}`, "error");
         }
-        setVisto(!visto);
 
     }
 
@@ -35,7 +36,11 @@ const Notificacion = ({info}) => {
                 <p className='notification_type'> {info.notificationType} </p>
                 <p className='notification_info'> {info.textNotification} </p>
                 <p className='notification_date'> {timeStamp} </p>
-                {!visto && <button className='notification_button' onClick={handleVisto}>Visto</button>}
+                {!visto && 
+                    <button className='notification_button' onClick={handleVisto}>
+                        Visto
+                    </button>
+                }
             </div>
         </div>
     )

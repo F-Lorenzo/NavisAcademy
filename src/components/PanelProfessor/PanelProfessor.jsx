@@ -3,7 +3,7 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { UserUpdates } from '../../Context/UserUpdatesContext';
 import MyClasses from './MyClasses/MyClasses';
-import "./PanelProfessor.css";
+import "./PanelProfessor.scss";
 import Loader from '../Loader/Loader';
 
 function PanelProfessor() {

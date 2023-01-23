@@ -142,6 +142,7 @@ const ReprogramarClase = () => {
                 reprogramed: false,
                 durationClass: classDateInfo.durationClass,
                 classNumber: classNumber,
+                calificationOfClass: '',
 
                 studentName: classDateInfo.studentName,
                 studentLastName: classDateInfo.studentLastName,

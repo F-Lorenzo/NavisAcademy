@@ -126,10 +126,10 @@ const MostrarHorarios = ({teacher, durationClass, newDate}) => {
     return (
         <div>
             {/*
-            */}
             <button onClick={handleInfoLog}>
                 InfoLog MostrarHorarios
             </button>
+            */}
             {teacherDisponibility.map((date, index) =>{
 
                 const timeUtc = date.time;
