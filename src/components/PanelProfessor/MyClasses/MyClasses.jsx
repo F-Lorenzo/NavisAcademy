@@ -33,7 +33,7 @@ const MyClasses = ({myClass}) => {
                             <div key={index} className='myClasses-card'>
                                 <p className='myClasses-card_date'>{parsedDate}</p>
                                 <ul className='myClasses-card_info'>
-                                    <li className='myClasses-card_student'>{theClass.studentName} {theClass.studentLastName}</li>
+                                    <li className='myClasses-card_student'>Alumno: {theClass.studentName} {theClass.studentLastName}</li>
                                     <li className='myClasses-card_time'>{HH}:{mm} HS</li>
                                 </ul>
                                 <StartButton classDate={theClass} studentId={theClass.studentUid}/>
