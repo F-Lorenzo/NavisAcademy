@@ -12,8 +12,6 @@ const About = () => {
       setPlay(true);
   }, 10000);
 
-  console.log(play);
-
   return (
     <section className="about_container">
 
