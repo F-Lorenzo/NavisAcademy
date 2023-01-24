@@ -5,8 +5,12 @@ import { FormItems } from './FormItems';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs } from 'firebase/firestore';
 import SetTeacherDisponobility from './SetTeacherDisponobility';
 import './CreateTeacherAccount.scss'
+import CountryDropdown from '../../Login/CountryDropdown/CountryDropdown';
+
 
 const CreateTeacherAccount = () => {
+
+    const [ country, setCountry ] = useState();
 
     const [ form, setForm ] = useState({ 
         role: "teacher", 
@@ -21,6 +25,10 @@ const CreateTeacherAccount = () => {
             ...form,
             [e.target.name]:e.target.value,
         })
+    }
+
+    const handleCountry = (select) => {
+        setCountry(select)
     }
 
     return (
@@ -47,9 +55,11 @@ const CreateTeacherAccount = () => {
                         )
                     })}
 
+                    <CountryDropdown selected={handleCountry}/>
+
                 </form>
             </div>
-            <SetTeacherDisponobility teacherForm={form}/>
+            <SetTeacherDisponobility teacherForm={form} country={country}/>
         </div>
         </>
     );

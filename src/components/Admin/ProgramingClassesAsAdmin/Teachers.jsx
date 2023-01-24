@@ -23,6 +23,7 @@ const Teachers = ({date, teacher, selected}) => {
         teacherUid: teacher.id,
         teacherName: teacher.name,
         teacherLastName: teacher.lastName,
+        teacherPhoneNumber: teacher.phoneNumber,
     }
 
     const newStudentForTeacher = {
@@ -30,6 +31,7 @@ const Teachers = ({date, teacher, selected}) => {
         studentUid: date.studentUid,
         studentName: date.studentName,
         studentLastName: date.studentLastName,
+        studentPhoneNumber: date.studentPhoneNumber,
         remainingClases: date.remainingClases,
         classWeek: date.userWeek,
     }
@@ -333,6 +335,7 @@ const Teachers = ({date, teacher, selected}) => {
             await updateDoc(studentDataUpdate, {
                 teacher: "assigned",
                 teacherName: `${teacher.name} ${teacher.lastName}`,
+                teacherPhoneNumber: teacher.phoneNumber,
                 teacherUid: teacher.id,
                 notifications: increment(1),
                 newPurchasedClasses: 0,

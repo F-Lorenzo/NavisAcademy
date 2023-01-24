@@ -18,14 +18,15 @@ const Student = ({info}) => {
                     <div className="userMain-info">
                         <p>{info.studentName} {info.studentLastName}</p>
                         <span> Alumno </span>
+                        <span className="userCard-body-input_content">{info.studentEmail}</span> 
                     </div>
                 </div>
             </div>
 
             <div className="userCard-body">
                 <div className="userCard-body-input">
-                    <span className="userCard-body-input_title">Mail:</span>
-                    <span className="userCard-body-input_content">{info.studentEmail}</span> 
+                    <span className="userCard-body-input_title">Numero de contacto:</span>
+                    <span className="userCard-body-input_content">{info.studentPhoneNumber}</span> 
                 </div>
             </div>
 
@@ -35,6 +36,7 @@ const Student = ({info}) => {
                     <span className="userCard-body-input_content">{info.remainingClases}</span> 
                 </div>
             </div>
+
             {(info.classWeek).map((date, index) => {
 
                 const timeStamp = date.timeDate;
@@ -55,7 +57,7 @@ const Student = ({info}) => {
             })}
 
             {/*
-            <button onClick={handleTest}>TEST</button>
+<button onClick={handleTest}>TEST</button>
             */}
 
         </div>

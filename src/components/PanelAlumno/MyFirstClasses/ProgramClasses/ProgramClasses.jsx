@@ -22,6 +22,7 @@ const ProgramClasses = () => {
         studentEmail: user.email,
         studentName: user.form.name,
         studentLastName: user.form.lastName,
+        studentPhoneNumber: user.form.phoneNumber,
         durationClass: user.form.durationClass,
     }
 

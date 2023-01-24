@@ -8,7 +8,7 @@ import TimePicker from '../../TimePicker/TimePicker';
 import Loader from '../../Loader/Loader';
 
 
-const SetTeacherDisponobility = ({teacherForm}) => {
+const SetTeacherDisponobility = ({teacherForm, country}) => {
 
     const { createUser } = UserAuth();
     const [ loader, setLoader ] = useState(false);
@@ -58,7 +58,7 @@ const SetTeacherDisponobility = ({teacherForm}) => {
     const sendToFire = async () => {
 
         const disponibility = {lunes, martes, miercoles, jueves, viernes, sabado, domingo};
-        const newTeacherData = {...teacherForm, weekDisponibility, disponibility};
+        const newTeacherData = {...teacherForm, weekDisponibility, disponibility, country};
         
         try {
             const infoUser = await createUser(teacherForm.email, teacherForm.password)
