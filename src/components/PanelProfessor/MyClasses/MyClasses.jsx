@@ -19,24 +19,28 @@ const MyClasses = ({myClass}) => {
             */}
             {
                 myClass.map((theClass, index) => {
-                    
-                    const date = theClass.date.toDate();
-                    const hours = date.getHours();
-                    const HH = hours.toString().padStart(2, "0");
-                    const minutes = date.getMinutes();
-                    const mm = minutes.toString().padStart(2, "0");
-                    const parsedDate = date.toLocaleDateString();
 
-                    return (
-                        <div key={index} className='myClasses-card'>
-                            <p className='myClasses-card_date'>{parsedDate}</p>
-                            <ul className='myClasses-card_info'>
-                                <li className='myClasses-card_student'>{theClass.studentName} {theClass.studentLastName}</li>
-                                <li className='myClasses-card_time'>{HH}:{mm} HS</li>
-                            </ul>
-                            <StartButton classDate={theClass} studentId={theClass.studentUid}/>
-                        </div>
-                    )
+                    if (theClass.reprogramed === false) {
+
+                        const date = theClass.date.toDate();
+                        const hours = date.getHours();
+                        const HH = hours.toString().padStart(2, "0");
+                        const minutes = date.getMinutes();
+                        const mm = minutes.toString().padStart(2, "0");
+                        const parsedDate = date.toLocaleDateString();
+    
+                        return (
+                            <div key={index} className='myClasses-card'>
+                                <p className='myClasses-card_date'>{parsedDate}</p>
+                                <ul className='myClasses-card_info'>
+                                    <li className='myClasses-card_student'>{theClass.studentName} {theClass.studentLastName}</li>
+                                    <li className='myClasses-card_time'>{HH}:{mm} HS</li>
+                                </ul>
+                                <StartButton classDate={theClass} studentId={theClass.studentUid}/>
+                            </div>
+                        )
+                    } 
+                    
 
                 })
             }

@@ -22,26 +22,23 @@ const MyCalendario = () => {
                 const arrayOfClasses = [];        
                 mySchedule.forEach( allMyClasses => {
                     Object.keys(allMyClasses).forEach(key => {
-
-                        const startDateFormat = allMyClasses[key].date;
-                        const endDateFormat = allMyClasses[key].dateEnd;
-
-                        const startDate = startDateFormat.toDate();
-                        const endDate = endDateFormat.toDate();
-
-                        let description = "";
-
-                        user.role === "teacher" ? 
-                            description = `Alumno: ${allMyClasses[key].studentName} ${allMyClasses[key].studentLastName}`
-                        : 
-                            description = `Profesor: ${allMyClasses[key].teacherName} ${allMyClasses[key].teacherLastName}`
-                        
-
-                        arrayOfClasses.push({
-                            start_date: startDate,
-                            end_date: endDate,
-                            text: description,
-                        })
+                        const reprogramed = allMyClasses[key].reprogramed;
+                        if (reprogramed === false) {
+                            const startDateFormat = allMyClasses[key].date;
+                            const endDateFormat = allMyClasses[key].dateEnd;   
+                            const startDate = startDateFormat.toDate();
+                            const endDate = endDateFormat.toDate();
+                            let description = "";
+                            user.role === "teacher" ? 
+                                description = `Alumno: ${allMyClasses[key].studentName} ${allMyClasses[key].studentLastName}`
+                            : 
+                                description = `Profesor: ${allMyClasses[key].teacherName} ${allMyClasses[key].teacherLastName}`
+                            arrayOfClasses.push({
+                                start_date: startDate,
+                                end_date: endDate,
+                                text: description,
+                            })
+                        }
                     })
                 });
                 setMyClasses(arrayOfClasses);

@@ -1,8 +1,19 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import "./About.scss";
 import VideoNavis from "./VideoNavis/VideoNavis";
+import VideoNavisPlay from "./VideoNavis/VideoNavisPlay";
 
 const About = () => {
+
+  const [ play, setPlay ] = useState(false);
+
+  setTimeout(() => {
+      setPlay(true);
+  }, 10000);
+
+  console.log(play);
+
   return (
     <section className="about_container">
 
@@ -19,9 +30,15 @@ const About = () => {
         </span>
       </div>
 
-      <div className="about">
-        <VideoNavis /> 
-      </div>
+      { play === true ?
+        <div className="about">
+          <VideoNavisPlay /> 
+        </div>
+        :
+        <div className="about">
+          <VideoNavis /> 
+        </div>
+      }
       
     </section>
   );

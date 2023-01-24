@@ -27,6 +27,7 @@ export const ChangeTeacher = async (userData, loader) => {
         teacher: "unasigned",
         teacherName: "",
         teacherUid: "",
+        teacherPhoneNumber: "",
     }
 
     const unasignTeacherInMyClasses = {

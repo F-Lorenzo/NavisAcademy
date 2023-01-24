@@ -24,11 +24,7 @@ export const FormItems = [
         inNameId: "phoneNumber",
         inType: "tel",
     },
-    {
-        field: "Pais",
-        inNameId: "country",
-        inType: "text",
-    },
+
     {
         field: "Ciudad",
         inNameId: "city",
