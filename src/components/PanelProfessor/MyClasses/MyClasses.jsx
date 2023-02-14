@@ -36,6 +36,10 @@ const MyClasses = ({myClass}) => {
                                     <li className='myClasses-card_student'>Alumno: {theClass.studentName} {theClass.studentLastName}</li>
                                     <li className='myClasses-card_time'>{HH}:{mm} HS</li>
                                 </ul>
+                                <ul className='myClasses-card_info'>
+                                    <li>Clase Nº: {theClass.classNumber + 1}</li>
+                                    <li>Duración: {theClass.durationClass}min</li>
+                                </ul>
                                 <StartButton classDate={theClass} studentId={theClass.studentUid}/>
                             </div>
                         )

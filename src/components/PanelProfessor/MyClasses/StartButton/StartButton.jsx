@@ -30,7 +30,7 @@ const StartButton = ({classDate, studentId}) => {
 
     switch (classCalification) {
         case 'success':
-            calification = 'Clase Existosa';
+            calification = 'Clase Exitosa';
             break;
         case 'absentedStudent':
             calification = 'Estudiante Ausente';
@@ -39,7 +39,7 @@ const StartButton = ({classDate, studentId}) => {
             calification = 'Profesor Ausente';
             break;
         default:
-            calification = 'No hay calificacion';
+            calification = 'No hay calificación';
             break;
     }
 
@@ -84,6 +84,8 @@ const StartButton = ({classDate, studentId}) => {
             const studentNotification = collection(firestore, `Users/${studentId}/myNotifications`);
             await addDoc(studentNotification, { ...studentNewNotification, timeStamp });
 
+            swal("OK", `Se envio el link de la clase`, "success");
+
         } catch (e) {
             swal("UPS!", `${e.message}`, "error");
         }
@@ -105,7 +107,7 @@ const StartButton = ({classDate, studentId}) => {
                         </div>
                         :( daysLeft > 0 ? 
                             <div>
-                                <p>Faltan {daysLeft} dias</p>
+                                <p>Faltan {daysLeft} días</p>
                                 <p>y {hrsLeft} horas</p>
                             </div> 
                             :( hrsLeft > 0 ?

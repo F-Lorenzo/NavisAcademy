@@ -29,8 +29,10 @@ const BuyClasses = ({ durationSelection, msg, userDuration }) => {
   const navigate = useNavigate();
 
   let buyCards = [];
-
-  !duration && setDuration(50);
+  /*
+  console.log({duration});
+  */
+  !!!duration && setDuration(50);
 
   switch (duration) {
     case 30:
@@ -40,6 +42,9 @@ const BuyClasses = ({ durationSelection, msg, userDuration }) => {
       buyCards = CardsItems50;
       break;
   }
+  /*
+  console.log({userDuration, duration, buyCards});
+  */
 
   const handleCurrency = (selected) => {
     setCurrency(selected);

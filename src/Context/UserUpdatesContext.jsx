@@ -1,25 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserAuth } from "./AuthContext";
-import {
-  getFirestore,
-  doc,
-  getDoc,
-  collection,
-  getDocs,
-  onSnapshot,
-} from "firebase/firestore";
+import { getFirestore, doc, onSnapshot } from "firebase/firestore";
 
 const UserUpdatesContext = createContext();
 
 export const UserUpdatesContextProvider = ({ children }) => {
   const firestore = getFirestore();
   const { userLogged } = UserAuth();
-  const [user, setUser] = useState({});
+  const [ user, setUser ] = useState({});
 
   useEffect(() => {
     if (userLogged) {
-      const unsubscribe = onSnapshot(
-        doc(firestore, `Users/${userLogged.uid}`),
+      const unsubscribe = onSnapshot(doc(firestore, `Users/${userLogged.uid}`),
         (updData) => {
           const newData = updData.data();
           const userData = {

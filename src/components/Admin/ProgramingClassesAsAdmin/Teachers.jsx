@@ -323,6 +323,7 @@ const Teachers = ({date, teacher, selected}) => {
             const updateTeacherDispo = doc(firestore, `Users/${teacher.id}`);
             await updateDoc(updateTeacherDispo, {
                 disponibility: newDisponibility,
+                notifications: increment(1),
             })
             
             const teacherMyStudents = doc(firestore, `Users/${teacher.id}/myStudents/${date.studentUid}`);
@@ -349,6 +350,9 @@ const Teachers = ({date, teacher, selected}) => {
 
             const studentNotification = collection(firestore, `Users/${date.studentUid}/myNotifications`);
             await addDoc(studentNotification, { ...studentNewNotification, timeStamp });
+
+            const teacherNotification = collection(firestore, `Users/${teacher.id}/myNotifications`);
+            await addDoc(teacherNotification, { ...teacherNewNotification, timeStamp });
 
             setLoader(false);
             swal("OK", `Se asigno el profesor al alumno`, "success");
