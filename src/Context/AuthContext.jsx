@@ -1,34 +1,24 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/config";
 import { 
+    GoogleAuthProvider,
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     signOut, 
-    onAuthStateChanged 
+    onAuthStateChanged, 
+    signInWithPopup
 } from 'firebase/auth';
-
-
-import { getFirestore, doc, getDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
-
 
 const UserContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
 
-    /* ROL SHIT */
-
-    const Firestore = getFirestore();
-
-    async function getAllData(uid) {
-        const docuRef = doc(Firestore, `Users/${uid}`);
-        const docuCifrada = await getDoc(docuRef);
-        const infoFinal = docuCifrada.data();
-        return infoFinal;
-    }
-    
-    /*------------------------*/
-
     const [ userLogged, setUserLogged ] = useState({});
+
+    const googleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider);
+    }
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -52,7 +42,7 @@ export const AuthContextProvider = ({children}) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ createUser, userLogged, logOut, signIn }}>
+        <UserContext.Provider value={{ createUser, userLogged, logOut, signIn, googleSignIn }}>
             {children}
         </UserContext.Provider>
     );

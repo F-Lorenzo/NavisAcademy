@@ -9,11 +9,13 @@ export const EditItems = [
         inNameId: "lastName",
         inType: "text",
     },
+    /*
     {
         field: "Email",
         inNameId: "email",
         inType: "email",
     },
+    */
     {
         field: "Ciudad",
         inNameId: "city",

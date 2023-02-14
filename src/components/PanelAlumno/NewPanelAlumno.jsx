@@ -12,6 +12,7 @@ import Loader from "../Loader/Loader";
 import './NewPanelAlumno.css';
 
 import { AddClases } from './AddClasses';
+import { UpdateActualClass } from './UpdateActualClass';
 
 const NewPanelAlumno = () => {
 
@@ -31,7 +32,7 @@ const NewPanelAlumno = () => {
             const arrayOfClasses = [];      
             mySchedule.forEach( allMyDates => 
                 Object.keys(allMyDates).forEach(key => arrayOfClasses.push({ 
-                    classNumber: allMyDates[key].classNumber, 
+                    classNumber: allMyDates[key].classNumber,
                     condition: allMyDates[key].condition,
                     date: allMyDates[key].date,
                     dateEnd: allMyDates[key].dateEnd,
@@ -63,6 +64,8 @@ const NewPanelAlumno = () => {
         */
     }, [user]);
 
+    UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
+
     if (loader) {
         return (
             <Loader />
@@ -87,7 +90,7 @@ const NewPanelAlumno = () => {
                             </div> 
         
                             <StudentClassInfo {...user.misClases}/>
-                            <BuyClasses duration={userData.durationClass} msg='ADQUIERE MAS CLASES'/>
+                            <BuyClasses userDuration={userData.durationClass} msg='ADQUIERE MAS CLASES'/>
                         </div>
                     ) :
                         <div>

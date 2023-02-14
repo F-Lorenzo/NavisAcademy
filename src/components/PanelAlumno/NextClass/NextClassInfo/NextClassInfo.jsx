@@ -20,7 +20,7 @@ const NextClassInfo = ({date}) => {
             */}
             <p className='nextClass__date'>PROXIMA CLASE : {nextClassDate}</p>
             <p className='nextClass__time'>{HH}:{mm} HS</p>
-            <p className='nextClass__teacher'>{date.teacherName} {date.teacherLastName} </p>
+            <p className='nextClass__teacher'>Profesor: {date.teacherName} {date.teacherLastName} </p>
         </div>
     )
 

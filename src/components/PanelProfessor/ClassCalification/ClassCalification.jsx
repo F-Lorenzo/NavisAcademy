@@ -5,7 +5,7 @@ import Loader from '../../Loader/Loader';
 
 const ClassCalification = ({studentId, teacherId, classNumber}) => {
 
-    const [ calification, setCalification ] = useState('');
+    const [ calification, setCalification ] = useState('1');
     const [ loader, setLoader ] = useState(false);
     const [ sended, setSended ] = useState(false);
 
@@ -18,6 +18,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
     let studentActualClass = 0;
     let studentCompletedClass = 0;
     let studentAbsentedClass = 0;
+    let studentRemainingClases = 0;
     let calificationOfClass = '';
 
     let teacherTotalClasses = 0;
@@ -37,12 +38,17 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
             actualClass: increment(studentActualClass),
             completedClases: increment(studentCompletedClass),
             absentedClases: increment(studentAbsentedClass),
+            remainingClases: increment(studentRemainingClases),
         });
         const teacher = doc(firestore, `Users/${teacherId}`);
         await updateDoc(teacher, {
             totalClasses: increment(teacherTotalClasses),
             thisMonthClasses: increment(teacherThisMonthClasses),
             absentedClasses: increment(teacherAbsentedClasses),
+        });
+        const myStudent = doc(firestore, `Users/${teacherId}/myStudents/${studentId}`);
+        await updateDoc(myStudent, {
+            remainingClases: increment(studentRemainingClases),
         });
         /*
         */
@@ -55,6 +61,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
             ...teacherSchedule,
         })
         setLoader(false);
+        swal("OK", `Se calificó la clase con éxito`, "success");
     }
 
     const handleEnviar = () => {
@@ -68,6 +75,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     studentActualClass = 1;
                     studentCompletedClass = 1;
                     studentAbsentedClass = 0;
+                    studentRemainingClases = -1;
                     teacherTotalClasses = 1;
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
@@ -77,6 +85,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     studentActualClass = 1;
                     studentCompletedClass = 0;
                     studentAbsentedClass = 1;
+                    studentRemainingClases = -1;
                     teacherTotalClasses = 1;
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
@@ -93,8 +102,10 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     break;
             }
             sendToFire();
+            /*
             console.log(classNumber);
             console.log(studentActualClass);
+            */
         }
 
     }

@@ -14,27 +14,82 @@ const EditarInformacion = () => {
     const { user } = UserUpdates();
     const [ form, setForm ] = useState({});
     const [ loader, setLoader ] = useState(false);
+    const userData = user.form;
+
+    let dataForUser = ({});
+    let dataForOthers = ({});
+
 
     const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]:e.target.value,
         });
+        /*
         console.log(form);
+        */
+    }
+
+    const generateForm = () => {
+        for (let prop in form) {
+            if (form[prop] !== "") {
+                switch (prop) {
+                    case "name":
+                        dataForUser = {...dataForUser, name: form[prop]};
+                        dataForOthers = {...dataForOthers, studentName:form[prop]};
+                    break;
+                    case "lastName":
+                        dataForUser = {...dataForUser, lastName: form[prop]};
+                        dataForOthers = {...dataForOthers, studentLastName:form[prop]};
+                    break;
+                    case "city":
+                        dataForUser = {...dataForUser, city: form[prop]};
+                        dataForOthers = {...dataForOthers, studentCity:form[prop]};
+                    break;
+                    case "phoneNumber":
+                        dataForUser = {...dataForUser, phoneNumber: form[prop]};
+                        dataForOthers = {...dataForOthers, studentPhoneNumber:form[prop]};
+                    break;
+                    default:
+                    break;
+                }
+            }
+            /*
+            console.log({prop, dataForUser, dataForOthers, userData});
+            */
+        }
     }
 
     const handleSubmit = async (e) => {
 
         e.preventDefault();
         setLoader(true);
+        generateForm;
 
         try {
             const firestore = getFirestore();
             const userToEdit = doc(firestore, `Users/${userLogged.uid}`);
             await updateDoc(userToEdit, {
-                ...form
+                ...dataForUser
             });
+
+            if (userData.role === "alumn" && userData.teacher === "assigned") {
+                const userClasses = doc(firestore, `Users/${userLogged.uid}/myClasses/${userData.myClassesId}`);
+                await updateDoc(userClasses, {
+                    ...dataForOthers
+                });
+                const globalClassesData = doc(firestore, `Classes/${userData.myClassesId}`);
+                await updateDoc(globalClassesData, {
+                    ...dataForOthers
+                });
+                const myTeacherData = doc(firestore, `Users/${userData.teacherUid}/myStudents/${userLogged.uid}`);
+                await updateDoc(myTeacherData, {
+                    ...dataForOthers
+                });
+            }
+
             setLoader(false);
+            swal("Muy Bien!", "Actualización exitosa", "success");
         } catch (e) {
             swal("UPS!", `${e.message}`, "error");
             setLoader(false);
