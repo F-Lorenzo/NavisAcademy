@@ -27,6 +27,7 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
             while (dateOfClass < toDay) {
                 actualClass++;
                 classOfTheDay = studentClasses[actualClass];
+                console.log(classOfTheDay);
                 dateOfClass = classOfTheDay.dateEnd;
                 dateOfClass = dateOfClass.toDate();
             }

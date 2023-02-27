@@ -15,7 +15,11 @@ const Contact = () => {
         </div>
 
         <div className="contact__body">
-          <span>+000 (000) 000-0000</span>
+          <span>
+            <a href="mailto:contacto@navisacademia.com">
+              contacto@navisacademia.com
+            </a>
+          </span>
         </div>
       </section>
     </>

@@ -12,19 +12,24 @@ const StartButton = ({classDate, studentId}) => {
     const classCondition = classDate.condition;
     const classCalification = classDate.teacherCalification;
     const startDate = classDate.date.toDate();
+    const endDate = classDate.dateEnd.toDate();
     const toDayDate = new Date();
+    console.log(endDate);
 
     let calification = '';
 
-    let remainingTime = startDate - toDayDate;
+    let remainingTimeToStart = startDate - toDayDate;
+    let remainingTimeToEnd = endDate - toDayDate;
         
     let oneMin = 60 * 1000;
     let oneHour = 60 * oneMin;
     let oneDay = 24 * oneHour;
     
-    let daysLeft = Math.floor(remainingTime / oneDay);
-    let hrsLeft = Math.floor((remainingTime % oneDay) / oneHour);
-    let minsLeft = Math.floor((remainingTime % oneHour) / oneMin);
+    let daysLeftToStart = Math.floor(remainingTimeToStart / oneDay);
+    let hrsLeftToStart = Math.floor((remainingTimeToStart % oneDay) / oneHour);
+    let minsLeftToStart = Math.floor((remainingTimeToStart % oneHour) / oneMin);
+
+    let minsLeftToEnd = Math.floor((remainingTimeToEnd % oneHour) / oneMin);
 
     let pastDays = 0;
 
@@ -43,21 +48,22 @@ const StartButton = ({classDate, studentId}) => {
             break;
     }
 
-    if (daysLeft < pastDays) {
-        pastDays = Math.abs(daysLeft)
+    if (daysLeftToStart < pastDays) {
+        pastDays = Math.abs(daysLeftToStart)
     }
 
     const handleTest = () => {
+        console.log(minsLeftToEnd);
         console.log(classDate);
         console.log(startDate);
         console.log(toDayDate);
-        console.log("tiempo que paso: ", remainingTime);
+        console.log("tiempo que paso: ", remainingTimeToStart);
 
         console.log("dias que pasaron: ", pastDays);
 
-        console.log("Dias restantes : ", daysLeft);
-        console.log("Horas restantes : ", hrsLeft);
-        console.log("minutos restantes : ", minsLeft);
+        console.log("Dias restantes : ", daysLeftToStart);
+        console.log("Horas restantes : ", hrsLeftToStart);
+        console.log("minutos restantes : ", minsLeftToStart);
 
         console.log(studentId);
         console.log(linkToClass);
@@ -94,53 +100,54 @@ const StartButton = ({classDate, studentId}) => {
     return (
         <div>
             {/*
-            <button onClick={handleTest}>TEST</button>
+                <button onClick={handleTest}>TEST</button>
             */}
             { classCondition === "pending" ? 
                 ( pastDays > 1 ? 
                     <div>
                         <span>LA CLASE YA EXPIRO</span>
                     </div>
-                    :( pastDays > 0 ?
-                        <div>
-                            <ClassCalification studentId={studentId} teacherId={classDate.teacherUid} classNumber={classDate.classNumber}/>
-                        </div>
-                        :( daysLeft > 0 ? 
+                    :( daysLeftToStart > 0 ? 
                             <div>
-                                <p>Faltan {daysLeft} días</p>
-                                <p>y {hrsLeft} horas</p>
+                                <p>Faltan {daysLeftToStart} días</p>
+                                <p>y {hrsLeftToStart} horas</p>
                             </div> 
-                            :( hrsLeft > 0 ?
+                            :( hrsLeftToStart > 0 ?
                                 <div>
-                                    <p>Faltan {hrsLeft} horas</p>
-                                    <p>y {minsLeft} minutos</p>
+                                    <p>Faltan {hrsLeftToStart} horas</p>
+                                    <p>y {minsLeftToStart} minutos</p>
                                 </div>
-                                :( minsLeft > 30 ?
+                                :( minsLeftToStart > 30 ?
                                     <div>
-                                        <p>Faltan {minsLeft} minutos</p>
+                                        <p>Faltan {minsLeftToStart} minutos</p>
                                     </div>
-                                    :  
-                                    <form onSubmit={handleSubmit}>
-                                        <div className='linkToClass-container'>
-                                            <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
-                                                <input 
-                                                    type="url" 
-                                                    id="url"
-                                                    name="url" 
-                                                    placeholder="https://Ingrese_el_link_de_la_clase.com"
-                                                    pattern="https://.*" size="40"
-                                                    value={linkToClass || ''}
-                                                    onChange={handleLinkToClass} 
-                                                    required>
-                                                </input>
+                                    :( minsLeftToEnd > 0 ? 
+                                        <form onSubmit={handleSubmit}>
+                                            <div className='linkToClass-container'>
+                                                <label htmlFor="url">Ingrese aqui el Link de la clase:</label>
+                                                    <input 
+                                                        type="url" 
+                                                        id="url"
+                                                        name="url" 
+                                                        placeholder="https://Ingrese_el_link_de_la_clase.com"
+                                                        pattern="https://.*" size="40"
+                                                        value={linkToClass || ''}
+                                                        onChange={handleLinkToClass} 
+                                                        required>
+                                                    </input>
+                                            </div>
+                                            <button type='submit'>
+                                                ENVIAR
+                                            </button>
+                                        </form>
+                                        : 
+                                        <div>
+                                            <ClassCalification studentId={studentId} teacherId={classDate.teacherUid} classNumber={classDate.classNumber}/>
                                         </div>
-                                        <button type='submit'>
-                                            ENVIAR
-                                        </button>
-                                    </form>
+                                    )
                                 )
                             )
-                        )
+                        
                     )
                 ) 
                 : 

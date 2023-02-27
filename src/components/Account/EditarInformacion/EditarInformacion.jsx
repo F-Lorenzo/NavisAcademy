@@ -61,10 +61,11 @@ const EditarInformacion = () => {
     }
 
     const handleSubmit = async (e) => {
-
+        /* 
+        */
         e.preventDefault();
         setLoader(true);
-        generateForm;
+        generateForm();
 
         try {
             const firestore = getFirestore();

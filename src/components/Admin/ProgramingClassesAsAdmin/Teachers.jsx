@@ -257,7 +257,7 @@ const Teachers = ({date, teacher, selected}) => {
         let index = 0;
         //console.log(date.remainingClases);
 
-        addDays(dateOfClass, 7);
+        addDays(dateOfClass, 0);
         
         for (let count = 0; count < date.remainingClases ; count++) {
 

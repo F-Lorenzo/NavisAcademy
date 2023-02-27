@@ -15,7 +15,6 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
         { id: 3, label: 'Profesor Ausente', value: 3 },
     ];
 
-    let studentActualClass = 0;
     let studentCompletedClass = 0;
     let studentAbsentedClass = 0;
     let studentRemainingClases = 0;
@@ -35,7 +34,6 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
         const firestore = getFirestore();
         const student = doc(firestore, `Users/${studentId}`);
         await updateDoc(student, {
-            actualClass: increment(studentActualClass),
             completedClases: increment(studentCompletedClass),
             absentedClases: increment(studentAbsentedClass),
             remainingClases: increment(studentRemainingClases),
@@ -72,7 +70,6 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
             console.log(calification);
             switch (calification) {
                 case '1':
-                    studentActualClass = 1;
                     studentCompletedClass = 1;
                     studentAbsentedClass = 0;
                     studentRemainingClases = -1;
@@ -80,9 +77,9 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
                     calificationOfClass = 'success';
+                    console.log(calification);
                     break;
                 case '2':
-                    studentActualClass = 1;
                     studentCompletedClass = 0;
                     studentAbsentedClass = 1;
                     studentRemainingClases = -1;
@@ -90,15 +87,16 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
                     calificationOfClass = 'absentedStudent';
+                    console.log(calification);
                     break;
                 case '3':
-                    studentActualClass = 1;
                     studentCompletedClass = 0;
                     studentAbsentedClass = 0;
                     teacherTotalClasses = 0;
                     teacherThisMonthClasses = 0;
                     teacherAbsentedClasses = 1;
                     calificationOfClass = 'absentedTeacher';
+                    console.log(calification);
                     break;
             }
             sendToFire();

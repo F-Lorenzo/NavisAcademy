@@ -43,19 +43,30 @@ const ProgramClasses = () => {
 
         try {
             const firestore = getFirestore();
-            const mySchedule = query(collection(firestore, `Users/${user.uid}/myClasses`));
-            addDoc(mySchedule, { userWeek, ...programedClassData })
-                .then(({ id }) => {
+            
+            const mySchedule = doc(firestore, `Users/${user.uid}/myClasses/${user.uid}`);
+            await setDoc(mySchedule, { userWeek, ...programedClassData });
+            const docuRef = doc(firestore, `Classes/${user.uid}`);
+            await setDoc(docuRef, { userWeek, ...programedClassData });
+            const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${user.uid}`);
+            await setDoc(myNotifications, {...userNotification, timeStamp});
+            const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+            await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId: user.uid} );
 
-                    const docuRef = doc(firestore, `Classes/${id}`);
-                    setDoc(docuRef, { userWeek, ...programedClassData });
-                    const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${id}`);
-                    setDoc(myNotifications, {...userNotification, timeStamp});
-                    const teacherUpdate = doc(firestore, `Users/${user.uid}`);
-                    updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId: id} )
+            //const mySchedule = query(collection(firestore, `Users/${user.uid}/myClasses`));
+            //addDoc(mySchedule, { userWeek, ...programedClassData })
+            //    .then(({ id }) => {
 
-                })
+            //        const docuRef = doc(firestore, `Classes/${id}`);
+            //        setDoc(docuRef, { userWeek, ...programedClassData });
+            //        const myNotifications =  doc(firestore, `Users/${user.uid}/myNotifications/${id}`);
+            //        setDoc(myNotifications, {...userNotification, timeStamp});
+            //        const teacherUpdate = doc(firestore, `Users/${user.uid}`);
+            //        updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId: id} )
 
+            //    })
+            
+            
             //const teacherUpdate = doc(firestore, `Users/${user.uid}`);
             //await updateDoc( teacherUpdate, { teacher: "pending", notifications: increment(1), newbie: false, myClassesId} )
 
