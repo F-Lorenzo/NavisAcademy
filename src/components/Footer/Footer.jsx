@@ -16,15 +16,15 @@ const Footer = () => {
           </Link>
           <div>
             <div className="redes__Footer">
-              <Link to="/#">
+              <a href="https://www.facebook.com/profile.php?id=100089423539931" target="_blank">
                 <img src={facebook} alt="link a facebook" />
-              </Link>
-              <Link to="/#">
+              </a>
+              <a href="https://www.instagram.com/navisacademia/" target="_blank">
                 <img src={instagram} alt="link a instagram" />
-              </Link>
-              <Link to="/#">
+              </a>
+              <a href="https://api.whatsapp.com/message/TFO62IOMTONMO1?autoload=1&app_absent=0" target="_blank">
                 <img src={ws} alt="link a whatsapp" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>

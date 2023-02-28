@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getFirestore, updateDoc, doc } from 'firebase/firestore';
+import { getFirestore, updateDoc, doc, getDoc, collection, getDocs } from 'firebase/firestore';
 
 import { EditItems } from './EditItems';
 import { UserAuth } from '../../../Context/AuthContext';
@@ -36,19 +36,39 @@ const EditarInformacion = () => {
                 switch (prop) {
                     case "name":
                         dataForUser = {...dataForUser, name: form[prop]};
-                        dataForOthers = {...dataForOthers, studentName:form[prop]};
+                        if (userData.role === "alumn") {
+                            dataForOthers = {...dataForOthers, studentName:form[prop]};
+                        }
+                        if (userData.role === "teacher") {
+                            dataForOthers = {...dataForOthers, teacherName:form[prop]};
+                        }
                     break;
                     case "lastName":
                         dataForUser = {...dataForUser, lastName: form[prop]};
-                        dataForOthers = {...dataForOthers, studentLastName:form[prop]};
+                        if (userData.role === "alumn") {
+                            dataForOthers = {...dataForOthers, studentLastName:form[prop]};
+                        }
+                        if (userData.role === "teacher") {
+                            dataForOthers = {...dataForOthers, teacherLastName:form[prop]};
+                        }
                     break;
                     case "city":
                         dataForUser = {...dataForUser, city: form[prop]};
-                        dataForOthers = {...dataForOthers, studentCity:form[prop]};
+                        if (userData.role === "alumn") {
+                            dataForOthers = {...dataForOthers, studentCity:form[prop]};
+                        }
+                        if (userData.role === "teacher") {
+                            dataForOthers = {...dataForOthers, teacherCity:form[prop]};
+                        }
                     break;
                     case "phoneNumber":
                         dataForUser = {...dataForUser, phoneNumber: form[prop]};
-                        dataForOthers = {...dataForOthers, studentPhoneNumber:form[prop]};
+                        if (userData.role === "alumn") {
+                            dataForOthers = {...dataForOthers, studentPhoneNumber:form[prop]};
+                        }
+                        if (userData.role === "teacher") {
+                            dataForOthers = {...dataForOthers, teacherPhoneNumber:form[prop]};
+                        }
                     break;
                     default:
                     break;
@@ -61,10 +81,11 @@ const EditarInformacion = () => {
     }
 
     const handleSubmit = async (e) => {
-
+        /* 
+        */
         e.preventDefault();
         setLoader(true);
-        generateForm;
+        generateForm();
 
         try {
             const firestore = getFirestore();
@@ -72,6 +93,22 @@ const EditarInformacion = () => {
             await updateDoc(userToEdit, {
                 ...dataForUser
             });
+
+            const updForStudents = async (studentId) => {
+                const studentsPath = doc(firestore, `Classes/${studentId}`);
+                await updateDoc(studentsPath, {
+                    ...dataForOthers,
+                    modification: true,
+                }) 
+            }
+
+            if (userData.role === "teacher") {
+                const myStudentsPath = collection(firestore, `Users/${userLogged.uid}/myStudents`); 
+                const myStudentsColletction = await getDocs(myStudentsPath);
+                myStudentsColletction.forEach(doc => {
+                    updForStudents(doc.id);
+                });
+            }
 
             if (userData.role === "alumn" && userData.teacher === "assigned") {
                 const userClasses = doc(firestore, `Users/${userLogged.uid}/myClasses/${userData.myClassesId}`);
@@ -86,6 +123,42 @@ const EditarInformacion = () => {
                 await updateDoc(myTeacherData, {
                     ...dataForOthers
                 });
+                const userSchedulePath = doc(firestore, `Users/${userLogged.uid}/mySchedule/${userLogged.uid}`);
+                const teacherSchedulePath = doc(firestore, `Users/${userData.teacherUid}/mySchedule/${userLogged.uid}`);
+                const teacherScheduleData = await getDoc(teacherSchedulePath);
+                const teacherSchedule = teacherScheduleData.data();
+                
+                //console.log({teacherSchedule, dataForOthers});
+
+                for (let prop in dataForOthers) {
+                    if (dataForOthers[prop] !== "") {
+                        switch (prop) {
+                            case "studentName":
+                                for (const student in teacherSchedule) {
+                                    teacherSchedule[student].studentName = dataForOthers[prop];
+                                    console.log(`${student}: ${teacherSchedule[student].studentName}`);
+                                }
+                            break;
+                            case "studentLastName":
+                                for (const student in teacherSchedule) {
+                                    teacherSchedule[student].studentLastName = dataForOthers[prop];
+                                    console.log(`${student}: ${teacherSchedule[student].studentLastName}`);
+                                }
+                            break;
+                            default:
+                            break;
+                        }
+                    }
+                }
+
+                await updateDoc (userSchedulePath, {
+                    ...teacherSchedule,
+                });
+
+                await updateDoc (teacherSchedulePath, {
+                    ...teacherSchedule,
+                });
+
             }
 
             setLoader(false);

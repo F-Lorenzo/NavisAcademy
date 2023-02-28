@@ -43,3 +43,8 @@
     padding: 15px;
     margin-bottom: 40px;
 }
+
+.contact__body a {
+    text-decoration: none;
+    color: #FCFCFC;
+}

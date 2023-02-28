@@ -21,10 +21,10 @@ const MoreInfo = ({info}) => {
             :
                 <ul>
                     <li>Clases disponibles: {info.remainingClases}</li>
-                    <li>Duracion de la clase: {info.durationClass}min</li>
                     <li>Clases completadas: {info.completedClases}</li>
                     <li>Clases ausente: {info.absentedClases}</li>
                     <li>Total de clases compradas: {info.totalClasses}</li>
+                    <li>Duracion de la clase: {info.durationClass}min</li>
                     <li>Profesor: {info.teacherName}</li>
                 </ul>  
             }    
