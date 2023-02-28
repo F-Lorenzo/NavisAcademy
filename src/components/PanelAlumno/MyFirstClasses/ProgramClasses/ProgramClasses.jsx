@@ -15,6 +15,7 @@ const ProgramClasses = () => {
     const week = [ "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo" ];
 
     const programedClassData = {
+        modification: false,
         condition: "pending",
         teacher: "unasigned",
         remainingClases: user.misClases.remainingClases,

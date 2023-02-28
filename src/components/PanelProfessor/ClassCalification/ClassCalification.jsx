@@ -48,6 +48,10 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
         await updateDoc(myStudent, {
             remainingClases: increment(studentRemainingClases),
         });
+        const globalClasses = doc(firestore, `Classes/${studentId}`);
+        await updateDoc(globalClasses, {
+            remainingClases: increment(studentRemainingClases),
+        });
         /*
         */
         const teacherSchedulePath = doc(firestore, `Users/${teacherId}/mySchedule/${studentId}`);
@@ -58,6 +62,15 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
         await updateDoc (teacherSchedulePath, {
             ...teacherSchedule,
         })
+        const studentSchedulePath = doc(firestore, `Users/${studentId}/mySchedule/${studentId}`);
+        const studentScheduleData = await getDoc(studentSchedulePath);
+        const studentSchedule = studentScheduleData.data();
+        studentSchedule[classNumber].condition = 'success';
+        studentSchedule[classNumber].teacherCalification = calificationOfClass;
+        await updateDoc (studentSchedulePath, {
+            ...studentSchedule,
+        })
+
         setLoader(false);
         swal("OK", `Se calificó la clase con éxito`, "success");
     }
@@ -67,7 +80,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
         if (calification === '') {
             swal("CUIDADO!", `Debe seleccionar una opción`, "error");
         } else {
-            console.log(calification);
+            //console.log(calification);
             switch (calification) {
                 case '1':
                     studentCompletedClass = 1;
@@ -77,7 +90,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
                     calificationOfClass = 'success';
-                    console.log(calification);
+                    //console.log(calification);
                     break;
                 case '2':
                     studentCompletedClass = 0;
@@ -87,7 +100,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     teacherThisMonthClasses = 1;
                     teacherAbsentedClasses = 0;
                     calificationOfClass = 'absentedStudent';
-                    console.log(calification);
+                    //console.log(calification);
                     break;
                 case '3':
                     studentCompletedClass = 0;
@@ -96,7 +109,7 @@ const ClassCalification = ({studentId, teacherId, classNumber}) => {
                     teacherThisMonthClasses = 0;
                     teacherAbsentedClasses = 1;
                     calificationOfClass = 'absentedTeacher';
-                    console.log(calification);
+                    //console.log(calification);
                     break;
             }
             sendToFire();

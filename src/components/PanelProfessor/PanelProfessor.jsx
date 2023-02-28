@@ -5,6 +5,7 @@ import { UserUpdates } from '../../Context/UserUpdatesContext';
 import MyClasses from './MyClasses/MyClasses';
 import "./PanelProfessor.scss";
 import Loader from '../Loader/Loader';
+import { UpdData } from './UpdData';
 
 function PanelProfessor() {
 
@@ -53,6 +54,7 @@ function PanelProfessor() {
             setLoader(false);
             }
         );
+        UpdData(user.uid, user.form.thisMonthClasses);
     }, [user]);
 
     const handleMisAlumnos = () => {

@@ -14,7 +14,7 @@ const StartButton = ({classDate, studentId}) => {
     const startDate = classDate.date.toDate();
     const endDate = classDate.dateEnd.toDate();
     const toDayDate = new Date();
-    console.log(endDate);
+    //console.log(endDate);
 
     let calification = '';
 

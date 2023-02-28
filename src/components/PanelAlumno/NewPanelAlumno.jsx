@@ -60,11 +60,12 @@ const NewPanelAlumno = () => {
         if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
             AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
         };
+        UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
         /*
         */
     }, [user]);
 
-    UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
+    //UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
 
     if (loader) {
         return (
