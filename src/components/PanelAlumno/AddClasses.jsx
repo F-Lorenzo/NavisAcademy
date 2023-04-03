@@ -1,7 +1,6 @@
 import { doc, getDoc, getFirestore, increment, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 
-
 export const AddClases = async (userId, myClassesId, oldSchedule, newClasses) => {
 
     const newSchedule = [];
@@ -13,10 +12,16 @@ export const AddClases = async (userId, myClassesId, oldSchedule, newClasses) =>
     const myClassesData = myClassesDataCifred.data();
 
     let last = oldSchedule.length;
+    console.log(oldSchedule);
+    console.log(last);
 
     const classInWeek = myClassesData.userWeek.length;
 
-    let first = last - classInWeek;
+    let first = 0;
+
+    if (last > 5) {
+        first = last - classInWeek;
+    }  
 
     const addDays = (date, period) => {
         date.setDate(date.getDate() + period);
@@ -36,6 +41,8 @@ export const AddClases = async (userId, myClassesId, oldSchedule, newClasses) =>
         }
 
         const classReference = oldSchedule[first];
+        console.log(first);
+        console.log(classReference);
         let oldClassDateStart = classReference.date.toDate();
         let oldClassDateEnd = classReference.dateEnd.toDate();
         addDays(oldClassDateStart, (7*week));

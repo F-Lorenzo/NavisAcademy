@@ -1,3 +1,12 @@
+import puzzle from "../../../assets/qualities/puzzle.webp";
+import objetivo from "../../../assets/qualities/objetivo.webp";
+import tiempo from "../../../assets/qualities/tiempo.webp";
+import tareas from "../../../assets/qualities/tareas.webp";
+import interactivo from "../../../assets/qualities/interactivo.webp";
+import recursos from "../../../assets/qualities/recursos.webp";
+import profesor from "../../../assets/qualities/profesor.webp";
+
+/*
 import puzzle from "../../../assets/qualities/puzzle.png";
 import objetivo from "../../../assets/qualities/objetivo.png";
 import tiempo from "../../../assets/qualities/tiempo.png";
@@ -5,6 +14,7 @@ import tareas from "../../../assets/qualities/tareas.png";
 import interactivo from "../../../assets/qualities/interactivo.png";
 import recursos from "../../../assets/qualities/recursos.png";
 import profesor from "../../../assets/qualities/profesor.png";
+*/
 
 export const QualityCards = [
   {

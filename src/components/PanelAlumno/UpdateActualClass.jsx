@@ -1,4 +1,5 @@
 import { getFirestore, doc, updateDoc, getDoc } from "firebase/firestore";
+import { AddClases } from './AddClasses';
 
 export const UpdateActualClass = async (classNumber, studentClasses, userId) => {
 
@@ -8,6 +9,7 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
     const teacherData = teacherDataCifred.data();
 
     if (teacherData.modification === true) {
+
         const myClassesPath = doc(firestore, `Users/${userId}/myClasses/${userId}`);
         await updateDoc(myClassesPath, {
             ...teacherData,
@@ -83,22 +85,45 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
     } 
 
     if (studentClasses) {
+        let follow = true;
+        //console.log(studentClasses);
         classOfTheDay = studentClasses[actualClass];
         if (classOfTheDay) {
             dateOfClass = classOfTheDay.dateEnd;
             dateOfClass = dateOfClass.toDate();
         }
         if (dateOfClass) {
-            while (dateOfClass < toDay) {
+            //console.log(dateOfClass);
+            while (follow && dateOfClass < toDay) {
                 actualClass++;
                 classOfTheDay = studentClasses[actualClass];
-                //console.log(classOfTheDay);
-                dateOfClass = classOfTheDay.dateEnd;
-                dateOfClass = dateOfClass.toDate();
+                if (classOfTheDay === undefined) {
+                    follow = false;
+                    actualClass--;
+                } else {
+                    //console.log(classOfTheDay);
+                    dateOfClass = classOfTheDay.dateEnd;
+                    dateOfClass = dateOfClass.toDate();
+                }
             }
             if (actualClass !== classNumber) {
                 updateFirebase();
             }
+        }
+    }
+
+    if (actualClass > 1) {
+        if (studentClasses) {
+            //let evaluate = actualClass - 2;
+            let absentTeacher = 0;
+            for (let evaluate = actualClass - 2; evaluate < actualClass; evaluate++) {
+                const classToEvaluate = studentClasses[evaluate];
+                if (classToEvaluate.condition === "pending") {
+                    absentTeacher++
+                }
+                console.log({actualClass, evaluate, classToEvaluate, absentTeacher});
+            }
+
         }
     }
     /*

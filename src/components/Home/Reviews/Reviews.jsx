@@ -15,7 +15,7 @@ const Reviews = () => {
           return (
             <div className="reviews__Card" key={index}>
               <div className="reviews__Avatar">
-                <img src={item.avatar} alt="User Avatar" />
+                <img src={item.avatar} width="165" height="165" alt="User Avatar" />
               </div>
               <div className="reviews__Text">{item.text}</div>
               <div className="reviews__Author">{item.author}</div>

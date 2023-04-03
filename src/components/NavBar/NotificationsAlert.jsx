@@ -12,7 +12,7 @@ const NotificationsAlert = () => {
     return (
         <div>
             <div className="notificaciones">
-                <img src={notificationsIcon} alt="notifications.png" />
+                <img src={notificationsIcon} width="30" height="30" alt="notifications.png" />
                 { user ? (user.notifications > 0 ? <p>{user.notifications}</p> : "") : "" }
             </div>    
         </div>

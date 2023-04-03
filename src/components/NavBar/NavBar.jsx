@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import DropDown from './DropDown';
 import { UserAuth } from "../../Context/AuthContext";
-import logo from "../../assets/img/logo.svg";
+import logo from "../../assets/img/logo.webp";
 import userButton from "../../../src/Assets/userButton.png";
 import NotificationsAlert from "./NotificationsAlert";
+import DropDown from './DropDown';
 import './NavBar.css';
 
 const UpdatedNavBar = () => {
@@ -48,7 +48,7 @@ const UpdatedNavBar = () => {
             <nav className='navbar'>
 
                 <Link to='/' className='navbar-logo'>
-                    <img src={logo} alt="NAVIS LOGO" />
+                    <img src={logo} width="160" height="43" alt="NAVIS LOGO" />
                 </Link>
 
                 { userLogged ? 
@@ -105,7 +105,7 @@ const UpdatedNavBar = () => {
                             <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                                 <div>
                                     <Link to='/Panel' className='nav-links' onClick={closeMobileMenu}>
-                                        <img src={userButton} alt="userIcon.png"/>
+                                        <img src={userButton} width="30" height="30" alt="userIcon.png"/>
                                         <i className='fas fa-caret-down'/>
                                     </Link>
 
