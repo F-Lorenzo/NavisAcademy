@@ -1,0 +1,1 @@
+import{U as a,d as n,j as e,N as t}from"./index.d087145b.js";const c=({children:r})=>{const{userLogged:s}=a(),{user:o}=n();return s?o.role==="alumn"?e(t,{to:"/"}):r:e(t,{to:"/signIn"})};export{c as default};
