@@ -1,10 +1,12 @@
-import Teresa from '../../../assets/reviews/Teresa.jpg';
-import Sandra from '../../../assets/reviews/Sandra.jpg';
-import Angelo from '../../../assets/reviews/Angelo.jpg';
-import Jairo from '../../../assets/reviews/Jairo.jpg';
-import Valeria from '../../../assets/reviews/Valeria.jpg';
-import Sofia from '../../../assets/reviews/Sofia.jpg';
-import Jorge from '../../../assets/reviews/Jorge.jpg';
+
+
+import Teresa from '../../../assets/reviews/Teresa.webp';
+import Sandra from '../../../assets/reviews/Sandra.webp';
+import Angelo from '../../../assets/reviews/Angelo.webp';
+import Jairo from '../../../assets/reviews/Jairo.webp';
+import Valeria from '../../../assets/reviews/Valeria.webp';
+import Sofia from '../../../assets/reviews/Sofia.webp';
+import Jorge from '../../../assets/reviews/Jorge.webp';
 
 export const ReviewsContent = [
     {

@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { UserUpdates } from "../../Context/UserUpdatesContext";
-import { useNavigate } from 'react-router-dom';
+import Loader from "../Loader/Loader";
+import './NewPanelAlumno.css';
+
+const NextClassInfo = lazy(() => import ('./NextClass/NextClassInfo/NextClassInfo'));
+const StudentPanelActionButtons = lazy(() => import ('./NextClass/StundentPanelActionButtons/StudentPanelActionButtons'));
+const StudentClassInfo = lazy(() => import ('./NextClass/StudentClassInfo/StudentClassInfo'));
+const Asistencia = lazy(() => import ('./NextClass/Asistencia/Asistencia'));
+const MyFirstClasses = lazy(() => import ('./MyFirstClasses/MyFirstClasses'));
+const BuyClasses = lazy(() => import ("./BuyClasses/BuyClasses"));
+
+/*
 import NextClassInfo from './NextClass/NextClassInfo/NextClassInfo';
 import StudentPanelActionButtons from './NextClass/StundentPanelActionButtons/StudentPanelActionButtons';
 import StudentClassInfo from './NextClass/StudentClassInfo/StudentClassInfo';
 import Asistencia from './NextClass/Asistencia/Asistencia';
 import MyFirstClasses from './MyFirstClasses/MyFirstClasses';
 import BuyClasses from "./BuyClasses/BuyClasses";
-import Loader from "../Loader/Loader";
-import './NewPanelAlumno.css';
+*/
 
 import { AddClases } from './AddClasses';
 import { UpdateActualClass } from './UpdateActualClass';
@@ -57,15 +66,20 @@ const NewPanelAlumno = () => {
             setLoader(false);
             }
         );
+        /*
         if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
             AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
+            console.log(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses)
         };
         UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
-        /*
         */
     }, [user]);
 
-    //UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
+    if (userData.newPurchasedClasses > 0 && userData.teacher === "assigned") {
+        AddClases(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses);
+        console.log(user.uid, userData.myClassesId, allMyClasses, userData.newPurchasedClasses)
+    };
+    UpdateActualClass(user.form.actualClass, allMyClasses, user.uid);
 
     if (loader) {
         return (
@@ -74,7 +88,7 @@ const NewPanelAlumno = () => {
     }
 
     return (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
             {/*
             <button onClick={handleTest}>test</button>
             */}                        
@@ -103,7 +117,7 @@ const NewPanelAlumno = () => {
 
                 )
             }
-        </div>
+        </Suspense>
     )
 
 }

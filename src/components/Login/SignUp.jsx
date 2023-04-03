@@ -4,7 +4,7 @@ import { UserAuth } from '../../Context/AuthContext';
 import { DateTime } from 'luxon';
 import { addDoc, setDoc, collection, getFirestore, doc, query, getDocs, serverTimestamp } from 'firebase/firestore';
 import Loader from '../Loader/Loader';
-import cohete from '../../assets/img/cohete.svg';
+import cohete from '../../assets/img/cohete.webp';
 import { FormItems } from './FormItems';
 import CountryDropdown from './CountryDropdown/CountryDropdown';
 import './SignIn.scss';
