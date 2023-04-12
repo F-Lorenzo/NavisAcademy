@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { UserUpdates } from '../../../Context/UserUpdatesContext';
 import BuyClasses from '../../PanelAlumno/BuyClasses/BuyClasses';
 import { UserAuth } from '../../../Context/AuthContext';
-import Switcher from '../../PanelAlumno/BuyClasses/Switcher/Switcher';
+//import Switcher from '../../PanelAlumno/BuyClasses/Switcher/Switcher';
 import './NewPacks.css';
 import { useEffect } from 'react';
 import Loader from '../../Loader/Loader';

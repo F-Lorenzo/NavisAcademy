@@ -1,23 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { CardsItems50 } from "./CardsItems50";
 import { CardsItems30 } from "./CardsItems30";
 import Switcher from "./Switcher/Switcher";
-
 import { UserAuth } from "../../../Context/AuthContext";
-import {
-  getFirestore,
-  doc,
-  increment,
-  updateDoc,
-  query,
-  collection,
-  setDoc,
-  addDoc,
-  serverTimestamp,
-} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import Checkout from "../../checkout/Checkout";
+import Loader from "../../Loader/Loader";
 import "./cardClasses.scss";
+import Checkout from "../../checkout/Checkout";
+
+//import Checkout from "../../checkout/Checkout";
+
+//const Checkout = lazy(() => import("../../checkout/Checkout"));
 
 const BuyClasses = ({ durationSelection, msg, userDuration }) => {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -55,7 +48,11 @@ const BuyClasses = ({ durationSelection, msg, userDuration }) => {
   };
 
   if (isCheckout) {
-    return <Checkout totalValue={totalValue} cantidad={cantidad} />;
+    return (
+
+        <Checkout totalValue={totalValue} cantidad={cantidad} />
+
+    )
   }
 
   return (

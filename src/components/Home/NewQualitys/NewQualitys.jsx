@@ -16,7 +16,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 const NewQualitys = () => {
 
     return (
-        <div>
+        <>
             <div className="homeSection__Title">
                 <h2>Cualidades</h2>
             </div>
@@ -60,7 +60,7 @@ const NewQualitys = () => {
                 }
                 </Swiper>
             </>
-        </div>
+        </>
     )
 
 }

@@ -26,6 +26,6 @@ export const UpdData = async (userId, thisMonthClasses) => {
         updFirebase();
     } 
 
-    //console.log({toDay, yesterDay, thisMonth, lastMonth, thisMonthClasses});
+    console.log({toDay, yesterDay, thisMonth, lastMonth, thisMonthClasses});
 
 }

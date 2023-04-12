@@ -11,7 +11,7 @@ const Contact = () => {
 
       <section className="contact__Section">
         <div className="contact__Img">
-          <img src={contact} alt="contact icon" />
+          <img src={contact} width='65' height='60' alt="contact icon" />
         </div>
 
         <div className="contact__body">

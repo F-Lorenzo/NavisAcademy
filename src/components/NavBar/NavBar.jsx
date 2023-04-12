@@ -48,7 +48,7 @@ const UpdatedNavBar = () => {
             <nav className='navbar'>
 
                 <Link to='/' className='navbar-logo'>
-                    <img src={logo} alt="NAVIS LOGO" />
+                    <img src={logo} width='160' height='43'  alt="NAVIS LOGO" />
                 </Link>
 
                 { userLogged ? 

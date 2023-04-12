@@ -1,53 +1,26 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { lazy, Suspense }  from "react";
+import Loader from "../../Loader/Loader";
 import "./About.scss";
-/*
-import VideoNavis from "./VideoNavis/VideoNavis";
-import VideoNavisPlay from "./VideoNavis/VideoNavisPlay";
-*/
+//import Video from "./Video/Video";
+//import Text from "./Text/Text";
+
+const Text = lazy(() => import("./Text/Text"));
+const Video = lazy(() => import("./Video/Video"));
+
 
 const About = () => {
 
-  /*
-  
-    const [ play, setPlay ] = useState(false);
-  
-    setTimeout(() => {
-        setPlay(true);
-    }, 10000);
-  */
-
   return (
     <section className="about_container">
+      <Suspense fallback={<Loader />}>
+        
+        <Text />
 
-      <div className="about">
-        <h2 className="about__title">
-          ¡Se <span>aprende</span> desde el primer día!
-        </h2>
-        <span className="parrafo__content">
-          ¿Necesitas aprobar un examen de inglés?, ¿Quieres estudiar en el extranjero?, 
-          ¿En tu trabajo dominar el inglés es un requisito?, Te ayudaremos a conseguirlo. 
-          En Navis nos adaptamos tus objetivos a la hora de aprender inglés, 
-          ya sea desde cero o para un fin en específico, con nosotros lo lograras. 
-          Aprende inglés de manera fácil, rápida y entretenida.
-        </span>
-      </div>
+        {/*
+        <Video />
+        */}
 
-      
-
-      {
-      /*
-        play === true ?
-        <div className="about">
-          <VideoNavisPlay /> 
-        </div>
-        :
-        <div className="about">
-          <VideoNavis /> 
-        </div>
-      */
-      }
-      
+      </Suspense>     
     </section>
   );
 };

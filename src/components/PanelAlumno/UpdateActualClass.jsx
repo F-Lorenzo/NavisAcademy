@@ -1,5 +1,6 @@
 import { getFirestore, doc, updateDoc, getDoc } from "firebase/firestore";
 import { AddClases } from './AddClasses';
+import UpdateTeacherData from "./UpdateStudentData/UpdateTeacherData";
 
 export const UpdateActualClass = async (classNumber, studentClasses, userId) => {
 
@@ -7,47 +8,14 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
     const teacherDataPath = doc(firestore, `Classes/${userId}`);
     const teacherDataCifred = await getDoc(teacherDataPath);
     const teacherData = teacherDataCifred.data();
+    //console.log(teacherData);
+    //console.log(userId);
 
     if (teacherData.modification === true) {
-
-        const myClassesPath = doc(firestore, `Users/${userId}/myClasses/${userId}`);
-        await updateDoc(myClassesPath, {
-            ...teacherData,
-            modification: false,
-        })
-        await updateDoc(teacherDataPath, {
-            modification: false,
-        })
-        const userDataPath = doc(firestore, `Users/${userId}`);
-        await updateDoc(userDataPath, {
-            teacherName: `${teacherData.teacherName} ${teacherData.teacherLastName}`,
-            teacherPhoneNumber: `${teacherData.teacherPhoneNumber}`,
-        })
-
-        const userSchedulePath = doc(firestore, `Users/${userId}/mySchedule/${userId}`);
-        const userScheduleData = await getDoc(userSchedulePath);
-        const userSchedule = userScheduleData.data();
-
-        for(let index in userSchedule) {
-            for (let prop in userSchedule[index]){
-                switch(prop) {
-                    case "teacherName":
-                        userSchedule[index].teacherName = teacherData[prop];
-                    break;
-                    case "teacherLastName":
-                        userSchedule[index].teacherLastName = teacherData[prop];
-                    break;
-                    default:
-                    break;
-                }
-            }
-        }
-
-        await updateDoc (userSchedulePath, {
-            ...userSchedule,
-        })
-
+        UpdateTeacherData(teacherData, userId, teacherDataPath);
     }
+
+    /*-------------------------*/
     
     const addDays = (date, period) => {
         date.setDate(date.getDate() + period);
@@ -71,6 +39,10 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
         })
     }
 
+    if (thisMonth !== lastMonth) {
+        resetReprogram();
+    } 
+
     const updateFirebase = async () => {
         //const firestore = getFirestore();
         const userData = doc(firestore, `Users/${userId}`);
@@ -80,11 +52,49 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
         });
     }
 
-    if (thisMonth !== lastMonth) {
-        resetReprogram();
-    } 
+    const teacherAbsented = () => {
+        if (actualClass > 1) {
+            //console.log("teacherAbsentedLPM: ",studentClasses);
+            let absentTeacher = 0;
+            for (let evaluate = actualClass - 2; evaluate < (actualClass + 1); evaluate++) {
+                const classToEvaluate = studentClasses[evaluate];
+                if (classToEvaluate.condition === "pending") {
 
-    if (studentClasses) {
+                    //console.log("evaluation", evaluate);
+                    const endDate = classToEvaluate.dateEnd.toDate();
+                    //console.log(endDate);
+                    const toDayDate = new Date();
+                    //console.log(toDayDate);
+                    let remainingTimeToEnd = endDate - toDayDate;
+                    //console.log(remainingTimeToEnd);
+                    let oneMin = 60 * 1000;
+                    let oneHour = 60 * oneMin;
+                    let oneDay = 24 * oneHour;
+                    //console.log(oneDay);
+                    let daysLeftToStart = Math.floor(remainingTimeToEnd / oneDay);
+                    //console.log("dias pasados: ", daysLeftToStart);
+
+                    if (daysLeftToStart !== 0) {
+                        classToEvaluate.condition = "failed";
+                        absentTeacher++;
+                    }
+
+
+                }
+                //console.log({actualClass, evaluate, classToEvaluate, absentTeacher});
+            }
+            //console.log(studentClasses);
+            if (absentTeacher > 0) {
+                let buy = false;
+                AddClases(userId, userId, studentClasses, absentTeacher, buy);
+            }
+            {/*
+            */}
+        } 
+    }
+
+    if (studentClasses.length !== 0) {
+        teacherAbsented();
         let follow = true;
         //console.log(studentClasses);
         classOfTheDay = studentClasses[actualClass];
@@ -109,21 +119,6 @@ export const UpdateActualClass = async (classNumber, studentClasses, userId) => 
             if (actualClass !== classNumber) {
                 updateFirebase();
             }
-        }
-    }
-
-    if (actualClass > 1) {
-        if (studentClasses) {
-            //let evaluate = actualClass - 2;
-            let absentTeacher = 0;
-            for (let evaluate = actualClass - 2; evaluate < actualClass; evaluate++) {
-                const classToEvaluate = studentClasses[evaluate];
-                if (classToEvaluate.condition === "pending") {
-                    absentTeacher++
-                }
-                console.log({actualClass, evaluate, classToEvaluate, absentTeacher});
-            }
-
         }
     }
     /*
