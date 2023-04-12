@@ -48,7 +48,7 @@ const NewQualitys = () => {
                         return (
                             <SwiperSlide key={index}>
                                 <div className='qualityCard-container'>
-                                    <img src={card.icon} width="70" height="70" alt="icon" className='qualityCard_icon' />
+                                    <img src={card.icon} alt="icon" className='qualityCard_icon' />
                                     <div className='qualityCard_description'>
                                         <p className='qualityCard_title'>{card.title}</p>
                                         <p className='qualityCard_text'>{card.text}</p>

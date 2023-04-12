@@ -1,10 +1,10 @@
-import puzzle from "../../../assets/qualities/puzzle.webp";
-import objetivo from "../../../assets/qualities/objetivo.webp";
-import tiempo from "../../../assets/qualities/tiempo.webp";
-import tareas from "../../../assets/qualities/tareas.webp";
-import interactivo from "../../../assets/qualities/interactivo.webp";
-import recursos from "../../../assets/qualities/recursos.webp";
-import profesor from "../../../assets/qualities/profesor.webp";
+import puzzle from "../../../assets/qualities/puzzle.svg";
+import objetivo from "../../../assets/qualities/objetivo.svg";
+import tiempo from "../../../assets/qualities/tiempo.svg";
+import tareas from "../../../assets/qualities/tareas.svg";
+import interactivo from "../../../assets/qualities/interactivo.svg";
+import recursos from "../../../assets/qualities/recursos.svg";
+import profesor from "../../../assets/qualities/profesor.svg";
 
 /*
 import puzzle from "../../../assets/qualities/puzzle.png";
