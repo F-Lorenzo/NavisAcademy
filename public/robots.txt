@@ -1,2 +1,13 @@
+
 User-agent: *
-Disallow: 
+
+Disallow: /signIn
+Disallow: /signUp
+Disallow: /Panel
+Disallow: /Account
+Disallow: /MisNotificaciones
+Disallow: /MiCalendario
+Disallow: /Account/ReprogramClass
+Disallow: /Account/Teacher/MyStudents
+
+Sitemap: https://navisacademia.com/sitemap.xml
