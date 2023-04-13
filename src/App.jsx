@@ -33,6 +33,7 @@ function App() {
                 <Routes>
 
                   <Route path="/" element={<Home />} />
+
                   <Route path="/signIn" element={<SignIn />} />
                   <Route path="/signUp" element={<Signup />} />
 
