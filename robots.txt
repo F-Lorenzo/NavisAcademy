@@ -1,13 +1,14 @@
+User-agent: Mediapartners-Google*
+Disallow:
 
 User-agent: *
-
 Disallow: /signIn
 Disallow: /signUp
-Disallow: /Panel
-Disallow: /Account
 Disallow: /MisNotificaciones
-Disallow: /MiCalendario
 Disallow: /Account/ReprogramClass
 Disallow: /Account/Teacher/MyStudents
+Disallow: /MiCalendario
+Disallow: /Panel
+Disallow: /account
 
 Sitemap: https://navisacademia.com/sitemap.xml
