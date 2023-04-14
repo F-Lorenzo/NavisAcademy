@@ -4,7 +4,6 @@ import Reviews from './Reviews/Reviews';
 import Contact from './Contact/Contact';
 import NewQualitys from './NewQualitys/NewQualitys';
 import NewQuestions from './NewQuestions/NewQuestions';
-import NewPacks from './NewPacks/NewPacks';
 import { useNavigate } from "react-router-dom";
 import './Home.scss';
 
@@ -19,7 +18,6 @@ const Home = ({fromCheckout}) => {
         <About />
         <NewQualitys />
         <Reviews />  
-        <NewPacks />
         <NewQuestions />
         <Contact />
         {/*
