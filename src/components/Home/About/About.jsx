@@ -15,11 +15,8 @@ const About = () => {
       <Suspense fallback={<Loader />}>
         
         <Text />
-
-        {/*
         <Video />
-        */}
-
+        
       </Suspense>     
     </section>
   );

@@ -12,6 +12,7 @@ export const Video = () => {
     return (
         <div className="about">
             <ReactPlayer 
+                className='react-player'
                 url='https://www.youtube.com/watch?v=UdEuBHCquPI'
                 volume={0.1}
                 playing={play}
